@@ -35,3 +35,9 @@ FlowRouter.route('/page5', {
     BlazeLayout.render('App_body', { main: 'page5' });
   },
 });
+FlowRouter.route('/', {
+  name: 'signIn',
+  action() {
+    BlazeLayout.render('App_body', { main: 'signIn' });
+  },
+});
