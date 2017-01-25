@@ -1,0 +1,14 @@
+<template name="home">
+  <h1>your playlists:</h1>
+  <form style="margin:0 200px;">
+    <input class="form-control" id="playlistName"/>
+    <input class="form-control" id="playlistURL"/>
+    <button class="btn btn-default form-control" id="submitPlaylist">Create Playlist</button>
+  </form>
+  <ul>
+    {{#each playlists}}
+      <li>{{name}} - {{fileURL}}</li>
+    {{/each}}
+  </ul>
+  <!-- {{> logoutButton}} -->
+</template>
