@@ -4,3 +4,6 @@ import { Meteor } from 'meteor/meteor';
 import './page2.html';
 import '../components/logoutbutton';
 import '../components/contentForm';
+import '../components/contentList';
+
+Meteor.subscribe('content');

@@ -3,6 +3,8 @@ import './contentForm.html';
 import '../../api/content/methods';
 import '../../api/content/collection';
 
+Meteor.subscribe('content');
+
 Template.contentForm.events({
   'submit .content-form': function addContent(event) {
     event.preventDefault();
