@@ -1,6 +1,13 @@
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 
+
+
+
+
+
+
+
 FlowRouter.route('/home', {
   name: 'home',
   action() {
@@ -38,6 +45,18 @@ FlowRouter.route('/page5', {
 FlowRouter.route('/', {
   name: 'signIn',
   action() {
-    BlazeLayout.render('App_body', { main: 'signIn' });
+    BlazeLayout.render('signInLayout2', { main: 'signInTemplate' });
   },
+});
+FlowRouter.route('/', {
+  name: 'signIn',
+  action() {
+    BlazeLayout.render('signInLayout2', { main: 'signInTemplate' });
+  },
+});
+Accounts.onLogout(function (){
+  FlowRouter.go('signIn');
+});
+Accounts.onLogin(function (){
+  FlowRouter.go('home');
 });
