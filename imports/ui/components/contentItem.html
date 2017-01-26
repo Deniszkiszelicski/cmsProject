@@ -1,4 +1,10 @@
 <template name ="contentItem">
-  <strong>Name: </strong>{{name}} <strong>Type: </strong>{{type}} <strong>URL: </strong>{{URL}} <strong>Duration: </strong>{{duration}}
-  <i type="button" class="glyphicon glyphicon-trash" id="button-delete-content"></i>
+  {{#if isEditMode}}
+    {{> contentForm}}
+  {{else}}
+    <strong>Name: </strong>{{name}} <strong>Type: </strong>{{type}} <strong>URL: </strong>{{URL}} <strong>Duration: </strong>{{duration}}
+    <i type="button" class="glyphicon glyphicon-trash" id="button-delete-content"></i>
+    <i type="button" class="glyphicon glyphicon-pencil" id="button-edit-content"></i>
+  {{/if}}
+
 </template>

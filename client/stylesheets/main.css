@@ -1,10 +1,12 @@
 /* CSS declarations go here */
-#button-delete-content{
-  color: orange;
-}
-
 body{
 
+}
+
+#button-delete-content{
+  color: orange;
+  margin-left: 10px;
+  cursor: pointer;
 }
 
 .button-new{
@@ -26,4 +28,10 @@ body{
   top: 1px;
   right: 5px;
   font-size: 1.6em;
+}
+
+.glyphicon-pencil{
+  color: #0082C8;
+  cursor: pointer;
+  margin-left: 10px;
 }
