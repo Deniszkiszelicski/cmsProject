@@ -14,3 +14,16 @@ body{
   color: #FFF;
   margin-left: 10px;
 }
+
+.contentForm{
+  position: relative;
+}
+.contentForm .glyphicon-remove{
+  margin-top: 20px;
+  color: red;
+  cursor: pointer;
+  position: absolute;
+  top: 1px;
+  right: 5px;
+  font-size: 1.6em;
+}

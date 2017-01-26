@@ -1,24 +1,27 @@
 <template name ="contentForm">
-  <h2>Edit Content</h2>
-  <form class="content-form">
-  <div class="form-group">
-    <label for="contentName">Name</label>
-    <input type="text" class="form-control" id="contentName" placeholder="Name of content">
-  </div>
-  <div class="form-group">
-    <label for="contentType">Type</label>
-    <input type="text" class="form-control" id="contentType" placeholder="Type of content, like video, picture or template">
-  </div>
-  <div class="form-group">
-    <label for="contentType">URL</label>
-    <input type="text" class="form-control" id="contentURL" placeholder="Location of the content on server">
-  </div>
-  <div class="form-group">
-    <label for="contentType">Duration</label>
-    <input type="text" class="form-control" id="contentDuration" placeholder="Duration of videos">
-  </div>
-  <div class="form-group">
-    <input type="submit" class="form-control" id="submit">
-  </div>
-</form>
+  <article class="contentForm">
+    <h2>Edit Content</h2>
+    <i type="button" class="glyphicon glyphicon-remove" id="button-close-content-form"></i>
+    <form class="content-form">
+      <div class="form-group">
+        <label for="contentName">Name</label>
+        <input type="text" class="form-control" id="contentName" placeholder="Name of content">
+      </div>
+      <div class="form-group">
+        <label for="contentType">Type</label>
+        <input type="text" class="form-control" id="contentType" placeholder="Type of content, like video, picture or template">
+      </div>
+      <div class="form-group">
+        <label for="contentType">URL</label>
+        <input type="text" class="form-control" id="contentURL" placeholder="Location of the content on server">
+      </div>
+      <div class="form-group">
+        <label for="contentType">Duration</label>
+        <input type="text" class="form-control" id="contentDuration" placeholder="Duration of videos">
+      </div>
+      <div class="form-group">
+        <input type="submit" class="form-control" id="submit">
+      </div>
+    </form>
+  </article>
 </template>

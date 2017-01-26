@@ -11,7 +11,7 @@ FlowRouter.route('/home', {
 FlowRouter.route('/page2', {
   name: 'page2',
   action() {
-    BlazeLayout.render('App_body', { main: 'page2' });
+    BlazeLayout.render('App_body', { main: 'content' });
   },
 });
 
