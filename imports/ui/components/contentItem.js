@@ -1,7 +1,5 @@
 import { Template } from 'meteor/templating';
 import './contentItem.html';
-import '../../api/content/methods';
-import '../../api/content/collection';
 
 Meteor.subscribe('content');
 
