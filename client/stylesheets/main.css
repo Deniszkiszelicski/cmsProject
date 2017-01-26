@@ -2,3 +2,15 @@
 #button-delete-content{
   color: orange;
 }
+
+body{
+
+}
+
+.button-new{
+  background-color: #0082C8;
+  cursor: pointer;
+  font-weight: 800;
+  color: #FFF;
+  margin-left: 10px;
+}
