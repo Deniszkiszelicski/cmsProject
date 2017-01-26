@@ -5,19 +5,19 @@
     <form class="content-form">
       <div class="form-group">
         <label for="contentName">Name</label>
-        <input type="text" class="form-control" id="contentName" placeholder="Name of content">
+        <input type="text" class="form-control" id="contentName" placeholder="Name of content" value="{{this.name}}">
       </div>
       <div class="form-group">
         <label for="contentType">Type</label>
-        <input type="text" class="form-control" id="contentType" placeholder="Type of content, like video, picture or template">
+        <input type="text" class="form-control" id="contentType" placeholder="Type of content, like video, picture or template" value="{{this.type}}">
       </div>
       <div class="form-group">
-        <label for="contentType">URL</label>
-        <input type="text" class="form-control" id="contentURL" placeholder="Location of the content on server">
+        <label for="contentURL">URL</label>
+        <input type="text" class="form-control" id="contentURL" placeholder="Location of the content on server" value="{{this.URL}}">
       </div>
       <div class="form-group">
         <label for="contentType">Duration</label>
-        <input type="text" class="form-control" id="contentDuration" placeholder="Duration of videos">
+        <input type="text" class="form-control" id="contentDuration" placeholder="Duration of videos" value="{{this.duration}}">
       </div>
       <div class="form-group">
         <input type="submit" class="form-control" id="submit">

@@ -1,6 +1,8 @@
 <template name ="contentItem">
   {{#if isEditMode}}
-    {{> contentForm}}
+    {{#with this}}
+      {{> contentForm}}
+    {{/with}}    
   {{else}}
     <strong>Name: </strong>{{name}} <strong>Type: </strong>{{type}} <strong>URL: </strong>{{URL}} <strong>Duration: </strong>{{duration}}
     <i type="button" class="glyphicon glyphicon-trash" id="button-delete-content"></i>
