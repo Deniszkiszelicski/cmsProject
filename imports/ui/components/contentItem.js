@@ -3,9 +3,10 @@ import './contentItem.html';
 
 Meteor.subscribe('content');
 
-Template.contentForm.events({
-  'submit .content-form': function addContent(event) {
+Template.contentItem.events({
+  'click #button-delete-content': function deleteContent(event) {
     event.preventDefault();
-    Meteor.call('addContent', { name: $('#contentName').val(), type: $('#contentType').val() })
+    console.log('button delete was clicked');
+    Meteor.call('deleteContent', this._id);
   },
 });

@@ -8,4 +8,8 @@ Meteor.methods({
     Content.insert({ name: content.name, type: content.type });
     console.log('inserted into Content collection');
   },
+  deleteContent: function(id) {
+    console.log('deleting entry from Content' + id.toString());
+    Content.remove(id);
+  },
 });
