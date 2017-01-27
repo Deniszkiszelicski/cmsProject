@@ -39,7 +39,7 @@ FlowRouter.route('/page4', {
 FlowRouter.route('/page5', {
   name: 'page5',
   action() {
-    BlazeLayout.render('App_body', { main: 'page5' });
+    BlazeLayout.render('App_body', { main: 'register' });
   },
 });
 FlowRouter.route('/', {
@@ -60,3 +60,6 @@ Accounts.onLogout(function (){
 Accounts.onLogin(function (){
   FlowRouter.go('home');
 });
+Accounts.createUser(function(){
+  FlowRouter.go('home');
+})
