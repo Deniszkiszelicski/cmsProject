@@ -8,10 +8,10 @@ FlowRouter.route('/home', {
   },
 });
 
-FlowRouter.route('/page2', {
-  name: 'page2',
+FlowRouter.route('/contentPage', {
+  name: 'contentPage',
   action() {
-    BlazeLayout.render('App_body', { main: 'content' });
+    BlazeLayout.render('App_body', { main: 'contentPage' });
   },
 });
 

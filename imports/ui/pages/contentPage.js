@@ -2,22 +2,22 @@ import { Template } from 'meteor/templating';
 import { $ } from 'meteor/jquery';
 import { Meteor } from 'meteor/meteor';
 import { ReactiveVar } from 'meteor/reactive-var';
-import './page2.html';
+import './contentPage.html';
 import '../components/logoutbutton';
-import '../components/contentForm';
-import '../components/contentList';
+import '../components/contents/contentForm';
+import '../components/contents/contentList';
 
-Template.content.onCreated(function onCreated() {
+Template.contentPage.onCreated(function onCreated() {
   this.isCreateNew = new ReactiveVar(false);
 });
 
-Template.content.helpers({
+Template.contentPage.helpers({
   isCreateNew: function isCreateNew() {
     return Template.instance().isCreateNew.get();
   },
 });
 
-Template.content.events({
+Template.contentPage.events({
   'click .button-new': function createNewContent(event, templateInstance) {
     event.preventDefault();
     templateInstance.isCreateNew.set(true);
