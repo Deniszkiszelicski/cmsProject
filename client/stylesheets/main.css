@@ -3,12 +3,6 @@ body{
 
 }
 
-#button-delete-content{
-  color: orange;
-  margin-left: 10px;
-  cursor: pointer;
-}
-
 .button-new{
   background-color: #0082C8;
   cursor: pointer;
@@ -33,5 +27,23 @@ body{
 .glyphicon-pencil{
   color: #0082C8;
   cursor: pointer;
-  margin-left: 10px;
+  position: absolute;
+  top: 3px;
+  right: 25px;
+}
+
+.glyphicon-trash{
+  color: orange;
+  cursor: pointer;
+  position: absolute;
+  top: 3px;
+  right: 5px;
+}
+
+.content-item{
+  background-color: #EEE;
+  margin: 3px;
+  margin-right: 20px;
+  padding: 1px;
+  position: relative;
 }
