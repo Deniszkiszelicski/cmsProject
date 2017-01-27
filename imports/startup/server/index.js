@@ -3,3 +3,4 @@ import '../../api/home/methods';
 import '../../api/home/server/publication';
 import '../../api/content/methods';
 import '../../api/content/collection';
+import '../../api/content/server/publication';
