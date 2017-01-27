@@ -8,7 +8,6 @@ Meteor.subscribe('content');
 
 Template.contentList.helpers({
   contents: () => {
-    console.log(Content.find({}).fetch());
     return Content.find().fetch();
   },
 });

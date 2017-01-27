@@ -10,10 +10,8 @@ Meteor.methods({
     // Content.insert({ name: content.name, type: content.type, URL: content.URL, duration: content.duration });
     // upsert
     Content.update({_id: content._id}, { name: content.name, type: content.type, URL: content.URL, duration: content.duration }, {false, true} );
-    console.log('inserted into Content collection');
   },
   deleteContent: function(id) {
-    console.log('deleting entry from Content' + id.toString());
     Content.remove(id);
   },
 });

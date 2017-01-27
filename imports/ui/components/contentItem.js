@@ -18,6 +18,7 @@ Template.contentItem.events({
   },
   'click #button-close-content-form': function closeForm(event, templateInstance) {
     event.preventDefault();
+    event.stopPropagation();
     templateInstance.isEditMode.set(false);
   },
 });
