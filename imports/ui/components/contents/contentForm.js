@@ -6,9 +6,13 @@ import '../../../api/content/collection';
 Meteor.subscribe('content');
 
 Template.contentForm.events({
-  'submit .content-form': function addContent(event) {
+  'submit .content-form': function addContent(event, templateInstance) {
     event.preventDefault();
-    console.log('adding new content');
-    Meteor.call('addContent', { _id: this._id ,name: $('#contentName').val(), type: $('#contentType').val(), URL: $('#contentURL').val(), duration: $('#contentDuration').val() });
+    Meteor.call('addContent',
+      { _id: this._id,
+        name: event.currentTarget.contentName.value,
+        type: event.currentTarget.contentType.value,
+        URL: event.currentTarget.contentURL.value,
+        duration: event.currentTarget.contentDuration.value });
   },
 });
