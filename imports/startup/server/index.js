@@ -4,3 +4,6 @@ import '../../api/home/server/publication';
 import '../../api/content/methods';
 import '../../api/content/collection';
 import '../../api/content/server/publication';
+import '../../api/registerUser/server/publication';
+import '../../api/registerUser/methods';
+import '../../api/registerUser/registerUser';

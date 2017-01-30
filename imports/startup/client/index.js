@@ -1,8 +1,10 @@
 import '../../ui/layouts/mainLayout';
 import '../../ui/pages/contentPage';
+import '../../ui/layouts/signInLayout';
 import '../../ui/pages/page3';
 import '../../ui/pages/page4';
 import '../../ui/pages/page5';
 import '../../ui/pages/home';
+import '../../ui/pages/signIn';
 import '../../api/home/home';
 import './routes';
