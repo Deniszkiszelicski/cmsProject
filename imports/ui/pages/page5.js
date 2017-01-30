@@ -10,20 +10,16 @@ import '../../api/registerUser/registerUser';
 Meteor.subscribe('registerUsers');
 
 
-Template.register.events({
-  'submit .register-form': function createRoleData(event) {
-    event.preventDefault();
-    console.log('submiting before meteor call');
-    Meteor.call('createRoleData', { name: $('#firstname').val(), role: $('#accountRole:checked').val(), email: $('#email').val() });
-
-  },
-});
-
 
 Template.register.events({
   'submit .register-form': function (event) {
 
     event.preventDefault();
+    BootstrapModalPrompt.prompt({
+    title: "Registration Confirmation",
+    content: "Do you want to save changes?"
+  }, function prompt(result) {
+      if (result) {
 
 
         var email = event.target.email.value;
@@ -31,9 +27,20 @@ Template.register.events({
         var firstname = event.target.firstname.value;
         var lastname = event.target.lastname.value;
 
-    var user = {'email':email,password:password,profile:{name:firstname+" "+lastname}};
+    var user = { 'email':email,password:password,profile:{name:firstname+" "+lastname}};
 
 
     Accounts.createUser(user);
-  } }
+    Meteor.call('createRoleData', { name: $('#firstname').val(), role: $('#accountRole:checked').val(), email: $('#email').val(), netName:$('#netName').val() });
+  }
+      else {
+    // User did not confirm, do nothing.
+  }
+    });
+  }
+},
+
 );
+$('.reset').click(function reseting() {
+  $(this).closest('form').find('input[type=text], textarea, input[type=password], input[type=email]').val('');
+});

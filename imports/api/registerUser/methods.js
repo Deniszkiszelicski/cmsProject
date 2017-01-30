@@ -11,7 +11,7 @@ Meteor.methods({
     // check(userInformationObject.accountRole, String);
     // check(userInformationObject.email, String);
     console.log('befor inserting', userInformationObject);
-   UserInformation.insert({name:userInformationObject.name,role:userInformationObject.role,email:userInformationObject.email});
+   UserInformation.insert({name:userInformationObject.name,role:userInformationObject.role,email:userInformationObject.email,netName:userInformationObject.netName});
     console.log("ubaceno");
   },
 });
