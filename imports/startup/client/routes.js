@@ -48,11 +48,12 @@ FlowRouter.route('/', {
     BlazeLayout.render('signInLayout2', { main: 'signInTemplate' });
   },
 });
-FlowRouter.route('/', {
+FlowRouter.route('/admin_role', {
   name: 'signIn',
   action() {
-    BlazeLayout.render('signInLayout2', { main: 'signInTemplate' });
+    BlazeLayout.render('App_body', { main: 'admin_role' });
   },
+
 });
 Accounts.onLogout(function (){
   FlowRouter.go('signIn');

@@ -6,5 +6,6 @@ import '../../ui/pages/page4';
 import '../../ui/pages/page5';
 import '../../ui/pages/home';
 import '../../ui/pages/signIn';
+import '../../ui/pages/admin_role';
 import '../../api/home/home';
 import './routes';
