@@ -49,7 +49,7 @@ FlowRouter.route('/', {
   },
 });
 FlowRouter.route('/admin_role', {
-  name: 'signIn',
+  name: 'admin_role',
   action() {
     BlazeLayout.render('App_body', { main: 'admin_role' });
   },
@@ -63,4 +63,4 @@ Accounts.onLogin(function (){
 });
 Accounts.createUser(function(){
   FlowRouter.go('home');
-})
+});

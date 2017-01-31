@@ -32,6 +32,7 @@ Template.register.events({
 
     Accounts.createUser(user);
     Meteor.call('createRoleData', { name: $('#firstname').val(), role: $('#accountRole:checked').val(), email: $('#email').val(), netName:$('#netName').val() });
+    FlowRouter.go('/home');
   }
       else {
     // User did not confirm, do nothing.
@@ -41,6 +42,3 @@ Template.register.events({
 },
 
 );
-$('.reset').click(function reseting() {
-  $(this).closest('form').find('input[type=text], textarea, input[type=password], input[type=email]').val('');
-});
