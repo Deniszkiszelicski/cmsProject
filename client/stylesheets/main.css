@@ -1,12 +1,57 @@
-.login-form{
-  margin: 150px auto;
+/* CSS declarations go here */
+body{
+  background: #00C9FF; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #00C9FF , #92FE9D); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #00C9FF , #92FE9D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-body{
+.button-new{
+  background-color: #0082C8;
+  cursor: pointer;
+  font-weight: 800;
+  color: #FFF;
+  margin-left: 10px;
+}
+
+.contentForm{
+  position: relative;
+}
+.contentForm .glyphicon-remove{
+  margin-top: 20px;
+  color: red;
+  cursor: pointer;
+  position: absolute;
+  top: 1px;
+  right: 5px;
+  font-size: 1.6em;
+}
 
 
-background: #00C9FF; /* fallback for old browsers */
-background: -webkit-linear-gradient(to left, #00C9FF , #92FE9D); /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to left, #00C9FF , #92FE9D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+.glyphicon-pencil{
+  color: #0082C8;
+  cursor: pointer;
+  position: absolute;
+  top: 3px;
+  right: 25px;
+}
+
+.glyphicon-trash{
+  color: orange;
+  cursor: pointer;
+  position: absolute;
+  top: 3px;
+  right: 5px;
+}
+
+.content-item{
+  background-color: #EEE;
+  margin: 3px;
+  margin-right: 20px;
+  padding: 1px;
+  position: relative;
+}
+
+.login-form{
+  margin: 150px auto;
 
 }

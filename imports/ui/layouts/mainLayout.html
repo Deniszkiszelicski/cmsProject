@@ -1,17 +1,11 @@
 
 
 <template name="App_body">
-  <header><nav><ul class="nav nav-tabs">
-  <li role="page 1"><a href="home">Home</a></li>
-  <li role="page 2"><a href="page2">page 2</a></li>
-  <li role="page 3"><a href="page3">page 3</a></li>
-  <li role="page 4"><a href="page4">page 4</a></li>
-  <li role="page 5"><a href="page5">Admin</a></li>
-  <li role="admin_role"><a href="admin_role">Admin-role</a></li>
-  {{> logoutButton}}
-</ul></nav>
 
-  </header>
-    {{> Template.dynamic template=main}}
-  <footer>I am the footer</footer>
+  {{> header}}
+
+
+  {{> Template.dynamic template=main}}
+
+  {{> footer}}
 </template>

@@ -1,6 +1,6 @@
 import '../../ui/layouts/mainLayout';
+import '../../ui/pages/playersPage';
 import '../../ui/layouts/signInLayout';
-import '../../ui/pages/page2';
 import '../../ui/pages/page3';
 import '../../ui/pages/page4';
 import '../../ui/pages/page5';
