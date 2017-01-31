@@ -1,5 +1,8 @@
 import '../../ui/layouts/mainLayout';
 import '../../ui/pages/playersPage';
+import '../../ui/pages/playlistsPage';
+import '../../ui/pages/contentsPage';
+import '../../ui/pages/content-groupsPage';
 import '../../ui/layouts/signInLayout';
 import '../../ui/pages/page3';
 import '../../ui/pages/page4';
