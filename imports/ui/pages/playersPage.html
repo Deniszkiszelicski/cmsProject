@@ -1,0 +1,9 @@
+<template name="playersPage">
+  <h1>Players</h1>
+  <button type="button" class="btn btn-secondary button-new">New Player</button>
+  {{#if isCreateNew}}
+    {{>contentForm}}
+  {{/if}}
+
+  {{>contentList}}
+</template>

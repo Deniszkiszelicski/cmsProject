@@ -14,9 +14,9 @@ Template.signInTemplate.events({
     const password = event.target.password.value;
 
     Meteor.loginWithPassword(email,password,function(err){
-            if(!err) {
-                Router.go('/');
-            }
-          });
+      if(!err) {
+        Router.go('/');
+      }
+    });
   },
 });

@@ -1,24 +1,23 @@
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 
+FlowRouter.triggers.enter([function(context, redirect) {
+	if(!Meteor.userId()){
+		FlowRouter.go('signIn');
+	}
+}]);
 
-
-
-
-
-
-
-FlowRouter.route('/home', {
-  name: 'home',
-  action() {
-    BlazeLayout.render('App_body', { main: 'home' });
-  },
+FlowRouter.route('/', {
+	name: 'default',
+	action() {
+    FlowRouter.go('home');
+	}
 });
 
-FlowRouter.route('/contentPage', {
-  name: 'contentPage',
+FlowRouter.route('/players', {
+  name: 'playersPage',
   action() {
-    BlazeLayout.render('App_body', { main: 'contentPage' });
+    BlazeLayout.render('App_body', { main: 'playersPage' });
   },
 });
 
@@ -42,18 +41,20 @@ FlowRouter.route('/page5', {
     BlazeLayout.render('App_body', { main: 'register' });
   },
 });
-FlowRouter.route('/', {
+FlowRouter.route('/signIn', {
   name: 'signIn',
   action() {
     BlazeLayout.render('signInLayout2', { main: 'signInTemplate' });
   },
 });
-FlowRouter.route('/', {
-  name: 'signIn',
+
+FlowRouter.route('/home', {
+  name: 'home',
   action() {
-    BlazeLayout.render('signInLayout2', { main: 'signInTemplate' });
+    BlazeLayout.render('App_body', { main: 'home' });
   },
 });
+
 Accounts.onLogout(function (){
   FlowRouter.go('signIn');
 });

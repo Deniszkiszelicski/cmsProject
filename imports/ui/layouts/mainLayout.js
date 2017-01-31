@@ -1,5 +1,7 @@
 import { Template } from 'meteor/templating';
 import { $ } from 'meteor/jquery';
 import { Meteor } from 'meteor/meteor';
-import './mainLayout.html';
+import './partials/header';
+import './partials/footer';
 import '../components/logoutbutton';
+import './mainLayout.html';

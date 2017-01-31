@@ -1,0 +1,112 @@
+<template name="header">
+
+  <div class="header-fixed">
+  	<div class="wrapper">
+  		<!--=== Header v3 ===-->
+  		<div class="header-v3 header-sticky">
+  			<!-- Navbar -->
+  			<div class="navbar navbar-default mega-menu" role="navigation">
+  				<div class="container">
+  					<!-- Brand and toggle get grouped for better mobile display -->
+  					<div class="navbar-header">
+  						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+  							<span class="sr-only">Toggle navigation</span>
+  							<span class="fa fa-bars"></span>
+  						</button>
+  						<a class="navbar-brand" href="index.html">
+  							<img id="logo-header" src="itpark_logo_motto.jpg" alt="Logo">
+  						</a>
+  					</div>
+
+  					<!-- Collect the nav links, forms, and other content for toggling -->
+  					<div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
+  						<div class="container">
+  							<ul class="nav navbar-nav">
+  								<!-- Home -->
+  								<li>
+  									<a href="home">
+  										Home
+  									</a>
+
+  								</li>
+  								<!-- End Home -->
+
+  								<!-- Players -->
+  								<li>
+  									<a href="players">
+  										Players
+  									</a>
+  								</li>
+                  <!-- End Players -->
+
+  								<!-- Mediathek -->
+  								<li>
+  									<a href="javascript:void(0);">
+  										Mediathek
+  									</a>
+  								</li>
+                  <!-- End Mediathek -->
+
+  								<!-- Content-groupes -->
+  								<li>
+  									<a href="javascript:void(0);">
+  										Content-groupes
+  									</a>
+  								</li>
+  								<!-- Content-groupes -->
+
+  								<!-- Admin -->
+  								<li class="dropdown">
+  									<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+  										Admin
+  									</a>
+  									<ul class="dropdown-menu">
+  										<li><a href="feature_gallery.html">Networks</a></li>
+  										<li><a href="feature_animations.html">Roles</a></li>
+  										<li><a href="feature_parallax_counters.html">Users</a></li>
+  									</ul>
+  								</li>
+  								<!-- End Admin -->
+
+
+
+  								<!-- Log out -->
+  								<!-- <li>
+  									<a href="javascript:void(0);">
+  										Log out
+  									</a>
+
+  								</li> -->
+                  {{> logoutButton}}
+  								<!-- End Demo Pages -->
+
+  								<!-- Search Block -->
+  								<li>
+  									<i class="search fa fa-search search-btn"></i>
+  									<div class="search-open">
+  										<div class="input-group animated fadeInDown">
+  											<input type="text" class="form-control" placeholder="Search">
+  											<span class="input-group-btn">
+  												<button class="btn-u" type="button">Go</button>
+  											</span>
+  										</div>
+  									</div>
+  								</li>
+  								<!-- End Search Block -->
+  							</ul>
+
+  						</div><!--/end container-->
+  					</div><!--/navbar-collapse-->
+  				</div>
+  			</div>
+  			<!-- End Navbar -->
+  		</div>
+  		<!--=== End Header v3 ===-->
+
+
+
+
+  	</div><!--/wrapper-->
+  </div>
+
+</template>
