@@ -13,10 +13,10 @@ body{
   margin-left: 10px;
 }
 
-.contentForm{
+.playerForm{
   position: relative;
 }
-.contentForm .glyphicon-remove{
+.playerForm .glyphicon-remove{
   margin-top: 20px;
   color: red;
   cursor: pointer;
@@ -43,7 +43,7 @@ body{
   right: 5px;
 }
 
-.content-item{
+.player{
   background-color: #EEE;
   margin: 3px;
   margin-right: 20px;

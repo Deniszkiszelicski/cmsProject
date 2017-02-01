@@ -4,8 +4,8 @@ import { Meteor } from 'meteor/meteor';
 import { ReactiveVar } from 'meteor/reactive-var';
 import './playersPage.html';
 import '../components/logoutbutton';
-import '../components/contents/contentForm';
-import '../components/contents/contentList';
+import '../components/players/playerForm';
+import '../components/players/playersList';
 
 Template.playersPage.onCreated(function onCreated() {
   this.isCreateNew = new ReactiveVar(false);
@@ -22,7 +22,7 @@ Template.playersPage.events({
     event.preventDefault();
     templateInstance.isCreateNew.set(true);
   },
-  'click #button-close-content-form': function closeForm(event, templateInstance) {
+  'click #button-close-player-form': function closeForm(event, templateInstance) {
     event.preventDefault();
     templateInstance.isCreateNew.set(false);
   },

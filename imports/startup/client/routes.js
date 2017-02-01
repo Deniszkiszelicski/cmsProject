@@ -21,6 +21,27 @@ FlowRouter.route('/players', {
   },
 });
 
+FlowRouter.route('/playlists', {
+  name: 'playlistsPage',
+  action() {
+    BlazeLayout.render('App_body', { main: 'playlistsPage' });
+  },
+});
+
+FlowRouter.route('/contents', {
+  name: 'contentsPage',
+  action() {
+    BlazeLayout.render('App_body', { main: 'contentsPage' });
+  },
+});
+
+FlowRouter.route('/content-groups', {
+  name: 'content-groupsPage',
+  action() {
+    BlazeLayout.render('App_body', { main: 'content-groupsPage' });
+  },
+});
+
 FlowRouter.route('/page3', {
   name: 'page3',
   action() {
