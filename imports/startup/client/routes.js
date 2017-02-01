@@ -7,13 +7,6 @@ FlowRouter.triggers.enter([function(context, redirect) {
 	}
 }]);
 
-FlowRouter.route('/', {
-	name: 'default',
-	action() {
-    FlowRouter.go('home');
-	}
-});
-
 FlowRouter.route('/players', {
   name: 'playersPage',
   action() {
@@ -88,9 +81,14 @@ FlowRouter.route('/home', {
   name: 'home',
   action() {
     BlazeLayout.render('App_body', { main: 'home' });
-
   },
+});
 
+FlowRouter.route('/', {
+	name: 'default',
+	action() {
+    FlowRouter.go('home');
+	}
 });
 
 Accounts.onLogout(function (){

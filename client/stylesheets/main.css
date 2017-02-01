@@ -55,3 +55,31 @@ body{
   margin: 150px auto;
 
 }
+
+.form-weekly-schedule-part{
+
+}
+
+.form-weekly-schedule-part p{
+  font-weight: bold;
+}
+
+.schedule-day{
+  width: 62px;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.schedule-day p{
+  text-align: center;
+  margin-bottom: 1px;
+  font-weight: bold;
+}
+
+.schedule-day-part-1{
+  margin-bottom: 15px;
+}
+
+.schedule-day-part-2{
+
+}
