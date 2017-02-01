@@ -55,6 +55,13 @@ FlowRouter.route('/admin_role', {
   },
 
 });
+FlowRouter.route('/admin_networks', {
+  name: 'admin_networks',
+  action() {
+    BlazeLayout.render('App_body', { main: 'admin_networks' });
+  },
+
+});
 
 FlowRouter.route('/home', {
   name: 'home',
