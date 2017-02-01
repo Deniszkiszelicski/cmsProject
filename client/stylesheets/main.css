@@ -13,17 +13,28 @@ body{
   margin-left: 10px;
 }
 
-.playerForm{
+.player-form{
   position: relative;
 }
-.playerForm .glyphicon-remove{
+.player-form .glyphicon-remove{
   margin-top: 20px;
+  margin-right: 15px;
   color: red;
   cursor: pointer;
   position: absolute;
   top: 1px;
   right: 5px;
-  font-size: 1.6em;
+  font-size: 2em;
+}
+
+.fa-floppy-o{
+  margin-right: 15px;
+  color: #0082C8;
+  cursor: pointer;
+  position: absolute;
+  top: 800px;
+  right: 5px;
+  font-size: 2em;
 }
 
 

@@ -16,7 +16,7 @@ Template.player.events({
     event.preventDefault();
     templateInstance.isEditMode.set(true);
   },
-  'click #button-close-player-form': function closeForm(event, templateInstance) {
+  'click #button-close-player-form, click .button-save': function closeForm(event, templateInstance) {
     event.preventDefault();
     event.stopPropagation();
     templateInstance.isEditMode.set(false);

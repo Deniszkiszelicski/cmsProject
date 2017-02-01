@@ -4,15 +4,14 @@ import { check } from 'meteor/check';
 Meteor.methods({
   //  TODO: Add check for remaining fields
   upsertPlayer: function (player) {
-    check(player.name, String);
-    check(player.playerId, String);
-    check(player.location, String);
-    check(player.address, String);
-    check(player.postIndex, String);
-    check(player.townCity, String);
-    check(player.district, String);
-    check(player.playTime, String);
-    console.log('before update');
+    // check(player.name, String);
+    // check(player.playerId, String);
+    // check(player.location, String);
+    // check(player.address, String);
+    // check(player.postIndex, String);
+    // check(player.townCity, String);
+    // check(player.district, String);
+    // check(player.playTime, String);
     Players.update({ _id: player._id },
       { name: player.name,
         playerId: player.playerId,
