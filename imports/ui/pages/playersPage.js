@@ -22,7 +22,7 @@ Template.playersPage.events({
     event.preventDefault();
     templateInstance.isCreateNew.set(true);
   },
-  'click #button-close-player-form': function closeForm(event, templateInstance) {
+  'click #button-close-player-form, click .button-save': function closeForm(event, templateInstance) {
     event.preventDefault();
     templateInstance.isCreateNew.set(false);
   },
