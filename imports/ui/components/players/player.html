@@ -13,8 +13,10 @@
       <td>Status</td>
       <td>Last update</td>
       <td>
-        <div class="player-row">
-          <i type="button" class="glyphicon glyphicon-pencil" id="button-edit-player"></i>
+        <div class="player-row-controls">
+          {{#if mayEdit}}
+            <i type="button" class="glyphicon glyphicon-pencil" id="button-edit-player"></i>
+          {{/if}}
           <i type="button" class="glyphicon glyphicon-trash" id="button-delete-player"></i>
         </div>
       </td>

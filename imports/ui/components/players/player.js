@@ -2,7 +2,6 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import './player.html';
 
-
 Template.player.onCreated(function onCreated() {
   this.isEditMode = new ReactiveVar(false);
 });
@@ -26,5 +25,11 @@ Template.player.events({
 Template.player.helpers({
   isEditMode: function isEditMode() {
     return Template.instance().isEditMode.get();
+  },
+  mayEdit: function mayEdit() {
+    const email = Meteor.user().emails[0].address;
+    const role = UserInformation.findOne({"email": email}, {"role": 1, '_id': 0}).role;
+    const editPermission = Roles.findOne({"roleName": role}, {"editPlayer": 1, '_id': 0}).editPlayer;
+    return editPermission;
   },
 });
