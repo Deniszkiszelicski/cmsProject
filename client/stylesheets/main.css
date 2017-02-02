@@ -41,26 +41,28 @@ body{
 .glyphicon-pencil{
   color: #0082C8;
   cursor: pointer;
-  position: absolute;
+  margin: 2px;
+  /*position: absolute;
   top: 3px;
-  right: 25px;
+  right: 25px;*/
 }
 
 .glyphicon-trash{
-  color: orange;
+  color: red;
   cursor: pointer;
-  position: absolute;
+  margin: 2px;
+  /*position: absolute;
   top: 3px;
-  right: 5px;
+  right: 5px;*/
 }
 
-.player{
+/*.player-row{
   background-color: #EEE;
   margin: 3px;
   margin-right: 20px;
   padding: 1px;
   position: relative;
-}
+}*/
 
 .login-form{
   margin: 150px auto;
