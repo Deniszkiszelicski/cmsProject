@@ -10,8 +10,8 @@ Meteor.methods({
     // check(userInformationObject.name, String);
     // check(userInformationObject.accountRole, String);
     // check(userInformationObject.email, String);
-    console.log('befor inserting', userInformationObject);
+    console.log('before inserting', userInformationObject);
    UserInformation.insert({name:userInformationObject.name,role:userInformationObject.role,email:userInformationObject.email,netName:userInformationObject.netName});
-    console.log("ubaceno");
+
   },
 });

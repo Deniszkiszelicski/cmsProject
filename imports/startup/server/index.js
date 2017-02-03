@@ -7,3 +7,6 @@ import '../../api/registerUser/registerUser';
 import '../../api/roles/server/publication';
 import '../../api/roles/methods';
 import '../../api/roles/roles';
+import '../../api/admin_networks/methods';
+import '../../api/admin_networks/networks';
+import '../../api/admin_networks/server/publication';

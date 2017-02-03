@@ -1,8 +1,19 @@
+<template name="userReg1">
 
-  <template name="register">
+<button type="button" class="btn btn-success" id="btn2">Create new User</button>
+
+{{#if isCreateNew}}
+  {{>registerUser2}}
+{{/if}}
+
+{{>usersList}}
+
+
+</template>
+  <!-- <template name="register">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <form class="register-form">
+            <form class="register-form12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3>User Registration</h3>
@@ -71,4 +82,4 @@
             </form>
         </div>
     </div>
-</template>
+</template> -->

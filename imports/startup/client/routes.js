@@ -59,7 +59,7 @@ FlowRouter.route('/page4', {
 FlowRouter.route('/page5', {
   name: 'page5',
   action() {
-    BlazeLayout.render('App_body', { main: 'register' });
+    BlazeLayout.render('App_body', { main: 'userReg1' });
   },
 });
 FlowRouter.route('/signIn', {
@@ -79,7 +79,7 @@ FlowRouter.route('/admin_role', {
 FlowRouter.route('/admin_networks', {
   name: 'admin_networks',
   action() {
-    BlazeLayout.render('App_body', { main: 'admin_networks' });
+    BlazeLayout.render('App_body', { main: 'adminNetworks' });
   },
 
 });

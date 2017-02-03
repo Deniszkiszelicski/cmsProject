@@ -2,43 +2,34 @@ import { Template } from 'meteor/templating';
 import { $ } from 'meteor/jquery';
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
+import { ReactiveVar } from 'meteor/reactive-var';
 import './page5.html';
 import '../components/logoutbutton';
-import '../../api/registerUser/methods';
-import '../../api/registerUser/registerUser';
+import '../components/regUsers/userReg';
+import '../components/regUsers/userList';
+
 
 Meteor.subscribe('registerUsers');
 
 
+Template.userReg1.onCreated(function onCreated() {
+  this.isCreateNew = new ReactiveVar(false);
+});
 
-Template.register.events({
-  'submit .register-form': function (event) {
+Template.userReg1.helpers({
+  isCreateNew: function isCreateNew() {
+    return Template.instance().isCreateNew.get();
+  },
+});
 
+Template.userReg1.events({
+  'click #btn2': function createNewContent(event, templateInstance) {
     event.preventDefault();
-    BootstrapModalPrompt.prompt({
-    title: "Registration Confirmation",
-    content: "Do you want to save changes?"
-  }, function prompt(result) {
-      if (result) {
+    templateInstance.isCreateNew.set(true);
+  },
 
-
-        var email = event.target.email.value;
-        var password = event.target.password.value;
-        var firstname = event.target.firstname.value;
-        var lastname = event.target.lastname.value;
-
-    var user = { 'email':email,password:password,profile:{name:firstname+" "+lastname}};
-
-
-    Accounts.createUser(user);
-    Meteor.call('createRoleData', { name: $('#firstname').val(), role: $('#accountRole:checked').val(), email: $('#email').val(), netName:$('#netName').val() });
-    FlowRouter.go('/home');
-  }
-      else {
-    // User did not confirm, do nothing.
-  }
-    });
-  }
-},
-
-);
+  'submit .register-form12': function closeForm(event, templateInstance) {
+    event.preventDefault();
+    templateInstance.isCreateNew.set(false);
+  },
+});

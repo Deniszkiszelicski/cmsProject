@@ -1,7 +1,9 @@
 import { Meteor } from 'meteor/meteor';
 
-Meteor.publish('userInformation', function registerUsers() {
-  return UserInformation.find(
+
+
+Meteor.publish('networks', function networks() {
+  return Networks.find(
   //   {
   //   userId: this.userId,
   // }, {
