@@ -1,16 +1,25 @@
 <template name ="player">
-  <article class="player">
-    {{#if isEditMode}}
-      {{#with this}}
-        {{> playerForm}}
-      {{/with}}
-    {{else}}
-      <strong>Name: </strong>{{name}} <strong>PlayerId: </strong>{{playerId}}
-      <strong>Location: </strong>{{location}} <strong>Address: </strong>{{address}}
-      <strong>Post Index: </strong>{{postIndex}} <strong>Town/City: </strong>{{townCity}}
-      <strong>District: </strong>{{district}} <strong>Play Time: </strong>{{playTime}}
-      <i type="button" class="glyphicon glyphicon-trash" id="button-delete-player"></i>
-      <i type="button" class="glyphicon glyphicon-pencil" id="button-edit-player"></i>
-    {{/if}}
-  </article>
+  {{#if isEditMode}}
+    {{#with this}}
+      {{> playerForm}}
+    {{/with}}
+  {{else}}
+    <tr>
+      <td>{{name}}</td>
+      <td>{{location}}</td>
+      <td>{{playerId}}</td>
+      <td>{{postIndex}}</td>
+      <td>{{townCity}}</td>
+      <td>Status</td>
+      <td>Last update</td>
+      <td>
+        <div class="player-row-controls">
+          {{#if mayEdit}}
+            <i type="button" class="glyphicon glyphicon-pencil" id="button-edit-player"></i>
+          {{/if}}
+          <i type="button" class="glyphicon glyphicon-trash" id="button-delete-player"></i>
+        </div>
+      </td>
+    </tr>
+  {{/if}}
 </template>
