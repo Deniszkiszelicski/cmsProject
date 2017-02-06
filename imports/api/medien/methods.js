@@ -14,6 +14,9 @@ Meteor.methods({
     // check(player.playTime, String);
     Medien.update({ _id: media._id },
       { name: media.name,
+        category: media.category,
+        type: media.type,
+        createdAt: media.createdAt,
         fileId: media.fileId },
         { upsert: true, multi: false });
   },

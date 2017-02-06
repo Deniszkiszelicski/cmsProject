@@ -17,7 +17,7 @@ Template.mediaForm.helpers({
     return Template.instance().currentUpload.get();
   },
   categories: function () {
-    return ["cigarettes", "dentist", "dermatologist", "Allergist", "Cardiologist"];
+    return ["Allergist", "Cardiologist", "Dentist", "Dermatologist"];
   }
 });
 
@@ -28,6 +28,9 @@ Template.mediaForm.events({
     Meteor.call('upsertMedia',
       { _id: this._id,
         name: $('#name').val(),
+        category: $('#category-select').val(),
+        type: 'picture',
+        createdAt: Date.now(),
         fileId: fileId });
         // Play time hours end
   },
