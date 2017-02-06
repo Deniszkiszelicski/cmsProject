@@ -13,7 +13,7 @@ body{
   margin-left: 10px;
 }
 
-.player-form{
+.player-form, .media-form{
   position: relative;
 }
 .player-form .glyphicon-remove{
@@ -27,7 +27,11 @@ body{
   font-size: 2em;
 }
 
-.fa-floppy-o{
+.media-form{
+  /*margin-bottom: 20px;*/
+}
+
+.player-form .fa-floppy-o{
   margin-right: 15px;
   color: #0082C8;
   cursor: pointer;
@@ -37,6 +41,27 @@ body{
   font-size: 2em;
 }
 
+.media-form .glyphicon-remove{
+  /*margin-top: 20px;*/
+  /*margin-right: 15px;*/
+  color: red;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 2em;
+}
+
+.media-form .fa-floppy-o{
+  /*margin-right: 15px;*/
+  color: #0082C8;
+  cursor: pointer;
+  position: absolute;
+  /*top: 170px;*/
+  bottom: 10px;
+  right: 10px;
+  font-size: 2em;
+}
 
 .glyphicon-pencil{
   color: #0082C8;
