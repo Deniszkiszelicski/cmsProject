@@ -3,6 +3,15 @@
     Uploading <b>{{file.name}}</b>:
     <span id="progress">{{progress.get}}%</span>
   {{else}}
-    <input id="fileInput" type="file" />
+    <div class="input-group">
+      <label class="input-group-btn">
+        <span class="btn btn-primary">
+          Choose file
+          <input id="fileInput" type="file" style="display: none;" multiple>
+        </span>
+      </label>
+      <input type="text" class="form-control" readonly value="{{uploadedFileName}}">
+    </div>
+    <!-- <input id="fileInput" class="btn-u btn-u-default form-control" type="file"/> -->
   {{/with}}
 </template>

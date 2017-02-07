@@ -1,8 +1,9 @@
 import { Template } from 'meteor/templating';
 import { $ } from 'meteor/jquery';
-import './mediaForm.html';
 import '../../../api/medien/methods';
 import '../../../api/medien/collection';
+import './searchCategory';
+import './mediaForm.html';
 
 Meteor.subscribe('medien');
 Meteor.subscribe('files.images.all');
@@ -10,6 +11,7 @@ Meteor.subscribe('files.images.all');
 Template.mediaForm.onCreated(function () {
   this.currentUpload = new ReactiveVar(false);
   this.uploadedFileId = new ReactiveVar();
+  this.uploadedFileName = new ReactiveVar();
 });
 
 Template.mediaForm.helpers({
@@ -18,6 +20,9 @@ Template.mediaForm.helpers({
   },
   categories: function () {
     return ["Allergist", "Cardiologist", "Dentist", "Dermatologist"];
+  },
+  uploadedFileName: function () {
+    return Template.instance().uploadedFileName.get();
   }
 });
 
@@ -56,6 +61,7 @@ Template.mediaForm.events({
         }
         templateInstance.currentUpload.set(false);
         templateInstance.uploadedFileId.set(fileObj._id);
+        templateInstance.uploadedFileName.set(fileObj.name);
         // console.log("fileObj= ",fileObj._id);
       });
       upload.start();
