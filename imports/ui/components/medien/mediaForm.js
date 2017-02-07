@@ -32,8 +32,8 @@ Template.mediaForm.events({
     const fileId = templateInstance.uploadedFileId.get();
     Meteor.call('upsertMedia',
       { _id: this._id,
-        name: $('#name').val(),
-        category: $('#category-select').val(),
+        name: $('#nameOfMedia').val(),
+        category: $('#searchCategories').val(),
         type: 'picture',
         createdAt: Date.now(),
         fileId: fileId });
