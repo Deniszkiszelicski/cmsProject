@@ -15,11 +15,7 @@ Template.registerUser2.events({
   'submit .register': function (event) {
 
     event.preventDefault();
-    BootstrapModalPrompt.prompt({
-    title: "Registration Confirmation",
-    content: "Do you want to save changes?"
-  }, function prompt(result) {
-      if (result) {
+
 
 
         var email = event.target.email.value;
@@ -32,13 +28,10 @@ Template.registerUser2.events({
 
     Accounts.createUser(user);
     Meteor.call('createRoleData', { name: $('#firstname').val(), role: $('#accountRole:checked').val(), email: $('#email').val(), netName:$('#netName').val() });
+    toastr.success("Data Saved", "Create User");
 
-  }
-      else {
-    // User did not confirm, do nothing.
-  }
-    });
-  }
+
+
+
 },
-
-);
+});

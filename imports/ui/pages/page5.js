@@ -28,7 +28,7 @@ Template.userReg1.events({
     templateInstance.isCreateNew.set(true);
   },
 
-  'submit .register-form12': function closeForm(event, templateInstance) {
+  'submit .register': function closeForm(event, templateInstance) {
     event.preventDefault();
     templateInstance.isCreateNew.set(false);
   },

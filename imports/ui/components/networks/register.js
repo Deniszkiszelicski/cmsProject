@@ -24,7 +24,7 @@ console.log(event.currentTarget);
 
     Meteor.call('createNetwork', { netName: $('#netNameNet').val(), netId: $('#netIdNet').val(),
     privatContent:$('#privatContent').is(":checked"),dmxLight:$('#dmxLight').is(":checked"),logUpdateTime:$('#logUpdateTime').val() });
-    toastr.success("data saved","New Network");
+    toastr.success("Data saved","New Network");
 
 }
 

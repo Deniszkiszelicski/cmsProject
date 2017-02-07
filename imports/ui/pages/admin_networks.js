@@ -8,7 +8,6 @@ import '../components/networks/register';
 import '../components/networks/list';
 
 
-
 Template.adminNetworks.onCreated(function onCreated() {
   this.isCreateNew = new ReactiveVar(false);
 });
@@ -25,7 +24,7 @@ Template.adminNetworks.events({
     templateInstance.isCreateNew.set(true);
   },
 
-  'submit .register-form': function closeForm(event, templateInstance) {
+  'submit .register-form1': function closeForm(event, templateInstance) {
     event.preventDefault();
     templateInstance.isCreateNew.set(false);
   },

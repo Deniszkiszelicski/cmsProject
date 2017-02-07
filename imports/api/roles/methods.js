@@ -11,8 +11,32 @@ Meteor.methods({
     // check(userInformationObject.email, String);
     console.log('befor inserting', rolesObject);
   //  Roles.insert({netName:rolesObject.netName,netId:rolesObject.netId, admin:rolesObject.admin});
-   Roles.insert({netName: rolesObject.netName, netId: rolesObject.netId, roleName: rolesObject.roleName, createdNet: rolesObject.createdNet, createPlayer: rolesObject.createPlayer, editPlayer: rolesObject.editPlayer, deletePlayer: rolesObject.deletePlayer, addVideoPic: rolesObject.addVideoPic, editVideoPic: rolesObject.editVideoPic, deleteVideoPic: rolesObject.deleteVideoPic});
-   
+   Roles.insert({roleName: rolesObject.roleName,
+     createPlayer: rolesObject.createPlayer,
+     editPlayer: rolesObject.editPlayer,
+     deletePlayer: rolesObject.deletePlayer,
+     createVideoImg: rolesObject.createVideoImg,
+     editVideoImg: rolesObject.editVideoImg,
+     deleteVideoImg: rolesObject.deleteVideoImg,
+     createContent: rolesObject.createContent,
+     editContent: rolesObject.editContent,
+     deleteContent: rolesObject.deleteContent,
+     createContentGrp: rolesObject.createContentGrp,
+     editContentGrp: rolesObject.editContentGrp,
+     deleteContentGrp: rolesObject.deleteContentGrp,
+     createPlaylist: rolesObject.createPlaylist,
+     editPlaylist: rolesObject.editPlaylist,
+     deletePlaylist: rolesObject.deletePlaylist,
+     adminMenu: rolesObject.adminMenu,
+     netzMenu: rolesObject.netzMenu,
+     userMenu: rolesObject.userMenu,
+     roleMenu: rolesObject.roleMenu,
+     contentMenu: rolesObject.contentMenu,
+     statisticMenu: rolesObject.statisticMenu,
+     seeMedia: rolesObject.seeMedia,
+     seeContent: rolesObject.seeContent,
+     seeContentGroup: rolesObject.seeContentGroup });
+
     console.log("ubaceno");
   },
 });

@@ -65,7 +65,7 @@ FlowRouter.route('/signIn', {
 FlowRouter.route('/admin_role', {
   name: 'admin_role',
   action() {
-    BlazeLayout.render('App_body', { main: 'admin_role' });
+    BlazeLayout.render('App_body', { main: 'adminRoles' });
   },
 
 });
