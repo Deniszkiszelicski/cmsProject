@@ -1,21 +1,24 @@
-<template name="registerNetwork">
+<template name="editNetworkItem">
   <div class="row">
       <div class="col-md-6 col-md-offset-3">
-          <form class="register-form1">
+          <form class="networkEdit-form">
               <div class="panel panel-default">
                   <div class="panel-heading">
-                      <h3>Create New Network</h3>
+                      <h3>Edit Network</h3>
                   </div>
-                  <div class="panel-body">
+                  <div class="panel-body" style="background-color: #e3ede9;">
 
+{{#with editNet}}
                       <div class="form-group col-lg-12">
                           <label>Net Name:</label>
-                          <input type="text"  class="form-control" id="netNameNet" value="">
+
+                          <input type="text"  class="form-control" id="netNameNet" value="{{netName}}">
                       </div>
                       <div class="form-group col-lg-12">
                           <label>Net Id:</label>
-                          <input type="text" name="" class="form-control" id="netIdNet" value="">
+                          <input type="text" name="" class="form-control" id="netIdNet" value="{{netId}}">
                       </div>
+
                       <div class="form-group col-lg-3">
                           <label>Network Logo:</label>
                         </div>
@@ -33,22 +36,34 @@
                             <label>Privat Content</label>
                         </div>
                         <div class="form-group col-lg-8">
-                          <label class="radio-inline"><input type="radio" id="privatContent" name="optradio1">Yes</label>
-                          <label class="radio-inline"><input type="radio" id="privatContent" name="optradio1">No</label><hr>
+                          {{#if privatContent}}
+                          <label class="radio-inline"><input type="radio" id="privatContent" name="optradio1" checked>Yes</label>
+
+                          <label class="radio-inline"><input type="radio" id="privatContent" name="optradio1" >No</label><hr>
+                          {{else}}
+                          <label class="radio-inline"><input type="radio" id="privatContent" name="optradio1" >Yes</label>
+
+                          <label class="radio-inline"><input type="radio" id="privatContent" name="optradio1" checked>No</label><hr>
+                          {{/if}}
                         </div><br>
                         <div class="form-group col-lg-4">
                             <label>DMX-Light</label>
                         </div>
                         <div class="form-group col-lg-8">
-                          <label class="radio-inline"><input type="radio" id="dmxLight" name="optradio2">Yes</label>
+                          {{#if dmxLight}}
+                          <label class="radio-inline"><input type="radio" id="dmxLight" name="optradio2" checked>Yes</label>
                           <label class="radio-inline"><input type="radio" id="dmxLight" name="optradio2">No</label><hr>
+                          {{else}}
+                          <label class="radio-inline"><input type="radio" id="dmxLight" name="optradio2" >Yes</label>
+                          <label class="radio-inline"><input type="radio" id="dmxLight" name="optradio2" checked>No</label><hr>
+                          {{/if}}
                         </div>
                         <div class="form-group col-lg-4">
                             <label>Log Updatetime</label>
                         </div>
                         <div class="form-group col-lg-4">
                           <div class="col-xs-12">
-                            <input class="form-control" id="logUpdateTime" type="text" placeholder="Nr.of days">
+                            <input class="form-control" id="logUpdateTime" type="text" placeholder="Nr.of days" value="{{logUpdateTime}}">
 
                           </div>
                         </div>
@@ -90,6 +105,7 @@
 
                       <div>
                         </div>
+  {{/with}}
                     </div>
                     <div class="panel-footer">
                         <button type="submit" class="btn btn-success">Submit</button>

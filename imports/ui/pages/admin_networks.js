@@ -6,6 +6,7 @@ import './admin_networks.html';
 import '../components/logoutbutton';
 import '../components/networks/register';
 import '../components/networks/list';
+import '../components/networks/editNetwork';
 
 
 Template.adminNetworks.onCreated(function onCreated() {

@@ -16,6 +16,9 @@ console.log("usao u metodu");
                       dmxLight: networksObject.dmxLight,
                       logUpdateTime: networksObject.logUpdateTime });
 
-    console.log(networksObject);
+  },
+  deleteNetwork: function(id) {
+    Networks.remove(id);
+    toastr.success("Deleted", "Network");
   },
 });
