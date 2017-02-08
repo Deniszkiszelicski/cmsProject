@@ -1,5 +1,5 @@
 <template name ="mediaForm">
-  <div class="panel panel-grey margin-bottom-40 col-md-10 col-md-offset-1">
+  <div class="panel panel-grey margin-bottom-40">
     <div class="panel-heading">
       <h3 class="panel-title">Create/edit media</h3>
       <i type="button" class="glyphicon glyphicon-remove" id="button-close-media-form"></i>
@@ -9,7 +9,8 @@
         <i type="button" class="fa fa-floppy-o button-save"></i>
         <div class="form-group">
           <label for="nameOfMedia" class="sr-only">Name</label>
-          <input type="text" name="" class="form-control" id="nameOfMedia" placeholder="Enter name of media">
+          <input type="text" name="" class="form-control" id="nameOfMedia"
+            placeholder="Enter name of media" value="{{this.name}}">
         </div>
         <div class="form-group">
           {{#with this}}
@@ -17,7 +18,7 @@
           {{/with}}
         </div>
         <div class="form-group">
-          {{> searchCategory categories=categories}}
+          {{> searchCategory category=category}}
           <!-- <label for="category" class="sr-only">Category</label>
           <input type="text" name="" class="form-control" id="category" placeholder="Enter category"> -->
         </div>

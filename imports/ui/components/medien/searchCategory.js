@@ -13,19 +13,8 @@ Template.searchCategory.helpers({
     return categoriesIndex;
   },
   searchCategories: () => {
-    Medien.find().category;
+    _.uniq(Medien.find().fetch().map(function(it) { return it.category; }), true);
   },
-	category: function () {
-		let category = '';
-		let media;
-		if(this._id) {
-			media = Medien.findOne({ _id: this._id });
-		}
-		if(!!media){
-      return media.category;
-    }
-		return category;
-	}
 });
 
 Template.searchCategory.rendered = function () {
@@ -39,7 +28,7 @@ Template.searchCategory.events({
       collection: Medien,              // MeteorJS collection object
       field: 'category',                    // Document field name to search for
       limit: 0,                         // Max number of elements to show
-      sort: { categoryName: 1 }});              // Sort object to filter results with
+      sort: { category: 1 }});              // Sort object to filter results with
       //filter: { 'gender': 'female' }}); // Additional filtering
   }
 });
