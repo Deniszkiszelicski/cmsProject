@@ -1,28 +1,184 @@
 <template name="contentForm">
+  <!-- TODO: delete style -->
+  <!-- <div class="row"> -->
+  <!-- <div class="col-md-9"> -->
+
 
   <div class="tab-v1">
     <ul class="nav nav-tabs">
       <li>
-        <a href="#tab-1" data-toggle="tab" area-expanded="true">Tab 1</a>
+        <a href="#content-main" data-toggle="tab" area-expanded="true">Content</a>
       </li>
       <li>
-        <a href="#tab-2" data-toggle="tab" area-expanded="false">Tab 2</a>
-      </li>
-      <li>
-        <a href="#tab-3" data-toggle="tab" area-expanded="false">Tab 3</a>
+        <a href="#content-details" data-toggle="tab" area-expanded="false">Details</a>
       </li>
     </ul>
     <div class="tab-content">
-      <div class="tab-pane fade" id="tab-1">
-        <h1>Tab 1 is opened.</h1>
+      <div class="tab-pane fade" id="content-main">
+        <form class="sky-form" action="#" id="sky-form">
+          <header>Content</header>
+
+          <fieldset>
+            <label class="label">Content</label>
+            <div class="row">
+              <section class="col col-6">
+
+                <label class="input">
+                  <input type="text" name="nameOfContent" id="nameOfContent"
+                  placeholder="Enter name of content" value="{{this.name}}">
+                </label>
+
+              </section>
+
+              <section class="col col-6">
+
+                <label class="input">
+                  <input type="text" name="durationOfContent" id="durationOfContent"
+                  placeholder="Enter duration of content" value="{{this.duration}}">
+                </label>
+              </section>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <label class="label">Info</label>
+            <!-- <div class="col col-12"> -->
+            <section>
+              <!-- TODO: delete style -->
+              <div class="row"  style="margin-left: 7px; margin-bottom: 5px;">
+
+
+
+
+                <label class="checkbox-inline"><input type="checkbox" value="" id="mixInTicker">Mix in Ticker</label>
+
+                <label class="checkbox-inline"><input type="checkbox" value="" id="collectStatisticts">Collect statistics</label>
+
+                <label class="checkbox-inline"><input type="checkbox" value="" id="visibleForAll">Visible for all</label>
+                <!-- TODO: delete style -->
+                <label class="input" style="margin-top: 10px;">
+                  <input class="col col-6" type="text" name="categoryOfContent" id="categoryOfContent"
+                  placeholder="Enter category of content" value="{{this.category}}">
+                </label>
+
+                <!-- <label class="label">Info</label>
+                <div class="inline-group">
+
+                <label class="checkbox">
+                <input type="checkbox" name="checkbox-inline">
+                <i></i>
+                Mix in Ticker
+              </label>
+              <label class="checkbox">
+              <input type="checkbox" name="checkbox-inline">
+              <i></i>
+              Statistics
+            </label>
+            <label class="checkbox">
+            <input type="checkbox" name="checkbox-inline">
+            <i></i>
+            Visible for all
+          </label>
+        </div> -->
+
+              </div>
+
+            </section>
+            <!-- </div> -->
+
+          </fieldset>
+
+          <footer>
+            <button type="submit" class="btn-u btn-u-default" id="btn-save-content">Submit</button>
+          </footer>
+        </form>
       </div>
-      <div class="tab-pane fade" id="tab-2">
-        <h1>Tab 2 is opened.</h1>
-      </div>
-      <div class="tab-pane fade" id="tab-3">
-        <h1>Tab 3 is opened.</h1>
+      <div class="tab-pane fade" id="content-details">
+        <form class="sky-form" action="#" id="sky-form">
+          <header>Schedule</header>
+          <fieldset>
+            <label class="label"><h4>Schedule</h4></label>
+            <div class="row">
+              <section class="col col-6">
+                <label class="input">
+                  <i class="icon-append fa fa-calendar"></i>
+                  <input type="text" name="start" id="start" placeholder="Start date" class="hasDatepicker">
+                </label>
+              </section>
+              <section class="col col-6">
+								<label class="input">
+									<i class="icon-append fa fa-calendar"></i>
+									<input type="text" name="finish" id="finish" placeholder="Finish date" class="hasDatepicker">
+								</label>
+							</section>
+              <!-- <section class="col col-6">
+                <div class="input-group date" data-provide="datepicker" id="start1">
+                  <input type="text" class="form-control">
+                  <div class="input-group-addon">
+                      <span class="glyphicon glyphicon-th"></span>
+                  </div>
+                </div>
+              </section> -->
+              <section>
+                <label class="label">Days of week</label>
+                <!-- TODO: delete style -->
+                <!-- TODO: store days of week as an imbedded json object -->
+                <div class="row" style="margin-left: 10px;">
+                  <label class="checkbox-inline"><input type="checkbox" value="" id="monday">Monday</label>
+                  <label class="checkbox-inline"><input type="checkbox" value="" id="tuesday">Tuesday</label>
+                  <label class="checkbox-inline"><input type="checkbox" value="" id="wednesday">Wednesday</label>
+                  <label class="checkbox-inline"><input type="checkbox" value="" id="thursday">Thursday</label>
+                  <label class="checkbox-inline"><input type="checkbox" value="" id="friday">Friday</label>
+                  <label class="checkbox-inline"><input type="checkbox" value="" id="saturday">Saturday</label>
+                  <label class="checkbox-inline"><input type="checkbox" value="" id="sunday">Sunday</label>
+                </div>
+              </section>
+              <section>
+                <label class="label">Play time hours</label>
+                <label class="input">
+                  <!-- <div class="schedule-day"> -->
+                    <form>
+                      <div class="row">
+
+                      <div class="col col-2">
+                        <input type="text" class="form-control" id="playTimeHoursStart" placeholder="From" value="{{this.playTimeHoursStart}}">
+                        <input type="text" class="form-control" id="playTimeHoursFinish" placeholder="To" value="{{this.playTimeHoursFinish}}">
+                      </div>
+
+                      </div>
+                    </form>
+                  <!-- </div> -->
+                </label>
+                <label class="checkbox-inline"><input type="checkbox" value="" id="deleteAfterFinish">Delete after finish date</label>
+              </section>
+            </div>
+          </fieldset>
+          <fieldset>
+            <label class="label"><h4>Assortiment</h4></label>
+            <!-- TODO: delete style -->
+            <div class="row" style="margin-left: 10px;">
+              {{#each listOfAssortiment}}
+                <label class="checkbox-inline"><input type="checkbox" value="">{{this}}</label>
+              {{/each}}
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <label class="label"><h4>Region</h4></label>
+            <!-- TODO: delete style -->
+            <div class="row" style="margin-left: 10px;">
+              {{#each regions}}
+                <label class="checkbox-inline"><input type="checkbox" value="">{{this}}</label>
+              {{/each}}
+            </div>
+          </fieldset>
+
+        </form>
       </div>
     </div>
   </div>
+
+<!-- </div> -->
+<!-- </div> -->
 
 </template>
