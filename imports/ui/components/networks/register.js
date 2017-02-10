@@ -7,6 +7,8 @@ import '../../../api/admin_networks/networks';
 import './register.html';
 
 Meteor.subscribe('networks');
+Session.setDefault("counter",1);
+Session.setDefault("counter1",1);
 
 
 
@@ -16,16 +18,38 @@ Template.registerNetwork.events({
     event.preventDefault();
 
 
-let testObj = { netName: $('#netNameNet').val(), netId: $('#netIdNet').val(),
-privatContent:$('#privatContent').is(":checked"),dmxLight:$('#dmxLight').is(":checked"),logUpdateTime:$('#logUpdateTime').val() };
-console.log(testObj);
-console.log(event.currentTarget);
+
+
+    var sortiment =[];
+
+    for (var i = 1; i <= Session.get("counter"); i++) {
+      sortiment.push($('#field' + i).val());
+      console.log(sortiment);}
+
+    var region =[];
+
+    for (var i = 1; i <= Session.get("counter1"); i++) {
+      region.push($('#rfield' + i).val());
+      console.log(region);
+    };
 
 
     Meteor.call('createNetwork', { netName: $('#netNameNet').val(), netId: $('#netIdNet').val(),
-    privatContent:$('#privatContent').is(":checked"),dmxLight:$('#dmxLight').is(":checked"),logUpdateTime:$('#logUpdateTime').val() });
+    privatContent:$('#privatContent').is(":checked"),dmxLight:$('#dmxLight').is(":checked"),logUpdateTime:$('#logUpdateTime').val(), sortiment: sortiment, region: region });
     toastr.success("Data saved","New Network");
+    Session.set("counter",1);
+    Session.set("counter1",1);
 
+
+},
+'click #b1':function(){
+  Session.set("counter",Session.get("counter")+ 1);
+
+},
+'click #rb1':function(){
+  Session.set("counter1",Session.get("counter1")+1);
 }
+
+
 
     });

@@ -35,18 +35,17 @@ Template.networksList.events({
     'click #editNList':
       function editItem(event, templateInstance) {
         event.preventDefault();
-        console.log("called")
+
         templateInstance.isEdit.set(true);
 
         Session.set('selectedNetwork', this._id);
-        console.log("id"+this._id);
-    },
-    'submit .networkEdit-form': function saveEdit(event){
-
-
-     templateInstance.isEdit.set(false);
 
     },
+    'click #editSubmit': function closeEditForm(event, templateInstance){
+      templateInstance.isEdit.set(false);
+    }
+
+
 
 
 

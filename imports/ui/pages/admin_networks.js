@@ -29,4 +29,5 @@ Template.adminNetworks.events({
     event.preventDefault();
     templateInstance.isCreateNew.set(false);
   },
+
 });

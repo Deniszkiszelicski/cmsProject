@@ -1,6 +1,6 @@
 <template name="registerNetwork">
   <div class="row">
-      <div class="col-md-6 col-md-offset-3">
+      <div class="col-md-8 col-md-offset-2">
           <form class="register-form1">
               <div class="panel panel-default">
                   <div class="panel-heading">
@@ -29,21 +29,28 @@
                               <input type="button" class="btn btn-success" value="Uplopad Logo"><hr>
                             </div>
                           </div>
-                        <div class="form-group col-lg-4">
+
+                        <div class=" col-lg-6">
                             <label>Privat Content</label>
                         </div>
-                        <div class="form-group col-lg-8">
+
+                        <div class=" col-lg-6">
                           <label class="radio-inline"><input type="radio" id="privatContent" name="optradio1">Yes</label>
                           <label class="radio-inline"><input type="radio" id="privatContent" name="optradio1">No</label><hr>
-                        </div><br>
-                        <div class="form-group col-lg-4">
+                        </div>
+                        <div class=" col-lg-6">
+
                             <label>DMX-Light</label>
                         </div>
-                        <div class="form-group col-lg-8">
+                        <div class="col-lg-6">
                           <label class="radio-inline"><input type="radio" id="dmxLight" name="optradio2">Yes</label>
                           <label class="radio-inline"><input type="radio" id="dmxLight" name="optradio2">No</label><hr>
                         </div>
-                        <div class="form-group col-lg-4">
+
+
+
+
+                        <div class="form-group col-lg-6">
                             <label>Log Updatetime</label>
                         </div>
                         <div class="form-group col-lg-4">
@@ -51,41 +58,41 @@
                             <input class="form-control" id="logUpdateTime" type="text" placeholder="Nr.of days">
 
                           </div>
-                        </div>
+                          </div>
 
-                        <div class="col-xs-12">
-           <h3 class="text-center">Sortiment</h3>
-           <div class="well" style="max-height: 150px;overflow: auto;">
-           <ul class="list-group checked-list-box">
-                 <li class="list-group-item"><input type="checkbox" aria-label="...">Dapibus ac facilisis in</li>
-                 <li class="list-group-item"><input type="checkbox" aria-label="...">Dapibus ac facilisis in</li>
-                 <li class="list-group-item"><input type="checkbox" aria-label="...">Morbi leo risus</li>
-                 <li class="list-group-item"><input type="checkbox" aria-label="...">Porta ac consectetur ac</li>
-                 <li class="list-group-item"><input type="checkbox" aria-label="...">Vestibulum at eros</li>
-                 <li class="list-group-item"><input type="checkbox" aria-label="...">Cras justo odio</li>
-                 <li class="list-group-item"><input type="checkbox" aria-label="...">Dapibus ac facilisis in</li>
-                 <li class="list-group-item"><input type="checkbox" aria-label="...">Morbi leo risus</li>
-                 <li class="list-group-item"><input type="checkbox" aria-label="...">Porta ac consectetur ac</li>
-                 <li class="list-group-item"><input type="checkbox" aria-label="...">Vestibulum at eros</li>
-               </ul>
-           </div>
-            </div>
-            <div class="col-xs-12">
-<h3 class="text-center">Region</h3>
-<div class="well" style="max-height: 150px;overflow: auto;">
-<ul class="list-group checked-list-box">
-     <li class="list-group-item"><input type="checkbox" id="region" value="Wien" aria-label="...">Wien</li>
-     <li class="list-group-item"><input type="checkbox" id="region" value="Niederösterreich" aria-label="...">Niederösterreich</li>
-     <li class="list-group-item"><input type="checkbox" id="region" value="Oberösterreich" aria-label="...">Oberösterreich</li>
-     <li class="list-group-item"><input type="checkbox" id="region" value="Steiermark" aria-label="...">Steiermark</li>
-     <li class="list-group-item"><input type="checkbox" id="region" value="Tirol" aria-label="...">Tirol</li>
-     <li class="list-group-item"><input type="checkbox" id="region" value="Kärnten" aria-label="...">Kärnten</li>
-     <li class="list-group-item"><input type="checkbox" id="region" value="Salzburg" aria-label="...">Salzburg</li>
-     <li class="list-group-item"><input type="checkbox" id="region" value="Vorarlberg" aria-label="...">Vorarlberg</li>
-     <li class="list-group-item"><input type="checkbox" id="region" value="Burgenland" aria-label="...">Burgenland</li>
-   </ul>
-</div>
-</div>
+
+                          <div class="form-group col-lg-6">
+                      		<input type="hidden" name="count" value="1"/>
+                              <div class="control-group " id="fields">
+                                  <label class="control-label" for="field1">Add Sortiment</label>
+                                  <div class="controls" id="profs">
+                                      <div class="input-append">
+                                          <div id="field"><button id="b1" class="btn add-more" type="button">+</button>
+                                          <input autocomplete="off" class="input form-control" id="field1" name="field1" type="text" placeholder="type sortiment name" data-items="8" value=""/></div>
+                                      </div>
+                                  </div>
+                              </div>
+                      </div>
+                        <div class="form-group col-lg-6">
+                        <input type="hidden" name="rcount" value="1"/>
+                            <div class="control-group" id="rfields">
+                                <label class="control-label" for="rfield1">Add region</label>
+                                <div class="controls" id="rprofs">
+                                    <div class="input-append">
+                                        <div id="rfield"><button id="rb1" class="btn radd-more" type="button">+</button>
+                                        <input autocomplete="off" class="form-control" id="rfield1" name="rprof1" type="text" placeholder="type sortiment name" data-items="8" value=""/></div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+
+
+
+
+
+
+
 
 
                       <div>
@@ -98,4 +105,66 @@
             </form>
         </div>
     </div>
+    <script type="text/javascript">
+    $(document).ready(function(){
+    var next = 1;
+    $(".add-more").click(function(e){
+        e.preventDefault();
+        var addto = "#field" + next;
+        var addRemove = "#field" + (next);
+        next = next + 1;
+        var newIn = '<input autocomplete="off" class="input form-control" id="field' + next + '" name="field' + next + '"placeholder="type sortiment name" type="text" value="">';
+        var newInput = $(newIn);
+        var removeBtn = '<button id="remove' + (next - 1) + '" class="btn btn-danger remove-me " >-</button></div><div id="field">';
+        var removeButton = $(removeBtn);
+        $(addto).after(newInput);
+        $(addRemove).after(removeButton);
+        $("#field" + next).attr('data-source',$(addto).attr('data-source'));
+        $("#count").val(next);
+
+            $('.remove-me').click(function(e){
+                e.preventDefault();
+                var fieldNum = this.id.charAt(this.id.length-1);
+                var fieldID = "#field" + fieldNum;
+                $(this).remove();
+                $(fieldID).remove();
+            });
+    });
+
+
+
+});
+
+$(document).ready(function(){
+var next = 1;
+$(".radd-more").click(function(e){
+    e.preventDefault();
+    var addto = "#rfield" + next;
+    var addRemove = "#rfield" + (next);
+    next = next + 1;
+    var newIn = '<input autocomplete="off" class="input form-control" id="rfield' + next + '" name="rfield' + next + '"placeholder="type sortiment name" type="text" value="">';
+    var newInput = $(newIn);
+    var removeBtn = '<button id="rremove' + (next - 1) + '" class="btn btn-danger remove-me" >-</button></div><div id="rfield">';
+    var removeButton = $(removeBtn);
+    $(addto).after(newInput);
+    $(addRemove).after(removeButton);
+    $("#rfield" + next).attr('data-source',$(addto).attr('data-source'));
+    $("#count").val(next);
+
+        $('.remove-me').click(function(e){
+            e.preventDefault();
+            var fieldNum = this.id.charAt(this.id.length-1);
+            var fieldID = "#rfield" + fieldNum;
+            $(this).remove();
+            $(fieldID).remove();
+        });
+});
+
+
+
+});
+
+
+    </script>
+
 </template>
