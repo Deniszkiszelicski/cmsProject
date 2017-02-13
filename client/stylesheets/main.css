@@ -20,7 +20,7 @@ body{
   margin-left: 10px;
 }
 
-.player-form, .media-form{
+.player-form, .media-form, .panel-heading{
   position: relative;
 }
 .player-form .glyphicon-remove{
@@ -63,16 +63,16 @@ body{
   font-size: 2em;
 }
 
-.glyphicon-remove{
+.panel-heading .glyphicon-remove{
   margin-top: 0px;
-  margin-right: 0px;
+  margin-right: 10px;
   color: red;
   cursor: pointer;
   float: right;
   /*position: absolute;
   top: 0px;
   right: 10px;*/
-  font-size: 2em;
+  font-size: 1.8em;
 }
 
 .media-form .fa-floppy-o{

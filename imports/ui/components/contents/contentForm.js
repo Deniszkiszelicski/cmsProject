@@ -1,6 +1,7 @@
 import { Template } from 'meteor/templating';
 import '../../../api/contents/methods';
 import '../../../api/contents/collection';
+import '../medien/mediaForm';
 import { $ } from 'meteor/jquery';
 import './contentForm.html';
 
@@ -8,6 +9,7 @@ Meteor.subscribe('contents');
 
 Template.contentForm.onCreated(function () {
   this.isSelectMedia = new ReactiveVar(false);
+  this.isNewMedia = new ReactiveVar(false);
 });
 
 Template.contentForm.onRendered(function () {
@@ -26,6 +28,9 @@ Template.contentForm.helpers({
   },
   isSelectMedia: function isSelectMedia() {
     return Template.instance().isSelectMedia.get();
+  },
+  isNewMedia: function isSelectMedia() {
+    return Template.instance().isNewMedia.get();
   },
 });
 
@@ -56,12 +61,20 @@ Template.contentForm.events({
                       deleteAfterFinish: $('#deleteAfterFinish').val(),
                       assortiment: assortiment,
                       regions: regions,
-                    };    
+                    };
     Meteor.call('upsertContent', content);
   },
   'click #btn-select-media': function selectMedia(event, templateInstance) {
     event.preventDefault();
-    console.log('select media button was clicked.');
     templateInstance.isSelectMedia.set(true);
+  },
+  'click #btn-new-media': function createMedia(event, templateInstance) {
+    event.preventDefault();
+    templateInstance.isNewMedia.set(true);
+  },
+  'click #button-close-media-form, click .button-save': function closeForm(event, templateInstance) {
+    event.preventDefault();
+    event.stopPropagation();
+    templateInstance.isNewMedia.set(false);
   },
 });
