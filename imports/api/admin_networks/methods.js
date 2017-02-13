@@ -32,9 +32,11 @@ Meteor.methods({
                         netId: networksObject.netId,
                         privatContent: networksObject.privatContent,
                         dmxLight: networksObject.dmxLight,
-                        logUpdateTime: networksObject.logUpdateTime
+                        logUpdateTime: networksObject.logUpdateTime,
+                        sortiment:networksObject.sortiment,
+                       region:networksObject.region
 
     });
+  },
 
-  }
 });

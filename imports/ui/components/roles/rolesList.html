@@ -1,9 +1,10 @@
 <template name ="rolesList">
   <div class="row">
-    <div class="col-md-10 col-md-offset-1">
+    <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default panel-table">
         <div class="panel-heading">
           <h3>List of roles</h3>
+          <button type="button" class="btn btn-default" style="float:right;" id="btnRole">Create New role</button>
         </div>
         {{#each roles}}
         <div class="panel-body">
@@ -19,33 +20,33 @@
                 <div>
                   <tr class="col-sm-12">
                 <td class="col-sm-2">{{#if createPlayer}}
-                    Create Player :<span class="glyphicon glyphicon-ok" style="color:green;"></span>
+                    Create Player :<span class="glyphicon glyphicon-ok" ></span>
                     {{else}}
-                    Create Player :<span class="glyphicon glyphicon-minus " style="color:red;"></span>
+                    Create Player :<span class="glyphicon glyphicon-minus " ></span>
                     {{/if}}
                 </td>
                 <td class="col-sm-2">{{#if editPlayer}}
-                    Edit Player :<span class="glyphicon glyphicon-ok" style="color:green;"></span>
+                    Edit Player :<span class="glyphicon glyphicon-ok" ></span>
                     {{else}}
-                    Edit Player :<span class="glyphicon glyphicon-minus " style="color:red;"></span>
+                    Edit Player :<span class="glyphicon glyphicon-minus " ></span>
                     {{/if}}
                 </td>
                 <td class="col-sm-2">{{#if deletePlayer}}
-                    Delete Player :<span class="glyphicon glyphicon-ok" style="color:green;"></span>
+                    Delete Player :<span class="glyphicon glyphicon-ok" ></span>
                     {{else}}
-                    Delete Player :<span class="glyphicon glyphicon-minus " style="color:red;"></span>
+                    Delete Player :<span class="glyphicon glyphicon-minus " ></span>
                     {{/if}}
                 </td>
                 <td class="col-sm-2">{{#if createVideoImg}}
-                    Create Video/Img :<span class="glyphicon glyphicon-ok" style="color:green;"></span>
+                    Create Video/Img :<span class="glyphicon glyphicon-ok" ></span>
                     {{else}}
-                    Create Video/Img :<span class="glyphicon glyphicon-minus " style="color:red;"></span>
+                    Create Video/Img :<span class="glyphicon glyphicon-minus " ></span>
                     {{/if}}
                 </td>
                 <td class="col-sm-2">{{#if editVideoImg}}
-                    Edit Video/Img :<span class="glyphicon glyphicon-ok" style="color:green;"></span>
+                    Edit Video/Img :<span class="glyphicon glyphicon-ok" ></span>
                     {{else}}
-                    Edit Video/Img :<span class="glyphicon glyphicon-minus " style="color:red;"></span>
+                    Edit Video/Img :<span class="glyphicon glyphicon-minus " ></span>
                     {{/if}}
                 </td>
 
@@ -54,33 +55,33 @@
               <div>
               <tr class="col-sm-12">
                 <td class="col-sm-2">{{#if deleteVideoImg}}
-                    Delete Video/Img :<span class="glyphicon glyphicon-ok" style="color:green;"></span>
+                    Delete Video/Img :<span class="glyphicon glyphicon-ok" ></span>
                     {{else}}
-                    Delete Video/Img :<span class="glyphicon glyphicon-minus " style="color:red;"></span>
+                    Delete Video/Img :<span class="glyphicon glyphicon-minus "></span>
                     {{/if}}
                 </td>
                 <td class="col-sm-2">{{#if createContent}}
-                    Create Content :<span class="glyphicon glyphicon-ok" style="color:green;"></span>
+                    Create Content :<span class="glyphicon glyphicon-ok" ></span>
                     {{else}}
-                    Create Player :<span class="glyphicon glyphicon-minus " style="color:red;"></span>
+                    Create Player :<span class="glyphicon glyphicon-minus "></span>
                     {{/if}}
                 </td>
                 <td class="col-sm-2">{{#if editContent}}
-                    Edit Content :<span class="glyphicon glyphicon-ok" style="color:green;"></span>
+                    Edit Content :<span class="glyphicon glyphicon-ok" ></span>
                     {{else}}
-                    Edit Content :<span class="glyphicon glyphicon-minus " style="color:red;"></span>
+                    Edit Content :<span class="glyphicon glyphicon-minus "></span>
                     {{/if}}
                 </td>
                 <td class="col-sm-2">{{#if deleteContent}}
-                    Delete Content :<span class="glyphicon glyphicon-ok" style="color:green;"></span>
+                    Delete Content :<span class="glyphicon glyphicon-ok" ></span>
                     {{else}}
-                    Delete Content :<span class="glyphicon glyphicon-minus " style="color:red;"></span>
+                    Delete Content :<span class="glyphicon glyphicon-minus "></span>
                     {{/if}}
                 </td>
                 <td class="col-sm-2">{{#if createContentGrp}}
-                    Create Content Group :<span class="glyphicon glyphicon-ok" style="color:green;"></span>
+                    Create Content Group :<span class="glyphicon glyphicon-ok" ></span>
                     {{else}}
-                    Create Content Group :<span class="glyphicon glyphicon-minus " style="color:red;"></span>
+                    Create Content Group :<span class="glyphicon glyphicon-minus "></span>
                     {{/if}}
                 </td>
               </tr>
@@ -90,33 +91,33 @@
                 <tr class="col-sm-12">
 
                 <td class="col-sm-2">{{#if editContentGrp}}
-                    Edit Content Group :<span class="glyphicon glyphicon-ok" style="color:green;"></span>
+                    Edit Content Group :<span class="glyphicon glyphicon-ok" ></span>
                     {{else}}
-                    Edit Content Group :<span class="glyphicon glyphicon-minus " style="color:red;"></span>
+                    Edit Content Group :<span class="glyphicon glyphicon-minus "></span>
                     {{/if}}
                 </td>
                 <td class="col-sm-2">{{#if deleteContentGrp}}
-                    Delete Content Group :<span class="glyphicon glyphicon-ok" style="color:green;"></span>
+                    Delete Content Group :<span class="glyphicon glyphicon-ok" ></span>
                     {{else}}
-                    Delete Content Group :<span class="glyphicon glyphicon-minus " style="color:red;"></span>
+                    Delete Content Group :<span class="glyphicon glyphicon-minus "></span>
                     {{/if}}
                 </td>
                 <td class="col-sm-2">{{#if createPlaylist}}
-                    Create Playlist :<span class="glyphicon glyphicon-ok" style="color:green;"></span>
+                    Create Playlist :<span class="glyphicon glyphicon-ok" ></span>
                     {{else}}
-                    Create Playlist :<span class="glyphicon glyphicon-minus " style="color:red;"></span>
+                    Create Playlist :<span class="glyphicon glyphicon-minus "></span>
                     {{/if}}
                 </td>
                 <td class="col-sm-2">{{#if editPlaylist}}
-                    Edit Playlist :<span class="glyphicon glyphicon-ok" style="color:green;"></span>
+                    Edit Playlist :<span class="glyphicon glyphicon-ok" ></span>
                     {{else}}
-                    Edit Playlist :<span class="glyphicon glyphicon-minus " style="color:red;"></span>
+                    Edit Playlist :<span class="glyphicon glyphicon-minus "></span>
                     {{/if}}
                 </td>
                 <td class="col-sm-2">{{#if deletePlaylist}}
-                    Delete Playlist :<span class="glyphicon glyphicon-ok" style="color:green;"></span>
+                    Delete Playlist :<span class="glyphicon glyphicon-ok" ></span>
                     {{else}}
-                    Delete Playlist :<span class="glyphicon glyphicon-minus " style="color:red;"></span>
+                    Delete Playlist :<span class="glyphicon glyphicon-minus "></span>
                     {{/if}}
                 </td>
 
@@ -125,60 +126,60 @@
                 <div>
                   <tr class="col-sm-12">
                 <td class="col-sm-2">{{#if adminMenu}}
-                    Admin menu Visible :<span class="glyphicon glyphicon-ok" style="color:green;"></span>
+                    Admin menu Visible :<span class="glyphicon glyphicon-ok" ></span>
                     {{else}}
-                    Admin menu Visible :<span class="glyphicon glyphicon-minus " style="color:red;"></span>
+                    Admin menu Visible :<span class="glyphicon glyphicon-minus "></span>
                     {{/if}}
                 </td>
                 <td class="col-sm-2">{{#if netzMenu}}
-                    Network menu Visible :<span class="glyphicon glyphicon-ok" style="color:green;"></span>
+                    Network menu Visible :<span class="glyphicon glyphicon-ok" ></span>
                     {{else}}
-                    Network menu Visible :<span class="glyphicon glyphicon-minus " style="color:red;"></span>
+                    Network menu Visible :<span class="glyphicon glyphicon-minus "></span>
                     {{/if}}
                 </td>
                 <td class="col-sm-2">{{#if userMenu}}
-                    User menu Visible :<span class="glyphicon glyphicon-ok" style="color:green;"></span>
+                    User menu Visible :<span class="glyphicon glyphicon-ok" ></span>
                     {{else}}
-                    User menu Visible :<span class="glyphicon glyphicon-minus " style="color:red;"></span>
+                    User menu Visible :<span class="glyphicon glyphicon-minus "></span>
                     {{/if}}
                 </td>
                 <td class="col-sm-2">{{#if roleMenu}}
-                    Role menu Visible :<span class="glyphicon glyphicon-ok" style="color:green;"></span>
+                    Role menu Visible :<span class="glyphicon glyphicon-ok" ></span>
                     {{else}}
-                    Role menu Visible :<span class="glyphicon glyphicon-minus " style="color:red;"></span>
+                    Role menu Visible :<span class="glyphicon glyphicon-minus "></span>
                     {{/if}}
                 </td>
                 <td class="col-sm-2">{{#if contentMenu}}
-                    Content menu Visible :<span class="glyphicon glyphicon-ok" style="color:green;"></span>
+                    Content menu Visible :<span class="glyphicon glyphicon-ok" ></span>
                     {{else}}
-                    Content menu Visible :<span class="glyphicon glyphicon-minus " style="color:red;"></span>
+                    Content menu Visible :<span class="glyphicon glyphicon-minus "></span>
                     {{/if}}
                 </td>
 
               </tr>
               <tr class="col-sm-12">
               <td class="col-sm-2">{{#if statisticMenu}}
-                  Statistics menu Visible :<span class="glyphicon glyphicon-ok" style="color:green;"></span>
+                  Statistics menu Visible :<span class="glyphicon glyphicon-ok" ></span>
                   {{else}}
-                  Statistics menu Visible :<span class="glyphicon glyphicon-minus " style="color:red;"></span>
+                  Statistics menu Visible :<span class="glyphicon glyphicon-minus "></span>
                   {{/if}}
               </td>
               <td class="col-sm-2">{{#if seeMedia}}
-                  Media Visible :<span style="color:green;">All</span>
+                  Media Visible :<span >All</span>
                   {{else}}
-                    Media Visible :<span style="color:red;">Own</span>
+                    Media Visible :<span >Own</span>
                   {{/if}}
               </td>
               <td class="col-sm-2">{{#if seeContent}}
-                  Content Visible :<span  style="color:green;">All</span>
+                  Content Visible :<span  >All</span>
                   {{else}}
-                  Content Visible :<span  style="color:red;">Own</span>
+                  Content Visible :<span  >Own</span>
                   {{/if}}
               </td>
               <td class="col-sm-2">{{#if seeContentGroup}}
-                  Content group Visible :<span style="color:green;">All</span>
+                  Content group Visible :<span >All</span>
                   {{else}}
-                  Content group Visible :<span style="color:red;">Own</span>
+                  Content group Visible :<span >Own</span>
                   {{/if}}
               </td>
               <td class="col-sm-2">
