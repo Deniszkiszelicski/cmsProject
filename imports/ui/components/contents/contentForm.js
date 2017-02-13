@@ -23,7 +23,6 @@ Template.contentForm.helpers({
     return ["Burgerland", "Carinthia", "Lower Austria", "Upper Austria", "Salzburg", "Styria", "Tyrol", "Vienna", "Vorarlberg"];
   },
   mediaCollection: function getMedien() {
-    console.log(Images.find().fetch());
     return Images.find().fetch();
   },
   isSelectMedia: function isSelectMedia() {

@@ -1,12 +1,11 @@
 <template name="contentsPage">
-  <h3>Content</h3>
   {{#if isCreateNew}}
-    {{> contentForm}}
-  {{else}}
-    <button type="button" class="btn btn-secondary button-new">New content</button>
+    {{#with getCurrentContent}}
+      {{> contentForm}}
+    {{/with}}
   {{/if}}
   <br>
-  {{> contentsList}}
+  {{> contentsList isCreateNew=isCreateNew}}
   <br>
 
 </template>

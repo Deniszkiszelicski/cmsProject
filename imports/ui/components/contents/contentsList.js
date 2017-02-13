@@ -6,6 +6,9 @@ import './content';
 
 Meteor.subscribe('contents');
 
+Template.contentsList.onCreated(function () {
+});
+
 Template.contentsList.helpers({
   contents: () => {
     return Contents.find().fetch();

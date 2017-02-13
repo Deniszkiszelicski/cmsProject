@@ -17,6 +17,11 @@ Template.content.helpers({
   isEditMode: function isEditMode() {
     return Template.instance().isEditMode.get();
   },
+  isActive: function isActive() {
+    let isEditMode = Template.instance().isEditMode.get();
+    isEditMode = false;
+    return isEditMode ? "warning" : "";
+  },
 });
 
 Template.content.events({
