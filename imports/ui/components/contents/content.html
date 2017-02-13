@@ -1,0 +1,38 @@
+<template name ="content">
+  {{#if isEditMode}}
+      <tr>
+        <td colspan="6">
+          {{#with this}}
+          {{> contentForm}}
+          {{/with}}
+        </td>
+      </tr>
+
+  {{else}}
+    <tr>
+      <td>select</td>
+      <td>thumbnail</td>
+      <td>{{name}}</td>
+      <td>{{duration}}</td>
+      <td>{{type}}</td>
+      <td>{{createdAt}}</td>
+      <!-- <td>{{regions}}</td> -->
+      <td>
+        {{#each regions}}
+          {{this}}
+        {{/each}}
+      </td>
+
+      <td>{{assortiment}}</td>
+      <td>play button</td>
+      <td>
+        <div class="media-row-controls">
+          {{#if mayEdit}}
+            <i type="button" class="glyphicon glyphicon-pencil" id="button-edit-content"></i>
+          {{/if}}
+          <i type="button" class="glyphicon glyphicon-trash" id="button-delete-content"></i>
+        </div>
+      </td>
+    </tr>
+  {{/if}}
+</template>

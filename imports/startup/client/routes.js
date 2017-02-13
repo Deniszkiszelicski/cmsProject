@@ -87,7 +87,7 @@ FlowRouter.route('/admin_networks', {
 FlowRouter.route('/home', {
   name: 'home',
   action() {
-    BlazeLayout.render('App_body', { main: 'home' });
+    BlazeLayout.render('homeLayout');
   },
 });
 

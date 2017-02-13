@@ -56,7 +56,7 @@ Template.contentForm.events({
                       deleteAfterFinish: $('#deleteAfterFinish').val(),
                       assortiment: assortiment,
                       regions: regions,
-                    };
+                    };    
     Meteor.call('upsertContent', content);
   },
   'click #btn-select-media': function selectMedia(event, templateInstance) {

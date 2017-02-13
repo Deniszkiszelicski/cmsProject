@@ -2,9 +2,9 @@ import { Template } from 'meteor/templating';
 import '../../../api/contents/methods';
 import '../../../api/contents/collection';
 import './contentsList.html';
-// import './player';
+import './content';
 
-Meteor.subscribe('content');
+Meteor.subscribe('contents');
 
 Template.contentsList.helpers({
   contents: () => {

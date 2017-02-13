@@ -8,6 +8,10 @@ body{
   background: white; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+.navbar-header img{
+  max-height: 47px;
+}
+
 .button-new{
   background-color: #0082C8;
   cursor: pointer;
@@ -28,6 +32,21 @@ body{
   top: 1px;
   right: 5px;
   font-size: 2em;
+}
+
+.content-form header{
+  position: relative;
+}
+
+.content-form .glyphicon-remove{
+  margin-top: 20px;
+  margin-right: 15px;
+  color: red;
+  cursor: pointer;
+  position: absolute;
+  top: 1px;
+  right: 5px;
+  font-size: 1em;
 }
 
 .media-form{
