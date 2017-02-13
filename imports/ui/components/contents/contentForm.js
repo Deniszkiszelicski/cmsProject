@@ -7,6 +7,7 @@ import './contentForm.html';
 Meteor.subscribe('contents');
 
 Template.contentForm.onCreated(function () {
+  this.isSelectMedia = new ReactiveVar(false);
 });
 
 Template.contentForm.onRendered(function () {
@@ -19,10 +20,17 @@ Template.contentForm.helpers({
   regions: function getArrayOfRegions(event) {
     return ["Burgerland", "Carinthia", "Lower Austria", "Upper Austria", "Salzburg", "Styria", "Tyrol", "Vienna", "Vorarlberg"];
   },
+  mediaCollection: function getMedien() {
+    console.log(Images.find().fetch());
+    return Images.find().fetch();
+  },
+  isSelectMedia: function isSelectMedia() {
+    return Template.instance().isSelectMedia.get();
+  },
 });
 
 Template.contentForm.events({
-  'click #btn-save-content': function saveContentForm(event) {
+  'click #btn-save-content': function saveContentForm(event, templateInstance) {
     event.preventDefault();
     let assortiment = ['type 1', 'type 2'];
     let regions = ['region 1', 'region 2', 'region 5'];
@@ -49,7 +57,11 @@ Template.contentForm.events({
                       assortiment: assortiment,
                       regions: regions,
                     };
-    console.log(content);
     Meteor.call('upsertContent', content);
+  },
+  'click #btn-select-media': function selectMedia(event, templateInstance) {
+    event.preventDefault();
+    console.log('select media button was clicked.');
+    templateInstance.isSelectMedia.set(true);
   },
 });

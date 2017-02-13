@@ -14,7 +14,7 @@
       </li>
     </ul>
     <div class="tab-content">
-      <div class="tab-pane fade" id="content-main">
+      <div class="tab-pane fade active in" id="content-main">
         <form class="sky-form" action="#" id="sky-form">
           <header>Content</header>
 
@@ -37,8 +37,29 @@
                   placeholder="Enter duration of content" value="{{this.duration}}">
                 </label>
               </section>
+              <button type="submit" class="btn-u btn-u-default" id="btn-select-media" style="margin-left: 12px; margin-bottom: 10px;">Select media</button>
             </div>
           </fieldset>
+
+          {{#if isSelectMedia}}
+
+          <fieldset>
+            <label class="label">Media collection</label>
+            <div class="row">
+              {{#each mediaCollection}}
+                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                  <a class="thumbnail" href="#">
+                      <!-- <img class="img-responsive" src="http://placehold.it/400x300" alt=""> -->
+                      <img class="img-responsive" src="{{this.path}}" alt="">
+                  </a>
+                </div>
+              {{/each}}
+
+
+            </div>
+          </fieldset>
+
+          {{/if}}
 
           <fieldset>
             <label class="label">Info</label>
