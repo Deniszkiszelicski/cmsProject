@@ -31,6 +31,15 @@ Template.contentForm.helpers({
   isNewMedia: function isSelectMedia() {
     return Template.instance().isNewMedia.get();
   },
+  getMixInTicker: function getMixInTicker() {
+    return this.mixInTicker ? "checked" : "";
+  },
+  getCollectStatisticts: function getCollectStatisticts() {
+    return this.collectStatisticts ? "checked" : "";
+  },
+  getVisibleForAll: function getVisibleForAll() {
+    return this.visibleForAll ? "checked" : "";
+  },
 });
 
 Template.contentForm.events({
@@ -42,9 +51,9 @@ Template.contentForm.events({
     const content = { _id: this._id,
                       name: $('#nameOfContent').val(),
                       duration: $('#durationOfContent').val(),
-                      mixInTicker: $('#mixInTicker').val(),
-                      collectStatisticts: $('#collectStatisticts').val(),
-                      visibleForAll: $('#visibleForAll').val(),
+                      mixInTicker: $('#mixInTicker').is(':checked'),
+                      collectStatisticts: $('#collectStatisticts').is(':checked'),
+                      visibleForAll: $('#visibleForAll').is(':checked'),
                       category: $('#categoryOfContent').val(),
                       startDate: $('#start').val(),
                       finishDate: $('#finish').val(),
