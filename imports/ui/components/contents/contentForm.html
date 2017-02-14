@@ -1,0 +1,207 @@
+<template name="contentForm">
+  <!-- TODO: delete style -->
+  <!-- <div class="row"> -->
+  <!-- <div class="col-md-9"> -->
+
+  <br>
+  <div class="tab-v1 content-form">
+    <ul class="nav nav-tabs">
+      <li>
+        <a href="#content-main" data-toggle="tab" area-expanded="true">Content</a>
+      </li>
+      <li>
+        <a href="#content-details" data-toggle="tab" area-expanded="false">Details</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane fade active in" id="content-main">
+        <form class="sky-form" action="#" id="sky-form">
+          <header>Content
+            <i type="button" class="glyphicon glyphicon-remove" id="button-close-content-form"></i>
+          </header>
+
+          <fieldset>
+            <div class="row">
+
+              <section class="col col-6">
+                <label class="label">Name</label>
+
+                <label class="input">
+                  <input type="text" name="nameOfContent" id="nameOfContent"
+                  placeholder="Enter name of content" value="{{this.name}}">
+                </label>
+
+              </section>
+
+
+              <section class="col col-6">
+                <label class="label">Duration</label>
+
+                <label class="input">
+                  <input type="text" name="durationOfContent" id="durationOfContent"
+                  placeholder="Enter duration of content" value="{{this.duration}}">
+                </label>
+              </section>
+              <button type="submit" class="btn-u btn-u-default" id="btn-select-media" style="margin-left: 12px; margin-bottom: 10px;">Select media</button>
+              <button type="submit" class="btn-u btn-u-default" id="btn-new-media" style="margin-left: 12px; margin-bottom: 10px;">Create new media</button>
+            </div>
+          </fieldset>
+
+          {{#if isSelectMedia}}
+
+          <fieldset>
+            <label class="label">Media collection</label>
+            <div class="row">
+              {{#each mediaCollection}}
+                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                  <a class="thumbnail" href="#">
+                      <!-- <img class="img-responsive" src="http://placehold.it/400x300" alt=""> -->
+                      <img class="img-responsive" src="{{this.path}}" alt="">
+                  </a>
+                </div>
+              {{/each}}
+
+
+            </div>
+          </fieldset>
+
+          {{/if}}
+
+          {{#if isNewMedia}}
+
+            {{> mediaForm}}
+
+          {{/if}}
+
+          <fieldset>
+            <label class="label">Info</label>
+            <!-- <div class="col col-12"> -->
+            <section>
+              <!-- TODO: delete style -->
+              <div class="row"  style="margin-left: 7px; margin-bottom: 5px;">
+
+
+
+
+                <label class="checkbox-inline"><input type="checkbox" {{getMixInTicker}} id="mixInTicker">Mix in Ticker</label>
+
+                <label class="checkbox-inline"><input type="checkbox" {{getCollectStatisticts}} id="collectStatisticts">Collect statistics</label>
+
+                <label class="checkbox-inline"><input type="checkbox" {{getVisibleForAll}} id="visibleForAll">Visible for all</label>
+                <br>
+                <br>
+                <!-- TODO: delete style -->
+                <label class="label">Category</label>
+                <label class="input" style="margin-top: 10px;">
+                  <input class="col col-6" type="text" name="categoryOfContent" id="categoryOfContent"
+                  placeholder="Enter category of content" value="{{this.category}}">
+                </label>
+
+              </div>
+
+            </section>
+            <!-- </div> -->
+
+          </fieldset>
+
+          <footer>
+            <button type="submit" class="btn-u btn-u-default button-save" id="btn-save-content">Save</button>
+          </footer>
+        </form>
+      </div>
+      <div class="tab-pane fade" id="content-details">
+        <form class="sky-form" action="#" id="sky-form">
+          <header>Schedule
+            <i type="button" class="glyphicon glyphicon-remove" id="button-close-content-form"></i>
+          </header>
+          <fieldset>
+            <label class="label"><h4>Schedule</h4></label>
+            <div class="row">
+              <section class="col col-6">
+                <label class="label">Start date</label>
+                <label class="input">
+                  <i class="icon-append fa fa-calendar"></i>
+                  <input type="text" name="start" id="start" placeholder="Start date" class="hasDatepicker">
+                </label>
+              </section>
+              <section class="col col-6">
+                <label class="label">Finish date</label>
+								<label class="input">
+									<i class="icon-append fa fa-calendar"></i>
+									<input type="text" name="finish" id="finish" placeholder="Finish date" class="hasDatepicker">
+								</label>
+							</section>
+              <!-- <section class="col col-6">
+                <div class="input-group date" data-provide="datepicker" id="start1">
+                  <input type="text" class="form-control">
+                  <div class="input-group-addon">
+                      <span class="glyphicon glyphicon-th"></span>
+                  </div>
+                </div>
+              </section> -->
+              <section>
+                <label class="label" style="margin-left: 15px;">Days of week</label>
+                <!-- TODO: delete style -->
+                <!-- TODO: store days of week as an imbedded json object -->
+                <div class="row" style="margin-left: 15px;">
+                  <label class="checkbox-inline"><input type="checkbox" value="" id="monday">Monday</label>
+                  <label class="checkbox-inline"><input type="checkbox" value="" id="tuesday">Tuesday</label>
+                  <label class="checkbox-inline"><input type="checkbox" value="" id="wednesday">Wednesday</label>
+                  <label class="checkbox-inline"><input type="checkbox" value="" id="thursday">Thursday</label>
+                  <label class="checkbox-inline"><input type="checkbox" value="" id="friday">Friday</label>
+                  <label class="checkbox-inline"><input type="checkbox" value="" id="saturday">Saturday</label>
+                  <label class="checkbox-inline"><input type="checkbox" value="" id="sunday">Sunday</label>
+                </div>
+              </section>
+              <section>
+                <label class="label" style="margin-left: 15px;">Play time hours</label>
+                <label class="input" style="margin-left: 15px;">
+                  <!-- <div class="schedule-day"> -->
+                    <form>
+                      <div class="row">
+
+                      <div class="col col-2">
+                        <input type="text" class="form-control" id="playTimeHoursStart" placeholder="From" value="{{this.playTimeHoursStart}}">
+                        <input type="text" class="form-control" id="playTimeHoursFinish" placeholder="To" value="{{this.playTimeHoursFinish}}">
+                      </div>
+
+                      </div>
+                    </form>
+                  <!-- </div> -->
+                </label>
+                <br>
+                <label class="checkbox-inline" style="margin-left: 15px;"><input type="checkbox" value="" id="deleteAfterFinish">Delete after finish date</label>
+              </section>
+            </div>
+          </fieldset>
+          <fieldset>
+            <label class="label"><h4>Assortiment</h4></label>
+            <!-- TODO: delete style -->
+            <div class="row" style="margin-left: 10px;">
+              {{#each listOfAssortiment}}
+                <label class="checkbox-inline"><input type="checkbox" value="">{{this}}</label>
+              {{/each}}
+            </div>
+            <br>
+          </fieldset>
+
+          <fieldset>
+            <label class="label"><h4>Region</h4></label>
+            <!-- TODO: delete style -->
+            <div class="row" style="margin-left: 10px;">
+              {{#each regions}}
+                <label class="checkbox-inline"><input type="checkbox" value="">{{this}}</label>
+              {{/each}}
+            </div>
+          </fieldset>
+          <br>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+<!-- </div> -->
+<!-- </div> -->
+
+</template>

@@ -4,7 +4,7 @@ import './player';
 import '../../../api/players/methods';
 import '../../../api/players/collection';
 
-Meteor.subscribe('content');
+Meteor.subscribe('players');
 
 Template.playersList.helpers({
   players: () => {

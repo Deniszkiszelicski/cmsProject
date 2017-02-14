@@ -1,6 +1,12 @@
 import '../../api/players/methods';
 import '../../api/players/collection';
 import '../../api/players/server/publication';
+import '../../api/medien/methods';
+import '../../api/medien/collection';
+import '../../api/medien/server/publication';
+import '../../api/contents/methods';
+import '../../api/contents/collection';
+import '../../api/contents/server/publication';
 import '../../api/registerUser/server/publication';
 import '../../api/registerUser/methods';
 import '../../api/registerUser/registerUser';

@@ -1,0 +1,28 @@
+<template name ="media">
+  {{#if isEditMode}}
+      <tr>
+        <td colspan="6">
+          {{#with this}}
+          {{> mediaForm}}
+          {{/with}}
+        </td>
+      </tr>
+
+  {{else}}
+    <tr>
+      <td><img src="{{imageFile.link}}" alt="{{imageFile.name}}" /></td>
+      <td>{{name}}</td>
+      <td>{{category}}</td>
+      <td>{{type}}</td>
+      <td>{{createdAt}}</td>
+      <td>
+        <div class="media-row-controls">
+          {{#if mayEdit}}
+            <i type="button" class="glyphicon glyphicon-pencil" id="button-edit-media"></i>
+          {{/if}}
+          <i type="button" class="glyphicon glyphicon-trash" id="button-delete-media"></i>
+        </div>
+      </td>
+    </tr>
+  {{/if}}
+</template>

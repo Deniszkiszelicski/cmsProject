@@ -2,24 +2,29 @@ import { Template } from 'meteor/templating';
 import { $ } from 'meteor/jquery';
 import { Meteor } from 'meteor/meteor';
 import { ReactiveVar } from 'meteor/reactive-var';
-import './playersPage.html';
 import '../components/logoutbutton';
 import '../components/players/playerForm';
 import '../components/players/playersList';
+import './playersPage.html';
 
 Template.playersPage.onCreated(function onCreated() {
   this.isCreateNew = new ReactiveVar(false);
+  this.currentPlayer = new ReactiveVar();
 });
 
 Template.playersPage.helpers({
   isCreateNew: function isCreateNew() {
     return Template.instance().isCreateNew.get();
   },
+  getCurrentPlayer: function getPlayer() {
+    return Template.instance().currentPlayer.get();
+  },
 });
 
 Template.playersPage.events({
-  'click .button-new': function createNewContent(event, templateInstance) {
+  'click .button-new, click #button-edit-player': function createNewPlayer(event, templateInstance) {
     event.preventDefault();
+    templateInstance.currentPlayer.set(this);
     templateInstance.isCreateNew.set(true);
   },
   'click #button-close-player-form, click .button-save': function closeForm(event, templateInstance) {

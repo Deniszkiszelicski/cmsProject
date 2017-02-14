@@ -29,3 +29,5 @@ accounts-ui
 theduke:bootstrap-modal-prompt
 chrismbeckett:toastr
 session
+ostrio:files
+sebdah:autocompletion

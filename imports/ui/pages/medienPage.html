@@ -1,0 +1,11 @@
+<template name="medienPage">
+  <br>
+  <!-- <button type="button" class="btn btn-secondary button-new">New Media</button> -->
+
+
+  {{#if isCreateNew}}
+    {{>mediaForm}}
+  {{/if}}
+
+  {{>medienList isCreateNew=isCreateNew}}
+</template>

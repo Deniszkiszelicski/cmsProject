@@ -21,6 +21,13 @@ FlowRouter.route('/playlists', {
   },
 });
 
+FlowRouter.route('/medien', {
+  name: 'medienPage',
+  action() {
+    BlazeLayout.render('App_body', { main: 'medienPage' });
+  },
+});
+
 FlowRouter.route('/contents', {
   name: 'contentsPage',
   action() {
@@ -80,7 +87,7 @@ FlowRouter.route('/admin_networks', {
 FlowRouter.route('/home', {
   name: 'home',
   action() {
-    BlazeLayout.render('App_body', { main: 'home' });
+    BlazeLayout.render('homeLayout');
   },
 });
 

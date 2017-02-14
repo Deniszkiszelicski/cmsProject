@@ -1,9 +1,10 @@
 <template name="playersPage">
-  <h1>Players</h1>
-  <button type="button" class="btn btn-secondary button-new">New Player</button>
+  <br>
   {{#if isCreateNew}}
-    {{>playerForm}}
+    {{#with getCurrentPlayer}}
+      {{>playerForm}}
+    {{/with}}
   {{/if}}
 
-  {{>playersList}}
+  {{>playersList isCreateNew=isCreateNew}}
 </template>
