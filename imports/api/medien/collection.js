@@ -3,6 +3,33 @@ import { Mongo } from 'meteor/mongo';
 
 Medien = new Mongo.Collection('medien');
 
+MedienSchema = new SimpleSchema({
+  name: {
+    type: String,
+  },
+  category: {
+    type: String,
+  },
+  type: {
+    type: String,
+    allowedValues: ["image", "video"],
+  },
+  category: {
+    type: String,
+  },
+  createdAt: {
+    type: Date,
+    autoValue: function() {
+      return new Date();
+    },
+  },
+  fileId: {
+    type: String,
+  }
+});
+
+Medien.attachSchema(MedienSchema);
+
 Images = new FilesCollection({
   collectionName: 'Images',
   allowClientCode: false, // Disallow remove files from Client

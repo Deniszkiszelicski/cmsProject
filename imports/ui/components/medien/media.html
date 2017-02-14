@@ -10,11 +10,16 @@
 
   {{else}}
     <tr>
-      <td><img src="{{imageFile.link}}" alt="{{imageFile.name}}" /></td>
+      <td>
+        <div class="thumbnails thumbnail-style">
+          <img src="{{imageFile.link}}" alt="{{imageFile.name}}"  width="71" height="40"/>
+        </div>
+
+      </td>
       <td>{{name}}</td>
       <td>{{category}}</td>
       <td>{{type}}</td>
-      <td>{{createdAt}}</td>
+      <td>{{prettifyDate createdAt}}</td>
       <td>
         <div class="media-row-controls">
           {{#if mayEdit}}

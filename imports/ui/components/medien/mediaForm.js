@@ -57,7 +57,7 @@ Template.mediaForm.events({
       { _id: this._id,
         name: $('#nameOfMedia').val(),
         category: $('#searchCategories').val(),
-        type: 'picture',
+        type: 'image',
         createdAt: Date.now(),
         fileId: fileId });
         // Play time hours end
