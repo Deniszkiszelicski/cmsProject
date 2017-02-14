@@ -39,4 +39,9 @@ Meteor.methods({
 
     console.log("ubaceno");
   },
+
+  deleteRole: function(id) {
+    Roles.remove(id);
+    toastr.success("Deleted", "Role");
+  },
 });

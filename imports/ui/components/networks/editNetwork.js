@@ -74,4 +74,4 @@ event.preventDefault();
   'click #rb3':function(){
     Session.set("counter3",Session.get("counter3")+1);
   }
-})
+});

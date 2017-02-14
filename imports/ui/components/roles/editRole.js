@@ -1,19 +1,34 @@
 import { Template } from 'meteor/templating';
 import { $ } from 'meteor/jquery';
 import { Meteor } from 'meteor/meteor';
-import './roles.html';
+import { ReactiveVar } from 'meteor/reactive-var';
+import { Session } from 'meteor/session';
+import { FlowRouter } from 'meteor/kadira:flow-router';
+import './editRole.html';
 import '../../components/logoutbutton';
-import '../../../api/roles/methods';
-import '../../../api/roles/roles';
+import '../../components/roles/roles';
+import '../../components/roles/rolesList';
 
 Meteor.subscribe('roles');
 
-Template.adminRole.events({
-  'submit .register-form': function (event) {
+Template.roleEdit.helpers({
+  editRole: () => {
 
-    event.preventDefault();
+    return Roles.findOne({_id: Session.get("selectedRole")});
 
-    Meteor.call('createRole', { roleName: $('#roleName').val(),
+  },
+
+
+
+});
+Template.roleEdit.events({
+  'click #editSubmit': function editItem(event) {
+
+event.preventDefault();
+
+
+
+    Meteor.call('editSelectedRole', {_id:Session.get("selectedRole"),roleName: $('#roleName').val(),
                                  createPlayer: $('#createPlayer').is(":checked"),
                                  editPlayer: $('#editPlayer').is(":checked"),
                                  deletePlayer: $('#deletePlayer').is(":checked"),
@@ -37,12 +52,8 @@ Template.adminRole.events({
                                  statisticMenu: $('#statisticMenu').is(":checked"),
                                  seeMedia: $('#seeMedia').is(":checked"),
                                  seeContent: $('#seeContent').is(":checked"),
-                                 seeContentGroup: $('#seeContentGroup').is(":checked"),
-    });
-    toastr.success("Role saved","New Role");
-
-  }
-
-},
-
-);
+                                 seeContentGroup: $('#seeContentGroup').is(":checked")});
+   Session.set("counter2",1);
+   Session.set("counter3",1);
+}
+});
