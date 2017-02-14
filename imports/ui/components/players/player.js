@@ -6,6 +6,18 @@ Template.player.onCreated(function onCreated() {
   this.isEditMode = new ReactiveVar(false);
 });
 
+Template.player.helpers({
+  isEditMode: function isEditMode() {
+    return Template.instance().isEditMode.get();
+  },
+  mayEdit: function mayEdit() {
+    const email = Meteor.user().emails[0].address;
+    const role = UserInformation.findOne({"email": email}, {"role": 1, '_id': 0}).role;
+    const editPermission = Roles.findOne({"roleName": role}, {"editPlayer": 1, '_id': 0}).editPlayer;
+    return editPermission;
+  },
+});
+
 Template.player.events({
   'click #button-delete-player': function deletePlayer(event) {
     event.preventDefault();
@@ -19,17 +31,5 @@ Template.player.events({
     event.preventDefault();
     event.stopPropagation();
     templateInstance.isEditMode.set(false);
-  },
-});
-
-Template.player.helpers({
-  isEditMode: function isEditMode() {
-    return Template.instance().isEditMode.get();
-  },
-  mayEdit: function mayEdit() {
-    const email = Meteor.user().emails[0].address;
-    const role = UserInformation.findOne({"email": email}, {"role": 1, '_id': 0}).role;
-    const editPermission = Roles.findOne({"roleName": role}, {"editPlayer": 1, '_id': 0}).editPlayer;
-    return editPermission;
   },
 });

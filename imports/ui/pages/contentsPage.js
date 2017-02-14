@@ -14,8 +14,6 @@ Template.contentsPage.helpers({
     return Template.instance().isCreateNew.get();
   },
   getCurrentContent: function getContent() {
-    // const contentId = Session.get("currentContentId");
-    // return Contents.findOne({_id: contentId});
     return Template.instance().currentContent.get();
   },
 });

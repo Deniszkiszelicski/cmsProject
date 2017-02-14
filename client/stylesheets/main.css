@@ -31,7 +31,7 @@ body{
   position: relative;
   font-size: 24px;
 }
-.player-form .glyphicon-remove{
+#button-close-player-form{
   margin-top: 20px;
   margin-right: 15px;
   color: red;
@@ -39,7 +39,7 @@ body{
   position: absolute;
   top: 1px;
   right: 5px;
-  font-size: 2em;
+  font-size: 1em;
 }
 
 .content-form header{

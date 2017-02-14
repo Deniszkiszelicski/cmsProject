@@ -9,20 +9,25 @@ import './playersPage.html';
 
 Template.playersPage.onCreated(function onCreated() {
   this.isCreateNew = new ReactiveVar(false);
+  this.currentPlayer = new ReactiveVar();
 });
 
 Template.playersPage.helpers({
   isCreateNew: function isCreateNew() {
     return Template.instance().isCreateNew.get();
   },
+  getCurrentPlayer: function getPlayer() {
+    return Template.instance().currentPlayer.get();
+  },
 });
 
 Template.playersPage.events({
-  'click .button-new': function createNewPlayer(event, templateInstance) {
+  'click .button-new, click #button-edit-player': function createNewPlayer(event, templateInstance) {
     event.preventDefault();
+    templateInstance.currentPlayer.set(this);
     templateInstance.isCreateNew.set(true);
   },
-  'click #button-close-content-form, click .button-save': function closeForm(event, templateInstance) {
+  'click #button-close-player-form, click .button-save': function closeForm(event, templateInstance) {
     event.preventDefault();
     templateInstance.isCreateNew.set(false);
   },
