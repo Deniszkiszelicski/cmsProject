@@ -25,18 +25,11 @@ isRoleEdit: function isRoleEdit() {
 
 Template.rolesList.events({
 'click #deleteRlist': function deleteNetwork(event) {
-  BootstrapModalPrompt.prompt({
-  title: "Delete Role",
-  content: "Are you sure? This can not be undone!"
-}, function(result) {
-if (result) {
+
   event.preventDefault();
   Meteor.call('deleteRole', this._id);
-}
-else {
-  // User did not confirm, do nothing.
-}
-});},
+
+},
 
 'click #editRList':
   function editItem(event, templateInstance) {

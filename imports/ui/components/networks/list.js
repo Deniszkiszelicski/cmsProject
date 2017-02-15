@@ -30,20 +30,12 @@ Template.networksList.events({
 
 
   'click #deleteNlist': function deleteNetwork(event) {
-    BootstrapModalPrompt.prompt({
-    title: "Delete Network",
-    content: "Are you sure? This can not be undone!"
-}, function(result) {
-  if (result) {
+
     event.preventDefault();
     Meteor.call('deleteNetwork', this._id);
 
-    // User confirmed it, so go do something.
-  }
-  else {
-    // User did not confirm, do nothing.
-  }
-});},
+
+},
 
 
     'click #editNList':
@@ -51,7 +43,7 @@ Template.networksList.events({
         event.preventDefault();
 
         templateInstance.isEdit.set(true);
-        
+
         Session.set('selectedNetwork', this._id);
 
     },

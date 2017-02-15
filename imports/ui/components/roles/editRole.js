@@ -22,7 +22,7 @@ Template.roleEdit.helpers({
 
 });
 Template.roleEdit.events({
-  'click #editSubmit': function editItem(event) {
+  'submit .editRole-form': function editItem(event) {
 
 event.preventDefault();
 
@@ -53,7 +53,6 @@ event.preventDefault();
                                  seeMedia: $('#seeMedia').is(":checked"),
                                  seeContent: $('#seeContent').is(":checked"),
                                  seeContentGroup: $('#seeContentGroup').is(":checked")});
-   Session.set("counter2",1);
-   Session.set("counter3",1);
+  console.log($('#roleName').val());
 }
 });
