@@ -48,10 +48,9 @@ Template.mediaForm.helpers({
 });
 
 Template.mediaForm.events({
-  'click .button-save': function upsertMedia(event, templateInstance) {
+  'click #media-form .button-save': function upsertMedia(event, templateInstance) {
     event.preventDefault();
-    // let fileId = $('#searchCategories').val();
-    console.log("fileId");
+    // event.stopPropagation(); //required to keep content form open if save media vwas clicked
     let fileId = templateInstance.uploadedFileId.get();
     Meteor.call('upsertMedia',
       { _id: this._id,
@@ -60,7 +59,6 @@ Template.mediaForm.events({
         type: 'image',
         createdAt: Date.now(),
         fileId: fileId });
-        // Play time hours end
   },
   'change #fileInput': function (e, templateInstance) {
     if (e.currentTarget.files && e.currentTarget.files[0]) {
