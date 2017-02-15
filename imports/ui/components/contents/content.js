@@ -22,6 +22,14 @@ Template.content.helpers({
     isEditMode = false;
     return isEditMode ? "warning" : "";
   },
+  file: function () {
+    const media = Medien.findOne({ _id: this.mediaId });
+    let fileId = "";
+    if(!!media){
+      fileId = media.fileId;
+    }
+    return Images.findOne({ _id: fileId });
+  },
 });
 
 Template.content.events({

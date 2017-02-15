@@ -2,7 +2,11 @@
 
   <tr class={{isActive}}>
   <td><input type="checkbox"></td>
-      <td>thumbnail</td>
+      <td>
+        <div class="thumbnails thumbnail-style">
+          <img src="{{file.link}}" alt="{{file.name}}"  width="71" height="40"/>
+        </div>
+      </td>
       <td>{{name}}</td>
       <td>{{duration}}</td>
       <td>{{type}}</td>

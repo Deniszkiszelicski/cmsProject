@@ -6,10 +6,16 @@ import { $ } from 'meteor/jquery';
 import './contentForm.html';
 
 Meteor.subscribe('contents');
+Meteor.subscribe('medien');
 
 Template.contentForm.onCreated(function () {
   this.isSelectMedia = new ReactiveVar(false);
   this.isNewMedia = new ReactiveVar(false);
+  let media;
+  if (!!this.data.mediaId) {
+    media = Medien.findOne({ _id: this.data.mediaId });
+  }
+  this.media = new ReactiveVar(media);
 });
 
 Template.contentForm.onRendered(function () {
@@ -22,8 +28,18 @@ Template.contentForm.helpers({
   regions: function getArrayOfRegions(event) {
     return ["Burgerland", "Carinthia", "Lower Austria", "Upper Austria", "Salzburg", "Styria", "Tyrol", "Vienna", "Vorarlberg"];
   },
-  mediaCollection: function getMedien() {
-    return Images.find().fetch();
+  // mediaCollection: function getMedien() {
+  //   return Images.find().fetch();
+  // },
+  selectedMedia: function selectedMedia() {
+    let mediaWithExtra = Template.instance().media.get();
+    if (!!mediaWithExtra) {
+      mediaWithExtra['disableControls'] = true;
+    }
+    return mediaWithExtra;
+  },
+  clearContext: function clearContext() {
+    return {};
   },
   isSelectMedia: function isSelectMedia() {
     return Template.instance().isSelectMedia.get();
@@ -47,6 +63,7 @@ Template.contentForm.events({
     event.preventDefault();
     let assortiment = ['type 1', 'type 2'];
     let regions = ['region 1', 'region 2', 'region 5'];
+    const mediaId = templateInstance.media.get()._id;
 
     const content = { _id: this._id,
                       name: $('#nameOfContent').val(),
@@ -69,6 +86,7 @@ Template.contentForm.events({
                       deleteAfterFinish: $('#deleteAfterFinish').val(),
                       assortiment: assortiment,
                       regions: regions,
+                      mediaId: mediaId,
                     };
     Meteor.call('upsertContent', content);
   },
@@ -80,9 +98,20 @@ Template.contentForm.events({
     event.preventDefault();
     templateInstance.isNewMedia.set(true);
   },
-  'click #button-close-media-form, click .button-save': function closeForm(event, templateInstance) {
+  'click #button-close-media-form': function closeForm(event, templateInstance) {
     event.preventDefault();
     event.stopPropagation();
     templateInstance.isNewMedia.set(false);
+  },
+  'click .content-form .button-save': function saveNewMedia(event, templateInstance) {
+    event.preventDefault();
+    templateInstance.isNewMedia.set(false);
+    const media = Medien.findOne({}, { sort: { 'createdAt': -1 } });
+    templateInstance.media.set(media);
+  },
+  'click .content-form .media-row': function markAsSelected(event, templateInstance){
+    event.preventDefault();
+    templateInstance.media.set(this);
+    templateInstance.isSelectMedia.set(false);
   },
 });

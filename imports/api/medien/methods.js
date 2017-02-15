@@ -12,8 +12,6 @@ Meteor.methods({
     // check(player.townCity, String);
     // check(player.district, String);
     // check(player.playTime, String);
-    console.log("media = ", media);
-    console.log("validate media = ", Medien.simpleSchema().namedContext().validate({name: media.name, type: media.type }, { modifier: false, keys: ['name'] }));
     // Medien.update({ _id: media._id },
     //   { name: media.name,
     //     category: media.category,

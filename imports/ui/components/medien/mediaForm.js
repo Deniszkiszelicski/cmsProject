@@ -39,7 +39,6 @@ Template.mediaForm.helpers({
   // },
   category: function () {
     const category = this.category;
-    console.log("this.category in form helper = ", this.category);
     return category;
   },
   uploadedFileName: function () {
@@ -50,7 +49,6 @@ Template.mediaForm.helpers({
 Template.mediaForm.events({
   'click #media-form .button-save': function upsertMedia(event, templateInstance) {
     event.preventDefault();
-    // event.stopPropagation(); //required to keep content form open if save media vwas clicked
     let fileId = templateInstance.uploadedFileId.get();
     Meteor.call('upsertMedia',
       { _id: this._id,
@@ -75,15 +73,9 @@ Template.mediaForm.events({
       });
 
       upload.on('end', function (error, fileObj) {
-        if (error) {
-          // alert('Error during upload: ' + error);
-        } else {
-          // alert('File "' + fileObj.name + '" successfully uploaded');
-        }
-        templateInstance.currentUpload.set(false);
         templateInstance.uploadedFileId.set(fileObj._id);
+        templateInstance.currentUpload.set(false);
         templateInstance.uploadedFileName.set(fileObj.name);
-        // console.log("fileObj= ",fileObj._id);
       });
       upload.start();
     }

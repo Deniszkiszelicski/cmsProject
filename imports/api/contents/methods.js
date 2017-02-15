@@ -30,6 +30,7 @@ Meteor.methods({
                         deleteAfterFinish: content.deleteAfterFinish,
                         assortiment: content.assortiment,
                         regions: content.regions,
+                        mediaId: content.mediaId,
                       },
         { upsert: true, multi: false });
   },

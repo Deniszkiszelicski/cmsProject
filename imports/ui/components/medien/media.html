@@ -9,25 +9,27 @@
       </tr>
 
   {{else}}
-    <tr>
+    <tr class="media-row">
       <td>
         <div class="thumbnails thumbnail-style">
           <img src="{{imageFile.link}}" alt="{{imageFile.name}}"  width="71" height="40"/>
         </div>
-
       </td>
       <td>{{name}}</td>
       <td>{{category}}</td>
       <td>{{type}}</td>
       <td>{{prettifyDate createdAt}}</td>
-      <td>
-        <div class="media-row-controls">
-          {{#if mayEdit}}
-            <i type="button" class="glyphicon glyphicon-pencil" id="button-edit-media"></i>
-          {{/if}}
-          <i type="button" class="glyphicon glyphicon-trash" id="button-delete-media"></i>
-        </div>
-      </td>
+      {{#if disableControls}}
+      {{else}}
+        <td>
+          <div class="media-row-controls">
+            {{#if mayEdit}}
+              <i type="button" class="glyphicon glyphicon-pencil" id="button-edit-media"></i>
+            {{/if}}
+            <i type="button" class="glyphicon glyphicon-trash" id="button-delete-media"></i>
+          </div>
+        </td>
+      {{/if}}
     </tr>
   {{/if}}
 </template>

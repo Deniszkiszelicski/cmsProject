@@ -43,7 +43,7 @@ Template.media.events({
   },
   'click #button-close-media-form, click .button-save': function closeForm(event, templateInstance) {
     event.preventDefault();
-    event.stopPropagation();
+    // event.stopPropagation();
     templateInstance.isEditMode.set(false);
   },
 });
