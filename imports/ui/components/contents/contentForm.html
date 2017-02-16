@@ -54,19 +54,25 @@
             <button type="submit" class="btn-u btn-u-default" id="btn-select-media" style="margin-left: 12px; margin-bottom: 10px;">Select</button>
             <button type="submit" class="btn-u btn-u-default" id="btn-new-media" style="margin-left: 12px; margin-bottom: 10px;">Create</button>
 
-            {{#if isSelectMedia}}
 
-            <label class="label">Media collection</label>
-            {{> medienList}}
 
-            {{/if}}
+            <div id="media-collection-fieldset">
+              {{#if isSelectMedia}}
+              <label class="label">Media collection</label>
+              <i type="button" class="glyphicon glyphicon-remove" id="button-close-media-collection"></i>
+              {{> medienList disableButtonNew=true}}
+
+              {{/if}}
+            </div>
+
+
 
             {{#if selectedMedia}}
 
               <table class="table table-striped table-list">
                 <thead>
                   <tr>
-                    <th>Thumb</th>
+                    <th></th>
                     <th>Name</th>
                     <th>Category</th>
                     <th>Type</th>

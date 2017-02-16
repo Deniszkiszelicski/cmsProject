@@ -25,7 +25,6 @@ Meteor.methods({
           name: media.name,
           category: media.category,
           type: media.type,
-          createdAt: media.createdAt,
           fileId: media.fileId
         }
         });
@@ -34,6 +33,7 @@ Meteor.methods({
         { name: media.name,
           category: media.category,
           type: media.type,
+          createdAt: media.createdAt,
           fileId: media.fileId },
           );
     }

@@ -55,7 +55,7 @@ Template.mediaForm.events({
         name: $('#nameOfMedia').val(),
         category: $('#searchCategories').val(),
         type: 'image',
-        createdAt: Date.now(),
+        // createdAt: Date.now(),
         fileId: fileId });
   },
   'change #fileInput': function (e, templateInstance) {

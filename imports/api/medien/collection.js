@@ -20,8 +20,14 @@ MedienSchema = new SimpleSchema({
   createdAt: {
     type: Date,
     autoValue: function() {
-      return new Date();
-    },
+      if (this.isInsert) {
+        return new Date();
+      } else if (this.isUpsert) {
+        return {$setOnInsert: new Date()};
+      } else {
+        this.unset();  // Prevent user from supplying their own value
+      }
+    }
   },
   fileId: {
     type: String,

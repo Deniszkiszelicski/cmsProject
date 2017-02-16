@@ -103,6 +103,10 @@ Template.contentForm.events({
     event.stopPropagation();
     templateInstance.isNewMedia.set(false);
   },
+  'click #button-close-media-collection': function closeMediaCollection(event, templateInstance) {
+    event.preventDefault();
+    templateInstance.isSelectMedia.set(false);
+  },
   'click .content-form .button-save': function saveNewMedia(event, templateInstance) {
     event.preventDefault();
     templateInstance.isNewMedia.set(false);
