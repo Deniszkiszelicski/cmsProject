@@ -164,13 +164,13 @@
                 <!-- TODO: delete style -->
                 <!-- TODO: store days of week as an imbedded json object -->
                 <div class="row" style="margin-left: 15px;">
-                  <label class="checkbox-inline"><input type="checkbox" value="" id="monday">Monday</label>
-                  <label class="checkbox-inline"><input type="checkbox" value="" id="tuesday">Tuesday</label>
-                  <label class="checkbox-inline"><input type="checkbox" value="" id="wednesday">Wednesday</label>
-                  <label class="checkbox-inline"><input type="checkbox" value="" id="thursday">Thursday</label>
-                  <label class="checkbox-inline"><input type="checkbox" value="" id="friday">Friday</label>
-                  <label class="checkbox-inline"><input type="checkbox" value="" id="saturday">Saturday</label>
-                  <label class="checkbox-inline"><input type="checkbox" value="" id="sunday">Sunday</label>
+                  <label class="checkbox-inline"><input type="checkbox" {{getMonday}} id="monday">Monday</label>
+                  <label class="checkbox-inline"><input type="checkbox" {{getTuesday}} id="tuesday">Tuesday</label>
+                  <label class="checkbox-inline"><input type="checkbox" {{getWednesday}} id="wednesday">Wednesday</label>
+                  <label class="checkbox-inline"><input type="checkbox" {{getThursday}} id="thursday">Thursday</label>
+                  <label class="checkbox-inline"><input type="checkbox" {{getFriday}} id="friday">Friday</label>
+                  <label class="checkbox-inline"><input type="checkbox" {{getSaturday}} id="saturday">Saturday</label>
+                  <label class="checkbox-inline"><input type="checkbox" {{getSunday}} id="sunday">Sunday</label>
                 </div>
               </section>
               <section>
@@ -190,7 +190,7 @@
                   <!-- </div> -->
                 </label>
                 <br>
-                <label class="checkbox-inline" style="margin-left: 15px;"><input type="checkbox" value="" id="deleteAfterFinish">Delete after finish date</label>
+                <label class="checkbox-inline" style="margin-left: 15px;"><input type="checkbox" {{getDeleteAfterFinish}} id="deleteAfterFinish">Delete after finish date</label>
               </section>
             </div>
           </fieldset>

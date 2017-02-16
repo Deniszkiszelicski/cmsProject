@@ -56,6 +56,30 @@ Template.contentForm.helpers({
   getVisibleForAll: function getVisibleForAll() {
     return this.visibleForAll ? "checked" : "";
   },
+  getMonday: function getDayOfWeekValue() {
+    return this.monday ? "checked" : "";
+  },
+  getTuesday: function getDayOfWeekValue() {
+    return this.tuesday ? "checked" : "";
+  },
+  getWednesday: function getDayOfWeekValue() {
+    return this.wednesday ? "checked" : "";
+  },
+  getThursday: function getDayOfWeekValue() {
+    return this.thursday ? "checked" : "";
+  },
+  getFriday: function getDayOfWeekValue() {
+    return this.friday ? "checked" : "";
+  },
+  getSaturday: function getDayOfWeekValue() {
+    return this.saturday ? "checked" : "";
+  },
+  getSunday: function getDayOfWeekValue() {
+    return this.sunday ? "checked" : "";
+  },
+  getDeleteAfterFinish: function getDeleteAfterFinish() {
+    return this.deleteAfterFinish ? "checked" : "";
+  },
 });
 
 Template.contentForm.events({
@@ -74,16 +98,16 @@ Template.contentForm.events({
                       category: $('#categoryOfContent').val(),
                       startDate: $('#start').val(),
                       finishDate: $('#finish').val(),
-                      monday: $('#monday').val(),
-                      tuesday: $('#tuesday').val(),
-                      wednesday: $('#wednesday').val(),
-                      thursday: $('#thursday').val(),
-                      friday: $('#friday').val(),
-                      saturday: $('#saturday').val(),
-                      sunday: $('#sunday').val(),
+                      monday: $('#monday').is(':checked'),
+                      tuesday: $('#tuesday').is(':checked'),
+                      wednesday: $('#wednesday').is(':checked'),
+                      thursday: $('#thursday').is(':checked'),
+                      friday: $('#friday').is(':checked'),
+                      saturday: $('#saturday').is(':checked'),
+                      sunday: $('#sunday').is(':checked'),
                       playTimeHoursStart: $('#playTimeHoursStart').val(),
                       playTimeHoursFinish: $('#playTimeHoursFinish').val(),
-                      deleteAfterFinish: $('#deleteAfterFinish').val(),
+                      deleteAfterFinish: $('#deleteAfterFinish').is(':checked'),
                       assortiment: assortiment,
                       regions: regions,
                       mediaId: mediaId,
