@@ -38,5 +38,8 @@ Meteor.methods({
 
     });
   },
+  deleteOneRegion: function(id,region){
+Networks.update({_id:id},{$pull:{region:region}});
+  },
 
 });

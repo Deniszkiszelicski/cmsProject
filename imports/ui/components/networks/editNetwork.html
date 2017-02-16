@@ -68,7 +68,7 @@
                           </div>
                         </div>
 
-                        <div class="col-xs-6">
+                        <!-- <div class="col-xs-12">
            <h3 class="text-center">Sortiment</h3>
 
            <div class="form-group col-lg-6">
@@ -101,7 +101,7 @@
                </ul>
            </div>
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-12">
           <h3 class="text-center">Region</h3>
 
           <div class="form-group col-lg-6">
@@ -129,10 +129,60 @@
           </div>
 
 
+
+
+
                       <div>
-                        </div>
+                        </div> -->
+          <div class="form-group col-lg-6">
+            <label for="sortiment">Add new Sortiment</label>
+            <div class="input-group"  >
+            <input type="text" class="form-control"  value="" id="oneSortiment" placeholder="type new sortiment name">
+            <span class="input-group-btn">
+            <a href="#" class="btn btn-default" type="button"  id="addNewSortiment">Add</a>
+          </span></div>
+
+            <label for="sortiment">Edit/Delete Sortiment</label>
+           <div class="well" style="max-height: 150px;overflow: auto;">
+                        {{#each sortiment}}
+
+                      <div class="input-group"  >
+                      <input type="text" class="form-control"  id="sortimentList" value="{{this}}" >
+                      <span class="input-group-btn">
+                      <a href="#" class="btn btn-default" type="button" name="{{../_id}}" id="deleteOneSortiment">X</a>
+                      </span>
+                      </div>{{/each}}
+    </div>
+</div>
+
+<div class="form-group col-lg-6">
+  <label for="region">Add new Region</label>
+  <div class="input-group"  >
+  <input type="text" class="form-control"  value="" placeholder="type new region name">
+  <span class="input-group-btn">
+  <a href="#" class="btn btn-default" type="button"  id="addNewRegion">Add</a>
+</span></div>
+
+  <label for="sortiment">Edit/Delete Region</label>
+ <div class="well" style="max-height: 150px;overflow: auto;">
+              {{#each region}}
+
+            <div class="input-group"  >
+            <input type="text" class="form-control"  value="{{this}}" >
+            <span class="input-group-btn">
+            <a href="#" class="btn btn-default" type="button" name="{{../_id}}" id="deleteOneRegion">X</a>
+            </span>
+            </div>{{/each}}
+</div>
+</div>
+
+
+
+
+
   {{/with}}
                     </div>
+
                     <div class="panel-footer">
                         <button type="button" class="btn btn-default" id="editSubmit">Submit</button>
                     </div>
