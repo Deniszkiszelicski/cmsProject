@@ -68,72 +68,7 @@
                           </div>
                         </div>
 
-                        <!-- <div class="col-xs-12">
-           <h3 class="text-center">Sortiment</h3>
 
-           <div class="form-group col-lg-6">
-           <input type="hidden" name="count" value="1"/>
-               <div class="control-group " id="fields">
-                   <label class="control-label" for="field1">Add Sortiment</label>
-                   <div class="controls" id="profs">
-                       <div class="input-append">
-                           <div id="field"><button id="b3" class="btn add-more" type="button">+</button>
-                           <input autocomplete="off" class="input form-control" id="field1" name="field1" type="text" placeholder="type sortiment name" data-items="8" value=""/></div>
-                       </div>
-                   </div>
-               </div>
-       </div>
-            <label for="sortiment">Edit/Delete Sortiment</label>
-           <div class="well" style="max-height: 150px;overflow: auto;">
-
-           <ul class="list-group" id="sortimentList">
-             {{#each sortiment}}
-                 <li class="list-group-item" id="sortimentList1">
-
-
-
-                 <input type="text" class="form-control" value="{{this}}" id="sortimentList2"><span class="input-group-btn"><button type="button" class="btn btn-default">
-    <span class="glyphicon glyphicon-trash"></span>
-  </button></span>
-
-               </li>
-              {{/each}}
-               </ul>
-           </div>
-            </div>
-            <div class="col-xs-12">
-          <h3 class="text-center">Region</h3>
-
-          <div class="form-group col-lg-6">
-          <input type="hidden" name="rcount" value="1"/>
-              <div class="control-group" id="rfields">
-                  <label class="control-label" for="rfield1">Add region</label>
-                  <div class="controls" id="rprofs">
-                      <div class="input-append">
-                          <div id="rfield"><button id="rb3" class="btn radd-more" type="button">+</button>
-                          <input autocomplete="off" class="form-control" id="rfield1" name="rprof1" type="text" placeholder="type sortiment name" data-items="8" value=""/></div>
-                      </div>
-                  </div>
-              </div>
-      </div>
-            <label for="region">Edit/Delete Region</label>
-          <div class="well" style="max-height: 150px;overflow: auto;">
-
-          <ul class="list-group" id="regionList">
-              {{#each region}}
-               <li class="list-group-item" id="regionList1"><input type="text" class="form-control" value="{{this}}" id="regionList2"><span class="input-group-btn"><button type="button" class="btn btn-default">
-  <span class="glyphicon glyphicon-trash"></span></button></span></li>
-               {{/each}}
-             </ul>
-          </div>
-          </div>
-
-
-
-
-
-                      <div>
-                        </div> -->
           <div class="form-group col-lg-6">
             <label for="sortiment">Add new Sortiment</label>
             <div class="input-group"  >
@@ -149,7 +84,7 @@
                       <div class="input-group sortimentList"  >
                       <input type="text" class="form-control"  id="sortimentList" value="{{this}}" >
                       <span class="input-group-btn">
-                      <a href="#" class="btn btn-default" type="button" name="{{../_id}}" id="deleteOneSortiment">X</a>
+                      <button href="#" class="btn btn-default" type="button" name="{{../_id}}" id="deleteOneSortiment">X</button>
                       </span>
                       </div>{{/each}}
     </div>
@@ -158,19 +93,19 @@
 <div class="form-group col-lg-6">
   <label for="region">Add new Region</label>
   <div class="input-group"  >
-  <input type="text" class="form-control"  value="" placeholder="type new region name">
+  <input type="text" class="form-control"  value="" id="oneRegion" placeholder="type new region name">
   <span class="input-group-btn">
   <a href="#" class="btn btn-default" type="button"  id="addNewRegion">Add</a>
 </span></div>
 
-  <label for="sortiment">Edit/Delete Region</label>
+  <label for="region">Edit/Delete Region</label>
  <div class="well" style="max-height: 150px;overflow: auto;">
               {{#each region}}
 
-            <div class="input-group"  >
-            <input type="text" class="form-control"  value="{{this}}" >
+            <div class="input-group regionList"  >
+            <input type="text" class="form-control" id="regionList" value="{{this}}" >
             <span class="input-group-btn">
-            <a href="#" class="btn btn-default" type="button" name="{{../_id}}" id="deleteOneRegion">X</a>
+            <button href="#" class="btn btn-default" type="button" name="{{../_id}}" id="deleteOneRegion">X</button>
             </span>
             </div>{{/each}}
 </div>
@@ -192,66 +127,6 @@
     </div>
 
 
-    <script type="text/javascript">
-    $(document).ready(function(){
-    var next = 1;
-    $(".add-more").click(function(e){
-        e.preventDefault();
-        var addto = "#field" + next;
-        var addRemove = "#field" + (next);
-        next = next + 1;
-        var newIn = '<input autocomplete="off" class="input form-control" id="field' + next + '" name="field' + next + '"placeholder="type sortiment name" type="text" value="">';
-        var newInput = $(newIn);
-        var removeBtn = '<button id="remove' + (next - 1) + '" class="btn btn-danger remove-me " >-</button></div><div id="field">';
-        var removeButton = $(removeBtn);
-        $(addto).after(newInput);
-        $(addRemove).after(removeButton);
-        $("#field" + next).attr('data-source',$(addto).attr('data-source'));
-        $("#count").val(next);
 
-            $('.remove-me').click(function(e){
-                e.preventDefault();
-                var fieldNum = this.id.charAt(this.id.length-1);
-                var fieldID = "#field" + fieldNum;
-                $(this).remove();
-                $(fieldID).remove();
-            });
-    });
-
-
-
-});
-
-$(document).ready(function(){
-var next = 1;
-$(".radd-more").click(function(e){
-    e.preventDefault();
-    var addto = "#rfield" + next;
-    var addRemove = "#rfield" + (next);
-    next = next + 1;
-    var newIn = '<input autocomplete="off" class="input form-control" id="rfield' + next + '" name="rfield' + next + '"placeholder="type sortiment name" type="text" value="">';
-    var newInput = $(newIn);
-    var removeBtn = '<button id="rremove' + (next - 1) + '" class="btn btn-danger remove-me" >-</button></div><div id="rfield">';
-    var removeButton = $(removeBtn);
-    $(addto).after(newInput);
-    $(addRemove).after(removeButton);
-    $("#rfield" + next).attr('data-source',$(addto).attr('data-source'));
-    $("#count").val(next);
-
-        $('.remove-me').click(function(e){
-            e.preventDefault();
-            var fieldNum = this.id.charAt(this.id.length-1);
-            var fieldID = "#rfield" + fieldNum;
-            $(this).remove();
-            $(fieldID).remove();
-        });
-});
-
-
-
-});
-
-
-    </script>
 
 </template>

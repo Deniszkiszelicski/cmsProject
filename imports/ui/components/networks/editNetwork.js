@@ -20,6 +20,7 @@ Template.editNetworkItem.helpers({
   editNet: () => {
     return Networks.findOne({_id: Session.get("selectedNetwork")});
   },
+
 });
 Template.editNetworkItem.events({
   'click #editSubmit': function editItem(event) {
@@ -27,39 +28,60 @@ Template.editNetworkItem.events({
     var sortimentL = [];
     $('.sortimentList').children('#sortimentList').each(function(){
       sortimentL.push($(this).val());
-      console.log("$(this).val() = ", $(this).val());
+    });
+    var regionL = [];
+    $('.regionList').children('#regionList').each(function(){
+      regionL.push($(this).val());
     });
     Meteor.call('editSelectedNetwork', {_id:Session.get("selectedNetwork"),netName: $('#netNameNet').val(), netId: $('#netIdNet').val(),
-    privatContent:$('#privatContent').is(":checked"),dmxLight:$('#dmxLight').is(":checked"),logUpdateTime:$('#logUpdateTime').val(), sortiment:sortimentL, region:region});
+    privatContent:$('#privatContent').is(":checked"),dmxLight:$('#dmxLight').is(":checked"),logUpdateTime:$('#logUpdateTime').val(), sortiment:sortimentL, region:regionL});
     toastr.success("Data saved","Edit Network");
     Session.set("sortiment",[]);
   },
+
+
   'click #deleteOneRegion': function deleteOneRegion(event){
     event.preventDefault();
     var region = this;
     var id = event.currentTarget.name;
+    console.log(id,region, "calling");
     Meteor.call ('deleteOneRegion' ,id,region);
+
   },
+
+
   'click #addNewSortiment': function addOneSortiment(event){
     let sortiment = [];
+    let region = [];
     event.preventDefault();
-    console.log("$('#sortimentList').val() = ", $('#sortimentList').val());
 
     $('.sortimentList').children('#sortimentList').each(function(){
       sortiment.push($(this).val());
-      console.log("$(this).val() = ", $(this).val());
     });
-    console.log("$('.sortimentList').length = ", $('.sortimentList').length);
-    // const l = $('.sortimentList').children().length;
-    // for (i = 0; i < l; i++) {
-    //   text += "<li>" + fruits[i] + "</li>";
-    // }
-    console.log("sortiment after collecting values = ", sortiment);
+    $('.regionList').children('#regionList').each(function(){
+      region.push($(this).val());
+    });
     sortiment.push($('#oneSortiment').val());
-    console.log("sortiment after adding oneSortiment = ", sortiment);
     Meteor.call('editSelectedNetwork', {_id:Session.get("selectedNetwork"),netName: $('#netNameNet').val(), netId: $('#netIdNet').val(),
     privatContent:$('#privatContent').is(":checked"),dmxLight:$('#dmxLight').is(":checked"),logUpdateTime:$('#logUpdateTime').val(), sortiment:sortiment, region:region});
     toastr.success("Data saved","Edit Network");
-    // Session.set("sortiment",[]);
-  }
+    document.getElementById("oneSortiment").value='';
+  },
+  'click #addNewRegion': function addOneRegion(event){
+    let sortiment = [];
+    let region = [];
+    event.preventDefault();
+
+    $('.regionList').children('#regionList').each(function(){
+      region.push($(this).val());
+    });
+    $('.sortimentList').children('#sortimentList').each(function(){
+      sortiment.push($(this).val());
+    });
+    region.push($('#oneRegion').val());
+    Meteor.call('editSelectedNetwork', {_id:Session.get("selectedNetwork"),netName: $('#netNameNet').val(), netId: $('#netIdNet').val(),
+    privatContent:$('#privatContent').is(":checked"),dmxLight:$('#dmxLight').is(":checked"),logUpdateTime:$('#logUpdateTime').val(), sortiment:sortiment, region:region});
+    toastr.success("Data saved","Edit Network");
+    document.getElementById("oneRegion").value='';
+  },
 });

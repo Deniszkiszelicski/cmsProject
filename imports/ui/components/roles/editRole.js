@@ -53,6 +53,7 @@ event.preventDefault();
                                  seeMedia: $('#seeMedia').is(":checked"),
                                  seeContent: $('#seeContent').is(":checked"),
                                  seeContentGroup: $('#seeContentGroup').is(":checked")});
-  console.log($('#roleName').val());
+                                 toastr.success("Role saved","Edit Role");
+
 }
 });
