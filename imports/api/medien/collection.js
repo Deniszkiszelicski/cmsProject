@@ -29,6 +29,12 @@ MedienSchema = new SimpleSchema({
       }
     }
   },
+  author: {
+		type: String,
+		autoValue: function() {
+			return this.userId;
+		}
+	},
   fileId: {
     type: String,
   }
