@@ -26,7 +26,6 @@ Meteor.methods({
   },
 
   editSelectedNetwork: function(networksObject){
-
     Networks.update({_id:networksObject._id},{
                         netName:networksObject.netName,
                         netId: networksObject.netId,
