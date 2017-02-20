@@ -48,7 +48,8 @@ Template.registerNetwork.events({
 },
 'click #rb1':function(){
   Session.set("counter1",Session.get("counter1")+1);
-}
+},
+
 
 
 

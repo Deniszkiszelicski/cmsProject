@@ -32,4 +32,8 @@ Template.userReg1.events({
     event.preventDefault();
     templateInstance.isCreateNew.set(false);
   },
+  'click #closeUserCreate': function closeForm(event, templateInstance) {
+    event.preventDefault();
+    templateInstance.isCreateNew.set(false);
+  }, 
 });

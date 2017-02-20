@@ -39,6 +39,8 @@ Meteor.methods({
   },
   deleteOneRegion: function(id,region){
 Networks.update({_id:id},{$pull:{region:region}});
+
+
   },
   deleteOneSortiment: function(id,sortiment){
 Networks.update({_id:id},{$pull:{sortiment:sortiment}});

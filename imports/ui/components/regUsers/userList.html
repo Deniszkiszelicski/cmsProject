@@ -1,4 +1,7 @@
 <template name ="usersList">
+  {{#if isUserEdit}}
+    {{>editUser2}}
+  {{/if}}
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
       <div class="panel panel-default panel-table">
@@ -28,7 +31,8 @@
                 <td>{{role}}
                 </td>
 
-                <td>{{email}}
+                <td>{{email}}<button type="button" class="btn btn-default" id="editUser" style="float: right;">Edit</button>
+                  <button type="button" class="btn btn-default" id="deleteUser" style="float: right;">Delete</button>
                 </td>
               </tr>
             	{{/each}}

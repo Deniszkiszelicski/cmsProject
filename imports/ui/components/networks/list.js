@@ -49,7 +49,10 @@ Template.networksList.events({
     },
     'click #editSubmit': function closeEditForm(event, templateInstance){
       templateInstance.isEdit.set(false);
-    }
+    },
+    'click #closeEditList':function closeEditList(event,templateInstance){
+      templateInstance.isEdit.set(false);
+    },
 
 
 

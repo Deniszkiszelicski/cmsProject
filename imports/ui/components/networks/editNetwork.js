@@ -11,6 +11,8 @@ import '../../components/networks/list';
 
 Meteor.subscribe('networks');
 
+
+
 var region = [];
 
 
@@ -42,6 +44,9 @@ Template.editNetworkItem.events({
 
   'click #deleteOneRegion': function deleteOneRegion(event){
     event.preventDefault();
+
+
+
     var region = String(this);
     var id = event.currentTarget.name;
     console.log(id,region, "calling");
@@ -50,6 +55,9 @@ Template.editNetworkItem.events({
   },
   'click #deleteOneSortiment': function deleteOneSortiment(event){
     event.preventDefault();
+
+
+
     var sortiment = String(this);
     var id = event.currentTarget.name;
     console.log(id,sortiment, "calling");
@@ -91,7 +99,6 @@ Template.editNetworkItem.events({
     privatContent:$('#privatContent').is(":checked"),dmxLight:$('#dmxLight').is(":checked"),logUpdateTime:$('#logUpdateTime').val(), sortiment:sortiment, region:region});
     toastr.success("Data saved","Edit Network");
     document.getElementById("oneRegion").value='';
-
-
   },
+  
 });

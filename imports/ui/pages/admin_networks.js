@@ -29,5 +29,9 @@ Template.adminNetworks.events({
     event.preventDefault();
     templateInstance.isCreateNew.set(false);
   },
+  'click #closeCreateList': function closeForm(event, templateInstance) {
+    event.preventDefault();
+    templateInstance.isCreateNew.set(false);
+  },
 
 });
