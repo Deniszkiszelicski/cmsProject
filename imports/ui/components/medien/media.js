@@ -1,7 +1,8 @@
 import { Template } from 'meteor/templating';
-import './media.html';
+import { $ } from 'meteor/jquery';
 import '../../../api/medien/methods';
 import '../../../api/medien/collection';
+import './media.html';
 
 Meteor.subscribe('medien');
 Meteor.subscribe('files.images.all');
@@ -27,9 +28,6 @@ Template.media.helpers({
   isEditMode: function isEditMode() {
     return Template.instance().isEditMode.get();
   },
-  // videoFile: function () {
-  //   return Videos.findOne();
-  // }
 });
 
 Template.media.events({

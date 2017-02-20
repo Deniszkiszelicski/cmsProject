@@ -26,8 +26,8 @@ aldeed:simple-schema
 aldeed:collection2
 meteortoys:allthings
 accounts-ui
-theduke:bootstrap-modal-prompt
 chrismbeckett:toastr
 session
 ostrio:files
 sebdah:autocompletion
+theduke:bootstrap-modal-prompt

@@ -1,11 +1,15 @@
 <template name="medienPage">
   <br>
   <!-- <button type="button" class="btn btn-secondary button-new">New Media</button> -->
-
+  {{#with getVideoId}}
+    {{> videoModal}}
+  {{/with}}
 
   {{#if isCreateNew}}
     {{>mediaForm}}
   {{/if}}
 
+
   {{>medienList isCreateNew=isCreateNew}}
+
 </template>
