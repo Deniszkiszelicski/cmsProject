@@ -10,6 +10,9 @@
               <button type="button" class="btn btn-default button-new">New media</button>
             {{/unless}}
           {{/if}}
+
+          <input type="text" class="form-control"
+            placeholder="Type text to filter by name" id="media-filter-input">
         </div>
         <div class="panel-body">
           <table class="table table-striped table-list">
@@ -24,7 +27,8 @@
               </tr>
             </thead>
             <tbody>
-              {{#each medien}}
+              <!-- {{#each medien}} -->
+              {{#each filteredMedien}}
                 {{#with this}}
                   {{>media}}
                 {{/with}}

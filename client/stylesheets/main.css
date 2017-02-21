@@ -56,7 +56,7 @@ body{
   font-size: 1em;
 }
 
-#content-filter-input{
+#content-filter-input, #media-filter-input{
   float: right;
   /*line-height: 26px;*/
   width: auto;

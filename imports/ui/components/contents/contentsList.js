@@ -22,8 +22,6 @@ Template.contentsList.helpers({
 
 Template.contentsList.events({
   'keyup #content-filter-input': function (event, templateInstance) {
-    // console.log("you typed in = ", event.currentTarget.value);
     templateInstance.filterText.set(event.currentTarget.value);
-    // Session.set('selectedPostListId', postListId);
   }
 });
