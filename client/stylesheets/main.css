@@ -56,6 +56,14 @@ body{
   font-size: 1em;
 }
 
+#content-filter-input{
+  float: right;
+  /*line-height: 26px;*/
+  width: auto;
+  height: auto;
+  margin-right: 10px;
+}
+
 .content-form header{
   position: relative;
 }

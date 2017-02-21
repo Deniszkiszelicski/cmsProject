@@ -16,6 +16,9 @@
               {{/if}}
             <!-- </div> -->
 
+            <input type="text" class="form-control"
+              placeholder="Type text to filter by name" id="content-filter-input">
+
 
 
           <!-- </div> -->
@@ -38,7 +41,8 @@
               </tr>
             </thead>
             <tbody>
-              {{#each contents}}
+              <!-- {{#each contents}} -->
+              {{#each filteredContents}}
                 {{> content}}
             	{{/each}}
             </tbody>

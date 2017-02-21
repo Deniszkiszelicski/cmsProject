@@ -5,7 +5,7 @@ import '../../../api/medien/collection';
 import './medienList.html';
 
 Template.registerHelper("prettifyDate", function(date) {
-  return moment(date).format('MMM Do YY, HH:mm');
+  return moment(date).format('Do MMM YY, HH:mm');
 });
 
 Meteor.subscribe('files.images.all');
