@@ -12,7 +12,8 @@ Meteor.methods({
     // check(userInformationObject.email, String);
     console.log('before inserting', userInformationObject);
    UserInformation.insert({name:userInformationObject.name,role:userInformationObject.role,email:userInformationObject.email,
-     netName:userInformationObject.netName,assignedPlayers:userInformationObject.assignedPlayers});
+     netName:userInformationObject.netName,lastName:userInformationObject.lastName,
+     assignedPlayers:userInformationObject.assignedPlayers});
 
   },
   deleteUser: function(id) {

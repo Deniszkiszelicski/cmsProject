@@ -4,19 +4,14 @@ import { check } from 'meteor/check';
 
 
 Meteor.methods({
-  createNetwork: function(networksObject){
-    // check(userInformationObject.name, String);
-    // check(userInformationObject.accountRole, String);
-    // check(userInformationObject.email, String);
-
-  //  Roles.insert({netName:rolesObject.netName,netId:rolesObject.netId, admin:rolesObject.admin});
+  createNetwork: function(networksObject,buffer){
    Networks.insert({ netName: networksObject.netName,
                       netId: networksObject.netId,
                       privatContent: networksObject.privatContent,
                       dmxLight: networksObject.dmxLight,
                       logUpdateTime: networksObject.logUpdateTime,
                       sortiment:networksObject.sortiment,
-                    region:networksObject.region });
+                    region:networksObject.region,data:networksObject.data});
                       console.log(networksObject);
 
   },
@@ -45,5 +40,9 @@ Networks.update({_id:id},{$pull:{region:region}});
   deleteOneSortiment: function(id,sortiment){
 Networks.update({_id:id},{$pull:{sortiment:sortiment}});
  },
+ // 'saveFile': function(buffer){
+ //         Networks.insert({data:buffer})
+ //     }
+
 
 });
