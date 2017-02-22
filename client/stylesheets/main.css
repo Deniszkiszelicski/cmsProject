@@ -30,7 +30,7 @@ body{
   font-size: 24px;
 }
 
-#button-close-player-form{
+#button-close-player-form, #button-close-contentGroup-form{
   margin-top: 20px;
   margin-right: 15px;
   color: red;
@@ -41,7 +41,7 @@ body{
   font-size: 1em;
 }
 
-#media-collection-fieldset{
+#media-collection-fieldset, .sky-form{
   position: relative;
 }
 
@@ -56,7 +56,7 @@ body{
   font-size: 1em;
 }
 
-#content-filter-input, #media-filter-input{
+.filter-input{
   float: right;
   /*line-height: 26px;*/
   width: auto;

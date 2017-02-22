@@ -36,9 +36,9 @@ FlowRouter.route('/contents', {
 });
 
 FlowRouter.route('/content-groups', {
-  name: 'content-groupsPage',
+  name: 'contentGroupsPage',
   action() {
-    BlazeLayout.render('App_body', { main: 'content-groupsPage' });
+    BlazeLayout.render('App_body', { main: 'contentGroupsPage' });
   },
 });
 

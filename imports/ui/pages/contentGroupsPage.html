@@ -1,0 +1,10 @@
+<template name="contentGroupsPage">
+  {{#if isCreateNew}}
+    {{#with getCurrentContentGroup}}
+      {{> contentGroupForm}}
+    {{/with}}
+  {{/if}}
+  <br>
+  {{> contentGroupsList}}
+  <br>
+</template>

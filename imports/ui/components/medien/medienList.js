@@ -26,8 +26,6 @@ Template.medienList.helpers({
 
 Template.medienList.events({
   'keyup #media-filter-input': function (event, templateInstance) {
-    // console.log("you typed in = ", event.currentTarget.value);
     templateInstance.filterText.set(event.currentTarget.value);
-    // Session.set('selectedPostListId', postListId);
   }
 });
