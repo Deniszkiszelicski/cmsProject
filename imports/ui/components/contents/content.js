@@ -14,6 +14,11 @@ Template.content.helpers({
   mayEdit: function mayEdit() {
     return true;
   },
+  // displayEditButton: function displayEditButton(disableEditButton) {
+  //   console.log('displayEditButton = ', (!disableEditButton));
+  //   console.log('this.disableEditButton = ', disableEditButton);
+  //   return !this.disableEditButton;
+  // },
   isEditMode: function isEditMode() {
     return Template.instance().isEditMode.get();
   },

@@ -8,12 +8,16 @@
               <span>List of Contents</span>
             <!-- </div> -->
             <!-- <div class="col col-md-3" id="heading-btn-row"> -->
+              {{#unless disableButtonAddToCG}}
               <button type="button" class="btn btn-default">Add to Content-Group</button>
-              {{#if isCreateNew}}
+              {{/unless}}
+              {{#unless isCreateNew}}
 
-              {{else}}
-                <button type="button" class="btn btn-default button-new">New content</button>
-              {{/if}}
+              <!-- {{else}} -->
+                {{#unless disableButtonNew}}
+                  <button type="button" class="btn btn-default button-new">New content</button>
+                {{/unless}}
+              {{/unless}}
             <!-- </div> -->
 
             <input type="text" class="form-control filter-input"

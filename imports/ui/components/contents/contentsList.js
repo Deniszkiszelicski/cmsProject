@@ -18,6 +18,9 @@ Template.contentsList.helpers({
     let filterText = Template.instance().filterText.get();
     return Contents.find({name: { $regex: new RegExp(filterText), $options: 'i' }}).fetch();
   },
+  // ifBothOfTwo: (arg1, arg2) => {
+  //   return arg1 && arg2;
+  // },
 });
 
 Template.contentsList.events({

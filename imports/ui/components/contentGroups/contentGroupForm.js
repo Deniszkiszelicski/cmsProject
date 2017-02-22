@@ -6,12 +6,11 @@ import './contentGroupForm.html';
 
 Template.contentGroupForm.onCreated(function () {
   this.isSelectContent = new ReactiveVar(false);
-  this.isNewMedia = new ReactiveVar(false);
-  let media;
+  let contents;
   if (!!this.data.mediaId) {
-    media = Medien.findOne({ _id: this.data.mediaId });
+    // content = Medien.findOne({ _id: this.data.contentId });
   }
-  this.media = new ReactiveVar(media);
+  this.contents = new ReactiveVar(contents);
 });
 
 Template.contentGroupForm.onRendered(function () {
@@ -20,6 +19,9 @@ Template.contentGroupForm.onRendered(function () {
 Template.contentGroupForm.helpers({
   isBlocked: function isBlocked() {
     return this.blocked ? "checked" : "";
+  },
+  isSelectContent: function isSelectContent() {
+    return Template.instance().isSelectContent.get();
   },
 });
 
@@ -34,10 +36,10 @@ Template.contentGroupForm.events({
     console.log("saving CG contentGroup = ", contentGroup);
     Meteor.call('upsertContentGroup', contentGroup);
   },
-  // 'click #btn-select-content': function selectContent(event, templateInstance) {
-  //   event.preventDefault();
-  //   templateInstance.isSelectContent.set(true);
-  // },
+  'click #btn-select-content': function selectContent(event, templateInstance) {
+    event.preventDefault();
+    templateInstance.isSelectContent.set(true);
+  },
   // 'click #btn-new-media': function createMedia(event, templateInstance) {
   //   event.preventDefault();
   //   templateInstance.isNewMedia.set(true);
@@ -47,10 +49,10 @@ Template.contentGroupForm.events({
   //   event.stopPropagation();
   //   templateInstance.isNewMedia.set(false);
   // },
-  // 'click #button-close-media-collection': function closeMediaCollection(event, templateInstance) {
-  //   event.preventDefault();
-  //   templateInstance.isSelectMedia.set(false);
-  // },
+  'click #button-close-content-collection': function closeMediaCollection(event, templateInstance) {
+    event.preventDefault();
+    templateInstance.isSelectContent.set(false);
+  },
   // 'click .content-form .button-save': function saveNewMedia(event, templateInstance) {
   //   event.preventDefault();
   //   templateInstance.isNewMedia.set(false);

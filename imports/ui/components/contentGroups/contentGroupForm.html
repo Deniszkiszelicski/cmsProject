@@ -4,12 +4,12 @@
   <br>
   <div class="panel panel-grey margin-bottom-40">
     <div class="panel-heading">
-      <h3 class="panel-title">Create/edit CG</h3>
+      <!-- <h3 class="panel-title">Create/edit CG</h3> -->
       <!-- <i type="button" class="glyphicon glyphicon-remove" id="button-close-contentGroup-form"></i> -->
     </div>
     <div class="panel-body">
       <form class="sky-form" role="form">
-        <header>Content
+        <header>Content-group
           <i type="button" class="glyphicon glyphicon-remove" id="button-close-contentGroup-form"></i>
         </header>
 
@@ -33,6 +33,47 @@
           <div class="row" style="margin-left: 2px;">
             <label class="checkbox-inline"><input type="checkbox" {{isBlocked}} id="blocked">Blocked</label>
           </div>
+        </fieldset>
+
+        <fieldset>
+          <label class="label">Content</label>
+          <button type="submit" class="btn-u btn-u-default" id="btn-select-content" style="margin-left: 12px; margin-bottom: 10px;">Select</button>
+
+
+
+          <div id="content-collection-fieldset">
+            {{#if isSelectContent}}
+              <label class="label">Content collection</label>
+              <i type="button" class="glyphicon glyphicon-remove" id="button-close-content-collection"></i>
+              {{> contentsList disableButtonNew=true disableButtonAddToCG=true}}
+            {{/if}}
+          </div>
+
+          {{#if selectedContent}}
+            <table class="table table-striped table-list">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th>Name</th>
+                  <th>Duration</th>
+                  <th>Type</th>
+                  <th>Created at</th>
+                  <th>Regions</th>
+                  <th>Assortiment</th>
+                  <th>Controls</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#unless isNewMedia}}
+                  {{#with selectedMedia}}
+                    {{> media}}
+                  {{/with}}
+                {{/unless}}
+              </tbody>
+            </table>
+          {{/if}}
+
         </fieldset>
 
         <footer>

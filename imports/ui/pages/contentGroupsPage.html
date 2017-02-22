@@ -3,8 +3,9 @@
     {{#with getCurrentContentGroup}}
       {{> contentGroupForm}}
     {{/with}}
+  {{else}}
+    <br>
+    {{> contentGroupsList}}
   {{/if}}
-  <br>
-  {{> contentGroupsList}}
   <br>
 </template>
