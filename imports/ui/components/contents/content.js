@@ -3,9 +3,6 @@ import '../../../api/contents/methods';
 import '../../../api/contents/collection';
 import './content.html';
 
-// Meteor.subscribe('contents');
-// Meteor.subscribe('files.images.all');
-
 Template.content.onCreated(function onCreated() {
   this.isEditMode = new ReactiveVar(false);
 });
@@ -14,11 +11,15 @@ Template.content.helpers({
   mayEdit: function mayEdit() {
     return true;
   },
-  // displayEditButton: function displayEditButton(disableEditButton) {
-  //   console.log('displayEditButton = ', (!disableEditButton));
-  //   console.log('this.disableEditButton = ', disableEditButton);
-  //   return !this.disableEditButton;
-  // },
+  disableButtonDelete: function disableButtonDelete() {
+    return this.disableButtonDelete;
+  },
+  disableButtonEdit: function disableButtonEdit() {
+    return this.disableButtonEdit;
+  },
+  enableButtonRemove: function enableButtonRemove() {
+    return this.enableButtonRemove;
+  },
   isEditMode: function isEditMode() {
     return Template.instance().isEditMode.get();
   },

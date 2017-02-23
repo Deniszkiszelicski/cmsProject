@@ -30,7 +30,16 @@ Template.contentGroupForm.helpers({
     return Template.instance().isSelectContent.get();
   },
   includedContents: function includedContents() {
-    return Template.instance().includedContents.get();
+    let includedContentsWithExtra = Template.instance().includedContents.get();
+    const l = includedContentsWithExtra.length;
+    if (l > 0) {
+      for (i = 0; i < l; i++) {
+        includedContentsWithExtra[i]["disableButtonDelete"] = true;
+        includedContentsWithExtra[i]["disableButtonEdit"] = true;
+        includedContentsWithExtra[i]["enableButtonRemove"] = true;
+      }
+    }
+    return includedContentsWithExtra;
   },
 });
 
@@ -66,7 +75,14 @@ Template.contentGroupForm.events({
     let contents = templateInstance.includedContents.get();
     contents.push(this);
     templateInstance.includedContents.set(contents);
-    // templateInstance.media.set(this);
-    // templateInstance.isSelectMedia.set(false);
+  },
+  'click #includedContents-table #button-remove-content': function removeContentFromCG(event, templateInstance){
+    event.preventDefault();
+    let contents = templateInstance.includedContents.get();
+    const index = contents.indexOf(this);
+    if (index > -1) {
+      contents.splice(index, 1);
+    }
+    templateInstance.includedContents.set(contents);
   },
 });
