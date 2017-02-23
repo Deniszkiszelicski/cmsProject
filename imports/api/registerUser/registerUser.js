@@ -9,3 +9,11 @@ UserInformation = new Mongo.Collection('userInformation');
 //   email: {type: String}
 // });
 // UserInformation.attachSchema(Playlists.schema);
+Meteor.users.allow({
+remove:function(){
+ return true;
+},
+update:function(){
+  return true;
+}
+});

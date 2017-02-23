@@ -14,8 +14,8 @@ Meteor.subscribe('users');
 
 
 Template.editUser2.helpers({
-  userInformation: () => {
-    return UserInformation.findOne({_id: Session.get("selectedUser")});
+  user: () => {
+    return Meteor.users.findOne({_id:Session.get('id')});
   },
   rolesInformation: () =>{
     return Roles.find().fetch();
@@ -27,8 +27,28 @@ Template.editUser2.helpers({
 });
 
 Template.editUser2.events({
-  'submit .editUser2': function editUser(event) {
+  'submit .edit': function editUser(event) {
     event.preventDefault();
+
+
+    var email = event.target.email.value;
+    var password = event.target.password.value;
+    var firstname = event.target.firstname.value;
+    var lastname = event.target.lastname.value;
+    var netName = event.target.netName.value;
+    var assignedPlayers = [];
+    var role = $('#accountRole:checked').val();
+
+    $('.assignedPlayersList').children('.checked:checked').each(function(){
+     assignedPlayers.push($(this).val());
+    });
+    var user = { email:email, password:password, profile:
+     { name:firstname +" "+lastname,netName:netName,assignedPlayers:assignedPlayers,role:role}};
+
+    console.log(user);
+
+    Meteor.users.update({_id:Session.get('id')},{$set:(user)});
+    toastr.success("Data Saved", "Create User");
   },
 
 });

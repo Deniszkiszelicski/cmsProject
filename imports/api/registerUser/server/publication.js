@@ -9,3 +9,6 @@ Meteor.publish('userInformation', function registerUsers() {
   // }
 );
 });
+Meteor.publish('users', function regUsers(){
+  return Meteor.users.find();
+});

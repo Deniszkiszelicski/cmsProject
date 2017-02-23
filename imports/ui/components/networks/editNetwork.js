@@ -11,6 +11,8 @@ import '../../components/networks/list';
 
 Meteor.subscribe('networks');
 
+var buffer;
+var result;
 
 
 var region = [];
@@ -36,7 +38,7 @@ Template.editNetworkItem.events({
       regionL.push($(this).val());
     });
     Meteor.call('editSelectedNetwork', {_id:Session.get("selectedNetwork"),netName: $('#netNameNet').val(), netId: $('#netIdNet').val(),
-    privatContent:$('#privatContent').is(":checked"),dmxLight:$('#dmxLight').is(":checked"),logUpdateTime:$('#logUpdateTime').val(), sortiment:sortimentL, region:regionL});
+    privatContent:$('#privatContent').is(":checked"),dmxLight:$('#dmxLight').is(":checked"),logUpdateTime:$('#logUpdateTime').val(), sortiment:sortimentL, region:regionL, data: result});
     toastr.success("Data saved","Edit Network");
     Session.set("sortiment",[]);
   },
@@ -100,5 +102,21 @@ Template.editNetworkItem.events({
     toastr.success("Data saved","Edit Network");
     document.getElementById("oneRegion").value='';
   },
-  
+  'change #logo1' : function(event,template){
+      var file = event.target.files[0]; //assuming 1 file only
+      if (!file) return;
+
+      var reader = new FileReader(); //create a reader according to HTML5 File API
+
+      reader.onload = function e(event){
+         result = reader.result;
+         buffer = new Uint8Array(result);
+        console.log(buffer);
+      };
+
+
+      reader.readAsDataURL(file); //read the file as arraybuffer
+
+  },
+
 });

@@ -22,16 +22,16 @@
               </tr>
             </thead>
             <tbody>
-              {{#each userInformation}}
+              {{#each users}}
               <tr>
-                <td>{{netName}}
+                <td>{{profile.netName}}
                 </td>
-                <td>{{name}}
+                <td>{{profile.name}}
                 </td>
-                <td>{{role}}
+                <td>{{profile.role}}
                 </td>
 
-                <td>{{email}}<button type="button" class="btn btn-default" id="editUser" style="float: right;">Edit</button>
+                <td>{{emails.[0].address}}<button type="button" class="btn btn-default" id="editUser" style="float: right;">Edit</button>
                   <button type="button" class="btn btn-default" id="deleteUser" style="float: right;">Delete</button>
                 </td>
               </tr>

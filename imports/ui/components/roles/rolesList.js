@@ -43,5 +43,8 @@ Template.rolesList.events({
 'submit .editRole-form': function closeEditForm(event, templateInstance){
   templateInstance.isRoleEdit.set(false);
 },
+'click #closeEditRole': function closeEditRole(event, templateInstance){
+  templateInstance.isRoleEdit.set(false);
+}
 
 });

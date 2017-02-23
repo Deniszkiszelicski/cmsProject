@@ -27,4 +27,7 @@ Template.adminRoles.events({
     event.preventDefault();
     templateInstance.isCreateNew.set(false);
   },
+  'click #closeCreateRole': function closeCreateRole(event, templateInstance) {
+    templateInstance.isCreateNew.set(false);
+  },
 });

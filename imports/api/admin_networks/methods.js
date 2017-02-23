@@ -20,7 +20,7 @@ Meteor.methods({
     toastr.success("Deleted", "Network");
   },
 
-  editSelectedNetwork: function(networksObject){
+  editSelectedNetwork: function(networksObject,buffer){
     Networks.update({_id:networksObject._id},{
                         netName:networksObject.netName,
                         netId: networksObject.netId,
@@ -28,7 +28,7 @@ Meteor.methods({
                         dmxLight: networksObject.dmxLight,
                         logUpdateTime: networksObject.logUpdateTime,
                         sortiment:networksObject.sortiment,
-                       region:networksObject.region
+                       region:networksObject.region,data:networksObject.data
 
     });
   },
