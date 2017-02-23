@@ -12,13 +12,22 @@ Template.content.helpers({
     return true;
   },
   disableButtonDelete: function disableButtonDelete() {
-    return this.disableButtonDelete;
+    if (!!this) {
+      return this.disableButtonDelete;
+    }
+    return false;
   },
   disableButtonEdit: function disableButtonEdit() {
-    return this.disableButtonEdit;
+    if (!!this) {
+      return this.disableButtonEdit;
+    }
+    return false;
   },
   enableButtonRemove: function enableButtonRemove() {
-    return this.enableButtonRemove;
+    if (!!this) {
+      return this.enableButtonRemove;
+    }
+    return false;
   },
   isEditMode: function isEditMode() {
     return Template.instance().isEditMode.get();
