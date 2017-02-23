@@ -32,7 +32,7 @@ Template.usersList.events({
     event.preventDefault();
 
 
-    Meteor.users.remove(this._id,);
+    Meteor.users.remove({_id:this._id});
 
 
   },
@@ -46,5 +46,6 @@ Template.usersList.events({
   'click #closeEditUser': function closeEditUser(event, templateInstance){
     templateInstance.isUserEdit.set(false);
   },
+  
 
 });

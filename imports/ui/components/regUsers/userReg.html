@@ -16,21 +16,18 @@
                           <label>Password</label>
                           <input type="password" name="" class="form-control" id="password" value="">
                       </div>
-                      <div class="form-group col-lg-6">
+                      <div class="form-group col-lg-12">
                           <label>Name</label>
                           <input type="text" name="" class="form-control" id="firstname" value="">
                       </div>
 
-                      <div class="form-group col-lg-6">
-                          <label>Last Name</label>
-                          <input type="text" name="" class="form-control" id="lastname" value="">
-                       </div>
                        <div class="form-group col-lg-12">
                            <label>Net Name</label>
                            <input type="text" name="" class="form-control" id="netName" value="">
                        </div>
 
-
+                       <div class="form-group col-lg-12">
+                         <label>Role</label>
                       <form>
                         {{#each rolesInformation}}
                         <label class="radio-inline accountRole">
@@ -39,6 +36,7 @@
                         {{/each}}
 
                       </form>
+                    </div>
                       <div class="col-xs-12">
          <h3 class="text-center">Assign Player/s</h3>
 

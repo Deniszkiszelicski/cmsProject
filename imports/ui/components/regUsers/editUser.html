@@ -26,19 +26,16 @@
                         <input type="text" name="" class="form-control" id="firstname" value="{{profile.name}}">
                       </div>
 
-                      <div class="form-group col-lg-6">
-                          <label>Last Name</label>
-                          <input type="text" name="" class="form-control" id="lastname" value="">
-                       </div>
 
-                        {{/with}}
+
                       <div class="col-xs-12"><strong>Current role:</strong>
+                        <label class="radio-inline">
+                        <input type="radio" name="optradio" id="accountRole" value="{{profile.role}}" checked>{{profile.role}}
+                        </label>
+                      </div>
+                        {{/with}}
+                      <div class="col-xs-12">  
                       <form>
-                        {{#with userInformation}}
-                          <label class="radio-inline">
-                          <input type="radio" name="optradio" id="accountRole" value="{{role}}" checked>{{role}}
-                          </label>
-                          {{/with}}
                           {{#each rolesInformation}}
                         <label class="radio-inline">
                           <input type="radio" name="optradio" id="accountRole" value="{{roleName}}">{{roleName}}

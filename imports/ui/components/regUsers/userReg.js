@@ -29,7 +29,6 @@ Template.registerUser2.events({
         var email = event.target.email.value;
         var password = event.target.password.value;
         var firstname = event.target.firstname.value;
-        var lastname = event.target.lastname.value;
         var netName = event.target.netName.value;
         var assignedPlayers = [];
         var role = $('#accountRole:checked').val();
@@ -38,11 +37,11 @@ Template.registerUser2.events({
          assignedPlayers.push($(this).val());
        });
       var user = { email:email, password:password, profile:
-         { name:firstname +" "+lastname,netName:netName,assignedPlayers:assignedPlayers,role:role}};
+         { name:firstname,netName:netName,assignedPlayers:assignedPlayers,role:role}};
 
     console.log(user);
 
-Accounts.createUser(user);
+Accounts.createNewUser(user);
 toastr.success("Data Saved", "Create User");
 
     // Meteor.call('createRoleData', { name: $('#firstname').val(),
