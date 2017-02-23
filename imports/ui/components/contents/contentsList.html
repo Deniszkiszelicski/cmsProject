@@ -8,13 +8,20 @@
               <span>List of Contents</span>
             <!-- </div> -->
             <!-- <div class="col col-md-3" id="heading-btn-row"> -->
+              {{#unless disableButtonAddToCG}}
               <button type="button" class="btn btn-default">Add to Content-Group</button>
-              {{#if isCreateNew}}
+              {{/unless}}
+              {{#unless isCreateNew}}
 
-              {{else}}
-                <button type="button" class="btn btn-default button-new">New content</button>
-              {{/if}}
+              <!-- {{else}} -->
+                {{#unless disableButtonNew}}
+                  <button type="button" class="btn btn-default button-new">New content</button>
+                {{/unless}}
+              {{/unless}}
             <!-- </div> -->
+
+            <input type="text" class="form-control filter-input"
+              placeholder="Type text to filter by name" id="content-filter-input">
 
 
 
@@ -33,12 +40,12 @@
                 <th>Created at</th>
                 <th>Region</th>
                 <th>Sortiment</th>
-                <th>Play</th>
                 <th>Controls</th>
               </tr>
             </thead>
             <tbody>
-              {{#each contents}}
+              <!-- {{#each contents}} -->
+              {{#each filteredContents}}
                 {{> content}}
             	{{/each}}
             </tbody>

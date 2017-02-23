@@ -1,0 +1,18 @@
+<template name ="contentGroup">
+
+  <tr class={{isActive}}>
+  <td><input type="checkbox"></td>
+
+    <td>{{name}}</td>
+    <td>{{duration}}</td>
+    <td>{{isBlocked}}</td>
+    <td>
+      <div class="row-controls">
+        {{#if mayEdit}}
+          <i type="button" class="glyphicon glyphicon-pencil" id="button-edit-contentGroup"></i>
+        {{/if}}
+        <i type="button" class="glyphicon glyphicon-trash" id="button-delete-contentGroup"></i>
+      </div>
+    </td>
+  </tr>
+</template>

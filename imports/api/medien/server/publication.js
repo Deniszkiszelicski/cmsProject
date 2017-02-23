@@ -6,5 +6,9 @@ Meteor.publish('medien', function() {
 
 // Meteor.publish('files.images.all', function () {
 Meteor.publish('files.images.all', function () {
-    return Images.find().cursor;
-  });
+  return Images.find().cursor;
+});
+
+Meteor.publish('files.videos.all', function() {
+  return Videos.find().cursor;
+});

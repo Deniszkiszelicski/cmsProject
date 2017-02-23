@@ -12,13 +12,31 @@ Meteor.methods({
     // check(player.townCity, String);
     // check(player.district, String);
     // check(player.playTime, String);
-    Medien.update({ _id: media._id },
-      { name: media.name,
-        category: media.category,
-        type: media.type,
-        createdAt: media.createdAt,
-        fileId: media.fileId },
-        { upsert: true, multi: false });
+    // Medien.update({ _id: media._id },
+    //   { name: media.name,
+    //     category: media.category,
+    //     type: media.type,
+    //     createdAt: media.createdAt,
+    //     fileId: media.fileId },
+    //     { upsert: true, multi: false });
+    if (!!media._id ) {
+      Medien.update({ _id: media._id },
+        { $set: {
+          name: media.name,
+          category: media.category,
+          type: media.type,
+          fileId: media.fileId
+        }
+        });
+    } else {
+      Medien.insert(
+        { name: media.name,
+          category: media.category,
+          type: media.type,
+          fileId: media.fileId },
+          );
+    }
+
   },
   deleteMedia: function(id) {
     Medien.remove(id);

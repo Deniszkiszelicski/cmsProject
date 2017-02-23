@@ -1,12 +1,16 @@
 <template name ="content">
 
-  <tr class={{isActive}}>
+  <tr class="content-row">
   <td><input type="checkbox"></td>
-      <td>thumbnail</td>
+      <td>
+        <div class="thumbnails thumbnail-style">
+          <img src="{{file.link}}" alt="{{file.name}}"  width="71" height="40"/>
+        </div>
+      </td>
       <td>{{name}}</td>
       <td>{{duration}}</td>
       <td>{{type}}</td>
-      <td>{{createdAt}}</td>
+      <td>{{prettifyDate createdAt}}</td>
       <td>
         {{#each regions}}
           {{this}}
@@ -14,13 +18,19 @@
       </td>
 
       <td>{{assortiment}}</td>
-      <td>play button</td>
       <td>
         <div class="media-row-controls">
-          {{#if mayEdit}}
+          <!-- {{#if mayEdit}} -->
+          <i type="button" class="glyphicon glyphicon-play-circle" id="button-delete-content"></i>
+          {{#unless disableButtonEdit}}
             <i type="button" class="glyphicon glyphicon-pencil" id="button-edit-content"></i>
-          {{/if}}
+          {{/unless}}
+          {{#unless disableButtonDelete}}
           <i type="button" class="glyphicon glyphicon-trash" id="button-delete-content"></i>
+          {{/unless}}
+          {{#if enableButtonRemove}}
+            <i type="button" class="glyphicon glyphicon-remove" id="button-remove-content"></i>
+          {{/if}}
         </div>
       </td>
     </tr>
