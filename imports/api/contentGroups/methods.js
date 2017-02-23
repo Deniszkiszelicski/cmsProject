@@ -9,6 +9,7 @@ Meteor.methods({
                           name: contentGroup.name,
                           duration: contentGroup.duration,
                           blocked: contentGroup.blocked,
+                          contentIds: contentGroup.contentIds,
                         },
           });
     } else {
@@ -16,6 +17,7 @@ Meteor.methods({
                           name: contentGroup.name,
                           duration: contentGroup.duration,
                           blocked: contentGroup.blocked,
+                          contentIds: contentGroup.contentIds,
                         },
           );
     }

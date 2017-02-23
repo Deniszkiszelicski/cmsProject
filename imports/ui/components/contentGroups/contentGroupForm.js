@@ -6,11 +6,17 @@ import './contentGroupForm.html';
 
 Template.contentGroupForm.onCreated(function () {
   this.isSelectContent = new ReactiveVar(false);
-  let contents;
-  if (!!this.data.mediaId) {
-    // content = Medien.findOne({ _id: this.data.contentId });
+  let includedContentObjects = [];
+  const includedContentIds = this.data.contentIds;
+  const sizeOfIncContentIds = includedContentIds.length;
+  if (sizeOfIncContentIds > 0) {
+    for (i = 0; i < sizeOfIncContentIds; i++) {
+      let tempContentId = includedContentIds[i];
+      let tempContent = Contents.findOne({ _id: tempContentId });
+      includedContentObjects.push(tempContent);
+    }
   }
-  this.contents = new ReactiveVar(contents);
+  this.includedContents = new ReactiveVar(includedContentObjects);
 });
 
 Template.contentGroupForm.onRendered(function () {
@@ -23,45 +29,44 @@ Template.contentGroupForm.helpers({
   isSelectContent: function isSelectContent() {
     return Template.instance().isSelectContent.get();
   },
+  includedContents: function includedContents() {
+    return Template.instance().includedContents.get();
+  },
 });
 
 Template.contentGroupForm.events({
   'click #btn-save-contentGroup': function saveContentGroupForm(event, templateInstance) {
     event.preventDefault();
+    let contents = templateInstance.includedContents.get();
+    const l = contents.length;
+    let contentIds = [];
+    if (l > 0) {
+      for (i = 0; i < l; i++) {
+        contentIds.push(contents[i]._id);
+      }
+    }
     const contentGroup = { _id: this._id,
                       name: $('#nameOfContentGroup').val(),
                       duration: $('#durationOfContentGroup').val(),
                       blocked: $('#blocked').is(':checked'),
+                      contentIds: contentIds,
                     };
-    console.log("saving CG contentGroup = ", contentGroup);
     Meteor.call('upsertContentGroup', contentGroup);
   },
   'click #btn-select-content': function selectContent(event, templateInstance) {
     event.preventDefault();
     templateInstance.isSelectContent.set(true);
   },
-  // 'click #btn-new-media': function createMedia(event, templateInstance) {
-  //   event.preventDefault();
-  //   templateInstance.isNewMedia.set(true);
-  // },
-  // 'click #button-close-media-form': function closeForm(event, templateInstance) {
-  //   event.preventDefault();
-  //   event.stopPropagation();
-  //   templateInstance.isNewMedia.set(false);
-  // },
   'click #button-close-content-collection': function closeMediaCollection(event, templateInstance) {
     event.preventDefault();
     templateInstance.isSelectContent.set(false);
   },
-  // 'click .content-form .button-save': function saveNewMedia(event, templateInstance) {
-  //   event.preventDefault();
-  //   templateInstance.isNewMedia.set(false);
-  //   const media = Medien.findOne({}, { sort: { 'createdAt': -1 } });
-  //   templateInstance.media.set(media);
-  // },
-  // 'click .content-form .media-row': function markAsSelected(event, templateInstance){
-  //   event.preventDefault();
-  //   templateInstance.media.set(this);
-  //   templateInstance.isSelectMedia.set(false);
-  // },
+  'click .content-group-form #content-collection-fieldset .content-row': function markAsSelected(event, templateInstance){
+    event.preventDefault();
+    let contents = templateInstance.includedContents.get();
+    contents.push(this);
+    templateInstance.includedContents.set(contents);
+    // templateInstance.media.set(this);
+    // templateInstance.isSelectMedia.set(false);
+  },
 });
