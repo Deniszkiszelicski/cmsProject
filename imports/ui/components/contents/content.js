@@ -3,9 +3,6 @@ import '../../../api/contents/methods';
 import '../../../api/contents/collection';
 import './content.html';
 
-// Meteor.subscribe('contents');
-// Meteor.subscribe('files.images.all');
-
 Template.content.onCreated(function onCreated() {
   this.isEditMode = new ReactiveVar(false);
 });
@@ -14,6 +11,24 @@ Template.content.helpers({
   mayEdit: function mayEdit() {
     return true;
   },
+  disableButtonDelete: function disableButtonDelete() {
+    if (!!this) {
+      return this.disableButtonDelete;
+    }
+    return false;
+  },
+  disableButtonEdit: function disableButtonEdit() {
+    if (!!this) {
+      return this.disableButtonEdit;
+    }
+    return false;
+  },
+  enableButtonRemove: function enableButtonRemove() {
+    if (!!this) {
+      return this.enableButtonRemove;
+    }
+    return false;
+  },
   isEditMode: function isEditMode() {
     return Template.instance().isEditMode.get();
   },
@@ -21,6 +36,14 @@ Template.content.helpers({
     let isEditMode = Template.instance().isEditMode.get();
     isEditMode = false;
     return isEditMode ? "warning" : "";
+  },
+  file: function () {
+    const media = Medien.findOne({ _id: this.mediaId });
+    let fileId = "";
+    if(!!media){
+      fileId = media.fileId;
+    }
+    return Images.findOne({ _id: fileId });
   },
 });
 

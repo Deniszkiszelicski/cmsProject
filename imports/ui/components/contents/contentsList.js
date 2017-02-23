@@ -7,10 +7,24 @@ import './content';
 Meteor.subscribe('contents');
 
 Template.contentsList.onCreated(function () {
+  this.filterText = new ReactiveVar();
 });
 
 Template.contentsList.helpers({
   contents: () => {
     return Contents.find().fetch();
   },
+  filteredContents: () => {
+    let filterText = Template.instance().filterText.get();
+    return Contents.find({name: { $regex: new RegExp(filterText), $options: 'i' }}).fetch();
+  },
+  // ifBothOfTwo: (arg1, arg2) => {
+  //   return arg1 && arg2;
+  // },
+});
+
+Template.contentsList.events({
+  'keyup #content-filter-input': function (event, templateInstance) {
+    templateInstance.filterText.set(event.currentTarget.value);
+  }
 });

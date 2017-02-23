@@ -24,7 +24,7 @@ Template.contentsPage.events({
     templateInstance.currentContent.set(this);
     templateInstance.isCreateNew.set(true);
   },
-  'click #button-close-content-form, click .button-save': function closeForm(event, templateInstance) {
+  'click #button-close-content-form, click #btn-save-content': function closeForm(event, templateInstance) {
     event.preventDefault();
     templateInstance.isCreateNew.set(false);
   },

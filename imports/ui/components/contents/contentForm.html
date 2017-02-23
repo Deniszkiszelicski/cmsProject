@@ -42,34 +42,61 @@
                   placeholder="Enter duration of content" value="{{this.duration}}">
                 </label>
               </section>
-              <button type="submit" class="btn-u btn-u-default" id="btn-select-media" style="margin-left: 12px; margin-bottom: 10px;">Select media</button>
-              <button type="submit" class="btn-u btn-u-default" id="btn-new-media" style="margin-left: 12px; margin-bottom: 10px;">Create new media</button>
+              <!-- <button type="submit" class="btn-u btn-u-default" id="btn-select-media" style="margin-left: 12px; margin-bottom: 10px;">Select media</button>
+              <button type="submit" class="btn-u btn-u-default" id="btn-new-media" style="margin-left: 12px; margin-bottom: 10px;">Create new media</button> -->
             </div>
           </fieldset>
 
-          {{#if isSelectMedia}}
+
 
           <fieldset>
-            <label class="label">Media collection</label>
-            <div class="row">
-              {{#each mediaCollection}}
-                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                  <a class="thumbnail" href="#">
-                      <!-- <img class="img-responsive" src="http://placehold.it/400x300" alt=""> -->
-                      <img class="img-responsive" src="{{this.path}}" alt="">
-                  </a>
-                </div>
-              {{/each}}
+            <label class="label">Media</label>
+            <button type="submit" class="btn-u btn-u-default" id="btn-select-media" style="margin-left: 12px; margin-bottom: 10px;">Select</button>
+            <button type="submit" class="btn-u btn-u-default" id="btn-new-media" style="margin-left: 12px; margin-bottom: 10px;">Create</button>
 
 
+
+            <div id="media-collection-fieldset">
+              {{#if isSelectMedia}}
+              <label class="label">Media collection</label>
+              <i type="button" class="glyphicon glyphicon-remove" id="button-close-media-collection"></i>
+              {{> medienList disableButtonNew=true}}
+
+              {{/if}}
             </div>
+
+
+
+            {{#if selectedMedia}}
+
+              <table class="table table-striped table-list">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Type</th>
+                    <th>Created date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{#unless isNewMedia}}
+                    {{#with selectedMedia}}
+                      {{> media}}
+                    {{/with}}
+                  {{/unless}}
+                </tbody>
+              </table>
+
+
+            {{/if}}
+
           </fieldset>
 
-          {{/if}}
-
           {{#if isNewMedia}}
-
-            {{> mediaForm}}
+            {{#with clearContext}}
+              {{> mediaForm}}
+            {{/with}}
 
           {{/if}}
 
@@ -131,26 +158,19 @@
 									<input type="text" name="finish" id="finish" placeholder="Finish date" class="hasDatepicker">
 								</label>
 							</section>
-              <!-- <section class="col col-6">
-                <div class="input-group date" data-provide="datepicker" id="start1">
-                  <input type="text" class="form-control">
-                  <div class="input-group-addon">
-                      <span class="glyphicon glyphicon-th"></span>
-                  </div>
-                </div>
-              </section> -->
+
               <section>
                 <label class="label" style="margin-left: 15px;">Days of week</label>
                 <!-- TODO: delete style -->
                 <!-- TODO: store days of week as an imbedded json object -->
                 <div class="row" style="margin-left: 15px;">
-                  <label class="checkbox-inline"><input type="checkbox" value="" id="monday">Monday</label>
-                  <label class="checkbox-inline"><input type="checkbox" value="" id="tuesday">Tuesday</label>
-                  <label class="checkbox-inline"><input type="checkbox" value="" id="wednesday">Wednesday</label>
-                  <label class="checkbox-inline"><input type="checkbox" value="" id="thursday">Thursday</label>
-                  <label class="checkbox-inline"><input type="checkbox" value="" id="friday">Friday</label>
-                  <label class="checkbox-inline"><input type="checkbox" value="" id="saturday">Saturday</label>
-                  <label class="checkbox-inline"><input type="checkbox" value="" id="sunday">Sunday</label>
+                  <label class="checkbox-inline"><input type="checkbox" {{getMonday}} id="monday">Monday</label>
+                  <label class="checkbox-inline"><input type="checkbox" {{getTuesday}} id="tuesday">Tuesday</label>
+                  <label class="checkbox-inline"><input type="checkbox" {{getWednesday}} id="wednesday">Wednesday</label>
+                  <label class="checkbox-inline"><input type="checkbox" {{getThursday}} id="thursday">Thursday</label>
+                  <label class="checkbox-inline"><input type="checkbox" {{getFriday}} id="friday">Friday</label>
+                  <label class="checkbox-inline"><input type="checkbox" {{getSaturday}} id="saturday">Saturday</label>
+                  <label class="checkbox-inline"><input type="checkbox" {{getSunday}} id="sunday">Sunday</label>
                 </div>
               </section>
               <section>
@@ -170,7 +190,7 @@
                   <!-- </div> -->
                 </label>
                 <br>
-                <label class="checkbox-inline" style="margin-left: 15px;"><input type="checkbox" value="" id="deleteAfterFinish">Delete after finish date</label>
+                <label class="checkbox-inline" style="margin-left: 15px;"><input type="checkbox" {{getDeleteAfterFinish}} id="deleteAfterFinish">Delete after finish date</label>
               </section>
             </div>
           </fieldset>
