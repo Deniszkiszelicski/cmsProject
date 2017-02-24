@@ -9,6 +9,7 @@ import '../../../api/registerUser/registerUser';
 import '../../components/regUsers/editUser';
 
 Meteor.subscribe('users');
+Meteor.subscribe('roles');
 
 Template.usersList.onCreated(function onCreated() {
   this.isUserEdit = new ReactiveVar(false);
@@ -16,11 +17,15 @@ Template.usersList.onCreated(function onCreated() {
 
 Template.usersList.helpers({
   users: () => {
-    console.log(Meteor.users.find().fetch());
+
     return Meteor.users.find().fetch();
 
 
   },
+  roleName: (id)=>{
+    return Roles.findOne({_id:id}).roleName;
+  },
+
 
   isUserEdit: function isUserEdit() {
     return Template.instance().isUserEdit.get();
@@ -46,6 +51,6 @@ Template.usersList.events({
   'click #closeEditUser': function closeEditUser(event, templateInstance){
     templateInstance.isUserEdit.set(false);
   },
-  
+
 
 });

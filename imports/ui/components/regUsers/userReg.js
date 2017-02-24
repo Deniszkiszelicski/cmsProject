@@ -9,6 +9,7 @@ import '../../../api/registerUser/registerUser';
 
 Meteor.subscribe('userInformation');
 Meteor.subscribe('players');
+Meteor.subscribe('networks');
 
 Template.registerUser2.helpers({
   playerInformation: () => {
@@ -16,7 +17,7 @@ Template.registerUser2.helpers({
   },
   rolesInformation: () =>{
     return Roles.find().fetch();
-  }
+  },
 });
 
 Template.registerUser2.events({
@@ -29,19 +30,19 @@ Template.registerUser2.events({
         var email = event.target.email.value;
         var password = event.target.password.value;
         var firstname = event.target.firstname.value;
-        var netName = event.target.netName.value;
         var assignedPlayers = [];
-        var role = $('#accountRole:checked').val();
+        var role = $('.assignedRole').children('#checked:checked').val();
+        console.log($('#accountRole').val());
 
         $('.assignedPlayersList').children('.checked:checked').each(function(){
          assignedPlayers.push($(this).val());
        });
       var user = { email:email, password:password, profile:
-         { name:firstname,netName:netName,assignedPlayers:assignedPlayers,role:role}};
+         { name:firstname,assignedPlayers:assignedPlayers,role:role}};
 
-    console.log(user);
 
-Accounts.createNewUser(user);
+
+Accounts.createUser(user);
 toastr.success("Data Saved", "Create User");
 
     // Meteor.call('createRoleData', { name: $('#firstname').val(),

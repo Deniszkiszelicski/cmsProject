@@ -47,7 +47,7 @@ Template.registerNetwork.events({
 
 
     reader.readAsDataURL(file); //read the file as arraybuffer
-    
+
 },
 
     });

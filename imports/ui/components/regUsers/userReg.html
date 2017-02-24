@@ -22,21 +22,27 @@
                       </div>
 
                        <div class="form-group col-lg-12">
-                           <label>Net Name</label>
-                           <input type="text" name="" class="form-control" id="netName" value="">
+
+                         <div class="col-xs-6">
+                         <div class="dropdown" >
+                           <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                             Choose a role
+                             <span class="caret"></span>
+                           </button>
+                           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                             {{#each rolesInformation}}
+                             <li class="list-group-item assignedRole"><input type="checkbox" aria-label="..." id="checked" value="{{_id}}">{{roleName}}
+
+
+                          </li>
+
+                             {{/each}}
+                           </ul>
+                         </div></div>
+
+                         
                        </div>
 
-                       <div class="form-group col-lg-12">
-                         <label>Role</label>
-                      <form>
-                        {{#each rolesInformation}}
-                        <label class="radio-inline accountRole">
-                          <input type="radio" name="optradio" id="accountRole" value="{{roleName}}">{{roleName}}
-                        </label>
-                        {{/each}}
-
-                      </form>
-                    </div>
                       <div class="col-xs-12">
          <h3 class="text-center">Assign Player/s</h3>
 
