@@ -36,8 +36,8 @@
         </fieldset>
 
         <fieldset>
-          <label class="label">Content</label>
-          <button type="submit" class="btn-u btn-u-default" id="btn-select-content" style="margin-left: 12px; margin-bottom: 10px;">Select</button>
+          <!-- <label class="label">Content</label> -->
+          <button type="submit" class="btn-u btn-u-default" id="btn-select-content" style="margin-left: 12px; margin-bottom: 10px;">Add content</button>
           <div id="content-collection-fieldset">
             {{#if isSelectContent}}
               <label class="label">Content collection</label>
@@ -52,6 +52,7 @@
                 Included contents
               </div>
               <div class="panel-body">
+                {{#HammerTouchArea gestureMap=includedContentsGestures}}
                 <table class="table table-striped table-list" id="includedContents-table">
                   <thead>
                     <tr>
@@ -67,12 +68,14 @@
                     </tr>
                   </thead>
                   <tbody>
-                    {{#each includedContents}}
-                      {{> content}}
-                    {{/each}}
+
+                      {{#each includedContents}}
+                        {{> content}}
+                      {{/each}}
+
                   </tbody>
                 </table>
-
+                {{/HammerTouchArea}}
               </div>
 
             </div>

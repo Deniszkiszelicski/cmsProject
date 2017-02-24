@@ -1,6 +1,99 @@
 <template name ="content">
+  <script type="text/javascript">
+  $(document).ready(function() {
 
-  <tr class="content-row">
+    $('.content-row').each(function(index) {
+        $(this)[0].addEventListener('dragstart', handleDragStart, false);
+        $(this)[0].addEventListener('drop', handleDrop, false);
+        $(this)[0].addEventListener('dragover', handleDragOver, false);
+    });
+
+    var draggedItem = null;
+
+    function handleDragStart(e) {
+        //console.log('start');
+        draggedItem = this;
+        e.dataTransfer.effectAllowed = 'move';
+    }
+
+    function handleDragOver(e) {
+        if (e.preventDefault) {
+            e.preventDefault(); // Necessary. Allows us to drop.
+        }
+        event.preventDefault();
+        e.dataTransfer.dropEffect = 'move'; // See the section on the DataTransfer object.
+        return false;
+    }
+
+    function handleDrop(e) {
+        if (e.stopPropagation) {
+            e.stopPropagation(); // Stops some browsers from redirecting.
+        }
+
+
+        if (draggedItem != this) { //MH - swap if we're not dragging the item onto itself
+        console.log("drop function was triggered, draggedItem = ", draggedItem);
+            var parent = this.parentNode,
+                insertionPoint, elem = this;
+
+            do {
+                elem = elem.nextSibling;
+            } while (elem && elem !== draggedItem);
+
+            insertionPoint = elem ? this : this.nextSibling;
+
+            console.log("drop function was triggered, insertionPoint = ", insertionPoint);
+            parent.insertBefore(draggedItem, insertionPoint);
+            draggedItem = null;
+        }
+
+        return false;
+    }
+    // function allowDrop(event) {
+    //   console.log("allowDrop function was triggered, event = ", event);
+    //   if (event.preventDefault) {
+    //     event.preventDefault(); // Necessary. Allows us to drop.
+    //   }
+    //   event.dataTransfer.dropEffect = 'move'; // See the section on the DataTransfer object.
+    //   return false;
+    // }
+    //
+    // function dragStart(event) {
+    //   console.log("drag function was triggered, event = ", event);
+    //   event.dataTransfer.setData("text", event.target);
+    //   draggedItem = this;
+    //   event.dataTransfer.effectAllowed = "move";
+    // }
+    //
+    // function drop(event) {
+    //   console.log("drop function was triggered, event = ", event);
+    //   event.preventDefault();
+    //   const data = event.dataTransfer.getData("text");
+    //   console.log("drop function was triggered, data = ", data);
+    //   console.log("drop function was triggered, draggedItem = ", draggedItem);
+    //   // if (data != this) { //MH - swap if we're not dragging the item onto itself
+    //   if (draggedItem != this) { //MH - swap if we're not dragging the item onto itself
+    //     var parent = this.parentNode,
+    //     insertionPoint, elem = this;
+    //
+    //     do {
+    //       elem = elem.nextSibling;
+    //     } while (elem && elem !== data);
+    //
+    //     insertionPoint = elem ? this : this.nextSibling;
+    //     // parent.insertBefore(data, insertionPoint);
+    //     parent.insertBefore(draggedItem, insertionPoint);
+    //     // data = null;
+    //     draggedItem = null;
+    //   }
+    // }
+  });
+  </script>
+
+  <!-- <tr class="content-row" draggable="true" ondragstart="dragStart(event)"
+    ondrop="drop(event)" ondragover="allowDrop(event)" id="{{_id}}"> -->
+  <tr class="content-row" draggable="true"
+      >
   <td><input type="checkbox"></td>
       <td>
         <div class="thumbnails thumbnail-style">
@@ -21,7 +114,7 @@
       <td>
         <div class="media-row-controls">
           <!-- {{#if mayEdit}} -->
-          <i type="button" class="glyphicon glyphicon-play-circle" id="button-delete-content"></i>
+          <i type="button" class="glyphicon glyphicon-play-circle" id="button-play-content"></i>
           {{#unless disableButtonEdit}}
             <i type="button" class="glyphicon glyphicon-pencil" id="button-edit-content"></i>
           {{/unless}}

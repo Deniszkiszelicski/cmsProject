@@ -20,10 +20,11 @@ Template.media.helpers({
     return Images.findOne({ _id: fileId });
   },
   mayEdit: function mayEdit() {
-    const email = Meteor.user().emails[0].address;
-    const role = UserInformation.findOne({"email": email}, {"role": 1, '_id': 0}).role;
-    const editPermission = Roles.findOne({"roleName": role}, {"editPlayer": 1, '_id': 0}).editPlayer;
-    return editPermission;
+    // const email = Meteor.user().emails[0].address;
+    // const role = UserInformation.findOne({"email": email}, {"role": 1, '_id': 0}).role;
+    // const editPermission = Roles.findOne({"roleName": role}, {"editPlayer": 1, '_id': 0}).editPlayer;
+    // return editPermission;
+    return true;
   },
   isEditMode: function isEditMode() {
     return Template.instance().isEditMode.get();
