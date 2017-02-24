@@ -1,57 +1,48 @@
 <template name ="contentsList">
   <div class="row">
-    <!-- <div class="col-md-10 col-md-offset-1"> -->
-      <div class="panel panel-default panel-table">
-        <div class="panel-heading">
-          <!-- <div class="row"> -->
-            <!-- <div class="col col-md-9"> -->
-              <span>List of Contents</span>
-            <!-- </div> -->
-            <!-- <div class="col col-md-3" id="heading-btn-row"> -->
-              {{#unless disableButtonAddToCG}}
-              <button type="button" class="btn btn-default">Add to Content-Group</button>
-              {{/unless}}
-              {{#unless isCreateNew}}
+    <div class="panel panel-default panel-table">
+      <div class="panel-heading">
+        <span>List of Contents</span>
+        {{#if enableButtonCloseListOfContents}}
+        <i type="button" class="glyphicon glyphicon-remove" id="button-close-contentList"></i>
+        {{/if}}
 
-              <!-- {{else}} -->
-                {{#unless disableButtonNew}}
-                  <button type="button" class="btn btn-default button-new">New content</button>
-                {{/unless}}
-              {{/unless}}
-            <!-- </div> -->
+        {{#unless disableButtonAddToCG}}
+        <button type="button" class="btn btn-default">Add to Content-Group</button>
+        {{/unless}}
 
-            <input type="text" class="form-control filter-input"
-              placeholder="Type text to filter by name" id="content-filter-input">
+        {{#unless isCreateNew}}
+          {{#unless disableButtonNew}}
+          <button type="button" class="btn btn-default button-new">New content</button>
+          {{/unless}}
+        {{/unless}}
 
-
-
-          <!-- </div> -->
-
-        </div>
-        <div class="panel-body">
-          <table class="table table-striped table-list">
-            <thead>
-              <tr>
-                <th></th>
-                <th></th>
-                <th>Name</th>
-                <th>Duration</th>
-                <th>Type</th>
-                <th>Created at</th>
-                <th>Region</th>
-                <th>Sortiment</th>
-                <th>Controls</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- {{#each contents}} -->
-              {{#each filteredContents}}
-                {{> content}}
-            	{{/each}}
-            </tbody>
-          </table>
-        </div>
+        <input type="text" class="form-control filter-input"
+        placeholder="Type text to filter by name" id="content-filter-input">
       </div>
-    <!-- </div> -->
+      <div class="panel-body">
+        <table class="table table-striped table-list">
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th>Name</th>
+              <th>Duration</th>
+              <th>Type</th>
+              <th>Created at</th>
+              <th>Region</th>
+              <th>Sortiment</th>
+              <th>Controls</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each filteredContents}}
+              {{> content}}
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
   </div>
 </template>

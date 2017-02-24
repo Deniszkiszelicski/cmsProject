@@ -41,6 +41,17 @@ body{
   font-size: 1em;
 }
 
+#button-close-contentList{
+  margin-top: 0px;
+  margin-right: 0px;
+  color: red;
+  cursor: pointer;
+  float: right;
+  /*top: 1px;
+  right: 1px;*/
+  font-size: 0.75em;
+}
+
 #media-collection-fieldset, .sky-form{
   position: relative;
 }

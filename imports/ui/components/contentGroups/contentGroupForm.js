@@ -82,7 +82,11 @@ Template.contentGroupForm.events({
     event.preventDefault();
     templateInstance.isSelectContent.set(true);
   },
-  'click #button-close-content-collection': function closeMediaCollection(event, templateInstance) {
+  // 'click #button-close-content-collection': function closeMediaCollection(event, templateInstance) {
+  //   event.preventDefault();
+  //   templateInstance.isSelectContent.set(false);
+  // },
+  'click #button-close-contentList': function closeContentCollection(event, templateInstance) {
     event.preventDefault();
     templateInstance.isSelectContent.set(false);
   },
