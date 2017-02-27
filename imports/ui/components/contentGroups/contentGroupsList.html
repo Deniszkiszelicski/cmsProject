@@ -3,7 +3,7 @@
     <!-- <div class="col-md-10 col-md-offset-1"> -->
       <div class="panel panel-default panel-table">
         <div class="panel-heading">
-          <span>List of content-groups</span>
+          <span>{{options.header}}</span>
           {{#unless isCreateNew}}
             <button type="button" class="btn btn-default button-new">New CG</button>
           {{/unless}}
@@ -23,11 +23,10 @@
               </tr>
             </thead>
             <tbody>
-              <!-- {{#each medien}} -->
               {{#each filteredContentGroups}}
-                {{#with this}}
+                <!-- {{#with this}} -->
                   {{> contentGroup}}
-                {{/with}}
+                <!-- {{/with}} -->
             	{{/each}}
             </tbody>
           </table>

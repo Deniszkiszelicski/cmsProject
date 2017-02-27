@@ -11,9 +11,14 @@ Template.contentGroupsList.onCreated(function () {
 });
 
 Template.contentGroupsList.helpers({
-  filteredContentGroups: () => {
-    let filterText = Template.instance().filterText.get();
-    return ContentGroups.find({name: { $regex: new RegExp(filterText), $options: 'i' }}).fetch();
+  filteredContentGroups: function filteredContentGroups() {
+    const contentGroups = this.contentGroups;
+    if (!!contentGroups) {
+      return contentGroups;
+    } else {
+      let filterText = Template.instance().filterText.get();
+      return ContentGroups.find({name: { $regex: new RegExp(filterText), $options: 'i' }}).fetch();
+    }
   },
 });
 

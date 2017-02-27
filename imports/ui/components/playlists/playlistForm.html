@@ -18,11 +18,11 @@
                 placeholder="Enter id of player" value="{{this.playerId}}">
               </label>
             </section>
-            <section class="col col-5">
+            <section class="col col-3">
               <label class="label">Player name</label>
               {{playerName}}
             </section>
-            <section class="col col-2">
+            <section class="col col-3">
               <label class="label">Duration in total</label>
               <label class="input">
                 <!-- <input type="text" name="durationOfContentGroup" id="durationInTotal"
@@ -30,7 +30,7 @@
                 15 min(s)
               </label>
             </section>
-            <section class="col col-2">
+            <section class="col col-3">
               <label class="label">Duration of private</label>
               <label class="input">
                 <!-- <input type="text" name="durationOfContentGroup" id="durationOfPrivate"
@@ -42,11 +42,20 @@
         </fieldset>
 
         <fieldset>
-          <button type="submit" class="btn-u btn-u-default" id="btn-show-linkedContentGroups" style="margin-left: 12px; margin-bottom: 10px;">Add content-group</button>
+          <button type="submit" class="btn-u btn-u-default" id="btn-show-linkedContentGroups" style="margin-left: 12px; margin-bottom: 10px;">Manage content-groups</button>
           <div id="contentGroup-collection-fieldset">
             {{#if isShowCGs}}
-              {{> contentGroupsList disableButtonNew=true disableButtonAddToCG=true enableButtonCloseListOfContents=true}}
+              {{#with allContentGroups}}
+                {{> contentGroupsList}}
+              {{/with}}
             {{/if}}
+          </div>
+        </fieldset>
+        <fieldset>
+          <div id="contentGroup-collection-included-fieldset">
+            {{#with includedContentGroups}}
+              {{> contentGroupsList}}
+            {{/with}}
           </div>
         </fieldset>
         <footer>

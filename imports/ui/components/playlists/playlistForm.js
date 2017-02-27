@@ -29,18 +29,15 @@ Template.playlistForm.helpers({
     return Template.instance().isShowCGs.get();
   },
   includedContentGroups: function includedContentGroups() {
-    let includedCGsWithExtra = Template.instance().includedCGs.get();
-    if (!!includedCGsWithExtra) {
-      const l = includedCGsWithExtra.length;
-      if (l > 0) {
-        for (i = 0; i < l; i++) {
-          includedCGsWithExtra[i]["disableButtonDelete"] = true;
-          includedCGsWithExtra[i]["disableButtonEdit"] = true;
-          includedCGsWithExtra[i]["enableButtonRemove"] = true;
-        }
-      }
-    }
-    return includedCGsWithExtra;
+    const includedCGs = Template.instance().includedCGs.get();
+    const options = { header: "Included content-groups", enableButtonDelete: false, enableButtonEdit: false, enableButtonRemove: true};
+    const includedCGsWithOptions = { contentGroups: includedCGs, options: options};
+    return includedCGsWithOptions;
+  },
+  allContentGroups: function allContentGroups() {
+    const options = { header: "List of all content-groups", enableButtonDelete: true, enableButtonEdit: true, enableButtonRemove: false};
+    const allCGsWithOptions = { options: options};
+    return allCGsWithOptions;
   },
   playerName: () => {
     let playerId = Template.instance().playerId.get();
@@ -50,7 +47,7 @@ Template.playlistForm.helpers({
     } else {
       return "";
     }
-  }
+  },
 });
 
 Template.playlistForm.events({

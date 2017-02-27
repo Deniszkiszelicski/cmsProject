@@ -16,6 +16,11 @@ Template.contentGroupsPage.helpers({
   getCurrentContentGroup: function getContentGroup() {
     return Template.instance().currentContentGroup.get();
   },
+  options: function getOptions() {
+    const options = { header: "List of all content-groups", enableButtonDelete: true, enableButtonEdit: true, enableButtonRemove: false};
+    const includedCGsWithOptions = { options: options};
+    return includedCGsWithOptions;
+  },
 });
 
 Template.contentGroupsPage.events({
