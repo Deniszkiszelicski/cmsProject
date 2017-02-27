@@ -8,6 +8,7 @@ Meteor.subscribe('playlists');
 
 Template.playlistForm.onCreated(function () {
   this.isShowCGs = new ReactiveVar(false);
+  this.playerId = new ReactiveVar(this.data.playerId);
   let includedCGObjects = [];
   const includedCGIds = this.data.contentGroupIds;
   if(!!includedCGIds) {
@@ -41,6 +42,15 @@ Template.playlistForm.helpers({
     }
     return includedCGsWithExtra;
   },
+  playerName: () => {
+    let playerId = Template.instance().playerId.get();
+    let playerObject = Players.findOne({ playerId: playerId });
+    if (!!playerObject) {
+      return playerObject.name
+    } else {
+      return "";
+    }
+  }
 });
 
 Template.playlistForm.events({
@@ -69,5 +79,9 @@ Template.playlistForm.events({
                       contentGroupIds: contentGroupIds,
                     };
     Meteor.call('upsertPlaylist', playlist);
+  },
+  'keyup #playerId, mouseout #playerId': function storeSelectedPlayerId(event, templateInstance){
+    event.preventDefault();
+    templateInstance.playerId.set(event.currentTarget.value);
   },
 });
