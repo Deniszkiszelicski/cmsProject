@@ -1,4 +1,39 @@
 <template name="playlistsList">
   Hello from playlistsList template!
+  <div class="row">
+    <!-- <div class="col-md-10 col-md-offset-1"> -->
+    <div class="panel panel-default panel-table">
+      <div class="panel-heading">
+        <span>List of playlists</span>
+        {{#unless isCreateNew}}
+        <button type="button" class="btn btn-default button-new">New playlist</button>
+        {{/unless}}
 
-</template>
+        <input type="text" class="form-control filter-input"
+        placeholder="Type text to filter by Player-Id" id="playlist-filter-input">
+      </div>
+      <div class="panel-body">
+        <table class="table table-striped table-list">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Player name</th>
+              <th>Player-ID</th>
+              <th>Content-groups</th>
+              <th>Controls</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- {{#each medien}} -->
+            {{#each filteredPlaylists}}
+            <!-- {{#with this}} -->
+            {{> playlist}}
+            <!-- {{/with}} -->
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </div>
+
+  </template>

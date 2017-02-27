@@ -1,10 +1,11 @@
 <template name="playlistsPage">
   {{#if isCreateNew}}
-
+    {{#with getCurrentPlaylist}}
       {{> playlistForm}}
-    
+    {{/with}}
+  {{else}}
+    <br>
+    {{> playlistsList isCreateNew=isCreateNew}}
   {{/if}}
-  <br>
-  {{> playlistsList isCreateNew=isCreateNew}}
   <br>
 </template>
