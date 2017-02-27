@@ -1,4 +1,4 @@
-<template name ="rolesList">
+<template name ="rolesList"><br>
 
 
   <!-- Modal -->
@@ -25,10 +25,10 @@
     {{>roleEdit}}
   {{/if}}
   <div class="row">
-    <div class="col-md-10 col-md-offset-1">
+    <!-- <div class="col-md-10 col-md-offset-1"> -->
       <div class="panel panel-default panel-table">
         <div class="panel-heading">
-          <h3>List of roles</h3>
+          <span>List of roles</span>
           <button type="button" class="btn btn-default" style="float:right;" id="btnRole">Create New role</button>
         </div>
         {{#each roles}}
@@ -62,6 +62,6 @@
         </div>
           {{/each}}
       </div>
-    </div>
+    <!-- </div> -->
   </div>
 </template>

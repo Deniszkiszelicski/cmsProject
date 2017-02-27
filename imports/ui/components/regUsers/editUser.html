@@ -1,10 +1,11 @@
 <template name="editUser2">
   <div class="row">
-      <div class="col-md-10 col-md-offset-1">
+      <!-- <div class="col-md-10 col-md-offset-1"> -->
           <form class="edit">
               <div class="panel panel-default">
                   <div class="panel-heading">
-                      <h3>Edit User</h3><i type="button" class="glyphicon glyphicon-remove" style="color:red;" id="closeEditUser"></i>
+                      <span>Edit User</span>
+                      <i type="button" class="glyphicon glyphicon-remove" style="color:red;" id="closeEditUser"></i>
                   </div>
                   <div class="panel-body">
                     {{#with user}}
@@ -58,10 +59,10 @@
 
                   </div>
                   <div class="panel-footer">
-                      <button type="submit" class="btn btn-default">Update</button>
+                      <button type="submit" class="btn btn-default">Save</button>
                   </div>
               </div>
           </form>
-      </div>
+      <!-- </div> -->
   </div>
 </template>
