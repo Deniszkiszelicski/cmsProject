@@ -1,4 +1,26 @@
 <template name ="rolesList">
+
+
+  <!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Role</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure to delete Role?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="deleteRlist" data-dismiss="modal">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
   {{#if isRoleEdit}}
     {{>roleEdit}}
   {{/if}}
@@ -11,8 +33,12 @@
         </div>
         {{#each roles}}
         <div class="panel-body">
-          <table class="table table-striped">
-
+          <table class="table table-striped table-list">
+            <thead>
+              <tr>
+                <th></th>
+              </tr>
+            </thead>
             <tbody>
               <div>
               <tr class="col-sm-6">
@@ -24,9 +50,10 @@
 
               </tr>
               <tr class="col-sm-6">
+                <i type="button" class="glyphicon glyphicon-pencil" id="editRList" style="float: right;"></i>
+                  <i type="button" class="glyphicon glyphicon-trash" style="float: right;" data-toggle="modal" data-target="#myModal" id="selectDel"></i>
 
-                <button type="button" class="btn btn-default" id="editRList">Edit</button>
-                  <button type="button" class="btn btn-default" id="deleteRlist">Delete</button>
+
               </tr>
               </div>
 

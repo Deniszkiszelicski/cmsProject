@@ -1,4 +1,47 @@
 <template name ="usersList">
+
+  <!-- modal -->
+
+  <!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                  <h4 id="myModalLabel1" class="modal-title">Delete User</h4>
+              </div>
+              <div class="modal-body">
+                  <h4>Are you sure to delete User?</h4>
+
+              </div>
+              <div class="modal-footer">
+                  <button data-dismiss="modal" class="btn-u btn-u-default" type="button">Close</button>
+                  <button class="btn-u" type="button" id="deleteUser" data-dismiss="modal">Save changes</button>
+              </div>
+            </div>
+      </div>
+  </div> -->
+  <!-- End Modal -->
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>Are you sure to delete User?</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="deleteUser" data-dismiss="modal">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
   {{#if isUserEdit}}
     {{>editUser2}}
   {{/if}}
@@ -31,8 +74,8 @@
                   {{roleName profile.role}}
                 </td>
 
-                <td>{{emails.[0].address}}<button type="button" class="btn btn-default" id="editUser" style="float: right;">Edit</button>
-                  <button type="button" class="btn btn-default" id="deleteUser" style="float: right;">Delete</button>
+                <td>{{emails.[0].address}}<i type="button" class="glyphicon glyphicon-pencil" id="editUser" style="float: right;"></i>
+                  <i type="button" class="glyphicon glyphicon-trash" style="float: right;" data-toggle="modal" data-target="#myModal" id="selectUserDel"></i>
                 </td>
               </tr>
             	{{/each}}

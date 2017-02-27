@@ -37,8 +37,8 @@ Template.usersList.events({
     event.preventDefault();
 
 
-    Meteor.users.remove({_id:this._id});
-
+    Meteor.users.remove({_id:Session.get("selectedUser")});
+    toastr.success("Deleted", "User");
 
   },
   'click #editUser': function editItem(event, templateInstance) {
@@ -49,6 +49,13 @@ Template.usersList.events({
 
   },
   'click #closeEditUser': function closeEditUser(event, templateInstance){
+    templateInstance.isUserEdit.set(false);
+  },
+  'click #selectUserDel': function selectUserDel(event){
+    event.preventDefault();
+    Session.set('selectedUser', this._id);
+  },
+  'submit .edit': function closeEditForm(event, templateInstance){
     templateInstance.isUserEdit.set(false);
   },
 

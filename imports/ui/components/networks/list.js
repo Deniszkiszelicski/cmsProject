@@ -32,7 +32,7 @@ Template.networksList.events({
   'click #deleteNlist': function deleteNetwork(event) {
 
     event.preventDefault();
-    Meteor.call('deleteNetwork', this._id);
+    Meteor.call('deleteNetwork',{_id:Session.get('selectedNetwork')});
 
 
 },
@@ -53,6 +53,10 @@ Template.networksList.events({
     'click #closeEditList':function closeEditList(event,templateInstance){
       templateInstance.isEdit.set(false);
     },
+    'click #selectDel': function selectNetToDelete(event){
+      event.preventDefault();
+      Session.set('selectedNetwork', this._id);
+    }
 
 
 

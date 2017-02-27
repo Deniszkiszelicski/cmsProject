@@ -27,8 +27,8 @@ Template.rolesList.events({
 'click #deleteRlist': function deleteNetwork(event) {
 
   event.preventDefault();
-  Meteor.call('deleteRole', this._id);
-
+  Meteor.call('deleteRole',{_id:Session.get("selectedRole")});
+  
 },
 
 'click #editRList':
@@ -45,6 +45,10 @@ Template.rolesList.events({
 },
 'click #closeEditRole': function closeEditRole(event, templateInstance){
   templateInstance.isRoleEdit.set(false);
+},
+'click #selectDel': function selectRoleToDelete(event){
+  event.preventDefault();
+  Session.set('selectedRole', this._id);
 }
 
 });

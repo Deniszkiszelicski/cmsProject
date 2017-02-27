@@ -9,20 +9,28 @@ import '../../components/regUsers/userReg';
 import '../../components/regUsers/userList';
 
 
-Meteor.subscribe('userInformation');
+
 Meteor.subscribe('users');
+Meteor.subscribe('roles');
+Meteor.subscribe('players');
 
 
 Template.editUser2.helpers({
   user: () => {
     return Meteor.users.findOne({_id:Session.get('id')});
   },
-  rolesInformation: () =>{
-    return Roles.find().fetch();
-  },
+
   playerInformation: () => {
     return Players.find().fetch();
   },
+  // roleName: (id)=>{
+  //   return Roles.findOne({_id:id}).roleName;
+  //
+  // },
+  rolesInformation: () =>{
+    return Roles.find().fetch();
+  },
+
 
 });
 
@@ -34,7 +42,6 @@ Template.editUser2.events({
     var email = event.target.email.value;
     var password = event.target.password.value;
     var firstname = event.target.firstname.value;
-    var netName = event.target.netName.value;
     var assignedPlayers = [];
     var role = $('#accountRole:checked').val();
 
@@ -42,12 +49,12 @@ Template.editUser2.events({
      assignedPlayers.push($(this).val());
     });
     var user = { email:email, password:password, profile:
-     { name:firstname,netName:netName,assignedPlayers:assignedPlayers,role:role}};
+     { name:firstname,assignedPlayers:assignedPlayers,role:role}};
 
     console.log(user);
 
     Meteor.users.update({_id:Session.get('id')},{$set:(user)});
-    toastr.success("Data Saved", "Create User");
+    toastr.success("Data Saved", "Edit User");
   },
 
 });
