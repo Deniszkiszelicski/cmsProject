@@ -1,8 +1,8 @@
 <template name="playlistsPage">
   {{#if isCreateNew}}
-    {{#with getCurrentContent}}
+
       {{> playlistForm}}
-    {{/with}}
+    
   {{/if}}
   <br>
   {{> playlistsList isCreateNew=isCreateNew}}
