@@ -19,7 +19,8 @@ Template.contentGroupsPage.helpers({
   options: function getOptions() {
     const options = { header: "List of all content-groups", enableButtonDelete: true,
                       enableButtonEdit: true, enableButtonRemove: false,
-                      enableButtonNewCG: true, enableFilter: true };
+                      enableButtonNewCG: true, enableFilter: true,
+                      enableButtonRemove: false };
     const includedCGsWithOptions = { options: options};
     return includedCGsWithOptions;
   },

@@ -32,14 +32,16 @@ Template.playlistForm.helpers({
     const includedCGs = Template.instance().includedCGs.get();
     const options = { header: "Included content-groups", enableButtonDelete: false,
                       enableButtonEdit: false, enableButtonRemove: true,
-                      enableButtonNewCG: false, enableFilter: false };
+                      enableButtonNewCG: false, enableFilter: false,
+                      enableButtonRemove: true };
     const includedCGsWithOptions = { contentGroups: includedCGs, options: options};
     return includedCGsWithOptions;
   },
   allContentGroups: function allContentGroups() {
     const options = { header: "List of all content-groups", enableButtonDelete: false,
                       enableButtonEdit: false, enableButtonRemove: false,
-                      enableButtonNewCG: false, enableFilter: true };
+                      enableButtonNewCG: false, enableFilter: true,
+                      enableButtonRemove: false };
     const allCGsWithOptions = { options: options };
     return allCGsWithOptions;
   },
@@ -85,4 +87,13 @@ Template.playlistForm.events({
     event.preventDefault();
     templateInstance.playerId.set(event.currentTarget.value);
   },
+  'click #button-remove-contentGroup': function removeCG(event, templateInstance) {
+    event.preventDefault();
+    let includedCGs = templateInstance.includedCGs.get();
+    const index = includedCGs.indexOf(this);
+    if (index > -1) {
+      includedCGs.splice(index, 1);
+    }
+    templateInstance.includedCGs.set(includedCGs);
+  }
 });
