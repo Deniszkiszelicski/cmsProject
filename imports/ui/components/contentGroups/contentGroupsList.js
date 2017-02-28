@@ -13,12 +13,23 @@ Template.contentGroupsList.onCreated(function () {
 Template.contentGroupsList.helpers({
   filteredContentGroups: function filteredContentGroups() {
     const contentGroups = this.contentGroups;
+    let contentGroupsWithOptions;
     if (!!contentGroups) {
-      return contentGroups;
+      contentGroupsWithOptions = contentGroups;
     } else {
       let filterText = Template.instance().filterText.get();
-      return ContentGroups.find({name: { $regex: new RegExp(filterText), $options: 'i' }}).fetch();
+      contentGroupsWithOptions = ContentGroups.find({name: { $regex: new RegExp(filterText), $options: 'i' }}).fetch();
     }
+    // contentGroupsWithOptions = {  };
+    const l = contentGroupsWithOptions.length;
+    if (l > 0) {
+      for (i = 0; i < l; i++) {
+        contentGroupsWithOptions[i]["enableButtonDelete"] = this.options.enableButtonDelete;
+        contentGroupsWithOptions[i]["enableButtonEdit"] = this.options.enableButtonEdit;
+        contentGroupsWithOptions[i]["enableButtonRemove"] = this.options.enableButtonRemove;
+      }
+    }
+    return contentGroupsWithOptions;
   },
 });
 

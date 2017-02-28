@@ -30,13 +30,17 @@ Template.playlistForm.helpers({
   },
   includedContentGroups: function includedContentGroups() {
     const includedCGs = Template.instance().includedCGs.get();
-    const options = { header: "Included content-groups", enableButtonDelete: false, enableButtonEdit: false, enableButtonRemove: true};
+    const options = { header: "Included content-groups", enableButtonDelete: false,
+                      enableButtonEdit: false, enableButtonRemove: true,
+                      enableButtonNewCG: false, enableFilter: false };
     const includedCGsWithOptions = { contentGroups: includedCGs, options: options};
     return includedCGsWithOptions;
   },
   allContentGroups: function allContentGroups() {
-    const options = { header: "List of all content-groups", enableButtonDelete: true, enableButtonEdit: true, enableButtonRemove: false};
-    const allCGsWithOptions = { options: options};
+    const options = { header: "List of all content-groups", enableButtonDelete: false,
+                      enableButtonEdit: false, enableButtonRemove: false,
+                      enableButtonNewCG: false, enableFilter: true };
+    const allCGsWithOptions = { options: options };
     return allCGsWithOptions;
   },
   playerName: () => {
