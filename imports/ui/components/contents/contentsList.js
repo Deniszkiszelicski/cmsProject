@@ -14,13 +14,25 @@ Template.contentsList.helpers({
   contents: () => {
     return Contents.find().fetch();
   },
-  filteredContents: () => {
-    let filterText = Template.instance().filterText.get();
-    return Contents.find({name: { $regex: new RegExp(filterText), $options: 'i' }}).fetch();
+  filteredContents: function filteredContents() {
+    const contentIds = this.contents;
+    let contentsWithOptions;
+    if (!!contentIds) {
+      const contents = Contents.find({ _id: { "$in" : contentIds } }).fetch();
+      contentsWithOptions = contents;
+    } else {
+      let filterText = Template.instance().filterText.get();
+      contentsWithOptions = Contents.find({name: { $regex: new RegExp(filterText), $options: 'i' }}).fetch();
+    }
+    const l = contentsWithOptions.length;
+    if (l > 0) {
+      for (i = 0; i < l; i++) {
+        contentsWithOptions[i]["enableButtonDelete"] = this.options.enableButtonDelete;
+        contentsWithOptions[i]["enableButtonEdit"] = this.options.enableButtonEdit;
+      }
+    }
+    return contentsWithOptions;
   },
-  // ifBothOfTwo: (arg1, arg2) => {
-  //   return arg1 && arg2;
-  // },
 });
 
 Template.contentsList.events({

@@ -16,6 +16,14 @@ Template.contentsPage.helpers({
   getCurrentContent: function getContent() {
     return Template.instance().currentContent.get();
   },
+  options: function getOptions() {
+    const options = { header: "List of all contents", enableButtonDelete: true,
+                      enableButtonEdit: true, enableButtonCloseListOfContents: false,
+                      enableButtonNewContent: !Template.instance().isCreateNew.get(),
+                      enableFilter: true, enableButtonAddToCG: true };
+    const includedCGsWithOptions = { options: options };
+    return includedCGsWithOptions;
+  },
 });
 
 Template.contentsPage.events({

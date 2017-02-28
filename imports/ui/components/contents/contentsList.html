@@ -2,20 +2,20 @@
   <div class="row">
     <div class="panel panel-default panel-table">
       <div class="panel-heading">
-        <span>List of Contents</span>
-        {{#if enableButtonCloseListOfContents}}
+        <span>{{options.header}}</span>
+        {{#if options.enableButtonCloseListOfContents}}
         <i type="button" class="glyphicon glyphicon-remove" id="button-close-contentList"></i>
         {{/if}}
 
-        {{#unless disableButtonAddToCG}}
+        {{#if options.enableButtonAddToCG}}
         <button type="button" class="btn btn-default">Add to Content-Group</button>
-        {{/unless}}
+        {{/if}}
 
-        {{#unless isCreateNew}}
-          {{#unless disableButtonNew}}
+        {{#if options.enableButtonNewContent}}
+          <!-- {{#unless disableButtonNew}} -->
           <button type="button" class="btn btn-default button-new">New content</button>
-          {{/unless}}
-        {{/unless}}
+          <!-- {{/unless}} -->
+        {{/if}}
 
         <input type="text" class="form-control filter-input"
         placeholder="Type text to filter by name" id="content-filter-input">

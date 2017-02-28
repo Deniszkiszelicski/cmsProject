@@ -115,12 +115,12 @@
         <div class="media-row-controls">
           <!-- {{#if mayEdit}} -->
           <i type="button" class="glyphicon glyphicon-play-circle" id="button-play-content"></i>
-          {{#unless disableButtonEdit}}
+          {{#if enableButtonEdit}}
             <i type="button" class="glyphicon glyphicon-pencil" id="button-edit-content"></i>
-          {{/unless}}
-          {{#unless disableButtonDelete}}
+          {{/if}}
+          {{#if enableButtonDelete}}
           <i type="button" class="glyphicon glyphicon-trash" id="button-delete-content"></i>
-          {{/unless}}
+          {{/if}}
           {{#if enableButtonRemove}}
             <i type="button" class="glyphicon glyphicon-remove" id="button-remove-content"></i>
           {{/if}}

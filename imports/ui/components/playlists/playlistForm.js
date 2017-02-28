@@ -37,6 +37,20 @@ Template.playlistForm.helpers({
     const includedCGsWithOptions = { contentGroups: includedCGs, options: options};
     return includedCGsWithOptions;
   },
+  includedContents: function includedContents() {
+    const includedCGs = Template.instance().includedCGs.get();
+    let includedContentIds = [];
+    for (i = 0; i < includedCGs.length; i++) {
+      includedContentIds = includedContentIds.concat(includedCGs[i].contentIds);
+    }
+    let includedContentObjects;
+    const options = { header: "Included contents", enableButtonDelete: false,
+                      enableButtonEdit: false, enableButtonRemove: true,
+                      enableButtonNewCG: false, enableFilter: false,
+                      enableButtonRemove: true };
+    const includedContentsWithOptions = { contents: includedContentIds, options: options};
+    return includedContentsWithOptions;
+  },
   allContentGroups: function allContentGroups() {
     const options = { header: "List of all content-groups", enableButtonDelete: false,
                       enableButtonEdit: false, enableButtonRemove: false,
