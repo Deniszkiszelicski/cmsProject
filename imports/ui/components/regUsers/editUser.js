@@ -9,7 +9,6 @@ import '../../components/regUsers/userReg';
 import '../../components/regUsers/userList';
 
 
-
 Meteor.subscribe('users');
 Meteor.subscribe('roles');
 Meteor.subscribe('players');
@@ -23,14 +22,21 @@ Template.editUser2.helpers({
   playerInformation: () => {
     return Players.find().fetch();
   },
-  // roleName: (id)=>{
-  //   return Roles.findOne({_id:id}).roleName;
-  //
-  // },
+  roleName: (id)=>{
+    return Roles.findOne({_id:id}).roleName;
+
+  },
   rolesInformation: () =>{
     return Roles.find().fetch();
   },
+  playerName : (id) =>{
+    return Players.findOne({_id:id}).name;
+  
 
+  },
+  playerIds : (id) =>{
+    return Players.findOne({_id:id}).playerId;
+  }
 
 });
 

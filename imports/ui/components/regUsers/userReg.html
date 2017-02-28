@@ -4,7 +4,7 @@
           <form class="register">
               <div class="panel panel-default">
                   <div class="panel-heading">
-                    <span>User Registration</span>       
+                    <span>User Registration</span>
                       <i type="button" class="glyphicon glyphicon-remove" style="color:red;" id="closeUserCreate"></i>
                   </div>
                   <div class="panel-body">
@@ -32,7 +32,7 @@
                            </button>
                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                              {{#each rolesInformation}}
-                             <li class="list-group-item assignedRole"><input type="checkbox" aria-label="..." id="checked" value="{{_id}}">{{roleName}}
+                             <li class="list-group-item assignedRole"><input type="radio" name="optradio" aria-label="..." id="checked" value="{{_id}}">{{roleName}}
 
 
                           </li>
