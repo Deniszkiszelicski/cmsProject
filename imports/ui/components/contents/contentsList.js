@@ -16,10 +16,20 @@ Template.contentsList.helpers({
   },
   filteredContents: function filteredContents() {
     const contentIds = this.contents;
-    let contentsWithOptions;
+    let contentsWithOptions = [];
     if (!!contentIds) {
       const contents = Contents.find({ _id: { "$in" : contentIds } }).fetch();
-      contentsWithOptions = contents;
+      //place content objects according to received content ids
+      const l = contentIds.length;
+      for (i = 0; i < l; i++) {
+        const currentContentId = contentIds[i];
+        const ll = contents.length;
+        for (j = 0; j < ll; j++) {
+          if (contents[j]._id == currentContentId) {
+            contentsWithOptions.push(contents[j]);
+          }
+        }
+      }
     } else {
       let filterText = Template.instance().filterText.get();
       contentsWithOptions = Contents.find({name: { $regex: new RegExp(filterText), $options: 'i' }}).fetch();
