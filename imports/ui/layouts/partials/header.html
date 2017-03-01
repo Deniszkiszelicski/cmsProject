@@ -54,6 +54,9 @@
   										<li><a href="homeAdmin">Home Page Administration</a></li>
   									</ul>
   								</li>
+                  {{#if showNetworkSelection}}
+                    {{> networkSelection}}
+                  {{/if}}
                   {{> logoutButton}}
   							</ul>
   						</div>
