@@ -5,7 +5,10 @@
     {{/with}}
   {{/if}}
   <br>
-  {{> contentsList isCreateNew=isCreateNew}}
+  {{#with options}}
+    <!-- {{> contentsList isCreateNew=isCreateNew}} -->
+    {{> contentsList}}
+  {{/with}}
   <br>
 
 </template>

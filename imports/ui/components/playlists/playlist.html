@@ -1,0 +1,18 @@
+<template name ="playlist">
+
+  <tr>
+  <td><input type="checkbox"></td>
+
+    <td>{{playerName}}</td>
+    <td>{{playerId}}</td>
+    <td>{{contentGroupNames}}</td>
+    <td>
+      <div class="row-controls">
+        {{#if mayEdit}}
+          <i type="button" class="glyphicon glyphicon-pencil" id="button-edit-playlist"></i>
+        {{/if}}
+        <i type="button" class="glyphicon glyphicon-trash" id="button-delete-playlist"></i>
+      </div>
+    </td>
+  </tr>
+</template>
