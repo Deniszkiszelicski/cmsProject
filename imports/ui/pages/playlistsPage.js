@@ -9,11 +9,12 @@ Meteor.subscribe('playlists');
 Template.playlistsPage.onCreated(function () {
   this.isCreateNew = new ReactiveVar(false);
   this.currentPlaylist = new ReactiveVar();
+  Session.set("isDefaultPageLayout", true);
 });
 
 Template.playlistsPage.helpers({
   isCreateNew: function isCreateNew () {
-    return Template.instance().isCreateNew.get();
+    return !Session.get("isDefaultPageLayout") && Template.instance().isCreateNew.get();
   },
   getCurrentPlaylist: function getCurrentPlaylist() {
     return Template.instance().currentPlaylist.get();
@@ -24,6 +25,7 @@ Template.playlistsPage.events({
   'click .button-new, click #button-edit-playlist': function openPlaylistForm(event, templateInstance) {
     event.preventDefault();
     templateInstance.currentPlaylist.set(this);
+    Session.set("isDefaultPageLayout", false);
     templateInstance.isCreateNew.set(true);
   },
   'click #button-close-playlist-form, click #btn-save-playlist': function closePlaylistForm(event, templateInstance) {

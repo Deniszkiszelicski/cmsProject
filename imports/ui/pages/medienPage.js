@@ -15,11 +15,12 @@ Meteor.subscribe('files.images.all');
 Template.medienPage.onCreated(function onCreated() {
   this.isCreateNew = new ReactiveVar(false);
   this.video = new ReactiveVar('x');
+  Session.set("isDefaultPageLayout", true);
 });
 
 Template.medienPage.helpers({
   isCreateNew: function isCreateNew() {
-    return Template.instance().isCreateNew.get();
+    return !Session.get("isDefaultPageLayout") && Template.instance().isCreateNew.get();
   },
   getVideoId: function getVideoId() {
     return Template.instance().video.get();
@@ -29,6 +30,7 @@ Template.medienPage.helpers({
 Template.medienPage.events({
   'click .button-new': function createNewMedia(event, templateInstance) {
     event.preventDefault();
+    Session.set("isDefaultPageLayout", false);
     templateInstance.isCreateNew.set(true);
   },
   'click #button-close-media-form, click .button-save': function closeForm(event, templateInstance) {
