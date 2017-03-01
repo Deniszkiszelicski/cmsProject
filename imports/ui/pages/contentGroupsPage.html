@@ -5,7 +5,9 @@
     {{/with}}
   {{else}}
     <br>
-    {{> contentGroupsList}}
+    {{#with options}}
+      {{> contentGroupsList}}
+    {{/with}}
   {{/if}}
   <br>
 </template>

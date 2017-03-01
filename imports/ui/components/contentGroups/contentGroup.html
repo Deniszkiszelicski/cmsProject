@@ -1,6 +1,6 @@
 <template name ="contentGroup">
 
-  <tr class={{isActive}}>
+  <tr class="contentGroup-row">
   <td><input type="checkbox"></td>
 
     <td>{{name}}</td>
@@ -8,10 +8,15 @@
     <td>{{isBlocked}}</td>
     <td>
       <div class="row-controls">
-        {{#if mayEdit}}
+        {{#if enableButtonEdit}}
           <i type="button" class="glyphicon glyphicon-pencil" id="button-edit-contentGroup"></i>
         {{/if}}
-        <i type="button" class="glyphicon glyphicon-trash" id="button-delete-contentGroup"></i>
+        {{#if enableButtonDelete}}
+          <i type="button" class="glyphicon glyphicon-trash" id="button-delete-contentGroup"></i>
+        {{/if}}
+        {{#if enableButtonRemove}}
+          <i type="button" class="glyphicon glyphicon-remove" id="button-remove-contentGroup"></i>
+        {{/if}}
       </div>
     </td>
   </tr>

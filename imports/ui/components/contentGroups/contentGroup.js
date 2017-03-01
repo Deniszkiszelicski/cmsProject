@@ -16,7 +16,14 @@ Template.contentGroup.helpers({
   },
   isBlocked: function isBlocked() {
     return this.blocked ? "yes" : "no";
-  }
+  },
+  // enableButtonEdit: function enableButtonEdit() {
+  //   console.log("enableButtonEdit this = ", this);
+  //   if (!!this) {
+  //     return this.enableButtonEdit;
+  //   }
+  //   return false;
+  // },
 });
 
 Template.contentGroup.events({

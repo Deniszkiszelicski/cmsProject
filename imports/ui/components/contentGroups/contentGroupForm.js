@@ -31,6 +31,18 @@ Template.contentGroupForm.helpers({
   isSelectContent: function isSelectContent() {
     return Template.instance().isSelectContent.get();
   },
+  includedContentsGestures: {
+      'tap .content-row': function (event, templateInstance){
+        console.log("tap has worked!!!");
+      },
+      // 'panright .content-row': function (event, templateInstance){
+      //   console.log("panright has worked!!!");
+      //   console.log("event = ", event);
+      //   $(event.target.parentElement).css({
+      //     'transform': 'translate(' + event.deltaX + 'px,' + event.deltaY + 'px)'
+      //   });
+      // },
+  },
   includedContents: function includedContents() {
     let includedContentsWithExtra = Template.instance().includedContents.get();
     if (!!includedContentsWithExtra) {
@@ -70,7 +82,11 @@ Template.contentGroupForm.events({
     event.preventDefault();
     templateInstance.isSelectContent.set(true);
   },
-  'click #button-close-content-collection': function closeMediaCollection(event, templateInstance) {
+  // 'click #button-close-content-collection': function closeMediaCollection(event, templateInstance) {
+  //   event.preventDefault();
+  //   templateInstance.isSelectContent.set(false);
+  // },
+  'click #button-close-contentList': function closeContentCollection(event, templateInstance) {
     event.preventDefault();
     templateInstance.isSelectContent.set(false);
   },
@@ -89,4 +105,11 @@ Template.contentGroupForm.events({
     }
     templateInstance.includedContents.set(contents);
   },
+
+  // 'drag .content-row': function onDragStart(event, templateInstance) {
+  //   // event.preventDefault();
+  //   // event.dataTransfer.setData("myD", event.target.id);
+  //   console.log("ondragstart triggered, event.target.id=", event);
+  // },
+
 });
