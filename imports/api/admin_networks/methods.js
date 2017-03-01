@@ -4,15 +4,19 @@ import { check } from 'meteor/check';
 
 
 Meteor.methods({
-  createNetwork: function(networksObject,buffer){
+  createNetwork: function(networksObject,buffer,bufferH){
    Networks.insert({ netName: networksObject.netName,
                       netId: networksObject.netId,
                       privatContent: networksObject.privatContent,
                       dmxLight: networksObject.dmxLight,
                       logUpdateTime: networksObject.logUpdateTime,
-                      sortiment:networksObject.sortiment,
-                    region:networksObject.region,data:networksObject.data});
-                      console.log(networksObject);
+                      sortiment: networksObject.sortiment,
+                    region: networksObject.region,
+                    logo: networksObject.logo,
+                    news: networksObject.news,
+                    headline: networksObject.headline,
+                    homeImage: networksObject.image});
+
 
   },
   deleteNetwork: function(id) {
@@ -21,16 +25,28 @@ Meteor.methods({
   },
 
   editSelectedNetwork: function(networksObject,buffer){
-    Networks.update({_id:networksObject._id},{
-                        netName:networksObject.netName,
+    Networks.update({_id:networksObject._id},{$set:{
+                        netName: networksObject.netName,
                         netId: networksObject.netId,
                         privatContent: networksObject.privatContent,
                         dmxLight: networksObject.dmxLight,
                         logUpdateTime: networksObject.logUpdateTime,
-                        sortiment:networksObject.sortiment,
-                       region:networksObject.region,data:networksObject.data
+                        sortiment: networksObject.sortiment,
+                       region: networksObject.region,
+                       logo: networksObject.logo
 
-    });
+    }});
+
+  },
+  editSortiment: function(networksObject){
+    Networks.update({_id:networksObject._id},{$set: { sortiment: networksObject.sortiment, region: networksObject.region
+    }});
+
+  },
+  editRegion: function(networksObject){
+    Networks.update({_id:networksObject._id},{$set: { sortiment: networksObject.sortiment, region: networksObject.region
+    }});
+
   },
   deleteOneRegion: function(id,region){
 Networks.update({_id:id},{$pull:{region:region}});
@@ -40,9 +56,6 @@ Networks.update({_id:id},{$pull:{region:region}});
   deleteOneSortiment: function(id,sortiment){
 Networks.update({_id:id},{$pull:{sortiment:sortiment}});
  },
- // 'saveFile': function(buffer){
- //         Networks.insert({data:buffer})
- //     }
 
 
 });

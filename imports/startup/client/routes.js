@@ -34,6 +34,12 @@ FlowRouter.route('/contents', {
     BlazeLayout.render('App_body', { main: 'contentsPage' });
   },
 });
+FlowRouter.route('/homeAdmin', {
+  name: 'homeAdminPage',
+  action() {
+    BlazeLayout.render('App_body', { main: 'homeAdminPage' });
+  },
+});
 
 FlowRouter.route('/content-groups', {
   name: 'contentGroupsPage',

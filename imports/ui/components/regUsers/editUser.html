@@ -47,7 +47,7 @@
                             {{/each}}
                           </ul>
                         </div>
-                      
+
                     </div>
                       <div class="col-xs-12">
          <h3 class="text-center">Assign Player/s</h3>
@@ -58,7 +58,7 @@
            <input type="checkbox" aria-label="..." id="checkAll" ></li>
            {{#with user}}
 
-               <li class="list-group-item assignedPlayersList"><input type="checkbox" aria-label="..." class="checked" value="{{_id}}"><div class="col-md-2">
+               <li class="list-group-item assignedPlayersList"><input type="checkbox" aria-label="..." class="checked" value="{{_id}}" checked><div class="col-md-2">
                  <strong>Player Name :</strong>
                </div><div class="col-md-2">{{playerName profile.assignedPlayers.[0]}}</div><div class="col-md-2">
                  <strong>Player Id :</strong></div><div class="col-md-2">{{playerIds profile.assignedPlayers.[0]}}
