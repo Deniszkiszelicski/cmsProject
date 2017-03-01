@@ -29,6 +29,7 @@ event.preventDefault();
 
 
     Meteor.call('editSelectedRole', {_id:Session.get("selectedRole"),roleName: $('#roleName').val(),
+                                 networkId: Session.get("currentNetworkId"),
                                  createPlayer: $('#createPlayer').is(":checked"),
                                  editPlayer: $('#editPlayer').is(":checked"),
                                  deletePlayer: $('#deletePlayer').is(":checked"),
