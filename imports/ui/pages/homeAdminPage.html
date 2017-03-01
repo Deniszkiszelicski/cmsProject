@@ -38,16 +38,55 @@
                           </div>
                           <div class="form-group col-lg-12">
                               <label for="news">News Text:</label>
-                              <textarea class="form-control" rows="20" id="news"></textarea>
-                          </div>
 
 
 
 
 
 
+                          <!-- Create the toolbar container -->
+                          <div id="editor-container">
+    <div class="quill-wrapper">
+      <div id="full-toolbar" class="toolbar ql-toolbar ql-snow">
+        <span class="ql-format-group">
+          <span title="Bold" class="ql-format-button ql-bold"></span>
+          <span class="ql-format-separator"></span>
+          <span title="Italic" class="ql-format-button ql-italic"></span>
+          <span class="ql-format-separator"></span>
+          <span title="Underline" class="ql-format-button ql-underline"></span>
+          <span class="ql-format-separator"></span>
+          <span title="Strikethrough" class="ql-format-button ql-strike"></span>
+          <select class="ql-size">
+   <option value="10px">10</option>
+   <option value="13px" selected>13</option>
+   <option value="18px">18</option>
+   <option value="32px">32</option>
+ </select>
+        </span>
 
 
+      </div>
+      <div id="full-editor" class="editor ql-container ql-snow" style="border:1px solid black;" >
+        <div class="ql-multi-cursor">
+          <span class="cursor hidden" style="top: 218px; left: 277px; height: 15px;">
+            <span class="cursor-flag">
+              <span class="cursor-triangle top" style="border-bottom-color: rgba(255, 153, 51, 0.901961);"></span>
+              <span class="cursor-name" style="background-color: rgba(255, 153, 51, 0.901961);">Gandalf</span>
+              <span class="cursor-triangle bottom" style="border-top-color: rgba(255, 153, 51, 0.901961);"></span>
+            </span>
+            <span class="cursor-caret" style="background-color: rgba(255, 153, 51, 0.901961);"></span>
+          </span>
+        </div>
+        <div class="ql-editor authorship" id="ql-editor-2" contenteditable="true">
+
+
+        </div>
+
+        <div class="ql-paste-manager" contenteditable="true"></div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
@@ -62,7 +101,6 @@
             </form>
         <!-- </div> -->
     </div>
-            
 
 
 
