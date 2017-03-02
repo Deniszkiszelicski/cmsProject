@@ -10,7 +10,13 @@ import './networkSelection.html';
 Meteor.subscribe('networks');
 
 Template.networkSelection.onCreated(function onCreated() {
-  this.selectedNetwork = new ReactiveVar();
+  const currentNetworkId = Session.get("currentNetworkId");
+  if (currentNetworkId) {
+    const selectedNetwork = Networks.findOne({ _id: currentNetworkId });
+    this.selectedNetwork = new ReactiveVar(selectedNetwork);
+  } else {
+    this.selectedNetwork = new ReactiveVar();
+  }
 });
 
 Template.networkSelection.helpers({
