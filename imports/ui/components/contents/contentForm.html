@@ -199,7 +199,7 @@
             <!-- TODO: delete style -->
             <div class="row" style="margin-left: 10px;">
               {{#each listOfAssortiment}}
-                <label class="checkbox-inline"><input type="checkbox" value="">{{this}}</label>
+                <label class="checkbox-inline"><input type="checkbox" {{getTypePresence}} value="{{this}}" class="content-assortiment">{{this}}</label>
               {{/each}}
             </div>
             <br>
@@ -210,7 +210,7 @@
             <!-- TODO: delete style -->
             <div class="row" style="margin-left: 10px;">
               {{#each regions}}
-                <label class="checkbox-inline"><input type="checkbox" value="">{{this}}</label>
+                <label class="checkbox-inline"><input type="checkbox" {{getRegionPresence}} value="{{this}}" class="content-regions">{{this}}</label>
               {{/each}}
             </div>
           </fieldset>
