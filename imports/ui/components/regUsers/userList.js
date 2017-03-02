@@ -23,10 +23,11 @@ Template.usersList.helpers({
 
   },
   roleName: (id)=>{
-    return Roles.findOne({_id:id}).roleName;
+    const role = Roles.findOne({_id:id});
+    if (role) {
+      return Roles.findOne({_id:id}).roleName;
+    }
   },
-
-
   isUserEdit: function isUserEdit() {
     return Template.instance().isUserEdit.get();
   },

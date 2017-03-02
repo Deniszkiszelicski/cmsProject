@@ -16,21 +16,36 @@ Template.contentForm.onCreated(function () {
     media = Medien.findOne({ _id: this.data.mediaId });
   }
   this.media = new ReactiveVar(media);
+
+  const roleId = Meteor.user().profile.role;
+  const networkId = Roles.findOne({ _id: roleId }).networkId;
+  const network = Networks.findOne({ _id: networkId });
+  const assortiment = network.sortiment;
+  const regions = network.region;
+  this.assortiment = new ReactiveVar(assortiment);
+  this.regions = new ReactiveVar(regions);
 });
 
 Template.contentForm.onRendered(function () {
 });
 
 Template.contentForm.helpers({
-  listOfAssortiment: function getArrayOfAssortimen(event) {
-    return ["Toothpastes", "Shower gels", "Pills", "Social"];
+  listOfAssortiment: function getArrayOfAssortimen() {
+    const assortiment = Template.instance().assortiment.get();
+    return assortiment;
+  },
+  getTypePresence: function getTypeValue() {
+    const assortiment = Template.instance().data.assortiment;
+    return assortiment.indexOf(this.valueOf()) > -1 ? "checked" : "";
   },
   regions: function getArrayOfRegions(event) {
-    return ["Burgerland", "Carinthia", "Lower Austria", "Upper Austria", "Salzburg", "Styria", "Tyrol", "Vienna", "Vorarlberg"];
+    const regions = Template.instance().regions.get();
+    return regions;
   },
-  // mediaCollection: function getMedien() {
-  //   return Images.find().fetch();
-  // },
+  getRegionPresence: function getRegionPresence() {
+    const regions = Template.instance().data.regions;
+    return regions.indexOf(this.valueOf()) > -1 ? "checked" : "";
+  },
   selectedMedia: function selectedMedia() {
     let mediaWithExtra = Template.instance().media.get();
     if (!!mediaWithExtra) {
@@ -85,8 +100,18 @@ Template.contentForm.helpers({
 Template.contentForm.events({
   'click #btn-save-content': function saveContentForm(event, templateInstance) {
     event.preventDefault();
-    let assortiment = ['type 1', 'type 2'];
-    let regions = ['region 1', 'region 2', 'region 5'];
+    let assortiment = [];
+    let regions = [];
+    $('.content-assortiment').each(function(){
+      if ($(this).is(':checked')) {
+        assortiment.push($(this).val());
+      }
+    });
+    $('.content-regions').each(function(){
+      if ($(this).is(':checked')) {
+        regions.push($(this).val());
+      }
+    });
     const mediaId = templateInstance.media.get()._id;
 
     const content = { _id: this._id,
