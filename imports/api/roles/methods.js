@@ -1,17 +1,14 @@
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 
-
-
-
 Meteor.methods({
   createRole: function(rolesObject){
     // check(userInformationObject.name, String);
     // check(userInformationObject.accountRole, String);
     // check(userInformationObject.email, String);
-    console.log('befor inserting', rolesObject);
   //  Roles.insert({netName:rolesObject.netName,netId:rolesObject.netId, admin:rolesObject.admin});
    Roles.insert({roleName: rolesObject.roleName,
+     networkId: rolesObject.networkId,
      createPlayer: rolesObject.createPlayer,
      editPlayer: rolesObject.editPlayer,
      deletePlayer: rolesObject.deletePlayer,
@@ -36,17 +33,14 @@ Meteor.methods({
      seeMedia: rolesObject.seeMedia,
      seeContent: rolesObject.seeContent,
      seeContentGroup: rolesObject.seeContentGroup });
-
-    console.log("ubaceno");
   },
-
   deleteRole: function(id) {
     Roles.remove(id);
     toastr.success("Deleted", "Role");
   },
   editSelectedRole: function(rolesObject){
-      console.log('befor inserting', rolesObject);
   Roles.update({_id:rolesObject._id},{roleName: rolesObject.roleName,
+    networkId: rolesObject.networkId,
     createPlayer: rolesObject.createPlayer,
     editPlayer: rolesObject.editPlayer,
     deletePlayer: rolesObject.deletePlayer,

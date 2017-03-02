@@ -58,8 +58,14 @@
   										<li><a href="homeAdmin">Home</a></li>
   									</ul>
   								</li>
+                  {{#if showNetworkSelection}}
+                    {{> networkSelection}}
+                  {{/if}}
                   {{> logoutButton}}
   							</ul>
+                <div id="currentUser">
+                  Logged in as {{currentUser}}
+                </div>
   						</div>
   					</div>
   				</div>

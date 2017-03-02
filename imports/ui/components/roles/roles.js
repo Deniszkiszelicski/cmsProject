@@ -8,12 +8,28 @@ import '../../../api/roles/roles';
 
 Meteor.subscribe('roles');
 
+Template.adminRole.onCreated(function onCreate() {
+  const networkId = Session.get("currentNetworkId");
+  const currentNetwork = Networks.findOne({ _id: networkId });
+  this.currentNetwork = new ReactiveVar(currentNetwork);
+});
+
+Template.adminRole.helpers({
+  currentNetworkName: () => {
+    return Template.instance().currentNetwork.get().netName;
+  },
+  currentNetworkId: () => {
+    return Template.instance().currentNetwork.get().netId;
+  },
+});
+
 Template.adminRole.events({
   'submit .register-form': function (event) {
 
     event.preventDefault();
 
     Meteor.call('createRole', { roleName: $('#roleName').val(),
+                                 networkId: Session.get("currentNetworkId"),
                                  createPlayer: $('#createPlayer').is(":checked"),
                                  editPlayer: $('#editPlayer').is(":checked"),
                                  deletePlayer: $('#deletePlayer').is(":checked"),
