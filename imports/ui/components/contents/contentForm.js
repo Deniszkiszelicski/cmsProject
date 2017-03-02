@@ -23,6 +23,8 @@ Template.contentForm.onRendered(function () {
 
 Template.contentForm.helpers({
   listOfAssortiment: function getArrayOfAssortimen(event) {
+    const userId = Meteor.userId();    
+    console.log("assortiment Meteor.userId()=", Meteor.userId());
     return ["Toothpastes", "Shower gels", "Pills", "Social"];
   },
   regions: function getArrayOfRegions(event) {
