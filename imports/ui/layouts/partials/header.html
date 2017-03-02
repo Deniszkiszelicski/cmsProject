@@ -8,14 +8,18 @@
   			<div class="navbar navbar-default mega-menu" role="navigation">
   				<div class="container">
   					<!-- Brand and toggle get grouped for better mobile display -->
+
   					<div class="navbar-header">
+
   						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
   							<span class="sr-only">Toggle navigation</span>
   							<span class="fa fa-bars"></span>
   						</button>
+              {{#with headerLogo}}
   						<a class="navbar-brand" href="index.html">
-  							<img id="logo-header" src="logo-tk.png" alt="Logo">
-  						</a>
+  							<img id="logo-header" src="{{logo}}" alt="Logo">
+  						</a>{{/with}}
+
   					</div>
 
   					<!-- Collect the nav links, forms, and other content for toggling -->
@@ -51,7 +55,7 @@
   										<li><a href="admin_networks">Networks</a></li>
   										<li role="admin_role"><a href="admin_role">Roles</a></li>
   										<li><a href="page5">Users</a></li>
-  										<li><a href="homeAdmin">Home Page Administration</a></li>
+  										<li><a href="homeAdmin">Home</a></li>
   									</ul>
   								</li>
                   {{> logoutButton}}

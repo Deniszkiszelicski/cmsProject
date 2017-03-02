@@ -56,6 +56,9 @@ Networks.update({_id:id},{$pull:{region:region}});
   deleteOneSortiment: function(id,sortiment){
 Networks.update({_id:id},{$pull:{sortiment:sortiment}});
  },
+  homeSubmitEdit: function(networksObject){
+    Networks.update({_id:networksObject._id},{$set: {news:networksObject.news,headline:networksObject.headline,homeImage:networksObject.image}});
+  }
 
 
 });

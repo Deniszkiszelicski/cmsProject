@@ -31,7 +31,7 @@ Template.editUser2.helpers({
   },
   playerName : (id) =>{
     return Players.findOne({_id:id}).name;
-  
+
 
   },
   playerIds : (id) =>{
@@ -49,7 +49,7 @@ Template.editUser2.events({
     var password = event.target.password.value;
     var firstname = event.target.firstname.value;
     var assignedPlayers = [];
-    var role = $('#accountRole:checked').val();
+    var role = $('#checked:checked').val();
 
     $('.assignedPlayersList').children('.checked:checked').each(function(){
      assignedPlayers.push($(this).val());
