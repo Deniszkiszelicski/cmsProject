@@ -28,6 +28,12 @@ Template.contentGroupForm.helpers({
   isBlocked: function isBlocked() {
     return this.blocked ? "checked" : "";
   },
+  getOptions: function getOptions() {
+    return { options: { enableButtonAddToCG: false,
+                        enableButtonCloseListOfContents: true,
+                        enableButtonNewContent: false,
+                        header: "List of all contents", } };
+  },
   isSelectContent: function isSelectContent() {
     return Template.instance().isSelectContent.get();
   },
@@ -47,11 +53,14 @@ Template.contentGroupForm.helpers({
     let includedContentsWithExtra = Template.instance().includedContents.get();
     if (!!includedContentsWithExtra) {
       const l = includedContentsWithExtra.length;
+      console.log("includedContentsWithExtra = ", includedContentsWithExtra);
       if (l > 0) {
         for (i = 0; i < l; i++) {
-          includedContentsWithExtra[i]["disableButtonDelete"] = true;
-          includedContentsWithExtra[i]["disableButtonEdit"] = true;
-          includedContentsWithExtra[i]["enableButtonRemove"] = true;
+          if(includedContentsWithExtra[i]) {
+            includedContentsWithExtra[i]["enableButtonDelete"] = false;
+            includedContentsWithExtra[i]["enableButtonEdit"] = false;
+            includedContentsWithExtra[i]["enableButtonRemove"] = true;
+          }
         }
       }
     }
