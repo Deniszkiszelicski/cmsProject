@@ -1,7 +1,7 @@
 import { Template } from 'meteor/templating';
 import { $ } from 'meteor/jquery';
 import { Meteor } from 'meteor/meteor';
-import { quilljs } from 'meteor/themeteorites:quilljs';
+import { Session } from 'meteor/session';
 import '../components/logoutbutton';
 import '../../api/admin_networks/methods';
 import '../../api/admin_networks/networks';
@@ -10,35 +10,18 @@ import './homeAdminPage.html';
 var buffer;
 var result;
 
-Template.homeAdminPage.onRendered(function(){
-
-  var fullEditor;
-  fullEditor = new Quill('#full-editor', {
-    modules: {
-      // 'authorship': {
-      //   authorId: 'test', //Meteor.user().profile.user_name,
-      //   enabled: true
-      // },
-      'multi-cursor': true,
-      'toolbar': {
-        container: '#full-toolbar'
-      },
-      'link-tooltip': true
-    },
-    theme: 'snow'
-  });
-  return fullEditor;
-});
 
 Template.homeAdminPage.events({
-  'click #homeSubmit': function homeSubmit(event) {
+
+  'submit .submitEditHome': function homeSubmit(event) {
     event.preventDefault();
 
 
 
-    Meteor.call('homeSubmitEdit',{_id:'zk2aHifEg9yWYH5zF',headline:$('#headline').val(),news:$('.authorship').html(),image:result});
+    Meteor.call('homeSubmitEdit',{_id:Session.get("currentNetworkId"),headline:$('#headline').val(),news:$('#ql-editor-2').val(),image:result,
+    footer1:$('#footer1').val(),footer2:$('#footer2').val(),footer3:$('#footer3').val(),footer4:$('#footer4').val()});
     toastr.success("Data saved","Edit Home Page");
-
+      FlowRouter.go('/');
   },
   'change #homeImage' : function(event,template){
       var file = event.target.files[0]; //assuming 1 file only

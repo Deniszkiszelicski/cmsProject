@@ -51,6 +51,7 @@ event.preventDefault();
                                  roleMenu: $('#roleMenu').is(":checked"),
                                  contentMenu: $('#contentMenu').is(":checked"),
                                  statisticMenu: $('#statisticMenu').is(":checked"),
+                                 homeEditMenu: $('#homeEditMenu').is(":checked"),
                                  seeMedia: $('#seeMedia').is(":checked"),
                                  seeContent: $('#seeContent').is(":checked"),
                                  seeContentGroup: $('#seeContentGroup').is(":checked")});

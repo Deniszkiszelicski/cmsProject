@@ -14,6 +14,10 @@ Meteor.methods({
                     region: networksObject.region,
                     logo: networksObject.logo,
                     news: networksObject.news,
+                    footer1: networksObject.footer1,
+                    footer2: networksObject.footer2,
+                    footer3: networksObject.footer3,
+                    footer4: networksObject.footer4,
                     headline: networksObject.headline,
                     homeImage: networksObject.image});
 
@@ -57,7 +61,15 @@ Networks.update({_id:id},{$pull:{region:region}});
 Networks.update({_id:id},{$pull:{sortiment:sortiment}});
  },
   homeSubmitEdit: function(networksObject){
-    Networks.update({_id:networksObject._id},{$set: {news:networksObject.news,headline:networksObject.headline,homeImage:networksObject.image}});
+    Networks.update({_id:networksObject._id},{$set: {
+      news:networksObject.news,
+      headline:networksObject.headline,
+      homeImage:networksObject.image,
+      footer1:networksObject.footer1,
+      footer2:networksObject.footer2,
+      footer3:networksObject.footer3,
+      footer4:networksObject.footer4,
+    } });
   }
 
 

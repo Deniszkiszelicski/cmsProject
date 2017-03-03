@@ -30,6 +30,7 @@ Meteor.methods({
      roleMenu: rolesObject.roleMenu,
      contentMenu: rolesObject.contentMenu,
      statisticMenu: rolesObject.statisticMenu,
+     homeEditMenu: rolesObject.homeEditMenu,
      seeMedia: rolesObject.seeMedia,
      seeContent: rolesObject.seeContent,
      seeContentGroup: rolesObject.seeContentGroup });
@@ -61,6 +62,7 @@ Meteor.methods({
     userMenu: rolesObject.userMenu,
     roleMenu: rolesObject.roleMenu,
     contentMenu: rolesObject.contentMenu,
+    homeEditMenu: rolesObject.homeEditMenu,
     statisticMenu: rolesObject.statisticMenu,
     seeMedia: rolesObject.seeMedia,
     seeContent: rolesObject.seeContent,

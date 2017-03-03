@@ -2,6 +2,9 @@
 
 <template name="homeAdminPage"><br>
 
+
+
+
   <div class="row">
       <!-- <div class="col-md-10 col-md-offset-1"> -->
           <form class="submitEditHome">
@@ -16,7 +19,11 @@
                       <div class="form-group col-lg-12">
                           <label>Headline:</label>
 
-                          <input type="text"  class="form-control" id="headline" value="">
+                          <textarea name="editor2" id="headline"></textarea>
+    <script>
+        CKEDITOR.replace( 'editor2',{height:75});
+    </script>
+
                       </div>
 
 
@@ -40,100 +47,55 @@
                               <label for="news">News Text:</label>
 
 
+                              <textarea name="editor1" id="ql-editor-2"></textarea>
+        <script>
+            CKEDITOR.replace( 'editor1' );
+        </script>
 
 
 
 
-                          <!-- Create the toolbar container -->
-                          <div id="editor-container">
-    <div class="quill-wrapper">
-      <div id="full-toolbar" class="toolbar ql-toolbar ql-snow">
-        <span class="ql-format-group">
-          <span title="Bold" class="ql-format-button ql-bold"></span>
-          <span class="ql-format-separator"></span>
-          <span title="Italic" class="ql-format-button ql-italic"></span>
-          <span class="ql-format-separator"></span>
-          <span title="Underline" class="ql-format-button ql-underline"></span>
-          <span class="ql-format-separator"></span>
-          <span title="Strikethrough" class="ql-format-button ql-strike"></span>
-          <select class="ql-size">
-   <option value="10px">10</option>
-   <option value="13px" selected>13</option>
-   <option value="18px">18</option>
-   <option value="32px">32</option>
- </select>
-        </span>
 
-
-      </div>
-      <div id="full-editor" class="editor ql-container ql-snow" style="border:1px solid black;" >
-        <div class="ql-multi-cursor">
-          <span class="cursor hidden" style="top: 218px; left: 277px; height: 15px;">
-            <span class="cursor-flag">
-              <span class="cursor-triangle top" style="border-bottom-color: rgba(255, 153, 51, 0.901961);"></span>
-              <span class="cursor-name" style="background-color: rgba(255, 153, 51, 0.901961);">Gandalf</span>
-              <span class="cursor-triangle bottom" style="border-top-color: rgba(255, 153, 51, 0.901961);"></span>
-            </span>
-            <span class="cursor-caret" style="background-color: rgba(255, 153, 51, 0.901961);"></span>
-          </span>
-        </div>
-        <div class="ql-editor authorship" id="ql-editor-2" contenteditable="true">
-
-
-        </div>
-
-        <div class="ql-paste-manager" contenteditable="true"></div>
-      </div>
-    </div>
-  </div>
 </div>
 <!-- footer about -->
-<div class="form-group col-lg-12">
-    <label>Short about Paragraph 1 :</label>
+<div class="form-group col-lg-6">
+    <label>Footer 1:</label>
 
-    <input type="text"  class="form-control" id="aboutPar1" value="" placeholder="About Unify dolor sit amet, consectetur adipiscing elit. Maecenas eget nisl id libero tincidunt sodales.">
+    <textarea name="editor3" id="footer1"></textarea>
+<script>
+CKEDITOR.replace( 'editor3',{height:100});
+</script>
+
 </div>
-<div class="form-group col-lg-12">
-    <label>Short about Paragraph 2 :</label>
+<div class="form-group col-lg-6">
+    <label>Footer 2:</label>
 
-    <input type="text"  class="form-control" id="aboutPar2" value="" placeholder="Duis eleifend fermentum ante ut aliquam. Cras mi risus, dignissim sed adipiscing ut, placerat non arcu.">
+    <textarea name="editor4" id="footer2"></textarea>
+<script>
+CKEDITOR.replace( 'editor4',{height:100});
+</script>
+
 </div>
-<label>Footer Links :</label>
-<div class="form-group col-lg-12">
+<div class="form-group col-lg-6">
+    <label>Footer 3:</label>
 
-        <div class="col-lg-3">
-          <div class="row">
-            <input type="text"  class="form-control" id="l1name" value="" placeholder="1. Link Name">
-          </div>
-          <div class="row">
-            <input type="text"  class="form-control" id="l1adress" value="" placeholder="1. Link Adress">
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="row">
-            <input type="text"  class="form-control" id="l2name" value="" placeholder="2. Link Name">
-          </div>
-          <div class="row">
-            <input type="text"  class="form-control" id="l2adress" value="" placeholder="2. Link Adress">
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="row">
-            <input type="text"  class="form-control" id="l3name" value="" placeholder="3. Link Name">
-          </div>
-          <div class="row">
-            <input type="text"  class="form-control" id="l3adress" value="" placeholder="3. Link Adress">
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="row">
-            <input type="text"  class="form-control" id="l4name" value="" placeholder="4. Link Name">
-          </div>
-          <div class="row">
-            <input type="text"  class="form-control" id="l4adress" value="" placeholder="4. Link Adress">
-          </div>
-        </div>
-  </div>
+    <textarea name="editor5" id="footer3"></textarea>
+<script>
+CKEDITOR.replace( 'editor5',{height:100});
+</script>
+
+</div>
+<div class="form-group col-lg-6">
+    <label>Footer 4:</label>
+
+    <textarea name="editor6" id="footer4"></textarea>
+<script>
+CKEDITOR.replace( 'editor6',{height:100});
+</script>
+
+</div>
+
+
 
 
 
@@ -142,7 +104,7 @@
                     </div>
 
                     <div class="panel-footer">
-                        <button type="button" class="btn btn-default" id="homeSubmit">Save</button>
+                        <button type="submit" class="btn btn-default" id="homeSubmit">Save</button>
                     </div>
                 </div>
             </form>

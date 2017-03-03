@@ -2,12 +2,15 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { Meteor } from 'meteor/meteor';
 import { Session } from 'meteor/session';
+import { Blaze } from 'meteor/blaze';
 import './list.html';
 import '../../../api/admin_networks/methods';
 import '../../../api/admin_networks/networks';
 import './networkSelection.html';
 
 Meteor.subscribe('networks');
+
+Blaze._allowJavascriptUrls();
 
 Template.networkSelection.onCreated(function onCreated() {
   const currentNetworkId = Session.get("currentNetworkId");
@@ -16,6 +19,7 @@ Template.networkSelection.onCreated(function onCreated() {
     this.selectedNetwork = new ReactiveVar(selectedNetwork);
   } else {
     this.selectedNetwork = new ReactiveVar();
+    Blaze._allowJavascriptUrls();
   }
 });
 
