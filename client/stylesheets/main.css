@@ -166,7 +166,7 @@ body{
   margin-bottom: 15px;
 }
 
-#currentUser{
+#currentUser, #currentRole, #currentNetwork{
   float: left;
-  margin-top: 55px;
+  /*margin-top: 55px;*/
 }

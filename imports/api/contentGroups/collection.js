@@ -36,3 +36,5 @@ ContentGroupsSchema = new SimpleSchema({
 		}
 	},
 });
+
+ContentGroups.attachSchema(ContentGroupsSchema);
