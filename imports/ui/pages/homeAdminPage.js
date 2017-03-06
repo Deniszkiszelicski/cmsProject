@@ -7,6 +7,18 @@ import '../../api/admin_networks/methods';
 import '../../api/admin_networks/networks';
 import './homeAdminPage.html';
 
+Meteor.subscribe('networks');
+
+Template.homeAdminPage.helpers({
+  homePageData: () => {
+    return Networks.findOne({_id:Session.get("currentNetworkId")});
+
+  },
+
+
+});
+
+
 var buffer;
 var result;
 

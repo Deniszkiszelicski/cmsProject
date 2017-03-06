@@ -1,7 +1,7 @@
 <template name="adminRole"><br>
-  <div class="row">
+  <div class="tab-v1 content-form">
       <!-- <div class="col-md-10 col-md-offset-1"> -->
-          <form class="register-form">
+          <form class="sky-form register-form">
               <div class="panel panel-default">
                   <div class="panel-heading">
                       <span>Create role</span>
@@ -10,8 +10,9 @@
                   <div class="panel-body">
 
                       <div class="form-group col-lg-12">
-                          <label>Net Name: </label><span class="label label-success">{{currentNetworkName}}</span>
-                          <label>Net Id:</label><span class="label label-success">{{currentNetworkId}}</span>
+                          <label>Net Name: </label><i style="background-color: gray;color:white;">{{currentNetworkName}}</i><br>
+
+                          <label>Net Id:</label><i style="background-color: gray;color:white;">{{currentNetworkId}}</i>
                       </div>
                       <div class="form-group col-lg-12">
                           <label>Role Name: </label>
