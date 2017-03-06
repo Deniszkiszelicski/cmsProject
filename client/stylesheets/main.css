@@ -42,7 +42,8 @@ body{
   font-size: 1em;
 }
 
-#button-close-contentList, #button-close-media-collection{
+#button-close-contentList, #button-close-media-collection,
+  #button-close-contentGroup-collection{
   margin-top: 0px;
   margin-right: 0px;
   color: red;

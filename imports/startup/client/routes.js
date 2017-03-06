@@ -14,13 +14,6 @@ FlowRouter.route('/players', {
   },
 });
 
-FlowRouter.route('/playlists', {
-  name: 'playlistsPage',
-  action() {
-    BlazeLayout.render('App_body', { main: 'playlistsPage' });
-  },
-});
-
 FlowRouter.route('/medien', {
   name: 'medienPage',
   action() {

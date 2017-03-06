@@ -7,6 +7,7 @@ import '../../../api/players/collection';
 Meteor.subscribe('players');
 
 Template.playerForm.onCreated(function () {
+  this.isShowCGs = new ReactiveVar(false);
   const roleId = Meteor.user().profile.role;
   const networkId = Roles.findOne({ _id: roleId }).networkId;
   const network = Networks.findOne({ _id: networkId });
@@ -14,9 +15,58 @@ Template.playerForm.onCreated(function () {
   const regions = network.region;
   this.assortiment = new ReactiveVar(assortiment);
   this.regions = new ReactiveVar(regions);
+
+  this.playerId = new ReactiveVar(this.data._id);
+  let includedCGObjects = [];
+  const includedCGIds = this.data.contentGroupIds;
+  if(!!includedCGIds) {
+    const sizeOfIncCGIds = includedCGIds.length;
+    if (sizeOfIncCGIds > 0) {
+      for (i = 0; i < sizeOfIncCGIds; i++) {
+        let tempCGId = includedCGIds[i];
+        let tempCG = ContentGroups.findOne({ _id: tempCGId});
+        includedCGObjects.push(tempCG);
+      }
+    }
+  }
+  this.includedCGs = new ReactiveVar(includedCGObjects);
 });
 
 Template.playerForm.helpers({
+  isShowCGs: () => {
+    return Template.instance().isShowCGs.get();
+  },
+  includedContentGroups: function includedContentGroups() {
+    const includedCGs = Template.instance().includedCGs.get();
+    const options = { header: "Included content-groups", enableButtonDelete: false,
+                      enableButtonEdit: false, enableButtonRemove: true,
+                      enableButtonNewCG: false, enableFilter: false,
+                      enableButtonRemove: true };
+    const includedCGsWithOptions = { contentGroups: includedCGs, options: options};
+    return includedCGsWithOptions;
+  },
+  includedContents: function includedContents() {
+    const includedCGs = Template.instance().includedCGs.get();
+    let includedContentIds = [];
+    for (i = 0; i < includedCGs.length; i++) {
+      includedContentIds = includedContentIds.concat(includedCGs[i].contentIds);
+    }
+    let includedContentObjects;
+    const options = { header: "Included contents", enableButtonDelete: false,
+                      enableButtonEdit: false, enableButtonRemove: true,
+                      enableButtonNewCG: false, enableFilter: false,
+                      enableButtonRemove: true };
+    const includedContentsWithOptions = { contents: includedContentIds, options: options};
+    return includedContentsWithOptions;
+  },
+  allContentGroups: function allContentGroups() {
+    const options = { header: "List of all content-groups", enableButtonDelete: false,
+                      enableButtonEdit: false, enableButtonRemove: false,
+                      enableButtonNewCG: false, enableFilter: true,
+                      enableButtonCloseListOfCG: true };
+    const allCGsWithOptions = { options: options };
+    return allCGsWithOptions;
+  },
   listOfAssortiment: function getArrayOfAssortimen() {
     const assortiment = Template.instance().assortiment.get();
     return assortiment;
@@ -40,7 +90,7 @@ Template.playerForm.helpers({
 });
 
 Template.playerForm.events({
-  'click .button-save': function upsertPlayer(event) {
+  'click .button-save': function upsertPlayer(event, templateInstance) {
     event.preventDefault();
     let assortiment = [];
     let regions = [];
@@ -54,6 +104,15 @@ Template.playerForm.events({
         regions.push($(this).val());
       }
     });
+    let contentGroups = templateInstance.includedCGs.get();
+    const l = contentGroups.length;
+    let contentGroupIds = [];
+    if (l > 0) {
+      for (i = 0; i < l; i++) {
+        contentGroupIds.push(contentGroups[i]._id);
+      }
+    }
+
     Meteor.call('upsertPlayer',
       { _id: this._id,
         name: $('#name').val(),
@@ -94,7 +153,31 @@ Template.playerForm.events({
         sundayEnd2: $('#sundayEnd2').val(),
         assortiment: assortiment,
         regions: regions,
+        contentGroupIds: contentGroupIds,
        });
         // Play time hours end
+  },
+  'click #btn-show-linkedContentGroups': function showLinkedCG(event, templateInstance) {
+    event.preventDefault();
+    templateInstance.isShowCGs.set(true);
+  },
+  'click .player-form #contentGroup-collection-fieldset .contentGroup-row': function markAsSelected(event, templateInstance){
+    event.preventDefault();
+    let includedCGs = templateInstance.includedCGs.get();
+    includedCGs.push(this);
+    templateInstance.includedCGs.set(includedCGs);
+  },
+  'click #button-remove-contentGroup': function removeCG(event, templateInstance) {
+    event.preventDefault();
+    let includedCGs = templateInstance.includedCGs.get();
+    const index = includedCGs.indexOf(this);
+    if (index > -1) {
+      includedCGs.splice(index, 1);
+    }
+    templateInstance.includedCGs.set(includedCGs);
+  },
+  'click #button-close-contentGroup-collection': function closeMediaCollection(event, templateInstance) {
+    event.preventDefault();
+    templateInstance.isShowCGs.set(false);
   },
 });
