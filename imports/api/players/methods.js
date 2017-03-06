@@ -49,8 +49,11 @@ Meteor.methods({
         sundayStart1: player.sundayStart1,
         sundayEnd1: player.sundayEnd1,
         sundayStart2: player.sundayStart2,
-        sundayEnd2: player.sundayEnd2 },
-        { upsert: true, multi: false });
+        sundayEnd2: player.sundayEnd2,
+        assortiment: player.assortiment,
+        regions: player.regions,
+      },
+      { upsert: true, multi: false });
   },
   deletePlayer: function(id) {
     Players.remove(id);

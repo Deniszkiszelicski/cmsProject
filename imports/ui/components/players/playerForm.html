@@ -2,7 +2,326 @@
   <!-- <article class="playerForm">
     <div class="row">
       <div class="col-md-6 col-md-offset-3"> -->
-        <form class="player-form">
+      <div class="tab-v1 player-form">
+        <ul class="nav nav-tabs">
+          <li>
+            <a href="#player-main" data-toggle="tab" area-expanded="true">Player</a>
+          </li>
+          <li>
+            <a href="#player-details" data-toggle="tab" area-expanded="false">Details</a>
+          </li>
+          <li>
+            <a href="#playlist" data-toggle="tab" area-expanded="false">Playlist</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane fade active in" id="player-main">
+            <form class="sky-form" action=# id="sky-form">
+              <header>Player
+                <i type="button" class="glyphicon glyphicon-remove" id="button-close-player-form"></i>
+              </header>
+
+              <fieldset>
+                <div class="row">
+                  <section class="col col-4">
+                    <label class="label">Name</label>
+                    <label class="input">
+                      <input type="text" name="nameOfPlayer" id="name"
+                      placeholder="Enter name" value="{{this.name}}">
+                    </label>
+                  </section>
+                  <section class="col col-4">
+                    <label class="label">Player-ID</label>
+                    <label class="input">
+                      <input type="text" name="playerId" id="playerId"
+                      placeholder="Enter player-Id" value="{{this.playerId}}">
+                    </label>
+                  </section>
+                  <section class="col col-4">
+                    <label class="label">Location</label>
+                    <label class="input">
+                      <input type="text" name="location" id="location"
+                      placeholder="Enter location" value="{{this.location}}">
+                    </label>
+                  </section>
+                  <section class="col col-4">
+                    <label class="label">Address</label>
+                    <label class="input">
+                      <input type="text" name="address" id="address"
+                      placeholder="Enter address" value="{{this.address}}">
+                    </label>
+                  </section>
+
+                  <section class="col col-2">
+                    <label class="label">Post Index</label>
+                    <label class="input">
+                      <input type="text" name="postIndex" id="postIndex"
+                      placeholder="Enter post index" value="{{this.postIndex}}">
+                    </label>
+                  </section>
+                  <section class="col col-3">
+                    <label class="label">Town/City</label>
+                    <label class="input">
+                      <input type="text" name="townCity" id="townCity"
+                      placeholder="Enter town/city" value="{{this.place}}">
+                    </label>
+                  </section>
+                  <section class="col col-3">
+                    <label class="label">District</label>
+                    <label class="input">
+                      <input type="text" name="district" id="district"
+                      placeholder="Enter district" value="{{this.district}}">
+                    </label>
+                  </section>
+
+                </div>
+              </fieldset>
+              <fieldset>
+                <label class="label">Play time hours</label>
+                <div class="row">
+
+                  <section class="col col-1">
+                    <label class="label">Monday</label>
+                    <label class="input">
+                      <input type="text" name="mondayStart1" id="mondayStart1"
+                      placeholder="From" value="{{this.mondayStart1}}">
+                    </label>
+                  </section>
+                  <section class="col col-1">
+                    <label class="label">Tuesday</label>
+                    <label class="input">
+                      <input type="text" name="tuesdayStart1" id="tuesdayStart1"
+                      placeholder="From" value="{{this.tuesdayStart1}}">
+                    </label>
+                  </section>
+                  <section class="col col-1">
+                    <label class="label">Wednesday</label>
+                    <label class="input">
+                      <input type="text" name="wednesdayStart1" id="wednesdayStart1"
+                      placeholder="From" value="{{this.wednesdayStart1}}">
+                    </label>
+                  </section>
+                  <section class="col col-1">
+                    <label class="label">Thursday</label>
+                    <label class="input">
+                      <input type="text" name="thursdayStart1" id="thursdayStart1"
+                      placeholder="From" value="{{this.thursdayStart1}}">
+                    </label>
+                  </section>
+                  <section class="col col-1">
+                    <label class="label">Friday</label>
+                    <label class="input">
+                      <input type="text" name="fridayStart1" id="fridayStart1"
+                      placeholder="From" value="{{this.fridayStart1}}">
+                    </label>
+                  </section>
+                  <section class="col col-1">
+                    <label class="label">Saturday</label>
+                    <label class="input">
+                      <input type="text" name="saturdayStart1" id="saturdayStart1"
+                      placeholder="From" value="{{this.saturdayStart1}}">
+                    </label>
+                  </section>
+                  <section class="col col-1">
+                    <label class="label">Sunday</label>
+                    <label class="input">
+                      <input type="text" name="sundayStart1" id="sundayStart1"
+                      placeholder="From" value="{{this.sundayStart1}}">
+                    </label>
+                  </section>
+                  <section class="col col-5">
+                  </section>
+                </div>
+
+                <div class="row">
+                  <section class="col col-1">
+                    <label class="input">
+                      <input type="text" name="mondayEnd1" id="mondayEnd1"
+                      placeholder="To" value="{{this.mondayEnd1}}">
+                    </label>
+                  </section>
+                  <section class="col col-1">
+                    <label class="input">
+                      <input type="text" name="tuesdayEnd1" id="tuesdayEnd1"
+                      placeholder="To" value="{{this.tuesdayEnd1}}">
+                    </label>
+                  </section>
+                  <section class="col col-1">
+                    <label class="input">
+                      <input type="text" name="wednesdayEnd1" id="wednesdayEnd1"
+                      placeholder="To" value="{{this.wednesdayEnd1}}">
+                    </label>
+                  </section>
+                  <section class="col col-1">
+                    <label class="input">
+                      <input type="text" name="thursdayEnd1" id="thursdayEnd1"
+                      placeholder="To" value="{{this.thursdayEnd1}}">
+                    </label>
+                  </section>
+                  <section class="col col-1">
+                    <label class="input">
+                      <input type="text" name="fridayEnd1" id="fridayEnd1"
+                      placeholder="To" value="{{this.fridayEnd1}}">
+                    </label>
+                  </section>
+                  <section class="col col-1">
+                    <label class="input">
+                      <input type="text" name="saturdayEnd1" id="saturdayEnd1"
+                      placeholder="To" value="{{this.saturdayEnd1}}">
+                    </label>
+                  </section>
+                  <section class="col col-1">
+                    <label class="input">
+                      <input type="text" name="sundayEnd1" id="sundayEnd1"
+                      placeholder="To" value="{{this.sundayEnd1}}">
+                    </label>
+                  </section>
+                  <section class="col col-5">
+                  </section>
+
+                </div>
+                <div class="row">
+                  <label class="label">After lunch break</label>
+                  <section class="col col-1">
+                    <label class="input">
+                      <input type="text" name="mondayStart2" id="mondayStart2"
+                      placeholder="From" value="{{this.mondayStart2}}">
+                    </label>
+                  </section>
+                  <section class="col col-1">
+                    <label class="input">
+                      <input type="text" name="tuesdayStart2" id="tuesdayStart2"
+                      placeholder="From" value="{{this.tuesdayStart2}}">
+                    </label>
+                  </section>
+                  <section class="col col-1">
+                    <label class="input">
+                      <input type="text" name="wednesdayStart2" id="wednesdayStart2"
+                      placeholder="From" value="{{this.wednesdayStart2}}">
+                    </label>
+                  </section>
+                  <section class="col col-1">
+                    <label class="input">
+                      <input type="text" name="thursdayStart2" id="thursdayStart2"
+                      placeholder="From" value="{{this.thursdayStart2}}">
+                    </label>
+                  </section>
+                  <section class="col col-1">
+                    <label class="input">
+                      <input type="text" name="fridayStart2" id="fridayStart2"
+                      placeholder="From" value="{{this.fridayStart2}}">
+                    </label>
+                  </section>
+                  <section class="col col-1">
+                    <label class="input">
+                      <input type="text" name="saturdayStart2" id="saturdayStart2"
+                      placeholder="From" value="{{this.saturdayStart2}}">
+                    </label>
+                  </section>
+                  <section class="col col-1">
+                    <label class="input">
+                      <input type="text" name="sundayStart2" id="sundayStart2"
+                      placeholder="From" value="{{this.sundayStart2}}">
+                    </label>
+                  </section>
+                  <section class="col col-5">
+                  </section>
+                </div>
+
+                <div class="row">
+                  <section class="col col-1">
+                    <label class="input">
+                      <input type="text" name="mondayEnd2" id="mondayEnd2"
+                      placeholder="To" value="{{this.mondayEnd2}}">
+                    </label>
+                  </section>
+                  <section class="col col-1">
+                    <label class="input">
+                      <input type="text" name="tuesdayEnd2" id="tuesdayEnd2"
+                      placeholder="To" value="{{this.tuesdayEnd2}}">
+                    </label>
+                  </section>
+                  <section class="col col-1">
+                    <label class="input">
+                      <input type="text" name="wednesdayEnd2" id="wednesdayEnd2"
+                      placeholder="To" value="{{this.wednesdayEnd2}}">
+                    </label>
+                  </section>
+                  <section class="col col-1">
+                    <label class="input">
+                      <input type="text" name="thursdayEnd2" id="thursdayEnd2"
+                      placeholder="To" value="{{this.thursdayEnd2}}">
+                    </label>
+                  </section>
+                  <section class="col col-1">
+                    <label class="input">
+                      <input type="text" name="fridayEnd2" id="fridayEnd2"
+                      placeholder="To" value="{{this.fridayEnd2}}">
+                    </label>
+                  </section>
+                  <section class="col col-1">
+                    <label class="input">
+                      <input type="text" name="saturdayEnd2" id="saturdayEnd2"
+                      placeholder="To" value="{{this.saturdayEnd2}}">
+                    </label>
+                  </section>
+                  <section class="col col-1">
+                    <label class="input">
+                      <input type="text" name="sundayEnd2" id="sundayEnd2"
+                      placeholder="To" value="{{this.sundayEnd2}}">
+                    </label>
+                  </section>
+                  <section class="col col-5">
+                  </section>
+
+                </div>
+              </fieldset>
+              <footer>
+                <i type="button" class="fa fa-floppy-o button-save"></i>
+                <!-- <button type="submit" class="btn-u btn-u-default button-save" id="btn-save-content">Save</button> -->
+              </footer>
+            </form>
+          </div>
+
+          <div class="tab-pane fade" id="player-details">
+            <form class="sky-form" action="#" id="sky-form">
+              <header>Details
+                <i type="button" class="glyphicon glyphicon-remove" id="button-close-player-form"></i>
+              </header>
+              <fieldset>
+                <label class="label">Assortiment</label>
+                <!-- TODO: delete style -->
+                <div class="row" style="margin-left: 10px;">
+                  {{#each listOfAssortiment}}
+                    <label class="checkbox-inline"><input type="checkbox" {{getTypePresence}} value="{{this}}" class="player-assortiment">{{this}}</label>
+                  {{/each}}
+                </div>
+                <br>
+              </fieldset>
+
+              <fieldset>
+                <label class="label">Region</label>
+                <!-- TODO: delete style -->
+                <div class="row" style="margin-left: 10px;">
+                  {{#each regions}}
+                    <label class="checkbox-inline"><input type="checkbox" {{getRegionPresence}} value="{{this}}" class="player-regions">{{this}}</label>
+                  {{/each}}
+                </div>
+              </fieldset>
+              <br>
+              <footer>
+                <i type="button" class="fa fa-floppy-o button-save"></i>
+                <!-- <button type="submit" class="btn-u btn-u-default button-save" id="btn-save-content">Save</button> -->
+              </footer>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- old form -->
+
+        <!-- <form class="player-form">
 
           <i type="button" class="fa fa-floppy-o button-save"></i>
           <div class="panel panel-default">
@@ -152,7 +471,7 @@
             </div>
           </div>
 
-        </form>
+        </form> -->
       <!-- </div>
     </div>
   </article> -->

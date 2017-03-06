@@ -6,9 +6,54 @@ import '../../../api/players/collection';
 
 Meteor.subscribe('players');
 
+Template.playerForm.onCreated(function () {
+  const roleId = Meteor.user().profile.role;
+  const networkId = Roles.findOne({ _id: roleId }).networkId;
+  const network = Networks.findOne({ _id: networkId });
+  const assortiment = network.sortiment;
+  const regions = network.region;
+  this.assortiment = new ReactiveVar(assortiment);
+  this.regions = new ReactiveVar(regions);
+});
+
+Template.playerForm.helpers({
+  listOfAssortiment: function getArrayOfAssortimen() {
+    const assortiment = Template.instance().assortiment.get();
+    return assortiment;
+  },
+  getTypePresence: function getTypeValue() {
+    const assortiment = Template.instance().data.assortiment;
+    if (assortiment) {
+      return assortiment.indexOf(this.valueOf()) > -1 ? "checked" : "";
+    }
+  },
+  regions: function getArrayOfRegions(event) {
+    const regions = Template.instance().regions.get();
+    return regions;
+  },
+  getRegionPresence: function getRegionPresence() {
+    const regions = Template.instance().data.regions;
+    if (regions) {
+      return regions.indexOf(this.valueOf()) > -1 ? "checked" : "";
+    }
+  },
+});
+
 Template.playerForm.events({
   'click .button-save': function upsertPlayer(event) {
     event.preventDefault();
+    let assortiment = [];
+    let regions = [];
+    $('.player-assortiment').each(function(){
+      if ($(this).is(':checked')) {
+        assortiment.push($(this).val());
+      }
+    });
+    $('.player-regions').each(function(){
+      if ($(this).is(':checked')) {
+        regions.push($(this).val());
+      }
+    });
     Meteor.call('upsertPlayer',
       { _id: this._id,
         name: $('#name').val(),
@@ -46,7 +91,10 @@ Template.playerForm.events({
         sundayStart1: $('#sundayStart1').val(),
         sundayEnd1: $('#sundayEnd1').val(),
         sundayStart2: $('#sundayStart2').val(),
-        sundayEnd2: $('#sundayEnd2').val() });
+        sundayEnd2: $('#sundayEnd2').val(),
+        assortiment: assortiment,
+        regions: regions,
+       });
         // Play time hours end
   },
 });

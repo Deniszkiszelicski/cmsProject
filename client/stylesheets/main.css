@@ -94,13 +94,18 @@ body{
 }
 
 .player-form .fa-floppy-o{
-  margin-right: 15px;
+  margin-left: 15px;
   color: #0082C8;
   cursor: pointer;
-  position: absolute;
-  top: 800px;
-  right: 5px;
-  font-size: 2em;
+  float: left;
+  /*position: absolute;*/
+  /*top: 800px;*/
+  /*right: 5px;*/
+  font-size: 3em;
+}
+
+.player-form footer{
+  position: relative;
 }
 
 .panel-heading .glyphicon-remove{
