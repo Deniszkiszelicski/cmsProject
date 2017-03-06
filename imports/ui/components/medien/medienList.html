@@ -3,12 +3,15 @@
     <!-- <div class="col-md-10 col-md-offset-1"> -->
       <div class="panel panel-default panel-table">
         <div class="panel-heading">
-          <span>List of Medien</span>
+          <span>{{options.header}}</span>
+          {{#if options.enableButtonCloseListOfMedien}}
+          <i type="button" class="glyphicon glyphicon-remove" id="button-close-media-collection"></i>
+          {{/if}}
           {{#if isCreateNew}}
           {{else}}
-            {{#unless disableButtonNew}}
+            {{#if options.enableButtonNewMedia}}
               <button type="button" class="btn btn-default button-new">New media</button>
-            {{/unless}}
+            {{/if}}
           {{/if}}
 
           <input type="text" class="form-control filter-input"

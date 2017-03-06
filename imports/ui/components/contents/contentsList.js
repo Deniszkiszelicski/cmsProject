@@ -35,7 +35,6 @@ Template.contentsList.helpers({
       contentsWithOptions = Contents.find({name: { $regex: new RegExp(filterText), $options: 'i' }}).fetch();
     }
     const l = contentsWithOptions.length;
-    console.log("options , this= ", this);
     if (l > 0) {
       for (i = 0; i < l; i++) {
         contentsWithOptions[i]["enableButtonDelete"] = this.options.enableButtonDelete;
