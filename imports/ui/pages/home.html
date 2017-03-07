@@ -1,41 +1,74 @@
 <template name="home"><br><br>
-  <!-- Interactive Slider v2 -->
-  <!-- <div class="interactive-slider-v2">
-    <div class="container">
-      <h1>Welcome to IT-Park!</h1>
-      <p>Clean and fully responsive Template.</p>
-    </div>
-  </div> -->
-  <!-- End Interactive Slider v2 -->
+
+
 {{#with homePageData}}
-  <div class="slider-inner">
-			<div id="da-slider" class="da-slider" style="background: transparent url({{homeImage}}) repeat 0% 0%;">
-				<div class="da-slide da-slide-current">
-					{{{headline}}}
 
-					<!-- <div class="da-img"><img class="img-responsive" src="/img/1.png" alt=""></div> -->
-				</div>
-				<!-- <div class="da-slide">
-					<h2><i>RESPONSIVE VIDEO</i> <br> <i>SUPPORT AND</i> <br> <i>MANY MORE</i></h2>
-					<p><i>Lorem ipsum dolor amet</i> <br> <i>tempor incididunt ut</i></p>
+			<div id="da-slider" class="da-slider" style="background: transparent url({{homeImage}}) repeat 0% 0%;"><br>
+        <div class="container editor">
 
-					<div class="da-img">
-						<iframe src="http://player.vimeo.com/video/47911018" width="530" height="300" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-					</div>
 
-				</div> -->
-				<!-- <div class="da-slide">
-					<h2><i>USING BEST WEB</i> <br> <i>SOLUTIONS WITH</i> <br> <i>HTML5/CSS3</i></h2>
-					<p><i>Lorem ipsum dolor amet</i> <br> <i>tempor incididunt ut</i> <br> <i>veniam omnis </i></p>
-					<div class="da-img"><img src="assets/plugins/parallax-slider/img/html5andcss3.png" alt="image01"></div>
-				</div> -->
-				<!-- <div class="da-arrows">
-					<span class="da-arrows-prev"></span>
-					<span class="da-arrows-next"></span>
-				</div> -->
-			<!-- <nav class="da-dots"><span class="da-dots-current"></span><span></span><span></span></nav> -->
+
+
+  <hr>
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        {{{headline}}}
+      </div>
+
+      <div class="item">
+        {{{headline2}}}
+      </div>
+
+      <div class="item">
+        {{{headline3}}}
+      </div>
+
     </div>
-		</div>
+		
+
+    <script type="text/javascript">
+    var slideIndex = 0;
+    carousel();
+
+    function carousel() {
+        var i;
+        var x = document.getElementsByClassName("item");
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > x.length) {slideIndex = 1}
+        x[slideIndex -1].style.display = "block";
+        setTimeout(carousel, 4000); // Change image every 4 seconds
+    }
+
+    </script>
+
+    <!-- Left and right controls -->
+
+
+
+
+			</div>
+      <hr>
+
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
+    </div>
+
 
 
   <!--=== Content ===-->
@@ -46,4 +79,6 @@
   </div>
   <!--=== End Content ===-->
 {{/with}}
+
+
 </template>

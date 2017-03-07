@@ -1,9 +1,7 @@
-
-
 <template name="homeAdminPage"><br>
   <div class="tab-v1 content-form">
       <!-- <div class="col-md-10 col-md-offset-1"> -->
-          <form class="sky-form submitEditHome" name="Form" onsubmit="return validateForm()">
+          <form class="sky-form submitEditHome" name="Form" novalidate>
               <div class="panel panel-default">
                   <div class="panel-heading">
                       <span>Edit Homepage</span><br>  </div><br><br>
@@ -14,39 +12,93 @@
       <li class="active"><a href="#news" data-toggle="tab">News</a></li>
       <li><a href="#mainContent" data-toggle="tab">Main Content</a></li>
       <li><a href="#footer" data-toggle="tab">Footer</a></li>
+      <li><a href="#image" data-toggle="tab">Image</a></li>
 
     </ul>
     <div class="tab-content">
       <div class="tab-pane fade in active" id="news">
         <hr><h4>News</h4>
 
-        <div class="form-group col-lg-12">
-
-
-            <textarea name="editor2" id="headline" >{{homePageData.headline}}</textarea>
-<script>
-CKEDITOR.replace( 'editor2',{height:250});
-</script>
-
-        </div>
-
-
-        <div class="form-group col-lg-3">
-          <hr><h4>Main Image</h4>
+        <!-- Tab v3 -->
+        <div class="row tab-v3">
+          <div class="col-sm-3">
+            <ul class="nav nav-pills nav-stacked">
+              <li class="active"><a href="#news1" data-toggle="tab"><i class="fa fa-home"></i>News 1</a></li>
+              <li><a href="#news2" data-toggle="tab"><i class="fa fa-home"></i>News 2</a></li>
+              <li><a href="#news3" data-toggle="tab"><i class="fa fa-home"></i>News 3</a></li>
+            </ul>
           </div>
-          <div class="form-group col-lg-6">
+          <div class="col-sm-9">
+            <div class="tab-content">
+              <div class="tab-pane fade in active" id="news1">
+                <h4>News 1</h4>
+                <!-- news1 -->
+                <div class="form-group col-lg-12">
 
-          </div>
-            <div class="">
-              <div class="fileinput fileinput-new" data-provides="fileinput">
+
+                    <textarea name="editor9" id="headline" >{{homePageData.headline}}</textarea>
+        <script>
+        CKEDITOR.replace( 'editor9',{
+          height:250
+        },
+        {
+          contentsCss : "stylesheets/editor.css"
+        });
+        </script>
+
+                </div>
+
+                    <!-- news1 -->
+              </div>
+              <div class="tab-pane fade in" id="news2">
+                <h4>News 2</h4>
+                <!-- news2 -->
+                <div class="form-group col-lg-12">
 
 
+                    <textarea name="editor7" id="headline2" >{{homePageData.headline2}}</textarea>
+        <script>
+        CKEDITOR.replace( 'editor7',{
+          height:250
+        },
+        {
+          contentsCss : "stylesheets/editor.css"
+        });
+        </script>
 
-                <span class="btn btn-default btn-file"><input type="file" id="homeImage" required/></span>
-                <span class="fileinput-filename"></span><span class="fileinput-new"></span>
-                <hr>
+                </div>
+
+                    <!-- news2 -->
+              </div>
+              <div class="tab-pane fade in" id="news3">
+                <h4>News 3</h4>
+                <!-- news3 -->
+                <div class="form-group col-lg-12">
+
+
+                    <textarea name="editor8" id="headline3" >{{homePageData.headline3}}</textarea>
+        <script>
+        CKEDITOR.replace( 'editor8',{
+          height:250
+        },
+        {
+          contentsCss : "stylesheets/editor.css"
+        });
+        </script>
+
+                </div>
+
+                    <!-- news3 -->
               </div>
             </div>
+          </div>
+        </div>
+        <!-- Tab v3 -->
+
+
+
+
+
 
 
       </div>
@@ -69,69 +121,110 @@ CKEDITOR.replace( 'editor1',{height:250} );
 
 </div>
 
+
+
       </div>
       <div class="tab-pane fade in" id="footer">
         <hr><h4>Footer</h4>
-        <div class="form-group col-lg-6">
-            <label>Footer 1:</label>
+        <!-- Tab v3 -->
+        <div class="row tab-v3">
+          <div class="col-sm-3">
+            <ul class="nav nav-pills nav-stacked">
+              <li class="active"><a href="#footerA" data-toggle="tab"><i class="fa fa-comments"></i>Footer 1</a></li>
+              <li><a href="#footerB" data-toggle="tab"><i class="fa fa-comments"></i>Footer 2</a></li>
+              <li><a href="#footerC" data-toggle="tab"><i class="fa fa-comments"></i>Footer 3</a></li>
+              <li><a href="#footerD" data-toggle="tab"><i class="fa fa-comments"></i>Footer 4</a></li>
+            </ul>
+          </div>
+          <div class="col-sm-9">
+            <div class="tab-content">
+              <div class="tab-pane fade in active" id="footerA">
+                <h4>Footer 1</h4>
 
-            <textarea name="editor3" id="footer1">{{homePageData.footer1}}</textarea>
-        <script>
-        CKEDITOR.replace( 'editor3',{height:100});
-        </script>
+                <div class="form-group col-lg-6">
 
+
+                    <textarea name="editor3" id="footer1">{{homePageData.footer1}}</textarea>
+                <script>
+                CKEDITOR.replace( 'editor3',{height:100});
+                </script>
+
+                </div>
+              </div>
+              <div class="tab-pane fade in" id="footerB">
+                <h4>Footer 2</h4>
+                <div class="form-group col-lg-6">
+
+
+                    <textarea name="editor4" id="footer2">{{homePageData.footer2}}</textarea>
+                <script>
+                CKEDITOR.replace( 'editor4',{height:100});
+                </script>
+
+                </div>
+              </div>
+              <div class="tab-pane fade in" id="footerC">
+                <h4>Footer 3</h4>
+                <div class="form-group col-lg-6">
+
+
+                    <textarea name="editor5" id="footer3">{{homePageData.footer3}}</textarea>
+                <script>
+                CKEDITOR.replace( 'editor5',{height:100});
+                </script>
+
+                </div>
+              </div>
+              <div class="tab-pane fade in" id="footerD">
+                <h4>Footer 4</h4>
+                <div class="form-group col-lg-6">
+
+
+                    <textarea name="editor6" id="footer4">{{homePageData.footer4}}</textarea>
+                <script>
+                CKEDITOR.replace( 'editor6',{height:100});
+                </script>
+
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="form-group col-lg-6">
-            <label>Footer 2:</label>
+        <!-- Tab v3 -->
 
-            <textarea name="editor4" id="footer2">{{homePageData.footer2}}</textarea>
-        <script>
-        CKEDITOR.replace( 'editor4',{height:100});
-        </script>
 
-        </div>
-        <div class="form-group col-lg-6">
-            <label>Footer 3:</label>
 
-            <textarea name="editor5" id="footer3">{{homePageData.footer3}}</textarea>
-        <script>
-        CKEDITOR.replace( 'editor5',{height:100});
-        </script>
 
-        </div>
-        <div class="form-group col-lg-6">
-            <label>Footer 4:</label>
 
-            <textarea name="editor6" id="footer4">{{homePageData.footer4}}</textarea>
-        <script>
-        CKEDITOR.replace( 'editor6',{height:100});
-        </script>
+      </div>
+      <div class="tab-pane fade in" id="image">
 
-        </div>
+        <hr><h4>Image</h4>
+
+        <div class="form-group col-lg-12">
+            <div class="form-group col-lg-6">
+            </div>
+              <div class="">
+                <div class="fileinput fileinput-new" data-provides="fileinput">
+                  <span class="btn btn-default btn-file"><input type="file" id="homeImage" required/></span>
+                  <span class="fileinput-filename"></span><span class="fileinput-new"></span>
+                  <hr>
+                </div>
+              </div>
+</div>
+
+<div class="container">
+
+  <img src="{{homePageData.homeImage}}" class="img-rounded" alt="Cinque Terre" width="912" height="354">
+</div>
+
+
+
 
       </div>
 
     </div>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                     </div>
@@ -143,23 +236,6 @@ CKEDITOR.replace( 'editor1',{height:250} );
             </form>
         <!-- </div> -->
     </div>
-    <!-- <script type="text/javascript">
-    function validateForm()
-    {
-    var a=document.forms["Form"]["editor1"].value;
-    var b=document.forms["Form"]["editor2"].value;
-    var c=document.forms["Form"]["editor3"].value;
-    var d=document.forms["Form"]["editor4"].value;
-    var e=document.forms["Form"]["editor5"].value;
-    var f=document.forms["Form"]["editor6"].value;
-    if (a==null || a=="",b==null || b=="",c==null || c=="",d==null || d=="",e=="" || e==null,f=="" || f==null)
-      {
-      alert("Please Fill All The Fields");
-      return false;
-      }
-    }
-
-    </script> -->
 
 
 
