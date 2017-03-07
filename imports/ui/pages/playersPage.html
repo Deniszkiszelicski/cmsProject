@@ -5,7 +5,9 @@
       {{>playerForm}}
     {{/with}}
   {{else}}
-    {{>playersList isCreateNew=isCreateNew}}
+    {{#with options}}
+      {{>playersList}}
+    {{/with}}
   {{/if}}
   <br>
 </template>
