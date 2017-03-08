@@ -173,7 +173,7 @@
               </td>
             </tr>
             <tr class="col-sm-12">
-              <td class="col-sm-4">{{#if seeMedia}}
+              <td class="col-sm-3">{{#if seeMedia}}
                   Media Visible :All<input type="radio" name="optradio3" id="seeMedia" value="{{this}}" checked>
                   Own<input type="radio" name="optradio3" id="seeMedia" value="{{this}}">
                   {{else}}
@@ -181,7 +181,7 @@
                   Own<input type="radio" name="optradio3" id="seeMedia" value="{{this}}" checked>
                   {{/if}}
               </td>
-              <td class="col-sm-4">{{#if seeContent}}
+              <td class="col-sm-3">{{#if seeContent}}
                   Content Visible :All<input type="radio" name="optradio4" id="seeContent" value="{{this}}" checked>
                   Own<input type="radio" name="optradio4" id="seeContent" value="{{this}}">
                   {{else}}
@@ -189,12 +189,20 @@
                   Own<input type="radio" name="optradio4" id="seeContent" value="{{this}}" checked>
                   {{/if}}
               </td>
-              <td class="col-sm-4">{{#if seeContentGroup}}
+              <td class="col-sm-3">{{#if seeContentGroup}}
                   Content group Visible :All<input type="radio" name="optradio5" id="seeContentGroup" value="{{this}}" checked>
                   Own<input type="radio" name="optradio5" id="seeContentGroup" value="{{this}}">
                   {{else}}
                   Content group Visible :All<input type="radio" name="optradio5" id="seeContentGroup" value="{{this}}" >
                   Own<input type="radio" name="optradio5" id="seeContentGroup" value="{{this}}" checked>
+                  {{/if}}
+              </td>
+              <td class="col-sm-3">{{#if seeAllPlayers}}
+                  Content group Visible :All<input type="radio" name="optradio6" id="seeContentGroup" value="{{this}}" checked>
+                  Own<input type="radio" name="optradio6" id="seeAllPlayers" value="{{this}}">
+                  {{else}}
+                  Content group Visible :All<input type="radio" name="optradio6" id="seeContentGroup" value="{{this}}" >
+                  Own<input type="radio" name="optradio6" id="seeAllPlayers" value="{{this}}" checked>
                   {{/if}}
               </td>
             </tr>

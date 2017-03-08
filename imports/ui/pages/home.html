@@ -9,7 +9,7 @@
 
 
 
-  <hr>
+
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
 
@@ -29,24 +29,20 @@
       </div>
 
     </div>
-		
-
     <script type="text/javascript">
-    var slideIndex = 0;
-    carousel();
 
-    function carousel() {
-        var i;
-        var x = document.getElementsByClassName("item");
-        for (i = 0; i < x.length; i++) {
-          x[i].style.display = "none";
-        }
-        slideIndex++;
-        if (slideIndex > x.length) {slideIndex = 1}
-        x[slideIndex -1].style.display = "block";
-        setTimeout(carousel, 4000); // Change image every 4 seconds
-    }
-
+		$(function () {
+		    $('#myCarousel').carousel({
+		        interval:5000,
+		        pause: "false"
+		    });
+		    $('#playButton').click(function () {
+		        $('#myCarousel').carousel('cycle');
+		    });
+		    $('#pauseButton').click(function () {
+		        $('#myCarousel').carousel('pause');
+		    });
+		});
     </script>
 
     <!-- Left and right controls -->
@@ -55,7 +51,15 @@
 
 
 			</div>
-      <hr>
+      
+			<!-- <div id="carouselButtons">
+	      <button id="playButton" type="button" class="btn btn-default btn-xs">
+	          <span class="glyphicon glyphicon-play"></span>
+	       </button>
+	      <button id="pauseButton" type="button" class="btn btn-default btn-xs">
+	          <span class="glyphicon glyphicon-pause"></span>
+	      </button>
+	  </div> -->
 
       <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -74,8 +78,21 @@
   <!--=== Content ===-->
   <div class="container content-md"><hr>
 
-  <p id="newsParagraph">{{{news}}}</p><hr>
+<div id="news1">
+	<p>{{{news}}}</p>
+</div> <hr>
+<div class="p1"><p>{{{news2}}}</p>
 
+</div>
+<div class="p2"><p>{{{news3}}}</p>
+
+</div>
+<div class="p3"><p>{{{news}}}</p>
+
+</div>
+<a class="p3" href="#"></a>
+<a class="p1" href="#"></a>
+<a class="p2" href="#"></a>
   </div>
   <!--=== End Content ===-->
 {{/with}}

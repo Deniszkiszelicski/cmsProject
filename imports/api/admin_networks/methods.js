@@ -14,6 +14,8 @@ Meteor.methods({
                     region: networksObject.region,
                     logo: networksObject.logo,
                     news: networksObject.news,
+                    news2: networksObject.news2,
+                    news3: networksObject.news3,
                     footer1: networksObject.footer1,
                     footer2: networksObject.footer2,
                     footer3: networksObject.footer3,
@@ -65,6 +67,8 @@ Networks.update({_id:id},{$pull:{sortiment:sortiment}});
   homeSubmitEdit: function(networksObject){
     Networks.update({_id:networksObject._id},{$set: {
       news:networksObject.news,
+      news2: networksObject.news2,
+      news3: networksObject.news3,
       headline:networksObject.headline,
       headline2:networksObject.headline2,
       headline3:networksObject.headline3,

@@ -30,7 +30,8 @@ Template.homeAdminPage.events({
 
 
 
-    Meteor.call('homeSubmitEdit',{_id:Session.get("currentNetworkId"),headline:$('#headline').val(),headline2:$('#headline2').val(),headline3:$('#headline3').val(),news:$('#ql-editor-2').val(),image:result,
+    Meteor.call('homeSubmitEdit',{_id:Session.get("currentNetworkId"),headline:$('#headline').val(),headline2:$('#headline2').val(),headline3:$('#headline3').val(),
+    news:$('#ql-editor-2').val(),news2:$('#ql-editor-3').val(),news3:$('#ql-editor-4').val(),image:result,
     footer1:$('#footer1').val(),footer2:$('#footer2').val(),footer3:$('#footer3').val(),footer4:$('#footer4').val()});
     toastr.success("Data saved","Edit Home Page");
       FlowRouter.go('/');

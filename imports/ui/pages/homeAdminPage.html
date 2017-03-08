@@ -106,20 +106,59 @@
 
         <hr><h4>Main Content</h4>
 
-        <div class="form-group col-lg-12">
+        <!-- Tab v3 -->
+        <div class="row tab-v3">
+          <div class="col-sm-3">
+            <ul class="nav nav-pills nav-stacked">
+              <li class="active"><a href="#main1" data-toggle="tab"><i class="fa fa-home"></i>Main Content 1</a></li>
+              <li><a href="#main2" data-toggle="tab"><i class="fa fa-home"></i>Main Content 2</a></li>
+              <li><a href="#main3" data-toggle="tab"><i class="fa fa-home"></i>Main Content 3</a></li>
+            </ul>
+          </div>
+          <div class="col-sm-9">
+            <div class="tab-content">
+              <div class="tab-pane fade in active" id="main1">
+                <h4>Main Content 1</h4>
+                <!-- main1 -->
+                <div class="form-group col-lg-12">
+                    <textarea name="editor1" id="ql-editor-2">{{homePageData.news}}</textarea>
+        <script>
+        CKEDITOR.replace( 'editor1',{height:250} );
+        </script>
+        </div>
+
+                    <!-- main1 -->
+              </div>
+              <div class="tab-pane fade in" id="main2">
+                <h4>Main Content 2</h4>
+                <!-- main2 -->
+                <div class="form-group col-lg-12">
+                    <textarea name="editor10" id="ql-editor-3">{{homePageData.news2}}</textarea>
+        <script>
+        CKEDITOR.replace( 'editor10',{height:250} );
+        </script>
+        </div>
+
+                    <!-- main2 -->
+              </div>
+              <div class="tab-pane fade in" id="main3">
+                <h4>Main Content 3</h4>
+                <!-- main3 -->
+                <div class="form-group col-lg-12">
+                    <textarea name="editor11" id="ql-editor-4">{{homePageData.news3}}</textarea>
+        <script>
+        CKEDITOR.replace( 'editor11',{height:250} );
+        </script>
+        </div>
+
+                    <!-- news3 -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Tab v3 -->
 
 
-
-            <textarea name="editor1" id="ql-editor-2">{{homePageData.news}}</textarea>
-<script>
-CKEDITOR.replace( 'editor1',{height:250} );
-</script>
-
-
-
-
-
-</div>
 
 
 

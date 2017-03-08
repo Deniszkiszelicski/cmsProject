@@ -33,7 +33,8 @@ Meteor.methods({
      homeEditMenu: rolesObject.homeEditMenu,
      seeMedia: rolesObject.seeMedia,
      seeContent: rolesObject.seeContent,
-     seeContentGroup: rolesObject.seeContentGroup });
+     seeContentGroup: rolesObject.seeContentGroup,
+     seeAllPlayers: rolesObject.seeAllPlayers });
   },
   deleteRole: function(id) {
     Roles.remove(id);
@@ -66,6 +67,7 @@ Meteor.methods({
     statisticMenu: rolesObject.statisticMenu,
     seeMedia: rolesObject.seeMedia,
     seeContent: rolesObject.seeContent,
+    seeAllPlayers: rolesObject.seeAllPlayers,
     seeContentGroup: rolesObject.seeContentGroup });
-},
+  },
 });
