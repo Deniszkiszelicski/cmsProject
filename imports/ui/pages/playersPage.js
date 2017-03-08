@@ -10,6 +10,7 @@ import './playersPage.html';
 Template.playersPage.onCreated(function onCreated() {
   this.initialPage = new ReactiveVar(1);
   this.initialRangeOfPages = new ReactiveVar([1, 2, 3, 4, 5]);
+  this.initialShowPerPage = new ReactiveVar(10);
 
   this.isCreateNew = new ReactiveVar(false);
   this.currentPlayer = new ReactiveVar();
@@ -26,9 +27,11 @@ Template.playersPage.helpers({
   options: function getOptions() {
     const initialPage = Template.instance().initialPage.get();
     const initialRangeOfPages = Template.instance().initialRangeOfPages.get();
+    const initialShowPerPage = Template.instance().initialShowPerPage.get();
     const options = { header: "List of all players", initialPage: initialPage,
                       enableButtonNewPlayer: true, enableFilter: true,
-                      initialRangeOfPages: initialRangeOfPages };
+                      initialRangeOfPages: initialRangeOfPages,
+                      initialShowPerPage: initialShowPerPage };
     const includedCGsWithOptions = { options: options};
     return includedCGsWithOptions;
   },
@@ -84,5 +87,11 @@ Template.playersPage.events({
       newRangeOfPages.pop();
     }
     templateInstance.initialRangeOfPages.set(newRangeOfPages);
+  },
+  'keyup #player-per-page-input': function (event, templateInstance) {
+    const initialShowPerPage = parseInt(event.currentTarget.value);
+    if (initialShowPerPage > 0) {
+      templateInstance.initialShowPerPage.set(initialShowPerPage);
+    }
   },
 });

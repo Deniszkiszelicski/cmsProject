@@ -11,7 +11,7 @@ import '../../../api/players/collection';
 
 Template.playersList.onCreated(function onCreated() {
   this.currentPage = new ReactiveVar(this.data.options.initialPage);
-  this.showPerPage = new ReactiveVar(2);
+  this.showPerPage = new ReactiveVar(this.data.options.initialShowPerPage);
   this.currentRangeOfPages = new ReactiveVar(this.data.options.initialRangeOfPages);
   this.filterText = new ReactiveVar();
   this.autorun(() => {
