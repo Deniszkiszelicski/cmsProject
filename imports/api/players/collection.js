@@ -153,6 +153,10 @@ PlayersSchema = new SimpleSchema({
     type: [String],
     optional: true,
   },
+  playlistId: {
+    type: String,
+    optional: true,
+  },
   createdAt: {
     type: Date,
     autoValue: function() {

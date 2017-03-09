@@ -2,6 +2,7 @@ import '../../ui/layouts/mainLayout';
 import '../../ui/layouts/homeLayout';
 import '../../ui/pages/playersPage';
 import '../../ui/pages/contentsPage';
+import '../../ui/pages/playlistsPage';
 import '../../ui/pages/contentGroupsPage';
 import '../../ui/pages/medienPage';
 import '../../ui/layouts/signInLayout';

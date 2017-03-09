@@ -1,7 +1,4 @@
 <template name ="playerForm">
-  <!-- <article class="playerForm">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3"> -->
       <div class="tab-v1 player-form">
         <ul class="nav nav-tabs">
           <li>
@@ -315,6 +312,10 @@
               </footer>
             </form>
           </div>
+
+
+
+
           <div class="tab-pane fade" id="playlist">
             <form class="sky-form playlist-form" role="form">
               <header>Playlist
@@ -323,224 +324,46 @@
 
               <fieldset>
                 <div class="row">
-                  <!-- <section class="col col-3">
-                    <label class="label">Player-ID</label>
-                    <label class="input">
-                      <input type="text" name="playerId" id="playerId"
-                      placeholder="Enter id of player" value="{{this.playerId}}">
-                    </label>
-                  </section>
-                  <section class="col col-3">
-                    <label class="label">Player name</label>
-                    {{playerName}}
-                  </section> -->
+                  <section class="col col-6">
+    								<label class="label">Playlist</label>
+    								<label class="select">
+    									<select id="select-playlist">
+                        {{#if isPlaylistChosen}}
+                          <option value="{{getPlaylist._id}}">{{getPlaylist.name}}</option>
+                        {{else}}
+                        <option value="0">Choose playlist</option>
+                        {{/if}}
+                        {{#each playlists}}
+                          <option value="{{_id}}">{{name}}</option>
+                        {{/each}}
+    									</select>
+    									<!-- <i></i> -->
+    								</label>
+    							</section>
                   <section class="col col-3">
                     <label class="label">Duration in total</label>
                     <label class="input">
-                      <!-- <input type="text" name="durationOfContentGroup" id="durationInTotal"
-                      placeholder="Enter duration of content-group" value="{{this.duration}}"> -->
                       15 min(s)
                     </label>
                   </section>
                   <section class="col col-3">
                     <label class="label">Duration of private</label>
                     <label class="input">
-                      <!-- <input type="text" name="durationOfContentGroup" id="durationOfPrivate"
-                      placeholder="Enter duration of content-group" value="{{this.duration}}"> -->
                       30 min(s)
                     </label>
                   </section>
                 </div>
               </fieldset>
 
-              <fieldset>
-                <button type="submit" class="btn-u btn-u-default" id="btn-show-linkedContentGroups" style="margin-left: 12px; margin-bottom: 10px;">Manage content-groups</button>
-                <div id="contentGroup-collection-fieldset">
-                  {{#if isShowCGs}}
-                    {{#with allContentGroups}}
-                      {{> contentGroupsList}}
-                    {{/with}}
-                  {{/if}}
-                </div>
-              </fieldset>
-              <fieldset>
-                <div id="contentGroup-collection-included-fieldset">
-                  {{#with includedContentGroups}}
-                    {{> contentGroupsList}}
-                  {{/with}}
-                </div>
-              </fieldset>
-              <fieldset>
-                <div id="content-collection-included-fieldset">
-                  {{#with includedContents}}
-                    {{> contentsList}}
-                  {{/with}}
-                </div>
-              </fieldset>
+              {{#with getPlaylist}}
+                {{> playlistContentPart}}
+              {{/with}}
               <footer>
                 <i type="button" class="fa fa-floppy-o button-save"></i>
-                <!-- <button type="submit" class="btn-u btn-u-default button-save" id="btn-save-content">Save</button> -->
               </footer>
             </form>
           </div>
         </div>
 
       </div>
-
-      <!-- old form -->
-
-        <!-- <form class="player-form">
-
-          <i type="button" class="fa fa-floppy-o button-save"></i>
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3>Edit player</h3>
-              <i type="button" class="glyphicon glyphicon-remove" id="button-close-player-form"></i>
-            </div>
-            <div class="panel-body">
-              <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Name of player" value="{{this.name}}">
-              </div>
-              <div class="form-group">
-                <label for="playerId">Player-ID</label>
-                <input type="text" class="form-control" id="playerId" placeholder="Give player ID" value="{{this.playerId}}">
-              </div>
-              <div class="form-group">
-                <label for="location">Location</label>
-                <input type="text" class="form-control" id="location" placeholder="Location of player" value="{{this.location}}">
-              </div>
-              <div class="form-group">
-                <label for="address">Address</label>
-                <input type="text" class="form-control" id="address" placeholder="Address of player" value="{{this.address}}">
-              </div>
-              <div class="form-group">
-                <label for="postIndex">Post Index</label>
-                <input type="text" class="form-control" id="postIndex" placeholder="Post index of player" value="{{this.postIndex}}">
-              </div>
-              <div class="form-group">
-                <label for="townCity">Town/City</label>
-                <input type="text" class="form-control" id="townCity" placeholder="Town/City of player" value="{{this.place}}">
-              </div>
-              <div class="form-group">
-                <label for="district">District</label>
-                <input type="text" class="form-control" id="district" placeholder="District of player" value="{{this.district}}">
-              </div>
-              <div class="form-group form-weekly-schedule-part">
-                <p>Play time hours</p>
-                <div class="schedule-day">
-                  <p>Monday</p>
-                  <div class="schedule-day-part-1">
-                    <form>
-                      <input type="text" class="form-control" id="mondayStart1" placeholder="From" value="{{this.mondayStart1}}">
-                      <input type="text" class="form-control" id="mondayEnd1" placeholder="To" value="{{this.mondayEnd1}}">
-                    </form>
-                  </div>
-                  <div class="schedule-day-part-2">
-                    <form>
-                      <input type="text" class="form-control" id="mondayStart2" placeholder="From" value="{{this.mondayStart2}}">
-                      <input type="text" class="form-control" id="mondayEnd2" placeholder="To" value="{{this.mondayEnd2}}">
-                    </form>
-                  </div>
-                </div>
-                <div class="schedule-day">
-                  <p>Tuesday</p>
-                  <div class="schedule-day-part-1">
-                    <form>
-                      <input type="text" class="form-control" id="tuesdayStart1" placeholder="From" value="{{this.tuesdayStart1}}">
-                      <input type="text" class="form-control" id="tuesdayEnd1" placeholder="To" value="{{this.tuesdayEnd1}}">
-                    </form>
-                  </div>
-                  <div class="schedule-day-part-2">
-                    <form>
-                      <input type="text" class="form-control" id="tuesdayStart2" placeholder="From" value="{{this.tuesdayStart2}}">
-                      <input type="text" class="form-control" id="tuesdayEnd2" placeholder="To" value="{{this.tuesdayEnd2}}">
-                    </form>
-                  </div>
-                </div>
-                <div class="schedule-day">
-                  <p>Wednesday</p>
-                  <div class="schedule-day-part-1">
-                    <form>
-                      <input type="text" class="form-control" id="wednesdayStart1" placeholder="From" value="{{this.wednesdayStart1}}">
-                      <input type="text" class="form-control" id="wednesdayEnd1" placeholder="To" value="{{this.wednesdayEnd1}}">
-                    </form>
-                  </div>
-                  <div class="schedule-day-part-2">
-                    <form>
-                      <input type="text" class="form-control" id="wednesdayStart2" placeholder="From" value="{{this.wednesdayStart2}}">
-                      <input type="text" class="form-control" id="wednesdayEnd2" placeholder="To" value="{{this.wednesdayEnd2}}">
-                    </form>
-                  </div>
-                </div>
-                <div class="schedule-day">
-                  <p>Thursday</p>
-                  <div class="schedule-day-part-1">
-                    <form>
-                      <input type="text" class="form-control" id="thursdayStart1" placeholder="From" value="{{this.thursdayStart1}}">
-                      <input type="text" class="form-control" id="thursdayEnd1" placeholder="To" value="{{this.thursdayEnd1}}">
-                    </form>
-                  </div>
-                  <div class="schedule-day-part-2">
-                    <form>
-                      <input type="text" class="form-control" id="thursdayStart2" placeholder="From" value="{{this.thursdayStart2}}">
-                      <input type="text" class="form-control" id="thursdayEnd2" placeholder="To" value="{{this.thursdayEnd2}}">
-                    </form>
-                  </div>
-                </div>
-                <div class="schedule-day">
-                  <p>Friday</p>
-                  <div class="schedule-day-part-1">
-                    <form>
-                      <input type="text" class="form-control" id="fridayStart1" placeholder="From" value="{{this.fridayStart1}}">
-                      <input type="text" class="form-control" id="fridayEnd1" placeholder="To" value="{{this.fridayEnd1}}">
-                    </form>
-                  </div>
-                  <div class="schedule-day-part-2">
-                    <form>
-                      <input type="text" class="form-control" id="fridayStart2" placeholder="From" value="{{this.fridayStart2}}">
-                      <input type="text" class="form-control" id="fridayEnd2" placeholder="To" value="{{this.fridayEnd2}}">
-                    </form>
-                  </div>
-                </div>
-                <div class="schedule-day">
-                  <p>Saturday</p>
-                  <div class="schedule-day-part-1">
-                    <form>
-                      <input type="text" class="form-control" id="saturdayStart1" placeholder="From" value="{{this.saturdayStart1}}">
-                      <input type="text" class="form-control" id="saturdayEnd1" placeholder="To" value="{{this.saturdayEnd1}}">
-                    </form>
-                  </div>
-                  <div class="schedule-day-part-2">
-                    <form>
-                      <input type="text" class="form-control" id="saturdayStart2" placeholder="From" value="{{this.saturdayStart2}}">
-                      <input type="text" class="form-control" id="saturdayEnd2" placeholder="To" value="{{this.saturdayEnd2}}">
-                    </form>
-                  </div>
-                </div>
-                <div class="schedule-day">
-                  <p>Sunday</p>
-                  <div class="schedule-day-part-1">
-                    <form>
-                      <input type="text" class="form-control" id="sundayStart1" placeholder="From" value="{{this.sundayStart1}}">
-                      <input type="text" class="form-control" id="sundayEnd1" placeholder="To" value="{{this.sundayEnd1}}">
-                    </form>
-                  </div>
-                  <div class="schedule-day-part-2">
-                    <form>
-                      <input type="text" class="form-control" id="sundayStart2" placeholder="From" value="{{this.sundayStart2}}">
-                      <input type="text" class="form-control" id="sundayEnd2" placeholder="To" value="{{this.sundayEnd2}}">
-                    </form>
-                  </div>
-                </div>
-              </div>
-              <div>
-              </div>
-            </div>
-          </div>
-
-        </form> -->
-      <!-- </div>
-    </div>
-  </article> -->
 </template>

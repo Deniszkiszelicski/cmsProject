@@ -10,14 +10,14 @@ Template.playlist.helpers({
   mayEdit: function mayEdit() {
     return true; //TODO:
   },
-  playerName: function getPlayerName() {
-    const player = Players.findOne({ playerId : this.playerId });
-    if (!!player) {
-      return player.name;
-    } else {
-      return "";
-    }
-  },
+  // playerName: function getPlayerName() {
+  //   const player = Players.findOne({ playerId : this.playerId });
+  //   if (!!player) {
+  //     return player.name;
+  //   } else {
+  //     return "";
+  //   }
+  // },
   contentGroupNames: function getContentGroupsNames() {
     let contentGroupNames = [];
     const contentGroupIds = this.contentGroupIds;

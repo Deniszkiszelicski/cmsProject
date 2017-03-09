@@ -4,71 +4,65 @@
     <div class="panel-heading">
     </div>
     <div class="panel-body">
-      <form class="sky-form playlist-form" role="form">
-        <header>Playlist
-          <i type="button" class="glyphicon glyphicon-remove" id="button-close-playlist-form"></i>
-        </header>
+      <!-- <div class="tab-pane fade" id="playlist"> -->
+        <form class="sky-form playlist-form" role="form" id="playlist-form">
+          <header>Playlist
+            <i type="button" class="glyphicon glyphicon-remove" id="button-close-playlist-form"></i>
+          </header>
 
-        <fieldset>
-          <div class="row">
-            <section class="col col-3">
-              <label class="label">Player-ID</label>
-              <label class="input">
-                <input type="text" name="playerId" id="playerId"
-                placeholder="Enter id of player" value="{{this.playerId}}">
-              </label>
-            </section>
-            <section class="col col-3">
-              <label class="label">Player name</label>
-              {{playerName}}
-            </section>
-            <section class="col col-3">
-              <label class="label">Duration in total</label>
-              <label class="input">
-                <!-- <input type="text" name="durationOfContentGroup" id="durationInTotal"
-                placeholder="Enter duration of content-group" value="{{this.duration}}"> -->
-                15 min(s)
-              </label>
-            </section>
-            <section class="col col-3">
-              <label class="label">Duration of private</label>
-              <label class="input">
-                <!-- <input type="text" name="durationOfContentGroup" id="durationOfPrivate"
-                placeholder="Enter duration of content-group" value="{{this.duration}}"> -->
-                30 min(s)
-              </label>
-            </section>
-          </div>
-        </fieldset>
+          <fieldset>
+            <div class="row">
+              <section class="col col-4">
+                <label class="label">Name</label>
+                <label class="input">
+                  <input type="text" name="nameOfPlaylist" id="name"
+                  placeholder="Enter name" value="{{this.name}}">
+                </label>
+              </section>
+              <section class="col col-3">
+                <label class="label">Duration in total</label>
+                <label class="input">
+                  15 min(s)
+                </label>
+              </section>
+              <section class="col col-3">
+                <label class="label">Duration of private</label>
+                <label class="input">
+                  30 min(s)
+                </label>
+              </section>
+            </div>
+          </fieldset>
 
-        <fieldset>
-          <button type="submit" class="btn-u btn-u-default" id="btn-show-linkedContentGroups" style="margin-left: 12px; margin-bottom: 10px;">Manage content-groups</button>
-          <div id="contentGroup-collection-fieldset">
-            {{#if isShowCGs}}
-              {{#with allContentGroups}}
+          <fieldset>
+            <button type="submit" class="btn-u btn-u-default" id="btn-show-linkedContentGroups" style="margin-left: 12px; margin-bottom: 10px;">Manage content-groups</button>
+            <div id="contentGroup-collection-fieldset">
+              {{#if isShowCGs}}
+                {{#with allContentGroups}}
+                  {{> contentGroupsList}}
+                {{/with}}
+              {{/if}}
+            </div>
+          </fieldset>
+          <fieldset>
+            <div id="contentGroup-collection-included-fieldset">
+              {{#with includedContentGroups}}
                 {{> contentGroupsList}}
               {{/with}}
-            {{/if}}
-          </div>
-        </fieldset>
-        <fieldset>
-          <div id="contentGroup-collection-included-fieldset">
-            {{#with includedContentGroups}}
-              {{> contentGroupsList}}
-            {{/with}}
-          </div>
-        </fieldset>
-        <fieldset>
-          <div id="content-collection-included-fieldset">
-            {{#with includedContents}}
-              {{> contentsList}}
-            {{/with}}
-          </div>
-        </fieldset>
-        <footer>
-          <button type="submit" class="btn-u btn-u-default button-save" id="btn-save-playlist">Save</button>
-        </footer>
-      </form>
+            </div>
+          </fieldset>
+          <fieldset>
+            <div id="content-collection-included-fieldset">
+              {{#with includedContents}}
+                {{> contentsList}}
+              {{/with}}
+            </div>
+          </fieldset>
+          <footer>
+            <i type="button" class="fa fa-floppy-o button-save" id="btn-save-playlist"></i>
+          </footer>
+        </form>
+      <!-- </div> -->
     </div>
   </div>
 

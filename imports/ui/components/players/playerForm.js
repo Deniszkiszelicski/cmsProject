@@ -1,13 +1,15 @@
 import { Template } from 'meteor/templating';
 import { $ } from 'meteor/jquery';
-import './playerForm.html';
 import '../../../api/players/methods';
 import '../../../api/players/collection';
+import '../playlists/playlistContentPart';
+import './playerForm.html';
 
 Meteor.subscribe('players');
 
 Template.playerForm.onCreated(function () {
   this.isShowCGs = new ReactiveVar(false);
+  this.playlistId = new ReactiveVar(this.data.playlistId);
   const roleId = Meteor.user().profile.role;
   const networkId = Roles.findOne({ _id: roleId }).networkId;
   const network = Networks.findOne({ _id: networkId });
@@ -87,6 +89,23 @@ Template.playerForm.helpers({
       return regions.indexOf(this.valueOf()) > -1 ? "checked" : "";
     }
   },
+  playlists: function playlists() {
+    const playlistId = Template.instance().playlistId.get();
+    return Playlists.find({ _id: {$ne : playlistId } }).fetch();
+    // return Playlists.find({}).fetch();
+  },
+  isPlaylistChosen: function isPlaylistChosen() {
+    if (this.playlistId) {
+      return true;
+    }
+    return false;
+  },
+  getPlaylist: function getPlaylist() {
+    const playlistId = Template.instance().playlistId.get();
+    if (playlistId) {
+      return Playlists.findOne({ _id: playlistId });
+    }
+  },
 });
 
 Template.playerForm.events({
@@ -112,6 +131,7 @@ Template.playerForm.events({
         contentGroupIds.push(contentGroups[i]._id);
       }
     }
+    const playlistId = $('#select-playlist').val();
 
     Meteor.call('upsertPlayer',
       { _id: this._id,
@@ -154,6 +174,7 @@ Template.playerForm.events({
         assortiment: assortiment,
         regions: regions,
         contentGroupIds: contentGroupIds,
+        playlistId: playlistId,
        });
         // Play time hours end
   },
@@ -179,5 +200,9 @@ Template.playerForm.events({
   'click #button-close-contentGroup-collection': function closeMediaCollection(event, templateInstance) {
     event.preventDefault();
     templateInstance.isShowCGs.set(false);
+  },
+  'change #select-playlist': function updateSelectedPlaylist(event, templateInstance) {
+    const playlistId = event.target.value;
+    templateInstance.playlistId.set(playlistId);
   },
 });

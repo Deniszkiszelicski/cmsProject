@@ -53,6 +53,7 @@ Meteor.methods({
           assortiment: player.assortiment,
           regions: player.regions,
           contentGroupIds: player.contentGroupIds,
+          playlistId:player.playlistId,
         }
       });
     } else {
@@ -95,6 +96,7 @@ Meteor.methods({
           assortiment: player.assortiment,
           regions: player.regions,
           contentGroupIds: player.contentGroupIds,
+          playlistId:player.playlistId,
       });
     }
   },
