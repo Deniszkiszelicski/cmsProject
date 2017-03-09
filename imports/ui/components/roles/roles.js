@@ -40,7 +40,7 @@ Template.adminRole.events({
                                  editContent: $('#editContent').is(":checked"),
                                  deleteContent: $('#deleteContent').is(":checked"),
                                  createContentGrp: $('#createContentGrp').is(":checked"),
-                                 editContentGrp: $('#editContentGrp').is(":checked"),
+                                 grantContentGrpAccess: $('#grantContentGrpAccess').is(":checked"),
                                  deleteContentGrp: $('#deleteContentGrp').is(":checked"),
                                  createPlaylist: $('#createPlaylist').is(":checked"),
                                  editPlaylist: $('#editPlaylist').is(":checked"),
@@ -55,7 +55,7 @@ Template.adminRole.events({
                                  seeMedia: $('#seeMedia').is(":checked"),
                                  seeContent: $('#seeContent').is(":checked"),
                                  seeAllPlayers: $('#seeAllPlayers').is(":checked"),
-                                 seeContentGroup: $('#seeContentGroup').is(":checked"),
+
     });
     toastr.success("Role saved","New Role");
 

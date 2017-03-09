@@ -21,21 +21,32 @@
 
         <!-- Tab v3 -->
         <div class="row tab-v3">
-          <div class="col-sm-3">
+          <div class="col-sm-2">
             <ul class="nav nav-pills nav-stacked">
-              <li class="active"><a href="#news1" data-toggle="tab"><i class="fa fa-home"></i>News 1</a></li>
-              <li><a href="#news2" data-toggle="tab"><i class="fa fa-home"></i>News 2</a></li>
-              <li><a href="#news3" data-toggle="tab"><i class="fa fa-home"></i>News 3</a></li>
+              <li class="active"><a href="#news1" data-toggle="tab"><i class="fa fa-home"></i> News 1</a></li>
+              <li><a href="#news2" data-toggle="tab"><i class="fa fa-home"></i> News 2</a></li>
+              <li><a href="#news3" data-toggle="tab"><i class="fa fa-home"></i> News 3</a></li>
+              <li><a href="#news4" data-toggle="tab"><i class="fa fa-home"></i> News 4</a></li>
+              <li><a href="#news5" data-toggle="tab"><i class="fa fa-home"></i> News 5</a></li>
+              <li><a href="#news6" data-toggle="tab"><i class="fa fa-home"></i> News 6</a></li>
+              <li><a href="#news7" data-toggle="tab"><i class="fa fa-home"></i> News 7</a></li>
+              <li><a href="#news8" data-toggle="tab"><i class="fa fa-home"></i> News 8</a></li>
+              <li><a href="#news9" data-toggle="tab"><i class="fa fa-home"></i> News 9</a></li>
+              <li><a href="#news10" data-toggle="tab"><i class="fa fa-home"></i> News 10</a></li>
             </ul>
+
           </div>
           <div class="col-sm-9">
             <div class="tab-content">
               <div class="tab-pane fade in active" id="news1">
+              {{#if homePageData.news1active}}
+
+              <input type="checkbox" aria-label="..." id="news1active" checked>Active
+                {{else}}
+              <input type="checkbox" aria-label="..." id="news1active" >Active
+                  {{/if}}
                 <h4>News 1</h4>
-                <!-- news1 -->
                 <div class="form-group col-lg-12">
-
-
                     <textarea name="editor9" id="headline" >{{homePageData.headline}}</textarea>
         <script>
         CKEDITOR.replace( 'editor9',{
@@ -49,8 +60,10 @@
                 </div>
 
                     <!-- news1 -->
-              </div>
-              <div class="tab-pane fade in" id="news2">
+              </div><div class="tab-pane fade in" id="news2">
+            {{#if homePageData.news2active}}
+              <input type="checkbox" aria-label="..." id="news2active" checked>Active
+                {{else}}<input type="checkbox" aria-label="..." id="news2active">Active{{/if}}
                 <h4>News 2</h4>
                 <!-- news2 -->
                 <div class="form-group col-lg-12">
@@ -67,15 +80,14 @@
         </script>
 
                 </div>
-
                     <!-- news2 -->
-              </div>
-              <div class="tab-pane fade in" id="news3">
+              </div><div class="tab-pane fade in" id="news3">
+              {{#if homePageData.news3active}}
+              <input type="checkbox" aria-label="..." id="news3active" checked>Active
+                {{else}}<input type="checkbox" aria-label="..." id="news3active">Active{{/if}}
                 <h4>News 3</h4>
                 <!-- news3 -->
                 <div class="form-group col-lg-12">
-
-
                     <textarea name="editor8" id="headline3" >{{homePageData.headline3}}</textarea>
         <script>
         CKEDITOR.replace( 'editor8',{
@@ -89,7 +101,148 @@
                 </div>
 
                     <!-- news3 -->
+              </div><div class="tab-pane fade in" id="news4">
+              {{#if homePageData.news4active}}
+              <input type="checkbox" aria-label="..." id="news4active" checked>Active
+                {{else}}<input type="checkbox" aria-label="..." id="news4active">Active{{/if}}
+                <h4>News 4</h4>
+                <!-- news4 -->
+                <div class="form-group col-lg-12">
+                    <textarea name="editor14" id="headline4" >{{homePageData.headline4}}</textarea>
+        <script>
+        CKEDITOR.replace( 'editor14',{
+          height:250
+        },
+        {
+          contentsCss : "stylesheets/editor.css"
+        });
+        </script>
+
+                </div>
+
+                    <!-- news4 -->
+              </div><div class="tab-pane fade in" id="news5">
+              {{#if homePageData.news5active}}
+              <input type="checkbox" aria-label="..." id="news5active" checked>Active
+                {{else}}<input type="checkbox" aria-label="..." id="news5active">Active{{/if}}
+                <h4>News 5</h4>
+                <!-- news5 -->
+                <div class="form-group col-lg-12">
+                    <textarea name="editor15" id="headline5" >{{homePageData.headline5}}</textarea>
+        <script>
+        CKEDITOR.replace( 'editor15',{
+          height:250
+        },
+        {
+          contentsCss : "stylesheets/editor.css"
+        });
+        </script>
+
+                </div>
+
+                    <!-- news5 -->
+              </div><div class="tab-pane fade in" id="news6">
+              {{#if homePageData.news6active}}
+              <input type="checkbox" aria-label="..." id="news6active" checked>Active
+                {{else}}<input type="checkbox" aria-label="..." id="news6active">Active{{/if}}
+                <h4>News 6</h4>
+                <!-- news6 -->
+                <div class="form-group col-lg-12">
+                    <textarea name="editor16" id="headline6" >{{homePageData.headline6}}</textarea>
+        <script>
+        CKEDITOR.replace( 'editor16',{
+          height:250
+        },
+        {
+          contentsCss : "stylesheets/editor.css"
+        });
+        </script>
+
+                </div>
+
+                    <!-- news6 -->
+              </div><div class="tab-pane fade in" id="news7">
+              {{#if homePageData.news7active}}
+              <input type="checkbox" aria-label="..." id="news7active" checked>Active
+                {{else}}<input type="checkbox" aria-label="..." id="news7active">Active{{/if}}
+                <h4>News 7</h4>
+                <!-- news7 -->
+                <div class="form-group col-lg-12">
+                    <textarea name="editor17" id="headline7" >{{homePageData.headline7}}</textarea>
+        <script>
+        CKEDITOR.replace( 'editor17',{
+          height:250
+        },
+        {
+          contentsCss : "stylesheets/editor.css"
+        });
+        </script>
+
+                </div>
+
+                    <!-- news7 -->
+              </div><div class="tab-pane fade in" id="news8">
+              {{#if homePageData.news8active}}
+              <input type="checkbox" aria-label="..." id="news8active" checked>Active
+                {{else}}<input type="checkbox" aria-label="..." id="news8active">Active{{/if}}
+                <h4>News 8</h4>
+                <!-- news8 -->
+                <div class="form-group col-lg-12">
+                    <textarea name="editor18" id="headline8" >{{homePageData.headline8}}</textarea>
+        <script>
+        CKEDITOR.replace( 'editor18',{
+          height:250
+        },
+        {
+          contentsCss : "stylesheets/editor.css"
+        });
+        </script>
+
+                </div>
+
+                    <!-- news8 -->
+              </div><div class="tab-pane fade in" id="news9">
+              {{#if homePageData.news9active}}
+              <input type="checkbox" aria-label="..." id="news9active" checked>Active
+                {{else}}<input type="checkbox" aria-label="..." id="news9active">Active{{/if}}
+                <h4>News 9</h4>
+                <!-- news9 -->
+                <div class="form-group col-lg-12">
+                    <textarea name="editor19" id="headline9" >{{homePageData.headline9}}</textarea>
+        <script>
+        CKEDITOR.replace( 'editor19',{
+          height:250
+        },
+        {
+          contentsCss : "stylesheets/editor.css"
+        });
+        </script>
+
+                </div>
+
+                    <!-- news9 -->
+              </div><div class="tab-pane fade in" id="news10">
+              {{#if homePageData.news10active}}
+              <input type="checkbox" aria-label="..." id="news10active" checked>Active
+                {{else}}<input type="checkbox" aria-label="..." id="news10active">Active{{/if}}
+                <h4>News 10</h4>
+                <!-- news10 -->
+                <div class="form-group col-lg-12">
+                    <textarea name="editor20" id="headline10" >{{homePageData.headline10}}</textarea>
+        <script>
+        CKEDITOR.replace( 'editor20',{
+          height:250
+        },
+        {
+          contentsCss : "stylesheets/editor.css"
+        });
+        </script>
+
+                </div>
+
+                    <!-- news10 -->
               </div>
+
             </div>
           </div>
         </div>
@@ -167,30 +320,30 @@
         <hr><h4>Footer</h4>
         <!-- Tab v3 -->
         <div class="row tab-v3">
-          <div class="col-sm-3">
+          <!-- <div class="col-sm-3">
             <ul class="nav nav-pills nav-stacked">
               <li class="active"><a href="#footerA" data-toggle="tab"><i class="fa fa-comments"></i>Footer 1</a></li>
               <li><a href="#footerB" data-toggle="tab"><i class="fa fa-comments"></i>Footer 2</a></li>
               <li><a href="#footerC" data-toggle="tab"><i class="fa fa-comments"></i>Footer 3</a></li>
               <li><a href="#footerD" data-toggle="tab"><i class="fa fa-comments"></i>Footer 4</a></li>
             </ul>
-          </div>
-          <div class="col-sm-9">
+          </div> -->
+          <!-- <div class="col-sm-9">
             <div class="tab-content">
               <div class="tab-pane fade in active" id="footerA">
-                <h4>Footer 1</h4>
+                <h4>Footer 1</h4> -->
 
-                <div class="form-group col-lg-6">
+                <div class="form-group col-lg-12">
 
 
                     <textarea name="editor3" id="footer1">{{homePageData.footer1}}</textarea>
                 <script>
-                CKEDITOR.replace( 'editor3',{height:100});
+                CKEDITOR.replace( 'editor3',{height:250});
                 </script>
 
                 </div>
               </div>
-              <div class="tab-pane fade in" id="footerB">
+              <!-- <div class="tab-pane fade in" id="footerB">
                 <h4>Footer 2</h4>
                 <div class="form-group col-lg-6">
 
@@ -225,10 +378,10 @@
                 </script>
 
                 </div>
-              </div>
-            </div>
+              </div> -->
+            <!-- </div>
           </div>
-        </div>
+        </div> -->
         <!-- Tab v3 -->
 
 
@@ -247,6 +400,7 @@
                 <div class="fileinput fileinput-new" data-provides="fileinput">
                   <span class="btn btn-default btn-file"><input type="file" id="homeImage" required/></span>
                   <span class="fileinput-filename"></span><span class="fileinput-new"></span>
+                  <button class="btn bttn-default" id="uploadHomePic">Upload</button>
                   <hr>
                 </div>
               </div>

@@ -43,7 +43,7 @@ event.preventDefault();
                                  editContentGrp: $('#editContentGrp').is(":checked"),
                                  deleteContentGrp: $('#deleteContentGrp').is(":checked"),
                                  createPlaylist: $('#createPlaylist').is(":checked"),
-                                 editPlaylist: $('#editPlaylist').is(":checked"),
+                                 grantContentGrpAccess: $('#grantContentGrpAccess').is(":checked"),
                                  deletePlaylist: $('#deletePlaylist').is(":checked"),
                                  adminMenu: $('#adminMenu').is(":checked"),
                                  netzMenu: $('#netzMenu').is(":checked"),
@@ -55,7 +55,7 @@ event.preventDefault();
                                  seeMedia: $('#seeMedia').is(":checked"),
                                  seeContent: $('#seeContent').is(":checked"),
                                  seeContentGroup: $('#seeContentGroup').is(":checked"),
-                                 seeAllPlayers: $('#seeAllPlayers').is(":checked")});
+                                 });
                                  toastr.success("Role saved","Edit Role");
 
 }

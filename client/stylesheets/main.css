@@ -2,6 +2,10 @@ body{
   background: white;
 }
 
+div.p1, div.p2,div.p3{
+    display:none;
+}
+
 #heading-btn-row{
   float: right;
 }

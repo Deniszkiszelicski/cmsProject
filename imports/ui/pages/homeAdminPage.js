@@ -30,8 +30,13 @@ Template.homeAdminPage.events({
 
 
 
-    Meteor.call('homeSubmitEdit',{_id:Session.get("currentNetworkId"),headline:$('#headline').val(),headline2:$('#headline2').val(),headline3:$('#headline3').val(),
-    news:$('#ql-editor-2').val(),news2:$('#ql-editor-3').val(),news3:$('#ql-editor-4').val(),image:result,
+    Meteor.call('homeSubmitEdit',{_id:Session.get("currentNetworkId"),headline:$('#headline').val(),headline2:$('#headline2').val(),
+    headline3:$('#headline3').val(),headline4:$('#headline4').val(),headline5:$('#headline5').val(),headline6:$('#headline6').val(),
+    headline7:$('#headline7').val(),headline8:$('#headline8').val(),headline9:$('#headline9').val(),headline10:$('#headline10').val(),
+    news1active:$('#news1active').is(":checked"),news2active:$('#news2active').is(":checked"),news3active:$('#news3active').is(":checked"),
+    news4active:$('#news4active').is(":checked"),news5active:$('#news5active').is(":checked"),news6active:$('#news6active').is(":checked"),
+    news7active:$('#news7active').is(":checked"),news8active:$('#news8active').is(":checked"),news9active:$('#news9active').is(":checked"),
+    news10active:$('#news10active').is(":checked"),news:$('#ql-editor-2').val(),news2:$('#ql-editor-3').val(),news3:$('#ql-editor-4').val(),
     footer1:$('#footer1').val(),footer2:$('#footer2').val(),footer3:$('#footer3').val(),footer4:$('#footer4').val()});
     toastr.success("Data saved","Edit Home Page");
       FlowRouter.go('/');
@@ -52,6 +57,12 @@ Template.homeAdminPage.events({
 
       reader.readAsDataURL(file); //read the file as arraybuffer
 
+      Meteor.call('homeUpdateImage',{_id:Session.get("currentNetworkId"),image:result});
+
+  },
+  'click #uploadHomePic' : function uploadHomePic(event){
+    event.preventDefault();
+      Meteor.call('homeUpdateImage',{_id:Session.get("currentNetworkId"),image:result});
   },
 
 });

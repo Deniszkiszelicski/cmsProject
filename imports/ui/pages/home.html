@@ -16,17 +16,48 @@
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
-      <div class="item active">
-        {{{headline}}}
-      </div>
+			{{#if news1active}}
+			<div class="item active">
+			  {{{headline}}}
+			</div>{{else}}{{/if}}
+			{{#if news2active}}
+			<div class="item">
+			  {{{headline2}}}
+			</div>{{else}}{{/if}}
+			{{#if news3active}}
+			<div class="item">
+			  {{{headline3}}}
+			</div>{{else}}{{/if}}
+			{{#if news4active}}
+			<div class="item">
+			  {{{headline4}}}
+			</div>{{else}}{{/if}}
+			{{#if news5active}}
+			<div class="item">
+			  {{{headline5}}}
+			</div>{{else}}{{/if}}
+			{{#if news6active}}
+			<div class="item">
+			  {{{headline6}}}
+			</div>{{else}}{{/if}}
+			{{#if news7active}}
+			<div class="item">
+			  {{{headline7}}}
+			</div>{{else}}{{/if}}
+			{{#if news8active}}
+			<div class="item">
+			  {{{headline8}}}
+			</div>{{else}}{{/if}}
+			{{#if news9active}}
+			<div class="item">
+			  {{{headline9}}}
+			</div>{{else}}{{/if}}
+			{{#if news10active}}
+			<div class="item">
+			  {{{headline10}}}
+			</div>{{else}}{{/if}}
 
-      <div class="item">
-        {{{headline2}}}
-      </div>
 
-      <div class="item">
-        {{{headline3}}}
-      </div>
 
     </div>
     <script type="text/javascript">
@@ -51,7 +82,7 @@
 
 
 			</div>
-      
+
 			<!-- <div id="carouselButtons">
 	      <button id="playButton" type="button" class="btn btn-default btn-xs">
 	          <span class="glyphicon glyphicon-play"></span>
@@ -78,7 +109,7 @@
   <!--=== Content ===-->
   <div class="container content-md"><hr>
 
-<div id="news1">
+<div id="mytext">
 	<p>{{{news}}}</p>
 </div> <hr>
 <div class="p1"><p>{{{news2}}}</p>
@@ -88,14 +119,27 @@
 
 </div>
 <div class="p3"><p>{{{news}}}</p>
-
 </div>
-<a class="p3" href="#"></a>
-<a class="p1" href="#"></a>
-<a class="p2" href="#"></a>
+<div>
+<a shape="circle" class="p3" href="#">link1</a>
+<a shape="circle" class="p1" href="#">link2</a>
+<a shape="circle" class="p2" href="#">link3</a></div>
   </div>
   <!--=== End Content ===-->
+
+	<script type="text/javascript">
+	$("[shape=circle]").click(function(){
+    var myClass = $(this).attr("class");
+    $("#mytext").html($("div." + myClass + " p").html());
+});
+
+	</script>
+
 {{/with}}
+
+
+
+
 
 
 </template>

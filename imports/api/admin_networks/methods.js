@@ -17,12 +17,26 @@ Meteor.methods({
                     news2: networksObject.news2,
                     news3: networksObject.news3,
                     footer1: networksObject.footer1,
-                    footer2: networksObject.footer2,
-                    footer3: networksObject.footer3,
-                    footer4: networksObject.footer4,
                     headline: networksObject.headline,
                     headline2:networksObject.headline2,
                     headline3:networksObject.headline3,
+                    headline4:networksObject.headline4,
+                    headline5:networksObject.headline5,
+                    headline6:networksObject.headline6,
+                    headline7:networksObject.headline7,
+                    headline8:networksObject.headline8,
+                    headline9:networksObject.headline9,
+                    headline10:networksObject.headline10,
+                    news1active:networksObject.news1active,
+                    news2active:networksObject.news2active,
+                    news3active:networksObject.news3active,
+                    news4active:networksObject.news4active,
+                    news5active:networksObject.news5active,
+                    news6active:networksObject.news6active,
+                    news7active:networksObject.news7active,
+                    news8active:networksObject.news8active,
+                    news9active:networksObject.news9active,
+                    news10active:networksObject.news10active,
                     homeImage: networksObject.image});
 
 
@@ -72,12 +86,30 @@ Networks.update({_id:id},{$pull:{sortiment:sortiment}});
       headline:networksObject.headline,
       headline2:networksObject.headline2,
       headline3:networksObject.headline3,
-      homeImage:networksObject.image,
+      headline4:networksObject.headline4,
+      headline5:networksObject.headline5,
+      headline6:networksObject.headline6,
+      headline7:networksObject.headline7,
+      headline8:networksObject.headline8,
+      headline9:networksObject.headline9,
+      headline10:networksObject.headline10,
+      news1active:networksObject.news1active,
+      news2active:networksObject.news2active,
+      news3active:networksObject.news3active,
+      news4active:networksObject.news4active,
+      news5active:networksObject.news5active,
+      news6active:networksObject.news6active,
+      news7active:networksObject.news7active,
+      news8active:networksObject.news8active,
+      news9active:networksObject.news9active,
+      news10active:networksObject.news10active,
       footer1:networksObject.footer1,
-      footer2:networksObject.footer2,
-      footer3:networksObject.footer3,
-      footer4:networksObject.footer4,
     } });
+  },
+  homeUpdateImage: function(networksObject){
+    Networks.update({_id:networksObject._id},{$set: {
+      homeImage:networksObject.image
+  }  });
   }
 
 

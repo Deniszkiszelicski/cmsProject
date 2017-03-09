@@ -1,37 +1,39 @@
 <template name="footer">
+
+
+
   <!--=== Footer Version 1 ===-->
   <div class="footer-v1 sticky-footer">
     <div class="footer container-fluid">
       <div class="container">
         <div class="row">
           <!-- About -->{{#with footerLogo}}
-          <div class="col-md-3 md-margin-bottom-40">
+          <div class="col-md-12 md-margin-bottom-40">
             <a href="#"><img id="logo-footer" class="img-rounded footer-logo" src="{{logo}}" alt="logo" style="width:100px; height:auto;"></a>
             {{{footer1}}}
           </div><!--/col-md-3-->
-          <!-- End About -->
 
-          <!-- Latest -->
-          <div class="col-md-3 md-margin-bottom-40">
+
+          <!-- <div class="col-md-3 md-margin-bottom-40">
             <div class="posts">
 
               {{{footer2}}}
             </div>
-          </div><!--/col-md-3-->
-          <!-- End Latest -->
+          </div>
 
-          <!-- Link List -->
+
           <div class="col-md-3 md-margin-bottom-40">
             {{{footer3}}}
-          <!-- End Link List -->
+
         </div>
-          <!-- Address -->
+
+
           <div class="col-md-3  md-margin-bottom-40">
-            <a href="#">link1</a><br>
-            <a href="#">link2</a><br>
-            <a href="#">link3</a>
+
           {{{footer4}}}
-          </div><!--/col-md-3-->
+          </div> -->
+
+          <!--/col-md-3-->
           <!-- End Address -->
 {{/with}}
   </div>
@@ -42,13 +44,13 @@
         <div class="row">
           <div class="col-md-6">
             <p>
-              2017 &copy; All Rights Reserved.
-              <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+            IT-Park  2017 &copy; All Rights Reserved.
+              <a href="http://www.it-park.at/itpark/impressum.html">Impressum</a> | <a href="http://www.it-park.at/itpark/kontakt.html">Kontakt</a>
             </p>
           </div>
 
           <!-- Social Links -->
-          <div class="col-md-6">
+          <!-- <div class="col-md-6">
             <ul class="footer-socials list-inline">
               <li>
                 <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Facebook">
@@ -86,13 +88,14 @@
                 </a>
               </li>
             </ul>
-          </div>
+          </div> -->
           <!-- End Social Links -->
         </div>
       </div>
     </div><!--/copyright-->
   </div></div>
   <!--=== End Footer Version 1 ===-->
+
 
 
 </template>

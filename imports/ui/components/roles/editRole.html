@@ -93,16 +93,17 @@
                           Create Content Group :<input type="checkbox" aria-label="..." id="createContentGrp" value="{{this}}" >
                     {{/if}}
                 </td>
-                <td class="col-sm-4">{{#if editContentGrp}}
-                      Edit Content Group :<input type="checkbox" aria-label="..." id="editContentGrp" value="{{this}}" checked>
-                    {{else}}
-                      Edit Content Group :<input type="checkbox" aria-label="..." id="editContentGrp" value="{{this}}" >
-                    {{/if}}
-                </td>
+
                 <td class="col-sm-4">{{#if deleteContentGrp}}
                       Delete Content Group :<input type="checkbox" aria-label="..." id="deleteContentGrp" value="{{this}}" checked>
                     {{else}}
                       Delete Content Group :<input type="checkbox" aria-label="..." id="deleteContentGrp" value="{{this}}" >
+                    {{/if}}
+                </td>
+                <td class="col-sm-4">{{#if grantContentGrpAccess}}
+                      Content Group Edit Privileges :<input type="checkbox" aria-label="..." id="grantContentGrpAccess" value="{{this}}" checked>
+                    {{else}}
+                      Content Group Edit Privileges :<input type="checkbox" aria-label="..." id="grantContentGrpAccess" value="{{this}}" >
                     {{/if}}
                 </td>
               </tr>
@@ -189,19 +190,12 @@
                   Own<input type="radio" name="optradio4" id="seeContent" value="{{this}}" checked>
                   {{/if}}
               </td>
-              <td class="col-sm-3">{{#if seeContentGroup}}
-                  Content group Visible :All<input type="radio" name="optradio5" id="seeContentGroup" value="{{this}}" checked>
-                  Own<input type="radio" name="optradio5" id="seeContentGroup" value="{{this}}">
-                  {{else}}
-                  Content group Visible :All<input type="radio" name="optradio5" id="seeContentGroup" value="{{this}}" >
-                  Own<input type="radio" name="optradio5" id="seeContentGroup" value="{{this}}" checked>
-                  {{/if}}
-              </td>
+
               <td class="col-sm-3">{{#if seeAllPlayers}}
-                  Content group Visible :All<input type="radio" name="optradio6" id="seeContentGroup" value="{{this}}" checked>
+                  Players Visible :All<input type="radio" name="optradio6" id="seeContentGroup" value="{{this}}" checked>
                   Own<input type="radio" name="optradio6" id="seeAllPlayers" value="{{this}}">
                   {{else}}
-                  Content group Visible :All<input type="radio" name="optradio6" id="seeContentGroup" value="{{this}}" >
+                  Players Visible :All<input type="radio" name="optradio6" id="seeContentGroup" value="{{this}}" >
                   Own<input type="radio" name="optradio6" id="seeAllPlayers" value="{{this}}" checked>
                   {{/if}}
               </td>
