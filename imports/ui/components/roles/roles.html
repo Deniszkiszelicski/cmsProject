@@ -1,7 +1,7 @@
 <template name="adminRole"><br>
-  <div class="row">
+  <div class="tab-v1 content-form">
       <!-- <div class="col-md-10 col-md-offset-1"> -->
-          <form class="register-form">
+          <form class="sky-form register-form">
               <div class="panel panel-default">
                   <div class="panel-heading">
                       <span>Create role</span>
@@ -10,8 +10,9 @@
                   <div class="panel-body">
 
                       <div class="form-group col-lg-12">
-                          <label>Net Name: </label><span class="label label-success">{{currentNetworkName}}</span>
-                          <label>Net Id:</label><span class="label label-success">{{currentNetworkId}}</span>
+                          <label>Net Name: </label><i style="background-color: gray;color:white;">{{currentNetworkName}}</i><br>
+
+                          <label>Net Id:</label><i style="background-color: gray;color:white;">{{currentNetworkId}}</i>
                       </div>
                       <div class="form-group col-lg-12">
                           <label>Role Name: </label>
@@ -73,10 +74,10 @@
                             <input type="checkbox" aria-label="..." id="createContentGrp" value="createContentGrp" >Create Content-Group
                           </label>
                           <label class="list-group-item">
-                            <input type="checkbox" aria-label="..." id="editContentGrp" value="editContentGrp" >Edit Content-Group
-                          </label>
-                          <label class="list-group-item">
                             <input type="checkbox" aria-label="..." id="deleteContentGrp" value="deleteContentGrp" >Delete Content-Group
+                          </label>
+                          <label class="list-group-item" style="color:red;">
+                            <input type="checkbox" aria-label="..." id="grantContentGrpAccess" value="editContentGrp" >Content Group Edit Privileges
                           </label>
                           </form>
                         </div>
@@ -112,10 +113,11 @@
                               <input type="radio" name="optradio4" id="seeContent" value="admin">Only Own Content
                               </label>
                             </form>
+
                             <form>
                               <label class="list-group-item">
-                              <input type="radio" name="optradio5" id="seeContentGroup" value="admin">All
-                              <input type="radio" name="optradio5" id="seeContentGroup" value="admin">Only Own Content-group
+                              <input type="radio" name="optradio6" id="seeAllPlayers" value="admin">All
+                              <input type="radio" name="optradio6" id="seeAllPlayers" value="admin">Only Own Players
                               </label>
                             </form>
                       </div>
@@ -142,6 +144,9 @@
                       </label>
                       <label class="list-group-item">
                         <input type="checkbox" aria-label="..." id="statisticMenu" value="statisticMenu" >Statistic Menu
+                      </label>
+                      <label class="list-group-item">
+                        <input type="checkbox" aria-label="..." id="homeEditMenu" value="statisticMenu" >Home Page Edit Menu
                       </label>
                           </form>
                     </div>

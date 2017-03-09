@@ -1,101 +1,429 @@
-
-
 <template name="homeAdminPage"><br>
-
-  <div class="row">
+  <div class="tab-v1 content-form">
       <!-- <div class="col-md-10 col-md-offset-1"> -->
-          <form class="submitEditHome">
+          <form class="sky-form submitEditHome" name="Form" novalidate>
               <div class="panel panel-default">
                   <div class="panel-heading">
-                      <span>Edit Homepage</span>
+                      <span>Edit Homepage</span><br>  </div><br><br>
+                      <div class="panel-body">
 
-                  </div>
-                  <div class="panel-body">
+  <div class="tab-v2">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#news" data-toggle="tab">News</a></li>
+      <li><a href="#mainContent" data-toggle="tab">Main Content</a></li>
+      <li><a href="#footer" data-toggle="tab">Footer</a></li>
+      <li><a href="#image" data-toggle="tab">Image</a></li>
+
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane fade in active" id="news">
+        <hr><h4>News</h4>
+
+        <!-- Tab v3 -->
+        <div class="row tab-v3">
+          <div class="col-sm-2">
+            <ul class="nav nav-pills nav-stacked">
+              <li class="active"><a href="#news1" data-toggle="tab"><i class="fa fa-home"></i> News 1</a></li>
+              <li><a href="#news2" data-toggle="tab"><i class="fa fa-home"></i> News 2</a></li>
+              <li><a href="#news3" data-toggle="tab"><i class="fa fa-home"></i> News 3</a></li>
+              <li><a href="#news4" data-toggle="tab"><i class="fa fa-home"></i> News 4</a></li>
+              <li><a href="#news5" data-toggle="tab"><i class="fa fa-home"></i> News 5</a></li>
+              <li><a href="#news6" data-toggle="tab"><i class="fa fa-home"></i> News 6</a></li>
+              <li><a href="#news7" data-toggle="tab"><i class="fa fa-home"></i> News 7</a></li>
+              <li><a href="#news8" data-toggle="tab"><i class="fa fa-home"></i> News 8</a></li>
+              <li><a href="#news9" data-toggle="tab"><i class="fa fa-home"></i> News 9</a></li>
+              <li><a href="#news10" data-toggle="tab"><i class="fa fa-home"></i> News 10</a></li>
+            </ul>
+
+          </div>
+          <div class="col-sm-9">
+            <div class="tab-content">
+              <div class="tab-pane fade in active" id="news1">
+              {{#if homePageData.news1active}}
+
+              <input type="checkbox" aria-label="..." id="news1active" checked>Active
+                {{else}}
+              <input type="checkbox" aria-label="..." id="news1active" >Active
+                  {{/if}}
+                <h4>News 1</h4>
+                <div class="form-group col-lg-12">
+                    <textarea name="editor9" id="headline" >{{homePageData.headline}}</textarea>
+        <script>
+        CKEDITOR.replace( 'editor9',{
+          height:250
+        },
+        {
+          contentsCss : "stylesheets/editor.css"
+        });
+        </script>
+
+                </div>
+
+                    <!-- news1 -->
+              </div><div class="tab-pane fade in" id="news2">
+            {{#if homePageData.news2active}}
+              <input type="checkbox" aria-label="..." id="news2active" checked>Active
+                {{else}}<input type="checkbox" aria-label="..." id="news2active">Active{{/if}}
+                <h4>News 2</h4>
+                <!-- news2 -->
+                <div class="form-group col-lg-12">
 
 
-                      <div class="form-group col-lg-12">
-                          <label>Headline:</label>
+                    <textarea name="editor7" id="headline2" >{{homePageData.headline2}}</textarea>
+        <script>
+        CKEDITOR.replace( 'editor7',{
+          height:250
+        },
+        {
+          contentsCss : "stylesheets/editor.css"
+        });
+        </script>
 
-                          <input type="text"  class="form-control" id="headline" value="">
-                      </div>
+                </div>
+                    <!-- news2 -->
+              </div><div class="tab-pane fade in" id="news3">
+              {{#if homePageData.news3active}}
+              <input type="checkbox" aria-label="..." id="news3active" checked>Active
+                {{else}}<input type="checkbox" aria-label="..." id="news3active">Active{{/if}}
+                <h4>News 3</h4>
+                <!-- news3 -->
+                <div class="form-group col-lg-12">
+                    <textarea name="editor8" id="headline3" >{{homePageData.headline3}}</textarea>
+        <script>
+        CKEDITOR.replace( 'editor8',{
+          height:250
+        },
+        {
+          contentsCss : "stylesheets/editor.css"
+        });
+        </script>
+
+                </div>
+
+                    <!-- news3 -->
+              </div><div class="tab-pane fade in" id="news4">
+              {{#if homePageData.news4active}}
+              <input type="checkbox" aria-label="..." id="news4active" checked>Active
+                {{else}}<input type="checkbox" aria-label="..." id="news4active">Active{{/if}}
+                <h4>News 4</h4>
+                <!-- news4 -->
+                <div class="form-group col-lg-12">
+                    <textarea name="editor14" id="headline4" >{{homePageData.headline4}}</textarea>
+        <script>
+        CKEDITOR.replace( 'editor14',{
+          height:250
+        },
+        {
+          contentsCss : "stylesheets/editor.css"
+        });
+        </script>
+
+                </div>
+
+                    <!-- news4 -->
+              </div><div class="tab-pane fade in" id="news5">
+              {{#if homePageData.news5active}}
+              <input type="checkbox" aria-label="..." id="news5active" checked>Active
+                {{else}}<input type="checkbox" aria-label="..." id="news5active">Active{{/if}}
+                <h4>News 5</h4>
+                <!-- news5 -->
+                <div class="form-group col-lg-12">
+                    <textarea name="editor15" id="headline5" >{{homePageData.headline5}}</textarea>
+        <script>
+        CKEDITOR.replace( 'editor15',{
+          height:250
+        },
+        {
+          contentsCss : "stylesheets/editor.css"
+        });
+        </script>
+
+                </div>
+
+                    <!-- news5 -->
+              </div><div class="tab-pane fade in" id="news6">
+              {{#if homePageData.news6active}}
+              <input type="checkbox" aria-label="..." id="news6active" checked>Active
+                {{else}}<input type="checkbox" aria-label="..." id="news6active">Active{{/if}}
+                <h4>News 6</h4>
+                <!-- news6 -->
+                <div class="form-group col-lg-12">
+                    <textarea name="editor16" id="headline6" >{{homePageData.headline6}}</textarea>
+        <script>
+        CKEDITOR.replace( 'editor16',{
+          height:250
+        },
+        {
+          contentsCss : "stylesheets/editor.css"
+        });
+        </script>
+
+                </div>
+
+                    <!-- news6 -->
+              </div><div class="tab-pane fade in" id="news7">
+              {{#if homePageData.news7active}}
+              <input type="checkbox" aria-label="..." id="news7active" checked>Active
+                {{else}}<input type="checkbox" aria-label="..." id="news7active">Active{{/if}}
+                <h4>News 7</h4>
+                <!-- news7 -->
+                <div class="form-group col-lg-12">
+                    <textarea name="editor17" id="headline7" >{{homePageData.headline7}}</textarea>
+        <script>
+        CKEDITOR.replace( 'editor17',{
+          height:250
+        },
+        {
+          contentsCss : "stylesheets/editor.css"
+        });
+        </script>
+
+                </div>
+
+                    <!-- news7 -->
+              </div><div class="tab-pane fade in" id="news8">
+              {{#if homePageData.news8active}}
+              <input type="checkbox" aria-label="..." id="news8active" checked>Active
+                {{else}}<input type="checkbox" aria-label="..." id="news8active">Active{{/if}}
+                <h4>News 8</h4>
+                <!-- news8 -->
+                <div class="form-group col-lg-12">
+                    <textarea name="editor18" id="headline8" >{{homePageData.headline8}}</textarea>
+        <script>
+        CKEDITOR.replace( 'editor18',{
+          height:250
+        },
+        {
+          contentsCss : "stylesheets/editor.css"
+        });
+        </script>
+
+                </div>
+
+                    <!-- news8 -->
+              </div><div class="tab-pane fade in" id="news9">
+              {{#if homePageData.news9active}}
+              <input type="checkbox" aria-label="..." id="news9active" checked>Active
+                {{else}}<input type="checkbox" aria-label="..." id="news9active">Active{{/if}}
+                <h4>News 9</h4>
+                <!-- news9 -->
+                <div class="form-group col-lg-12">
+                    <textarea name="editor19" id="headline9" >{{homePageData.headline9}}</textarea>
+        <script>
+        CKEDITOR.replace( 'editor19',{
+          height:250
+        },
+        {
+          contentsCss : "stylesheets/editor.css"
+        });
+        </script>
+
+                </div>
+
+                    <!-- news9 -->
+              </div><div class="tab-pane fade in" id="news10">
+              {{#if homePageData.news10active}}
+              <input type="checkbox" aria-label="..." id="news10active" checked>Active
+                {{else}}<input type="checkbox" aria-label="..." id="news10active">Active{{/if}}
+                <h4>News 10</h4>
+                <!-- news10 -->
+                <div class="form-group col-lg-12">
+                    <textarea name="editor20" id="headline10" >{{homePageData.headline10}}</textarea>
+        <script>
+        CKEDITOR.replace( 'editor20',{
+          height:250
+        },
+        {
+          contentsCss : "stylesheets/editor.css"
+        });
+        </script>
+
+                </div>
+
+                    <!-- news10 -->
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- Tab v3 -->
 
 
-                      <div class="form-group col-lg-3">
-                          <label>Main Image:</label>
-                        </div>
-                        <div class="form-group col-lg-6">
-
-                        </div>
-                          <div class="">
-                            <div class="fileinput fileinput-new" data-provides="fileinput">
 
 
 
-                              <span class="btn btn-default btn-file"><input type="file" id="homeImage"/></span>
-                              <span class="fileinput-filename"></span><span class="fileinput-new"></span>
-                              <hr>
-                            </div>
-                          </div>
-                          <div class="form-group col-lg-12">
-                              <label for="news">News Text:</label>
-
-
-
-
-
-
-                          <!-- Create the toolbar container -->
-                          <div id="editor-container">
-    <div class="quill-wrapper">
-      <div id="full-toolbar" class="toolbar ql-toolbar ql-snow">
-        <span class="ql-format-group">
-          <span title="Bold" class="ql-format-button ql-bold"></span>
-          <span class="ql-format-separator"></span>
-          <span title="Italic" class="ql-format-button ql-italic"></span>
-          <span class="ql-format-separator"></span>
-          <span title="Underline" class="ql-format-button ql-underline"></span>
-          <span class="ql-format-separator"></span>
-          <span title="Strikethrough" class="ql-format-button ql-strike"></span>
-          <select class="ql-size">
-   <option value="10px">10</option>
-   <option value="13px" selected>13</option>
-   <option value="18px">18</option>
-   <option value="32px">32</option>
- </select>
-        </span>
 
 
       </div>
-      <div id="full-editor" class="editor ql-container ql-snow" style="border:1px solid black;" >
-        <div class="ql-multi-cursor">
-          <span class="cursor hidden" style="top: 218px; left: 277px; height: 15px;">
-            <span class="cursor-flag">
-              <span class="cursor-triangle top" style="border-bottom-color: rgba(255, 153, 51, 0.901961);"></span>
-              <span class="cursor-name" style="background-color: rgba(255, 153, 51, 0.901961);">Gandalf</span>
-              <span class="cursor-triangle bottom" style="border-top-color: rgba(255, 153, 51, 0.901961);"></span>
-            </span>
-            <span class="cursor-caret" style="background-color: rgba(255, 153, 51, 0.901961);"></span>
-          </span>
+      <div class="tab-pane fade in" id="mainContent">
+
+        <hr><h4>Main Content</h4>
+
+        <!-- Tab v3 -->
+        <div class="row tab-v3">
+          <div class="col-sm-3">
+            <ul class="nav nav-pills nav-stacked">
+              <li class="active"><a href="#main1" data-toggle="tab"><i class="fa fa-home"></i>Main Content 1</a></li>
+              <li><a href="#main2" data-toggle="tab"><i class="fa fa-home"></i>Main Content 2</a></li>
+              <li><a href="#main3" data-toggle="tab"><i class="fa fa-home"></i>Main Content 3</a></li>
+            </ul>
+          </div>
+          <div class="col-sm-9">
+            <div class="tab-content">
+              <div class="tab-pane fade in active" id="main1">
+                <h4>Main Content 1</h4>
+                <!-- main1 -->
+                <div class="form-group col-lg-12">
+                    <textarea name="editor1" id="ql-editor-2">{{homePageData.news}}</textarea>
+        <script>
+        CKEDITOR.replace( 'editor1',{height:250} );
+        </script>
         </div>
-        <div class="ql-editor authorship" id="ql-editor-2" contenteditable="true">
 
-
+                    <!-- main1 -->
+              </div>
+              <div class="tab-pane fade in" id="main2">
+                <h4>Main Content 2</h4>
+                <!-- main2 -->
+                <div class="form-group col-lg-12">
+                    <textarea name="editor10" id="ql-editor-3">{{homePageData.news2}}</textarea>
+        <script>
+        CKEDITOR.replace( 'editor10',{height:250} );
+        </script>
         </div>
 
-        <div class="ql-paste-manager" contenteditable="true"></div>
+                    <!-- main2 -->
+              </div>
+              <div class="tab-pane fade in" id="main3">
+                <h4>Main Content 3</h4>
+                <!-- main3 -->
+                <div class="form-group col-lg-12">
+                    <textarea name="editor11" id="ql-editor-4">{{homePageData.news3}}</textarea>
+        <script>
+        CKEDITOR.replace( 'editor11',{height:250} );
+        </script>
+        </div>
+
+                    <!-- news3 -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Tab v3 -->
+
+
+
+
+
       </div>
-    </div>
-  </div>
+      <div class="tab-pane fade in" id="footer">
+        <hr><h4>Footer</h4>
+        <!-- Tab v3 -->
+        <div class="row tab-v3">
+          <!-- <div class="col-sm-3">
+            <ul class="nav nav-pills nav-stacked">
+              <li class="active"><a href="#footerA" data-toggle="tab"><i class="fa fa-comments"></i>Footer 1</a></li>
+              <li><a href="#footerB" data-toggle="tab"><i class="fa fa-comments"></i>Footer 2</a></li>
+              <li><a href="#footerC" data-toggle="tab"><i class="fa fa-comments"></i>Footer 3</a></li>
+              <li><a href="#footerD" data-toggle="tab"><i class="fa fa-comments"></i>Footer 4</a></li>
+            </ul>
+          </div> -->
+          <!-- <div class="col-sm-9">
+            <div class="tab-content">
+              <div class="tab-pane fade in active" id="footerA">
+                <h4>Footer 1</h4> -->
+
+                <div class="form-group col-lg-12">
+
+
+                    <textarea name="editor3" id="footer1">{{homePageData.footer1}}</textarea>
+                <script>
+                CKEDITOR.replace( 'editor3',{height:250});
+                </script>
+
+                </div>
+              </div>
+              <!-- <div class="tab-pane fade in" id="footerB">
+                <h4>Footer 2</h4>
+                <div class="form-group col-lg-6">
+
+
+                    <textarea name="editor4" id="footer2">{{homePageData.footer2}}</textarea>
+                <script>
+                CKEDITOR.replace( 'editor4',{height:100});
+                </script>
+
+                </div>
+              </div>
+              <div class="tab-pane fade in" id="footerC">
+                <h4>Footer 3</h4>
+                <div class="form-group col-lg-6">
+
+
+                    <textarea name="editor5" id="footer3">{{homePageData.footer3}}</textarea>
+                <script>
+                CKEDITOR.replace( 'editor5',{height:100});
+                </script>
+
+                </div>
+              </div>
+              <div class="tab-pane fade in" id="footerD">
+                <h4>Footer 4</h4>
+                <div class="form-group col-lg-6">
+
+
+                    <textarea name="editor6" id="footer4">{{homePageData.footer4}}</textarea>
+                <script>
+                CKEDITOR.replace( 'editor6',{height:100});
+                </script>
+
+                </div>
+              </div> -->
+            <!-- </div>
+          </div>
+        </div> -->
+        <!-- Tab v3 -->
+
+
+
+
+
+      </div>
+      <div class="tab-pane fade in" id="image">
+
+        <hr><h4>Image</h4>
+
+        <div class="form-group col-lg-12">
+            <div class="form-group col-lg-6">
+            </div>
+              <div class="">
+                <div class="fileinput fileinput-new" data-provides="fileinput">
+                  <span class="btn btn-default btn-file"><input type="file" id="homeImage" required/></span>
+                  <span class="fileinput-filename"></span><span class="fileinput-new"></span>
+                  <button class="btn bttn-default" id="uploadHomePic">Upload</button>
+                  <hr>
+                </div>
+              </div>
+</div>
+
+<div class="container">
+
+  <img src="{{homePageData.homeImage}}" class="img-rounded" alt="Cinque Terre" width="912" height="354">
 </div>
 
 
 
 
+      </div>
+
+    </div>
+  </div>
+
 
                     </div>
 
                     <div class="panel-footer">
-                        <button type="button" class="btn btn-default" id="homeSubmit">Save</button>
+                        <button type="submit" class="btn btn-default" id="homeSubmit">Save</button>
                     </div>
                 </div>
             </form>

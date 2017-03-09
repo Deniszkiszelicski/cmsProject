@@ -11,8 +11,13 @@ import '../../components/regUsers/userList';
 
 Meteor.subscribe('users');
 Meteor.subscribe('roles');
-Meteor.subscribe('players');
+// Meteor.subscribe('players', true);
 
+Template.editUser2.onCreated(function onCreated() {
+  this.autorun(() => {
+    this.subscribe('players', true);
+  });
+});
 
 Template.editUser2.helpers({
   user: () => {

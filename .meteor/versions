@@ -112,7 +112,6 @@ templating-compiler@1.3.0
 templating-runtime@1.3.0
 templating-tools@1.1.0
 theduke:bootstrap-modal-prompt@0.0.2
-themeteorites:quilljs@0.20.1
 tracker@1.1.1
 ui@1.0.12
 underscore@1.0.10

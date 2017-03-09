@@ -1,48 +1,145 @@
-<template name="home">
-  <!-- Interactive Slider v2 -->
-  <!-- <div class="interactive-slider-v2">
-    <div class="container">
-      <h1>Welcome to IT-Park!</h1>
-      <p>Clean and fully responsive Template.</p>
-    </div>
-  </div> -->
-  <!-- End Interactive Slider v2 -->
+<template name="home"><br><br>
+
+
 {{#with homePageData}}
-  <div class="slider-inner">
-			<div id="da-slider" class="da-slider" style="background: transparent url({{homeImage}}) repeat 0% 0%;">
-				<div class="da-slide da-slide-current">
-					<h2><i style="color:black;">{{headline}}</i></h2>
 
-					<!-- <div class="da-img"><img class="img-responsive" src="/img/1.png" alt=""></div> -->
-				</div>
-				<!-- <div class="da-slide">
-					<h2><i>RESPONSIVE VIDEO</i> <br> <i>SUPPORT AND</i> <br> <i>MANY MORE</i></h2>
-					<p><i>Lorem ipsum dolor amet</i> <br> <i>tempor incididunt ut</i></p>
+			<div id="da-slider" class="da-slider" style="background: transparent url({{homeImage}}) repeat 0% 0%;"><br>
+        <div class="container editor">
 
-					<div class="da-img">
-						<iframe src="http://player.vimeo.com/video/47911018" width="530" height="300" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-					</div>
 
-				</div> -->
-				<!-- <div class="da-slide">
-					<h2><i>USING BEST WEB</i> <br> <i>SOLUTIONS WITH</i> <br> <i>HTML5/CSS3</i></h2>
-					<p><i>Lorem ipsum dolor amet</i> <br> <i>tempor incididunt ut</i> <br> <i>veniam omnis </i></p>
-					<div class="da-img"><img src="assets/plugins/parallax-slider/img/html5andcss3.png" alt="image01"></div>
-				</div> -->
-				<!-- <div class="da-arrows">
-					<span class="da-arrows-prev"></span>
-					<span class="da-arrows-next"></span>
-				</div> -->
-			<nav class="da-dots"><span class="da-dots-current"></span><span></span><span></span></nav></div>
-		</div>
+
+
+
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+			{{#if news1active}}
+			<div class="item active">
+			  {{{headline}}}
+			</div>{{else}}{{/if}}
+			{{#if news2active}}
+			<div class="item">
+			  {{{headline2}}}
+			</div>{{else}}{{/if}}
+			{{#if news3active}}
+			<div class="item">
+			  {{{headline3}}}
+			</div>{{else}}{{/if}}
+			{{#if news4active}}
+			<div class="item">
+			  {{{headline4}}}
+			</div>{{else}}{{/if}}
+			{{#if news5active}}
+			<div class="item">
+			  {{{headline5}}}
+			</div>{{else}}{{/if}}
+			{{#if news6active}}
+			<div class="item">
+			  {{{headline6}}}
+			</div>{{else}}{{/if}}
+			{{#if news7active}}
+			<div class="item">
+			  {{{headline7}}}
+			</div>{{else}}{{/if}}
+			{{#if news8active}}
+			<div class="item">
+			  {{{headline8}}}
+			</div>{{else}}{{/if}}
+			{{#if news9active}}
+			<div class="item">
+			  {{{headline9}}}
+			</div>{{else}}{{/if}}
+			{{#if news10active}}
+			<div class="item">
+			  {{{headline10}}}
+			</div>{{else}}{{/if}}
+
+
+
+    </div>
+    <script type="text/javascript">
+
+		$(function () {
+		    $('#myCarousel').carousel({
+		        interval:5000,
+		        pause: "false"
+		    });
+		    $('#playButton').click(function () {
+		        $('#myCarousel').carousel('cycle');
+		    });
+		    $('#pauseButton').click(function () {
+		        $('#myCarousel').carousel('pause');
+		    });
+		});
+    </script>
+
+    <!-- Left and right controls -->
+
+
+
+
+			</div>
+
+			<!-- <div id="carouselButtons">
+	      <button id="playButton" type="button" class="btn btn-default btn-xs">
+	          <span class="glyphicon glyphicon-play"></span>
+	       </button>
+	      <button id="pauseButton" type="button" class="btn btn-default btn-xs">
+	          <span class="glyphicon glyphicon-pause"></span>
+	      </button>
+	  </div> -->
+
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
+    </div>
+
 
 
   <!--=== Content ===-->
-  <div class="container content-md">
+  <div class="container content-md"><hr>
 
-  <p id="newsParagraph"><i>{{{news}}}</i></p>
+<div id="mytext">
+	<p>{{{news}}}</p>
+</div> <hr>
+<div class="p1"><p>{{{news2}}}</p>
 
+</div>
+<div class="p2"><p>{{{news3}}}</p>
+
+</div>
+<div class="p3"><p>{{{news}}}</p>
+</div>
+<div>
+<a shape="circle" class="p3" href="#">link1</a>
+<a shape="circle" class="p1" href="#">link2</a>
+<a shape="circle" class="p2" href="#">link3</a></div>
   </div>
   <!--=== End Content ===-->
+
+	<script type="text/javascript">
+	$("[shape=circle]").click(function(){
+    var myClass = $(this).attr("class");
+    $("#mytext").html($("div." + myClass + " p").html());
+});
+
+	</script>
+
 {{/with}}
+
+
+
+
+
+
 </template>

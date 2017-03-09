@@ -2,12 +2,20 @@ body{
   background: white;
 }
 
+div.p1, div.p2,div.p3{
+    display:none;
+}
+
 #heading-btn-row{
   float: right;
 }
 
 .navbar-header img{
   max-height: 47px;
+}
+
+.panel-table{
+  box-shadow: 0 0 20px rgba(0,0,0,.3);
 }
 
 .panel-heading button{

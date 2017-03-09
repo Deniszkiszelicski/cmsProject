@@ -19,7 +19,7 @@ Meteor.methods({
      editContent: rolesObject.editContent,
      deleteContent: rolesObject.deleteContent,
      createContentGrp: rolesObject.createContentGrp,
-     editContentGrp: rolesObject.editContentGrp,
+     grantContentGrpAccess: rolesObject.grantContentGrpAccess,
      deleteContentGrp: rolesObject.deleteContentGrp,
      createPlaylist: rolesObject.createPlaylist,
      editPlaylist: rolesObject.editPlaylist,
@@ -30,9 +30,10 @@ Meteor.methods({
      roleMenu: rolesObject.roleMenu,
      contentMenu: rolesObject.contentMenu,
      statisticMenu: rolesObject.statisticMenu,
+     homeEditMenu: rolesObject.homeEditMenu,
      seeMedia: rolesObject.seeMedia,
      seeContent: rolesObject.seeContent,
-     seeContentGroup: rolesObject.seeContentGroup });
+     seeAllPlayers: rolesObject.seeAllPlayers });
   },
   deleteRole: function(id) {
     Roles.remove(id);
@@ -51,7 +52,7 @@ Meteor.methods({
     editContent: rolesObject.editContent,
     deleteContent: rolesObject.deleteContent,
     createContentGrp: rolesObject.createContentGrp,
-    editContentGrp: rolesObject.editContentGrp,
+    grantContentGrpAccess: rolesObject.grantContentGrpAccess,
     deleteContentGrp: rolesObject.deleteContentGrp,
     createPlaylist: rolesObject.createPlaylist,
     editPlaylist: rolesObject.editPlaylist,
@@ -61,9 +62,11 @@ Meteor.methods({
     userMenu: rolesObject.userMenu,
     roleMenu: rolesObject.roleMenu,
     contentMenu: rolesObject.contentMenu,
+    homeEditMenu: rolesObject.homeEditMenu,
     statisticMenu: rolesObject.statisticMenu,
     seeMedia: rolesObject.seeMedia,
     seeContent: rolesObject.seeContent,
-    seeContentGroup: rolesObject.seeContentGroup });
-},
+    seeAllPlayers: rolesObject.seeAllPlayers,
+    });
+  },
 });

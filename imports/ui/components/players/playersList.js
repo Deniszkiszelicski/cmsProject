@@ -19,7 +19,7 @@ Template.playersList.onCreated(function onCreated() {
     const showPerPage = this.showPerPage.get();
     const filterText = this.filterText.get();
     if (currentPage && showPerPage) {
-      this.subscribe('players', currentPage, showPerPage, filterText);
+      this.subscribe('players', false, currentPage, showPerPage, filterText);
     }
   });
 
@@ -27,8 +27,6 @@ Template.playersList.onCreated(function onCreated() {
 
 Template.playersList.helpers({
   players: function players() {
-    // const filterText = Template.instance().filterText.get();
-    // return Players.find({ playerId: { $regex: new RegExp(filterText), $options: 'i' }}).fetch();
     return players = Players.find().fetch();
     // return players;
   },
