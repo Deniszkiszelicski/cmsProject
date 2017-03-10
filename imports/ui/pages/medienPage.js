@@ -24,7 +24,14 @@ Template.medienPage.helpers({
   },
   getVideoId: function getVideoId() {
     return Template.instance().video.get();
-  }
+  },
+  getOptions: function getOptions() {
+    const options = { header: "List of all Medien", enableButtonDelete: true,
+                      enableButtonEdit: true, enableButtonCloseListOfMedien: false,
+                      enableButtonNewMedia: Session.get("isDefaultPageLayout") || !Template.instance().isCreateNew.get(),
+                      enableFilter: true };
+    return { options: options };
+  },
 });
 
 Template.medienPage.events({

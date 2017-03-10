@@ -1,9 +1,12 @@
 <template name ="contentGroupsList">
-  <div class="sky-form">
+  <div class="row">
     <!-- <div class="col-md-10 col-md-offset-1"> -->
       <div class="panel panel-default panel-table">
         <div class="panel-heading">
           <span>{{options.header}}</span>
+          {{#if options.enableButtonCloseListOfCG}}
+          <i type="button" class="glyphicon glyphicon-remove" id="button-close-contentGroup-collection"></i>
+          {{/if}}
           {{#unless isCreateNew}}
             {{#if options.enableButtonNewCG}}
               <button type="button" class="btn btn-default button-new">New CG</button>

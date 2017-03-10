@@ -13,7 +13,7 @@ Template.playlistsList.onCreated(function () {
 Template.playlistsList.helpers({
   filteredPlaylists: () => {
     let filterText = Template.instance().filterText.get();
-    return Playlists.find({playerId: { $regex: new RegExp(filterText), $options: 'i' }}).fetch();
+    return Playlists.find({ name: { $regex: new RegExp(filterText), $options: 'i' } }).fetch();
   },
 });
 

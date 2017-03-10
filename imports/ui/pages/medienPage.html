@@ -9,7 +9,8 @@
     {{>mediaForm}}
   {{/if}}
 
-
-  {{>medienList isCreateNew=isCreateNew}}
+  {{#with getOptions}}
+  {{>medienList}}
+  {{/with}}
 
 </template>

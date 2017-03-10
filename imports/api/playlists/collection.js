@@ -3,7 +3,7 @@ import { Mongo } from 'meteor/mongo';
 Playlists = new Mongo.Collection('playlists');
 
 PlaylistsSchema = new SimpleSchema({
-  playerId: {
+  name: {
     type: String,
   },
   contentGroupIds: {

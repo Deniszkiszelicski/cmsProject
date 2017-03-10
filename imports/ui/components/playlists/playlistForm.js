@@ -47,7 +47,7 @@ Template.playlistForm.helpers({
     const options = { header: "Included contents", enableButtonDelete: false,
                       enableButtonEdit: false, enableButtonRemove: true,
                       enableButtonNewCG: false, enableFilter: false,
-                      enableButtonRemove: true };
+                      enableButtonCloseListOfContents: false };
     const includedContentsWithOptions = { contents: includedContentIds, options: options};
     return includedContentsWithOptions;
   },
@@ -55,7 +55,7 @@ Template.playlistForm.helpers({
     const options = { header: "List of all content-groups", enableButtonDelete: false,
                       enableButtonEdit: false, enableButtonRemove: false,
                       enableButtonNewCG: false, enableFilter: true,
-                      enableButtonRemove: false };
+                      enableButtonCloseListOfCG: true };
     const allCGsWithOptions = { options: options };
     return allCGsWithOptions;
   },
@@ -75,6 +75,10 @@ Template.playlistForm.events({
     event.preventDefault();
     templateInstance.isShowCGs.set(true);
   },
+  'click #button-close-contentGroup-collection': function showLinkedCG(event, templateInstance) {
+    event.preventDefault();
+    templateInstance.isShowCGs.set(false);
+  },
   'click .playlist-form #contentGroup-collection-fieldset .contentGroup-row': function markAsSelected(event, templateInstance){
     event.preventDefault();
     let includedCGs = templateInstance.includedCGs.get();
@@ -92,7 +96,7 @@ Template.playlistForm.events({
       }
     }
     const playlist = { _id: this._id,
-                      playerId: $('#playerId').val(),
+                      name: $('#name').val(),
                       contentGroupIds: contentGroupIds,
                     };
     Meteor.call('upsertPlaylist', playlist);

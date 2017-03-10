@@ -95,6 +95,11 @@ Template.contentForm.helpers({
   getDeleteAfterFinish: function getDeleteAfterFinish() {
     return this.deleteAfterFinish ? "checked" : "";
   },
+  getOptions: function getOptions() {
+    return { options: { enableButtonCloseListOfMedien: true,
+                        enableButtonNewMedia: false,
+                        header: "List of all Medien", } };
+  },
 });
 
 Template.contentForm.events({

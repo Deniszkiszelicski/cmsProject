@@ -6,13 +6,13 @@ Meteor.methods({
     if (!!playlist._id ) {
       Playlists.update({ _id: playlist._id },
         { $set: {
-                          playerId: playlist.playerId,
+                          name: playlist.name,
                           contentGroupIds: playlist.contentGroupIds,
                         },
           });
     } else {
       Playlists.insert({
-                          playerId: playlist.playerId,
+                          name: playlist.name,
                           contentGroupIds: playlist.contentGroupIds,
                         },
           );

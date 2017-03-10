@@ -1,0 +1,16 @@
+<template name="playlistContentPart">
+  <fieldset>
+    <div id="contentGroup-collection-included-fieldset">
+      {{#with includedContentGroups}}
+        {{> contentGroupsList}}
+      {{/with}}
+    </div>
+  </fieldset>
+  <fieldset>
+    <div id="content-collection-included-fieldset">
+      {{#with includedContents}}
+        {{> contentsList}}
+      {{/with}}
+    </div>
+  </fieldset>
+</template>

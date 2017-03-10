@@ -58,10 +58,9 @@
 
             <div id="media-collection-fieldset">
               {{#if isSelectMedia}}
-              <label class="label">Media collection</label>
-              <i type="button" class="glyphicon glyphicon-remove" id="button-close-media-collection"></i>
-              {{> medienList disableButtonNew=true}}
-
+                {{#with getOptions}}
+                  {{> medienList }}
+                {{/with}}
               {{/if}}
             </div>
 
