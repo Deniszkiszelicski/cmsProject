@@ -8,8 +8,14 @@ import '../../../api/registerUser/methods';
 import '../../../api/registerUser/registerUser';
 import '../../components/regUsers/editUser';
 
+
+
 Meteor.subscribe('users');
 Meteor.subscribe('roles');
+
+
+
+
 
 Template.usersList.onCreated(function onCreated() {
   this.isUserEdit = new ReactiveVar(false);
@@ -59,6 +65,7 @@ Template.usersList.events({
   'submit .edit': function closeEditForm(event, templateInstance){
     templateInstance.isUserEdit.set(false);
   },
+
 
 
 });

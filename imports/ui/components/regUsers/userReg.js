@@ -7,7 +7,7 @@ import '../../components/logoutbutton';
 import '../../../api/registerUser/methods';
 import '../../../api/registerUser/registerUser';
 
-Meteor.subscribe('userInformation');
+
 Meteor.subscribe('players');
 Meteor.subscribe('networks');
 
@@ -32,7 +32,7 @@ Template.registerUser2.events({
         var firstname = event.target.firstname.value;
         var assignedPlayers = [];
         var role = $('.assignedRole').children('#checked:checked').val();
-        console.log($('#accountRole').val());
+
 
         $('.assignedPlayersList').children('.checked:checked').each(function(){
          assignedPlayers.push($(this).val());
@@ -44,11 +44,6 @@ Template.registerUser2.events({
 
 Accounts.createUser(user);
 toastr.success("Data Saved", "Create User");
-
-    // Meteor.call('createRoleData', { name: $('#firstname').val(),
-    // role: $('#accountRole:checked').val(), email: $('#email').val(), netName:$('#netName').val()
-    // ,lastName:$('#lastname').val(),assignedPlayers: assignedPlayers,userconId:Meteor.userId() });
-    // toastr.success("Data Saved", "Create User");
 
 },
 
