@@ -37,7 +37,11 @@ Meteor.methods({
                     news8active:networksObject.news8active,
                     news9active:networksObject.news9active,
                     news10active:networksObject.news10active,
-                    homeImage: networksObject.image});
+                    homeImage: networksObject.image,
+                  main1link:networksObject.main1link,
+                  main2link:networksObject.main2link,
+                  main3link:networksObject.main3link,
+                });
 
 
   },
@@ -104,13 +108,34 @@ Networks.update({_id:id},{$pull:{sortiment:sortiment}});
       news9active:networksObject.news9active,
       news10active:networksObject.news10active,
       footer1:networksObject.footer1,
+      main1link:networksObject.main1link,
+      main2link:networksObject.main2link,
+      main3link:networksObject.main3link,
     } });
   },
   homeUpdateImage: function(networksObject){
     Networks.update({_id:networksObject._id},{$set: {
       homeImage:networksObject.image
   }  });
-  }
+},
+  createLink1: function(networksObject){
+    Networks.update({_id:networksObject._id},{$set: {
+      main1link:networksObject.main1link
+
+    }});
+  },
+  createLink2: function(networksObject){
+    Networks.update({_id:networksObject._id},{$set: {
+      main2link:networksObject.main2link
+
+    }});
+  },
+  createLink3: function(networksObject){
+    Networks.update({_id:networksObject._id},{$set: {
+      main3link:networksObject.main3link
+
+    }});
+  },
 
 
 });

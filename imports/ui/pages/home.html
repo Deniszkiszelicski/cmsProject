@@ -112,23 +112,23 @@
 <div id="mytext">
 	<p>{{{news}}}</p>
 </div> <hr>
-<div class="p1"><p>{{{news2}}}</p>
+<div class="p2"><p>{{{news2}}}</p>
 
 </div>
-<div class="p2"><p>{{{news3}}}</p>
+<div class="p3"><p>{{{news3}}}</p>
 
 </div>
-<div class="p3"><p>{{{news}}}</p>
+<div class="p1"><p>{{{news}}}</p>
 </div>
 <div>
-<a shape="circle" class="p3" href="#">link1</a>
-<a shape="circle" class="p1" href="#">link2</a>
-<a shape="circle" class="p2" href="#">link3</a></div>
+<a  class="p1" href="1">link1</a>
+<a  class="p2" href="1">link2</a>
+<a  class="p3" href="1">link3</a></div>
   </div>
   <!--=== End Content ===-->
 
 	<script type="text/javascript">
-	$("[shape=circle]").click(function(){
+	$("[href=1]").click(function(){
     var myClass = $(this).attr("class");
     $("#mytext").html($("div." + myClass + " p").html());
 });

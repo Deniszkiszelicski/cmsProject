@@ -37,7 +37,8 @@ Template.homeAdminPage.events({
     news4active:$('#news4active').is(":checked"),news5active:$('#news5active').is(":checked"),news6active:$('#news6active').is(":checked"),
     news7active:$('#news7active').is(":checked"),news8active:$('#news8active').is(":checked"),news9active:$('#news9active').is(":checked"),
     news10active:$('#news10active').is(":checked"),news:$('#ql-editor-2').val(),news2:$('#ql-editor-3').val(),news3:$('#ql-editor-4').val(),
-    footer1:$('#footer1').val(),footer2:$('#footer2').val(),footer3:$('#footer3').val(),footer4:$('#footer4').val()});
+    footer1:$('#footer1').val(),footer2:$('#footer2').val(),footer3:$('#footer3').val(),footer4:$('#footer4').val(),main1link:$('#main1link').val()
+    ,main2link:$('#main2link').val(),main3link:$('#main3link').val()});
     toastr.success("Data saved","Edit Home Page");
       FlowRouter.go('/');
   },
@@ -64,5 +65,17 @@ Template.homeAdminPage.events({
     event.preventDefault();
       Meteor.call('homeUpdateImage',{_id:Session.get("currentNetworkId"),image:result});
   },
+  'click #btn1link' : function createLink1(event){
+    event.preventDefault();
+    Meteor.call('createLink1',{_id:Session.get("currentNetworkId"),main1link:$('#main1link').val()});
+  },
+  'click #btn2link' : function createLink2(event){
+    event.preventDefault();
+    Meteor.call('createLink2',{_id:Session.get("currentNetworkId"),main2link:$('#main2link').val()});
+  },
+  'click #btn3link' : function createLink3(event){
+    event.preventDefault();
+    Meteor.call('createLink3',{_id:Session.get("currentNetworkId"),main3link:$('#main3link').val()});
+  }
 
 });
