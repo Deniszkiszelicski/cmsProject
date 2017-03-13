@@ -17,6 +17,10 @@ ContentGroupsSchema = new SimpleSchema({
     type: [String],
     optional: true,
   },
+  colour: {
+    type: String,
+    optional: true,
+  },
   createdAt: {
     type: Date,
     autoValue: function() {

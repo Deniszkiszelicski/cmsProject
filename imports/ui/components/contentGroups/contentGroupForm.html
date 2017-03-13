@@ -28,8 +28,28 @@
               </label>
             </section>
           </div>
-          <div class="row" style="margin-left: 2px;">
-            <label class="checkbox-inline"><input type="checkbox" {{isBlocked}} id="blocked">Blocked</label>
+          <div class="row">
+            <section class="col col-3">
+              <label class="label">Colour</label>
+              <label class="input">
+
+                <div id="colorpicker" class="input-group">
+                  <input type="text" value="{{getColour}}" class="form-control">
+                  <span class="input-group-addon"><i style="background-color: {{getColour}};"></i></span>
+              </div>
+              </label>
+            </section>
+
+            <section class="col col-3">
+              <canvas width="125" height="97" id="canvas_picker" style="visibility: {{showColourPicker}}"></canvas>
+            </section>
+            <section class="col col-3 offset-3">
+              <label class="checkbox-inline"><input type="checkbox" {{isBlocked}} id="blocked">Blocked</label>
+            </section>
+            <section class="col col-3">
+              <label class="checkbox-inline"><input type="checkbox" {{isDefault}} id="default">Default</label>
+            </section>
+
           </div>
         </fieldset>
 

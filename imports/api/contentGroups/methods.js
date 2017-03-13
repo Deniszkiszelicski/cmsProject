@@ -10,6 +10,7 @@ Meteor.methods({
                           duration: contentGroup.duration,
                           blocked: contentGroup.blocked,
                           contentIds: contentGroup.contentIds,
+                          colour: contentGroup.colour,
                         },
           });
     } else {
@@ -18,6 +19,7 @@ Meteor.methods({
                           duration: contentGroup.duration,
                           blocked: contentGroup.blocked,
                           contentIds: contentGroup.contentIds,
+                          colour: contentGroup.colour,
                         },
           );
     }
