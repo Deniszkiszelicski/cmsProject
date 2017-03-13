@@ -90,9 +90,20 @@ Template.mediaForm.events({
         templateInstance.uploadedFileId.set(fileObj._id);
         templateInstance.currentUpload.set(false);
         templateInstance.uploadedFileName.set(fileObj.name);
-        console.log("on end of upload, fileObje = ", fileObj);
+        // console.log("on end of upload, fileObje = ", fileObj);
+
+
+
+
       });
       upload.start();
+
+
     }
-  }
+
+
+  },
+
+
+
 });

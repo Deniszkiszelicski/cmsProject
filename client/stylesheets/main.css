@@ -5,6 +5,20 @@ body{
 div.p1, div.p2,div.p3{
     display:none;
 }
+/*screenshot*/
+.snapshot_generator {
+  display: block;
+  height: 1px;
+  left: 0;
+  object-fit: contain;
+  position: fixed;
+  top: 0;
+  width: 1px;
+  z-index: -1;
+}
+
+
+/*screenshot*/
 
 #heading-btn-row{
   float: right;
