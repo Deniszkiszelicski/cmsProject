@@ -6,6 +6,10 @@ import './contentGroupForm.html';
 
 Template.contentGroupForm.onCreated(function () {
   this.isSelectContent = new ReactiveVar(false);
+  this.canvasContext = new ReactiveVar();
+  this.showColourPicker = new ReactiveVar(false);
+  this.colour = new ReactiveVar(this.data.colour);
+
   let includedContentObjects = [];
   const includedContentIds = this.data.contentIds;
   if (!!includedContentIds) {
@@ -19,9 +23,23 @@ Template.contentGroupForm.onCreated(function () {
     }
   }
   this.includedContents = new ReactiveVar(includedContentObjects);
+
 });
 
+// Template.contentGroupForm.rendered = function() {
+//   $('.demo1').colorpicker();
+// }
+
 Template.contentGroupForm.onRendered(function () {
+  let canvas = $('#canvas_picker')[0];
+  let context = canvas.getContext('2d');
+  let img = new Image();
+  let contextVar = this.canvasContext;
+  img.src = '/img/palette.jpg';
+  $(img).load(function(){
+    context.drawImage(img, 0, 0);
+    contextVar.set(context);
+  });
 });
 
 Template.contentGroupForm.helpers({
@@ -53,7 +71,6 @@ Template.contentGroupForm.helpers({
     let includedContentsWithExtra = Template.instance().includedContents.get();
     if (!!includedContentsWithExtra) {
       const l = includedContentsWithExtra.length;
-      console.log("includedContentsWithExtra = ", includedContentsWithExtra);
       if (l > 0) {
         for (i = 0; i < l; i++) {
           if(includedContentsWithExtra[i]) {
@@ -65,6 +82,16 @@ Template.contentGroupForm.helpers({
       }
     }
     return includedContentsWithExtra;
+  },
+  showColourPicker: function showColourPicker() {
+    const show = Template.instance().showColourPicker.get();
+    if(show) {
+      return "visible";
+    }
+    return "hidden";
+  },
+  getColour: function getColour() {
+    return Template.instance().colour.get();
   },
 });
 
@@ -79,10 +106,12 @@ Template.contentGroupForm.events({
         contentIds.push(contents[i]._id);
       }
     }
+    const colour = templateInstance.colour.get();
     const contentGroup = { _id: this._id,
                       name: $('#nameOfContentGroup').val(),
                       duration: $('#durationOfContentGroup').val(),
                       blocked: $('#blocked').is(':checked'),
+                      colour: colour,
                       contentIds: contentIds,
                     };
     Meteor.call('upsertContentGroup', contentGroup);
@@ -114,11 +143,30 @@ Template.contentGroupForm.events({
     }
     templateInstance.includedContents.set(contents);
   },
-
+  'click #canvas_picker': function updateColour(event, templateInstance){
+    const x = event.offsetX;
+    const y = event.offsetY;
+    const context = templateInstance.canvasContext.get();
+    const imgData = context.getImageData(x, y, 1, 1).data;
+    const colourRBG = { r: imgData[0], g: imgData[1], b: imgData[2]};
+    let toHex = function(number) {
+      var hex = number.toString(16);
+      while (hex.length < 2) {hex = "0" + hex; }
+      return hex;
+    };
+    const colourHex = "#" + toHex(colourRBG.r) + toHex(colourRBG.g) + toHex(colourRBG.b);
+    templateInstance.colour.set(colourHex);
+    templateInstance.showColourPicker.set(false);
+  },
+  'click #colorpicker i': function updateColour(event, templateInstance){
+    templateInstance.showColourPicker.set(true);
+  },
+  'keyup #colorpicker input': function (event, templateInstance) {
+    templateInstance.colour.set(event.currentTarget.value);
+  },
   // 'drag .content-row': function onDragStart(event, templateInstance) {
   //   // event.preventDefault();
   //   // event.dataTransfer.setData("myD", event.target.id);
   //   console.log("ondragstart triggered, event.target.id=", event);
   // },
-
 });
