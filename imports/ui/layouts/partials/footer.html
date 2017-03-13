@@ -11,6 +11,14 @@
           <div class="col-md-12 md-margin-bottom-40">
             <a href="#"><img id="logo-footer" class="img-rounded footer-logo" src="{{logo}}" alt="logo" style="width:100px; height:auto;"></a>
             {{{footer1}}}
+            <script type="text/javascript">
+            $("[shape=link]").click(function(){
+              var myClass = $(this).attr("class");
+              $("#mytext").html($("div." + myClass + " p").html());
+            });
+
+            </script>
+
           </div><!--/col-md-3-->
 
 
@@ -36,7 +44,14 @@
           <!--/col-md-3-->
           <!-- End Address -->
 {{/with}}
+<!-- <div>
+<a shape="link" class="p1" href="#">link1</a>
+<a shape="link" class="p2" href="#">link2</a>
+<a shape="link" class="p3" href="#">link3</a></div> -->
+
+
   </div>
+
     </div><!--/footer-->
 
     <div class="copyright">

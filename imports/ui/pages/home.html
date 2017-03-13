@@ -120,15 +120,15 @@
 </div>
 <div class="p1"><p>{{{news}}}</p>
 </div>
-<div>
-<a  class="p1" href="1">link1</a>
-<a  class="p2" href="1">link2</a>
-<a  class="p3" href="1">link3</a></div>
+<!-- <div>
+<a  shape="link" class="p1" href="#">link1</a>
+<a  shape="link" class="p2" href="#">link2</a>
+<a  shape="link" class="p3" href="#">link3</a></div> -->
   </div>
   <!--=== End Content ===-->
 
 	<script type="text/javascript">
-	$("[href=1]").click(function(){
+	$("[shape=link]").click(function(){
     var myClass = $(this).attr("class");
     $("#mytext").html($("div." + myClass + " p").html());
 });
