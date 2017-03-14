@@ -18,11 +18,16 @@ Meteor.subscribe('registerUsers');
 
 Template.userReg1.onCreated(function onCreated() {
   this.isCreateNew = new ReactiveVar(false);
+  this.filterText = new ReactiveVar();
 });
 
 Template.userReg1.helpers({
   isCreateNew: function isCreateNew() {
     return Template.instance().isCreateNew.get();
+  },
+  filteredUsers: () => {
+    let filterText = Template.instance().filterText.get();
+    return Meteor.users.find({profile:{name: { $regex: new RegExp(filterText), $options: 'i' }}}).fetch();
   },
 });
 
@@ -39,6 +44,9 @@ Template.userReg1.events({
   'click #closeUserCreate': function closeForm(event, templateInstance) {
     event.preventDefault();
     templateInstance.isCreateNew.set(false);
+  },
+  'keyup #users-filter-input': function filter(event, templateInstance) {
+    templateInstance.filterText.set(event.currentTarget.value);
   },
 
 });

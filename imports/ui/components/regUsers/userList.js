@@ -19,15 +19,15 @@ Meteor.subscribe('roles');
 
 Template.usersList.onCreated(function onCreated() {
   this.isUserEdit = new ReactiveVar(false);
+
 });
 
 Template.usersList.helpers({
   users: () => {
 
     return Meteor.users.find().fetch();
-
-
   },
+
   roleName: (id)=>{
     const role = Roles.findOne({_id:id});
     if (role) {
@@ -40,11 +40,11 @@ Template.usersList.helpers({
 });
 
 Template.usersList.events({
-  'click #deleteUser': function deleteUser(event){
+  'click #deleteUser': function deleteUser(event) {
     event.preventDefault();
 
 
-    Meteor.users.remove({_id:Session.get("selectedUser")});
+    Meteor.users.remove({_id:Session.get("selectedUser") });
     toastr.success("Deleted", "User");
 
   },
@@ -55,17 +55,17 @@ Template.usersList.events({
     Session.set('id',this._id);
 
   },
-  'click #closeEditUser': function closeEditUser(event, templateInstance){
+  'click #closeEditUser': function closeEditUser(event, templateInstance) {
     templateInstance.isUserEdit.set(false);
   },
-  'click #selectUserDel': function selectUserDel(event){
+  'click #selectUserDel': function selectUserDel(event) {
     event.preventDefault();
     Session.set('selectedUser', this._id);
   },
-  'submit .edit': function closeEditForm(event, templateInstance){
+  'submit .edit': function closeEditForm(event, templateInstance) {
     templateInstance.isUserEdit.set(false);
   },
-
+  
 
 
 });
