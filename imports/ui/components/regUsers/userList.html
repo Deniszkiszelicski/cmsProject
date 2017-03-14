@@ -43,9 +43,14 @@
     </div>
   </div>
 </div>
+
   {{#if isUserEdit}}
     {{>editUser2}}
   {{/if}}
+
+
+<!-- {{#each filteredUsers}} -->
+
   <div class="sky-form">
     <!-- <div class="col-md-10 col-md-offset-1"> -->
       <div class="panel panel-default panel-table">
@@ -67,17 +72,18 @@
 
               </tr>
             </thead>
-            <tbody>{{#each users}}
+            <tbody>
+              {{#each filteredUsers}}
 
               <tr>
 
-                <td>{{profile.name}}
+                <td>{{ profile.name}}
                 </td>
                 <td>
-                  {{roleName profile.role}}
+                  {{ roleName profile.role}}
                 </td>
 
-                <td>{{emails.[0].address}}<i type="button" class="glyphicon glyphicon-pencil" id="editUser" style="float: right;"></i>
+                <td>{{ emails.[0].address}}<i type="button" class="glyphicon glyphicon-pencil" id="editUser" style="float: right;"></i>
                   <i type="button" class="glyphicon glyphicon-trash" style="float: right;" data-toggle="modal" data-target="#myModal" id="selectUserDel"></i>
                 </td>
               </tr>
@@ -98,4 +104,7 @@
 
     <!-- </div> -->
   </div>
+
+  <!-- {{/each}} -->
+
 </template>

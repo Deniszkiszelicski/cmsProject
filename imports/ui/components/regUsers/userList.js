@@ -19,14 +19,18 @@ Meteor.subscribe('roles');
 
 Template.usersList.onCreated(function onCreated() {
   this.isUserEdit = new ReactiveVar(false);
-
+  this.filterText = new ReactiveVar();
 });
 
 Template.usersList.helpers({
+  filteredUsers: () => {
+    let filterText = Template.instance().filterText.get();
+    return Meteor.users.find({ "profile.name": { $regex: new RegExp(filterText), $options: 'i' }}).fetch();
+  },
   users: () => {
-
     return Meteor.users.find().fetch();
   },
+
 
   roleName: (id)=>{
     const role = Roles.findOne({_id:id});
@@ -65,7 +69,9 @@ Template.usersList.events({
   'submit .edit': function closeEditForm(event, templateInstance) {
     templateInstance.isUserEdit.set(false);
   },
-  
+  'keyup #users-filter-input': function filter(event, templateInstance) {
+    templateInstance.filterText.set(event.currentTarget.value);
+  },
 
 
 });
