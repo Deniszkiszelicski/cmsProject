@@ -7,9 +7,13 @@ import '../../components/logoutbutton';
 import '../../../api/registerUser/methods';
 import '../../../api/registerUser/registerUser';
 
-
-Meteor.subscribe('players');
 Meteor.subscribe('networks');
+
+Template.registerUser2.onCreated(function onCreated() {
+  this.autorun(() => {
+    this.subscribe('players', true);
+  });
+});
 
 Template.registerUser2.helpers({
   playerInformation: () => {
