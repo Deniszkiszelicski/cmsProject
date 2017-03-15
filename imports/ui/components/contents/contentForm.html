@@ -50,11 +50,21 @@
 
 
           <fieldset>
-            <label class="label">Media</label>
+            <div class="btn-group">
+							<button type="button" class="btn-u btn-u-blue dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+								{{getType}}
+								<i class="fa fa-angle-down"></i>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="#" id="select-media">Media</a></li>
+								<li><a href="#" id="select-template">Template</a></li>
+							</ul>
+						</div>
+
+            {{#if isTypeMedia}}
+
             <button type="submit" class="btn-u btn-u-default" id="btn-select-media" style="margin-left: 12px; margin-bottom: 10px;">Select</button>
             <button type="submit" class="btn-u btn-u-default" id="btn-new-media" style="margin-left: 12px; margin-bottom: 10px;">Create</button>
-
-
 
             <div id="media-collection-fieldset">
               {{#if isSelectMedia}}
@@ -64,10 +74,7 @@
               {{/if}}
             </div>
 
-
-
             {{#if selectedMedia}}
-
               <table class="table table-striped table-list">
                 <thead>
                   <tr>
@@ -86,18 +93,22 @@
                   {{/unless}}
                 </tbody>
               </table>
-
-
             {{/if}}
 
-          </fieldset>
+            {{#if isNewMedia}}
+              {{#with clearContext}}
+                {{> mediaForm}}
+              {{/with}}
+            {{/if}}
 
-          {{#if isNewMedia}}
-            {{#with clearContext}}
-              {{> mediaForm}}
-            {{/with}}
-
+          {{else}}
+            <br>
+            <br>
+            <label class="textarea textarea-resizable">
+              <textarea id="templateText" rows="10" style="margin-top: 0px; margin-bottom: 0px; height: 81px;">{{template}}</textarea>
+            </label>
           {{/if}}
+          </fieldset>
 
           <fieldset>
             <label class="label">Info</label>

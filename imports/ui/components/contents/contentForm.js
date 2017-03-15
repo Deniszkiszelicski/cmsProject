@@ -11,6 +11,13 @@ Meteor.subscribe('medien');
 Template.contentForm.onCreated(function () {
   this.isSelectMedia = new ReactiveVar(false);
   this.isNewMedia = new ReactiveVar(false);
+  const type = this.data.type || "m"; //m=media, t=template
+  if(type == "m") {
+    this.isTypeMedia = new ReactiveVar(true);
+  } else {
+    this.isTypeMedia = new ReactiveVar(false);
+  }
+
   let media;
   if (!!this.data.mediaId) {
     media = Medien.findOne({ _id: this.data.mediaId });
@@ -100,6 +107,12 @@ Template.contentForm.helpers({
                         enableButtonNewMedia: false,
                         header: "List of all Medien", } };
   },
+  getType: function getType() {
+    return Template.instance().isTypeMedia.get() ? "Media" : "Template";
+  },
+  isTypeMedia: function isTypeMedia() {
+    return Template.instance().isTypeMedia.get();
+  },
 });
 
 Template.contentForm.events({
@@ -117,11 +130,13 @@ Template.contentForm.events({
         regions.push($(this).val());
       }
     });
-    const mediaId = templateInstance.media.get()._id;
 
-    const content = { _id: this._id,
+    const isTypeMedia = templateInstance.isTypeMedia.get();
+
+    let content = { _id: this._id,
                       name: $('#nameOfContent').val(),
                       duration: $('#durationOfContent').val(),
+                      type: isTypeMedia ? 'm' : 't',
                       mixInTicker: $('#mixInTicker').is(':checked'),
                       collectStatisticts: $('#collectStatisticts').is(':checked'),
                       visibleForAll: $('#visibleForAll').is(':checked'),
@@ -140,8 +155,15 @@ Template.contentForm.events({
                       deleteAfterFinish: $('#deleteAfterFinish').is(':checked'),
                       assortiment: assortiment,
                       regions: regions,
-                      mediaId: mediaId,
                     };
+    if (isTypeMedia) {
+      const mediaId = templateInstance.media.get()._id;
+      content['mediaId'] = mediaId;
+    } else {
+      const templateText = $('#templateText').val();
+      content['template'] = templateText;
+    }
+
     Meteor.call('upsertContent', content);
   },
   'click #btn-select-media': function selectMedia(event, templateInstance) {
@@ -171,5 +193,13 @@ Template.contentForm.events({
     event.preventDefault();
     templateInstance.media.set(this);
     templateInstance.isSelectMedia.set(false);
+  },
+  'click #select-media': function selectMedia(event, templateInstance){
+    event.preventDefault();
+    templateInstance.isTypeMedia.set(true);
+  },
+  'click #select-template': function selectTemplate(event, templateInstance){
+    event.preventDefault();
+    templateInstance.isTypeMedia.set(false);
   },
 });
