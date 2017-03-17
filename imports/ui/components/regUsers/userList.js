@@ -25,7 +25,7 @@ Template.usersList.onCreated(function onCreated() {
 Template.usersList.helpers({
   filteredUsers: () => {
     let filterText = Template.instance().filterText.get();
-    return Meteor.users.find({ "profile.name": { $regex: new RegExp(filterText), $options: 'i' }}).fetch();
+    return Meteor.users.find({ "profile.name": { $regex : new RegExp(filterText), $options:'i' }}).fetch();
   },
   users: () => {
     return Meteor.users.find().fetch();

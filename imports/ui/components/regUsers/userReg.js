@@ -22,10 +22,14 @@ Template.registerUser2.onCreated(function onCreated() {
   });
 
   this.counter = new ReactiveVar();
-
+  this.filterText = new ReactiveVar();
 });
 
 Template.registerUser2.helpers({
+  filteredPlayers: () => {
+    let filterText = Template.instance().filterText.get();
+    return Players.find({ playerId: { $regex : new RegExp(filterText), $options:'i' }}).fetch();
+  },
   playerInformation: () => {
     return Players.find().fetch();
   },
@@ -91,5 +95,8 @@ document.getElementById("onePlayer").value='';
   var id = event.currentTarget.name;
   Playervalue.pop(id);
   templateInstance.counter.set(Playervalue);
-}
+},
+'keyup #onePlayer': function filter(event, templateInstance){
+  templateInstance.filterText.set(event.currentTarget.value);
+},
 });
