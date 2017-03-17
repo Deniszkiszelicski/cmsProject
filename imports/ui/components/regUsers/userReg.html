@@ -48,7 +48,30 @@
 
          <h3 class="text-center">Assign Player/s</h3>
 
-         <div class="well" style="max-height: 300px;overflow: auto;">
+         <div class="form-group col-lg-8 col-md-offset-2">
+           <!-- <label for="sortiment">Add new Sortiment</label> -->
+           <div class="input-group"  >
+           <input type="text" class="form-control"  value="" id="onePlayer" placeholder="type player ID">
+           <span class="input-group-btn">
+           <a href="#" class="btn btn-default" type="button"  id="addPlayer">Add</a>
+         </span></div>
+         <label for="players">Assigned Players</label>
+        <div class="well" style="max-height: 150px;overflow: auto;">
+
+         {{#each onePlayer}}
+
+
+                   <div class="input-group assignedPlayersList"  >
+                   <input type="text" class="form-control"   value="Player Id :{{this.playerId}}" DISABLED><input type="text" id="playerList" value="{{this.id}}" HIDDEN>
+                   <span class="input-group-btn">
+                   <button href="#" class="btn btn-default" type="button" name="{{../_id}}" id="deleteOnePlayer">X</button>
+                   </span>
+                 </div> {{/each}}
+               </div>
+
+       </div>
+
+         <!-- <div class="well" style="max-height: 300px;overflow: auto;">
          <ul class="list-group checked-list-box">
            <li class="list-group-item "><div class="col-md-8" ><strong>Check/Uncheck all :</strong></div>
            <input type="checkbox" aria-label="..." id="checkAll" ></li>
@@ -60,7 +83,7 @@
             </li>
             {{/each}}
              </ul>
-         </div>
+         </div> -->
           </div>
                   </div>
                   <div class="panel-footer">

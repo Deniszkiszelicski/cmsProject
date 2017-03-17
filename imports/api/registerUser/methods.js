@@ -30,4 +30,7 @@ Meteor.methods({
 
 
   },
+//   deleteOnePlayer: function(id,player){
+// Meteor.users.update({_id:id},{$pull:{profile:{assignedPlayers:player}}});
+//  },
 });

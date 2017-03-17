@@ -15,5 +15,8 @@ remove:function(){
 },
 update:function(){
   return true;
+},
+insert:function(){
+  return true;
 }
 });

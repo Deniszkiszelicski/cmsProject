@@ -11,37 +11,43 @@ import '../../components/regUsers/userList';
 
 Meteor.subscribe('users');
 Meteor.subscribe('roles');
+
 // Meteor.subscribe('players', true);
+var Playervalue = [];
 
 Template.editUser2.onCreated(function onCreated() {
   this.autorun(() => {
     this.subscribe('players', true);
   });
+  this.counter = new ReactiveVar();
 });
 
 Template.editUser2.helpers({
   user: () => {
     return Meteor.users.findOne({_id:Session.get('id')});
   },
-
-  playerInformation: () => {
-    return Players.find().fetch();
-  },
-  roleName: (id)=>{
+  roleName: (id) =>{
     return Roles.findOne({_id:id}).roleName;
 
+  },
+
+  playerName: (id) =>{
+    console.log(Players.findOne({_id:id}).name);
+    return Players.findOne({_id:id}).name;
+  },
+  playerIds: (id) =>{
+    return Players.findOne({_id:id}).playerId;
+  },
+  playerInformation: () => {
+    return Players.find().fetch();
   },
   rolesInformation: () =>{
     return Roles.find().fetch();
   },
-  playerName : (id) =>{
-    return Players.findOne({_id:id}).name;
-
-
+  onePlayer: () =>{
+    return Template.instance().counter.get(Playervalue);
   },
-  playerIds : (id) =>{
-    return Players.findOne({_id:id}).playerId;
-  }
+
 
 });
 
@@ -56,7 +62,7 @@ Template.editUser2.events({
     var assignedPlayers = [];
     var role = $('#checked:checked').val();
 
-    $('.assignedPlayersList').children('.checked:checked').each(function(){
+    $('.assignedPlayersList').children('#playerList').each(function(){
      assignedPlayers.push($(this).val());
     });
     var user = { email:email, password:password, profile:
@@ -67,5 +73,30 @@ Template.editUser2.events({
     Meteor.users.update({_id:Session.get('id')},{$set:(user)});
     toastr.success("Data Saved", "Edit User");
   },
+  'click #deleteOnePlayer':function deleteOnePlayer(event){
+    event.preventDefault()
+    var player = String(this);
+    var id = event.currentTarget.name;
+    console.log(id,player, "calling");
+    Meteor.users.update ({_id:id},{$pull:{'profile.assignedPlayers':player}});
+
+  },
+  'click #addPlayer': function (event, templateInstance){
+  event.preventDefault();
+  var onePlayer = $('#onePlayer').val();
+ // assignedPlayers.push(Players.findOne({"playerId": onePlayer})._id);
+
+
+ console.log(Players.findOne({"playerId": onePlayer}));
+ Playervalue.push({playerId:(Players.findOne({"playerId": onePlayer}).playerId),id:(Players.findOne({"playerId": onePlayer})._id)});
+ templateInstance.counter.set(Playervalue);
+document.getElementById("onePlayer").value='';
+},
+'click #deleteOnePlayer1': function (event,templateInstance){
+  event.preventDefault();
+  var id = event.currentTarget.name;
+  Playervalue.pop(id);
+  templateInstance.counter.set(Playervalue);
+}
 
 });
