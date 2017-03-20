@@ -66,7 +66,12 @@
 
   <div class="form-group col-lg-8 col-md-offset-2">
     <div class="input-group"  >
-    <input type="text" class="form-control"  value="" id="onePlayer" placeholder="type player ID">
+    <input list="searchResults" type="text" class="form-control"  value="" id="onePlayer" placeholder="type player ID">
+    <datalist id="searchResults">
+           {{#each filteredPlayers}}
+           <option value="{{playerId}}"></option>
+           {{/each}}
+         </datalist>
     <span class="input-group-btn">
     <a href="#" class="btn btn-default" type="button"  id="addPlayer">Add</a>
     </span></div>
@@ -81,7 +86,7 @@
 {{#with user}}{{#each profile.assignedPlayers}}
 
                           <div class="input-group assignedPlayersList">
-                          <input type="text" class="form-control"   value="Player Id :{{playerIds this}}    Player Name : {{playerName this}}" DISABLED><input type="text" id="playerList" value="{{this}}" HIDDEN>
+                          <input type="text" class="form-control"   value="Player Id :{{playerIds this}} " DISABLED><input type="text" id="playerList" value="{{this}}" HIDDEN>
                           <span class="input-group-btn">
                           <button href="#" class="btn btn-default" type="button" name="{{../_id}}" id="deleteOnePlayer">X</button>
                           </span></div>{{/each}}{{/with}}

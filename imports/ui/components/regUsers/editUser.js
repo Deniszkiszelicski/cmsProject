@@ -20,9 +20,14 @@ Template.editUser2.onCreated(function onCreated() {
     this.subscribe('players', true);
   });
   this.counter = new ReactiveVar();
+  this.filterText = new ReactiveVar();
 });
 
 Template.editUser2.helpers({
+  filteredPlayers: () => {
+    let filterText = Template.instance().filterText.get();
+    return Players.find({ playerId: { $regex : new RegExp(filterText), $options:'i' }}).fetch();
+  },
   user: () => {
     return Meteor.users.findOne({_id:Session.get('id')});
   },
@@ -97,6 +102,9 @@ document.getElementById("onePlayer").value='';
   var id = event.currentTarget.name;
   Playervalue.pop(id);
   templateInstance.counter.set(Playervalue);
-}
+},
+'keyup #onePlayer': function filter(event, templateInstance){
+  templateInstance.filterText.set(event.currentTarget.value);
+},
 
 });
