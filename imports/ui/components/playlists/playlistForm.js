@@ -97,6 +97,7 @@ Template.playlistForm.events({
     }
     const playlist = { _id: this._id,
                       name: $('#name').val(),
+                      tickerText: $('#tickerText').val(),
                       contentGroupIds: contentGroupIds,
                     };
     Meteor.call('upsertPlaylist', playlist);
