@@ -1,4 +1,4 @@
-import Tabular from 'meteor/aldeed:tabular';
+// import Tabular from 'meteor/aldeed:tabular';
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { check } from 'meteor/check';
