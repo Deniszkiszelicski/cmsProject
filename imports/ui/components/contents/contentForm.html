@@ -1,8 +1,6 @@
 <template name="contentForm">
   <!-- TODO: delete style -->
-  <!-- <div class="row"> -->
-  <!-- <div class="col-md-9"> -->
-
+  
   <br>
   <div class="tab-v1 content-form">
     <ul class="nav nav-tabs">
@@ -30,9 +28,7 @@
                   <input type="text" name="nameOfContent" id="nameOfContent"
                   placeholder="Enter name of content" value="{{this.name}}">
                 </label>
-
               </section>
-
 
               <section class="col col-6">
                 <label class="label">Duration</label>
@@ -42,8 +38,6 @@
                   placeholder="Enter duration of content" value="{{this.duration}}">
                 </label>
               </section>
-              <!-- <button type="submit" class="btn-u btn-u-default" id="btn-select-media" style="margin-left: 12px; margin-bottom: 10px;">Select media</button>
-              <button type="submit" class="btn-u btn-u-default" id="btn-new-media" style="margin-left: 12px; margin-bottom: 10px;">Create new media</button> -->
             </div>
           </fieldset>
 
@@ -158,14 +152,14 @@
                 <label class="label">Start date</label>
                 <label class="input">
                   <i class="icon-append fa fa-calendar"></i>
-                  <input type="text" name="start" id="start" placeholder="Start date" class="hasDatepicker">
+                  <input type="text" name="start" id="start" value="{{startDate}}" placeholder="Start date" class="hasDatepicker">
                 </label>
               </section>
               <section class="col col-6">
                 <label class="label">Finish date</label>
 								<label class="input">
 									<i class="icon-append fa fa-calendar"></i>
-									<input type="text" name="finish" id="finish" placeholder="Finish date" class="hasDatepicker">
+									<input type="text" name="finish" id="finish" value="{{finishDate}}" placeholder="Finish date" class="hasDatepicker">
 								</label>
 							</section>
 

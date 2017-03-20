@@ -149,10 +149,6 @@ PlayersSchema = new SimpleSchema({
     type: [String],
     optional: true,
   },
-  contentGroupIds: {
-    type: [String],
-    optional: true,
-  },
   playlistId: {
     type: String,
     optional: true,
