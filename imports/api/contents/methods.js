@@ -32,6 +32,7 @@ Meteor.methods({
                         assortiment: content.assortiment,
                         regions: content.regions,
                         mediaId: content.mediaId,
+                        conjunction: content.conjunction,
                       };
       if (content.type == "m") {
         newValues['mediaId'] = content.mediaId;
@@ -63,6 +64,7 @@ Meteor.methods({
                           deleteAfterFinish: content.deleteAfterFinish,
                           assortiment: content.assortiment,
                           regions: content.regions,
+                          conjunction: content.conjunction,
                         };
       if (content.type == "m") {
         newValues['mediaId'] = content.mediaId;

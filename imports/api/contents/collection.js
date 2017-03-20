@@ -38,6 +38,10 @@ ContentsSchema = new SimpleSchema({
     type: String,
     optional: true,
   },
+  conjunction: {
+    type: String,
+    allowedValues: ["and", "or"],
+  },
   startDate: {
     type: String,
     optional: true,

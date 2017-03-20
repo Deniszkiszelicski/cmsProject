@@ -17,7 +17,37 @@ div.p1, div.p2,div.p3{
   z-index: -1;
 }
 
+.sky-form .toggle i:before {
+    top: 5px;
+    right: 6px;
+}
 
+.sky-form .toggle i:after {
+    content: 'OFF';
+    position: absolute;
+    top: 2px;
+    right: 21px;
+    left: 20px;
+    font-style: normal;
+    font-size: 9px;
+    line-height: 13px;
+    font-weight: 700;
+    text-align: left;
+}
+
+.sky-form .toggle i {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-width: 0.666667px;
+  border-left-width: 0.666667px;
+  border-right-width: 0.666667px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-top-width: 0.666667px;
+  height: 21px;
+  line-height: 27px;
+  width: 54px;
+}
 /*screenshot*/
 
 #heading-btn-row{

@@ -113,6 +113,12 @@ Template.contentForm.helpers({
   isTypeMedia: function isTypeMedia() {
     return Template.instance().isTypeMedia.get();
   },
+  isConjAnd: function isConjAnd() {
+    return this.conjunction == "and" ? "checked" : "";
+  },
+  isConjOr: function isConjAnd() {
+    return this.conjunction == "and" ? "" : "checked";
+  },
 });
 
 Template.contentForm.events({
@@ -132,7 +138,8 @@ Template.contentForm.events({
     });
 
     const isTypeMedia = templateInstance.isTypeMedia.get();
-
+    console.log("AND:", $(typeOfConjunction).is(':checked'));
+    const conjunction = $(typeOfConjunction).is(':checked') ? "and" : "or";
     let content = { _id: this._id,
                       name: $('#nameOfContent').val(),
                       duration: $('#durationOfContent').val(),
@@ -155,6 +162,7 @@ Template.contentForm.events({
                       deleteAfterFinish: $('#deleteAfterFinish').is(':checked'),
                       assortiment: assortiment,
                       regions: regions,
+                      conjunction: conjunction,
                     };
     if (isTypeMedia) {
       const mediaId = templateInstance.media.get()._id;

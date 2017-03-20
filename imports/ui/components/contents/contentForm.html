@@ -1,6 +1,6 @@
 <template name="contentForm">
   <!-- TODO: delete style -->
-  
+
   <br>
   <div class="tab-v1 content-form">
     <ul class="nav nav-tabs">
@@ -132,7 +132,13 @@
 
             </section>
             <!-- </div> -->
-
+            <div class="row">
+								<section class="col col-5">
+									<label class="label">Type of cunjunction</label>
+									<label class="toggle"><input type="radio" name="radio-toggle" {{isConjAnd}} id="typeOfConjunction"><i class="no-rounded"></i>AND (both required)</label>
+									<label class="toggle"><input type="radio" name="radio-toggle" {{isConjOr}}><i class="no-rounded"></i>OR (any required)</label>
+								</section>
+							</div>
           </fieldset>
 
           <footer>
