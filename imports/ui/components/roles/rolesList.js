@@ -21,6 +21,9 @@ Template.rolesList.helpers({
 isRoleEdit: function isRoleEdit() {
   return Template.instance().isRoleEdit.get();
 },
+roleInfo: () => {
+  return Roles.findOne({_id: Session.get("selectedRole")});
+},
 });
 
 Template.rolesList.events({
@@ -28,7 +31,7 @@ Template.rolesList.events({
 
   event.preventDefault();
   Meteor.call('deleteRole',{_id:Session.get("selectedRole")});
-  
+
 },
 
 'click #editRList':
@@ -47,6 +50,10 @@ Template.rolesList.events({
   templateInstance.isRoleEdit.set(false);
 },
 'click #selectDel': function selectRoleToDelete(event){
+  event.preventDefault();
+  Session.set('selectedRole', this._id);
+},
+'click #info': function showRoleInfo(event){
   event.preventDefault();
   Session.set('selectedRole', this._id);
 }

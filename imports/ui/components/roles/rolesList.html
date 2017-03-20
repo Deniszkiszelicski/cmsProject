@@ -1,5 +1,202 @@
 <template name ="rolesList"><br>
 
+  <!-- Modal1 -->
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">{{#with roleInfo}}
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Role "{{roleName}}" Info</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <table class="table table-striped">
+          <tbody>
+
+              <tr>{{#if createPlayer}}
+                    Create Player :<span class="glyphicon glyphicon-ok-circle"></span>
+                  {{else}}
+                    Create Player :<span class="glyphicon glyphicon-ban-circle"></span>
+                  {{/if}}
+              </tr>
+              <tr>{{#if editPlayer}}
+                    Edit Player :<span class="glyphicon glyphicon-ok-circle"></span>
+                  {{else}}
+                    Edit Player :<span class="glyphicon glyphicon-ban-circle"></span>
+                  {{/if}}
+              </tr>
+              <tr>{{#if deletePlayer}}
+                    Delete Player :<span class="glyphicon glyphicon-ok-circle"></span>
+                  {{else}}
+                    Delete Player :<span class="glyphicon glyphicon-ban-circle"></span>
+                  {{/if}}
+              </tr>
+
+
+              <tr>{{#if createVideoImg}}
+                    Create Video/Img :<span class="glyphicon glyphicon-ok-circle"></span>
+                  {{else}}
+                    Create Video/Img :<span class="glyphicon glyphicon-ban-circle"></span>
+                  {{/if}}
+              </tr>
+              <tr>{{#if editVideoImg}}
+                    Edit Video/Img :<span class="glyphicon glyphicon-ok-circle"></span>
+                  {{else}}
+                    Edit Video/Img :<span class="glyphicon glyphicon-ban-circle"></span>
+                  {{/if}}
+              </tr>
+              <tr>{{#if deleteVideoImg}}
+                    Delete Video/Img :<span class="glyphicon glyphicon-ok-circle"></span>
+                  {{else}}
+                    Delete Video/Img :<span class="glyphicon glyphicon-ban-circle"></span>
+                  {{/if}}
+              </tr>
+
+
+              <tr>{{#if createContent}}
+                      Create Content :<span class="glyphicon glyphicon-ok-circle"></span>
+                  {{else}}
+                        Create Content :<span class="glyphicon glyphicon-ban-circle"></span>
+                  {{/if}}
+              </tr>
+              <tr>{{#if editContent}}
+                    Edit Content :<span class="glyphicon glyphicon-ok-circle"></span>
+                  {{else}}
+                    Edit Content :<span class="glyphicon glyphicon-ban-circle"></span>
+                  {{/if}}
+              </tr>
+              <tr>{{#if deleteContent}}
+                    Delete Content :<span class="glyphicon glyphicon-ok-circle"></span>
+                  {{else}}
+                    Delete Content :<span class="glyphicon glyphicon-ban-circle"></span>
+                  {{/if}}
+              </tr>
+
+
+              <tr>{{#if createContentGrp}}
+                      Create Content Group :<span class="glyphicon glyphicon-ok-circle"></span>
+                  {{else}}
+                        Create Content Group :<span class="glyphicon glyphicon-ban-circle"></span>
+                  {{/if}}
+              </tr>
+
+              <tr>{{#if deleteContentGrp}}
+                    Delete Content Group :<span class="glyphicon glyphicon-ok-circle"></span>
+                  {{else}}
+                    Delete Content Group :<span class="glyphicon glyphicon-ban-circle"></span>
+                  {{/if}}
+              </tr>
+              <tr>{{#if grantContentGrpAccess}}
+                    Content Group Edit Privileges :<span class="glyphicon glyphicon-ok-circle"></span>
+                  {{else}}
+                    Content Group Edit Privileges :<span class="glyphicon glyphicon-ban-circle"></span>
+                  {{/if}}
+              </tr>
+
+
+              <tr>{{#if createPlaylist}}
+                      Create Playlist :<span class="glyphicon glyphicon-ok-circle"></span>
+                  {{else}}
+                        Create Playlist :<span class="glyphicon glyphicon-ban-circle"></span>
+                  {{/if}}
+              </tr>
+              <tr>{{#if editPlaylist}}
+                    Edit Playlist :<span class="glyphicon glyphicon-ok-circle"></span>
+                  {{else}}
+                    Edit Playlist :<span class="glyphicon glyphicon-ban-circle"></span>
+                {{/if}}
+              </tr>
+              <tr>{{#if deletePlaylist}}
+                    Delete Playlist :<span class="glyphicon glyphicon-ok-circle"></span>
+                  {{else}}
+                    Delete Playlist :<span class="glyphicon glyphicon-ban-circle"></span>
+                  {{/if}}
+              </tr>
+
+
+              <tr>{{#if adminMenu}}
+                    Admin menu Visible :<span class="glyphicon glyphicon-ok-circle"></span>
+                  {{else}}
+                    Admin menu Visible :<span class="glyphicon glyphicon-ban-circle"></span>
+                  {{/if}}
+              </tr>
+              <tr>{{#if netzMenu}}
+                    Network menu Visible :<span class="glyphicon glyphicon-ok-circle"></span>
+                  {{else}}
+                    Network menu Visible :<span class="glyphicon glyphicon-ban-circle"></span>
+                  {{/if}}
+              </tr>
+              <tr>{{#if userMenu}}
+                    User menu Visible :<span class="glyphicon glyphicon-ok-circle"></span>
+                  {{else}}
+                    User menu Visible :<span class="glyphicon glyphicon-ban-circle"></span>
+                  {{/if}}
+              </tr>
+
+
+              <tr>{{#if roleMenu}}
+                    Role menu Visible :<span class="glyphicon glyphicon-ok-circle"></span>
+                  {{else}}
+                    Role menu Visible :<span class="glyphicon glyphicon-ban-circle"></span>
+                  {{/if}}
+              </tr>
+              <tr>{{#if contentMenu}}
+                    Content menu Visible :<span class="glyphicon glyphicon-ok-circle"></span>
+                  {{else}}
+                    Content menu Visible :<span class="glyphicon glyphicon-ban-circle"></span>
+                  {{/if}}
+              </tr>
+            <tr>{{#if statisticMenu}}
+                  Statistics menu Visible :<span class="glyphicon glyphicon-ok-circle"></span>
+                {{else}}
+                  Statistics menu Visible :<span class="glyphicon glyphicon-ban-circle"></span>
+                {{/if}}
+            </tr>
+            <tr>{{#if homeEditMenu}}
+                  Home Edit menu Visible :<span class="glyphicon glyphicon-ok-circle"></span>
+                {{else}}
+                  Home Edit menu Visible :<span class="glyphicon glyphicon-ban-circle"></span>
+                {{/if}}
+            </tr>
+
+
+            <tr>{{#if seeMedia}}
+                Media Visible : All<span class="glyphicon glyphicon-ok-circle"></span>
+                {{else}}
+                Media Visible : Own<span class="glyphicon glyphicon-ban-circle"></span>
+
+                {{/if}}
+            </tr>
+            <tr>{{#if seeContent}}
+                Content Visible : All<span class="glyphicon glyphicon-ok-circle"></span>
+                {{else}}
+                Content Visible : Own<span class="glyphicon glyphicon-ban-circle"></span>
+
+                {{/if}}
+            </tr>
+
+            <tr>{{#if seeAllPlayers}}
+              Content Visible : All<span class="glyphicon glyphicon-ok-circle"></span>
+              {{else}}
+              Content Visible : Own<span class="glyphicon glyphicon-ban-circle"></span>
+
+              {{/if}}
+            </tr>
+
+          </tbody>
+        </table>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>{{/with}}
+    </div>
+  </div>
+</div>
+
 
   <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -7,12 +204,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Delete Role</h5>
+
+
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        Are you sure to delete Role?
+        <h4>Are yo sure to delete role "{{roleInfo.roleName}}" ? </h4>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -25,8 +224,7 @@
     {{>roleEdit}}
   {{/if}}
   <div class="sky-form">
-    <!-- <div class="col-md-10 col-md-offset-1"> -->
-      <div class="panel panel-default panel-table">
+      <div class="panel-default panel-table">
         <div class="panel-heading">
           <span>List of roles</span>
           <button type="button" class="btn btn-default" style="float:right;" id="btnRole">Create New role</button>
@@ -42,26 +240,19 @@
             <tbody>
               <div>
               <tr class="col-sm-6">
-
-
                 Role Name :<strong>{{roleName}}</strong>
-
-
-
               </tr>
               <tr class="col-sm-6">
+
                 <i type="button" class="glyphicon glyphicon-pencil" id="editRList" style="float: right;"></i>
                   <i type="button" class="glyphicon glyphicon-trash" style="float: right;" data-toggle="modal" data-target="#myModal" id="selectDel"></i>
-
-
+                  <i type="button" class="glyphicon glyphicon-info-sign" id="info" style="float: right;" data-toggle="modal" data-target="#myModal1"></i>
               </tr>
               </div>
-
             </tbody>
           </table>
         </div>
           {{/each}}
       </div>
-    <!-- </div> -->
-  </div>
+  </div><br><br>
 </template>

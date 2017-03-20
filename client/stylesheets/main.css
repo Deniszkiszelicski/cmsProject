@@ -1,5 +1,9 @@
-body{
-  background: white;
+
+.glyphicon-ok-circle{
+  color:green;
+}
+.glyphicon-ban-circle{
+  color:red;
 }
 
 div.p1, div.p2,div.p3{

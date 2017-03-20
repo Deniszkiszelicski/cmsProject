@@ -2,7 +2,7 @@
   <div class="tab-v1 content-form">
       <!-- <div class="col-md-10 col-md-offset-1"> -->
           <form class="sky-form register">
-              <div class="panel panel-default">
+              <div class=" panel-default">
                   <div class="panel-heading">
                     <span>User Registration</span>
                       <i type="button" class="glyphicon glyphicon-remove" style="color:red;" id="closeUserCreate"></i>
@@ -11,15 +11,15 @@
 
                       <div class="form-group col-lg-12">
                           <label>Email</label>
-                          <input type="email"  class="form-control" id="email" value="">
+                          <input type="email"  class="form-control" id="email" value="" REQUIRED>
                       </div>
                       <div class="form-group col-lg-12">
                           <label>Password</label>
-                          <input type="password" name="" class="form-control" id="password" value="">
+                          <input type="password" name="" class="form-control" id="password" value="" REQUIRED>
                       </div>
                       <div class="form-group col-lg-12">
                           <label>Name</label>
-                          <input type="text" name="" class="form-control" id="firstname" value="">
+                          <input type="text" name="" class="form-control" id="firstname" value="" REQUIRED>
                       </div>
 
                        <div class="form-group col-lg-12">
@@ -57,7 +57,7 @@
              <option value="{{playerId}}"></option>
              {{/each}}
            </datalist>
-           
+
            <span class="input-group-btn">
            <a href="#" class="btn btn-default" type="button"  id="addPlayer">Add</a>
          </span></div>
