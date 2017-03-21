@@ -28,6 +28,33 @@ Template.playlistForm.helpers({
   isShowCGs: () => {
     return Template.instance().isShowCGs.get();
   },
+  includedContentGroups: function includedContentGroups() {
+    const includedCGs = Template.instance().includedCGs.get();
+    const options = { header: "Included content-groups", enableButtonDelete: false,
+                      enableButtonEdit: false, enableButtonRemove: true,
+                      enableButtonNewCG: false, enableFilter: false,
+                      enableButtonRemove: true };
+    const includedCGsWithOptions = { contentGroups: includedCGs, options: options};
+    return includedCGsWithOptions;
+  },
+  includedContents: function includedContents() {
+    const includedCGs = Template.instance().includedCGs.get();
+    let contentIdsWithColour = [];
+    for (i = 0; i < includedCGs.length; i++) {
+      const contentIds = includedCGs[i].contentIds;
+      const colour = includedCGs[i].colour;
+      for (j = 0; j < contentIds.length; j++) {
+        const contentIdWithColour = { id: contentIds[j], colour: colour };
+        contentIdsWithColour.push(contentIdWithColour);
+      }
+    }
+    const options = { header: "Included contents", enableButtonDelete: false,
+                      enableButtonEdit: false, enableButtonRemove: true,
+                      enableButtonNewCG: false, enableFilter: false,
+                      enableButtonCloseListOfContents: false };
+    const includedContentsWithOptions = { contents: contentIdsWithColour, options: options};
+    return includedContentsWithOptions;
+  },
   allContentGroups: function allContentGroups() {
     const options = { header: "List of all content-groups", enableButtonDelete: false,
                       enableButtonEdit: false, enableButtonRemove: false,
@@ -36,8 +63,14 @@ Template.playlistForm.helpers({
     const allCGsWithOptions = { options: options };
     return allCGsWithOptions;
   },
-  getPlaylist: function getPlaylist() {
-    return this;
+  playerName: () => {
+    let playerId = Template.instance().playerId.get();
+    let playerObject = Players.findOne({ playerId: playerId });
+    if (!!playerObject) {
+      return playerObject.name
+    } else {
+      return "";
+    }
   },
 });
 
