@@ -54,20 +54,9 @@
               {{/if}}
             </div>
           </fieldset>
-          <fieldset>
-            <div id="contentGroup-collection-included-fieldset">
-              {{#with includedContentGroups}}
-                {{> contentGroupsList}}
-              {{/with}}
-            </div>
-          </fieldset>
-          <fieldset>
-            <div id="content-collection-included-fieldset">
-              {{#with includedContents}}
-                {{> contentsList}}
-              {{/with}}
-            </div>
-          </fieldset>
+          {{#with getPlaylist}}
+            {{> playlistContentPart}}
+          {{/with}}
           <footer>
             <i type="button" class="fa fa-floppy-o button-save" id="btn-save-playlist"></i>
           </footer>
