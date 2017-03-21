@@ -117,12 +117,12 @@ Api.addRoute('getPlaylistForPlayer', {authRequired: false}, {
                 if (contentIdsLength > 0) {
                   for (let i = 0; i < contentIds.length; i++) {
                     const content = Contents.findOne({ _id: contentIds[i] });
-                    testEntry.addTag("contentName", content.name);
-                    testEntry.addTag("hidescroller", content.mixInTicker ? 0 : 1);
-                    testEntry.addTag("duration", content.duration);
-                    testEntry.addTag("key", "");
-                    testEntry.addTag("volume", "0");
                     if (content.type == "m") {
+                      testEntry.addTag("contentName", content.name);
+                      testEntry.addTag("hidescroller", content.mixInTicker ? 0 : 1);
+                      testEntry.addTag("duration", content.duration);
+                      testEntry.addTag("key", "");
+                      testEntry.addTag("volume", "0");
                       const media = Medien.findOne({ _id: content.mediaId });
                       if (media) {
                         if (media.type == "image") {
@@ -131,10 +131,13 @@ Api.addRoute('getPlaylistForPlayer', {authRequired: false}, {
                           testEntry.addTag("type", 0);
                         }
                       }
+                      testEntry.addPeriodTags(content.startDate, content.finishDate, content.monday,
+                                              content.tuesday, content.wednesday, content.thursday, content.friday, content.saturday, content.sunday, content.playTimeHoursStart, content.playTimeHoursStart);
+                      responseXML += testEntry.assembleEntry();
+                    } else {
+                      responseXML += content.template;
                     }
-                    testEntry.addPeriodTags(content.startDate, content.finishDate, content.monday,
-                                            content.tuesday, content.wednesday, content.thursday, content.friday, content.saturday, content.sunday, content.playTimeHoursStart, content.playTimeHoursStart);
-                    responseXML += testEntry.assembleEntry();
+
                     testEntry = new Entry();
                   }
                 }
