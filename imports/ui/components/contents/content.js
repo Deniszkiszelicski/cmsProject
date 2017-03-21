@@ -11,6 +11,11 @@ Template.content.helpers({
   mayEdit: function mayEdit() {
     return true;
   },
+  getColour: function getColour() {
+    if (this) {
+      return this.colour;
+    }
+  },
   disableButtonDelete: function disableButtonDelete() {
     if (!!this) {
       return this.disableButtonDelete;

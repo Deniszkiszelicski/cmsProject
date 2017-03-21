@@ -15,18 +15,24 @@ Template.contentsList.helpers({
     return Contents.find().fetch();
   },
   filteredContents: function filteredContents() {
-    const contentIds = this.contents;
+    let contentIds = [];
+    const contentIdsWithColour = this.contents;
     let contentsWithOptions = [];
-    if (!!contentIds) {
+    if (contentIdsWithColour) {
+      for (let i = 0; i < contentIdsWithColour.length; i++) {
+        contentIds.push(contentIdsWithColour[i].id);
+      }
       const contents = Contents.find({ _id: { "$in" : contentIds } }).fetch();
-      //place content objects according to received content ids
       const l = contentIds.length;
       for (i = 0; i < l; i++) {
         const currentContentId = contentIds[i];
         const ll = contents.length;
         for (j = 0; j < ll; j++) {
-          if (contents[j]._id == currentContentId) {
-            contentsWithOptions.push(contents[j]);
+          let currentContentObj = contents[j];
+          if (currentContentObj._id == currentContentId) {
+            const colour = contentIdsWithColour[i].colour;
+            currentContentObj["colour"] = colour;
+            contentsWithOptions.push(currentContentObj);
           }
         }
       }
