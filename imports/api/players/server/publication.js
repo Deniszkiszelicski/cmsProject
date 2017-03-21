@@ -135,9 +135,11 @@ Api.addRoute('getPlaylistForPlayer', {authRequired: false}, {
                                               content.tuesday, content.wednesday, content.thursday, content.friday, content.saturday, content.sunday, content.playTimeHoursStart, content.playTimeHoursStart);
                       responseXML += testEntry.assembleEntry();
                     } else {
-                      responseXML += content.template;
+                      let text = content.template;
+                      const DISTRICT = "@@district@@";
+                      text = text.replace(DISTRICT, player.district);
+                      responseXML += text;
                     }
-
                     testEntry = new Entry();
                   }
                 }
