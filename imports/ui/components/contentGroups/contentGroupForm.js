@@ -1,4 +1,5 @@
 import { Template } from 'meteor/templating';
+import { Session } from 'meteor/session';
 import '../../../api/contentGroups/methods';
 import '../../../api/contentGroups/collection';
 import { $ } from 'meteor/jquery';
@@ -93,6 +94,7 @@ Template.contentGroupForm.helpers({
   getColour: function getColour() {
     return Template.instance().colour.get();
   },
+
 });
 
 Template.contentGroupForm.events({
@@ -101,11 +103,14 @@ Template.contentGroupForm.events({
     let contents = templateInstance.includedContents.get();
     const l = contents.length;
     let contentIds = [];
-    if (l > 0) {
-      for (i = 0; i < l; i++) {
-        contentIds.push(contents[i]._id);
-      }
-    }
+    $('.sortRow').each(function(){
+      contentIds.push($(this).val());
+    });
+    // if (l > 0) {
+    //   for (i = 0; i < l; i++) {
+    //     contentIds.push(contents[i]._id);
+    //   }
+    // }
     const colour = templateInstance.colour.get();
     const contentGroup = { _id: this._id,
                       name: $('#nameOfContentGroup').val(),
@@ -169,4 +174,13 @@ Template.contentGroupForm.events({
   //   // event.dataTransfer.setData("myD", event.target.id);
   //   console.log("ondragstart triggered, event.target.id=", event);
   // },
+  // 'mouseup .content-row': function saveSort(event){
+  //   event.preventDefault();
+  //   var sorted = [];
+  //   $('.sortRow').each(function(){
+  //     sorted.push($(this).val());
+  //   });
+  //   console.log(sorted);
+  //   Meteor.call('saveSort',{_id:Session.get("selectedGrp"),sorted});
+  // }
 });

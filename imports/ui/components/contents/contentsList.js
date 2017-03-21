@@ -49,4 +49,5 @@ Template.contentsList.events({
   'keyup #content-filter-input': function (event, templateInstance) {
     templateInstance.filterText.set(event.currentTarget.value);
   }
+
 });

@@ -27,4 +27,7 @@ Meteor.methods({
   deleteContentGroup: function(id) {
     ContentGroups.remove(id);
   },
+  saveSort: function(contentGroupsObject){
+    ContentGroups.update({_id:contentGroupsObject._id},{$set: { contentIds: contentGroupsObject.sorted}});
+  },
 });

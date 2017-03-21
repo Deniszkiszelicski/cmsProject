@@ -21,7 +21,7 @@
         placeholder="Type text to filter by name" id="content-filter-input">
       </div>
       <div class="panel-body">
-        <table class="table table-striped table-list">
+        <table class="table table-striped table-list" id="contentTable">
           <thead>
             <tr>
               <th></th>
@@ -39,10 +39,14 @@
             {{#each filteredContents}}
               {{> content}}
             {{/each}}
+
           </tbody>
+
         </table>
+          
       </div>
     </div>
+
 
   </div>
 </template>

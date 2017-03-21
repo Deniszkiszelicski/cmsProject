@@ -61,4 +61,6 @@ Template.content.events({
     event.stopPropagation();
     templateInstance.isEditMode.set(false);
   },
+
+
 });

@@ -1,4 +1,5 @@
 import { Template } from 'meteor/templating';
+import { Session } from 'meteor/session';
 import '../../../api/contentGroups/methods';
 import '../../../api/contentGroups/collection';
 import './contentGroup.html';
@@ -34,6 +35,7 @@ Template.contentGroup.events({
   'click #button-edit-contentGroup': function editContentGroup(event, templateInstance) {
     event.preventDefault();
     templateInstance.isEditMode.set(true);
+    Session.set('selectedGrp', this._id);
   },
   'click #button-close-contentGroup-form, click .button-save': function closeForm(event, templateInstance) {
     event.preventDefault();
