@@ -2,7 +2,7 @@
   <div class="row">
       <div class="panel panel-default panel-table">
         <div class="panel-heading">
-          <span>{{options.header}}</span>        
+          <span>{{options.header}}</span>
           {{#if options.enableButtonNewPlayer}}
             <button type="button" class="btn btn-default button-new">New player</button>
           {{/if}}
@@ -62,4 +62,5 @@
       </div>
     <!-- </div> -->
   </div>
+  {{>deleteConfirmation message=playerToDelete}}
 </template>
