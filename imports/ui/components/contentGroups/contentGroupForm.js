@@ -23,12 +23,8 @@ Template.contentGroupForm.onCreated(function () {
     }
   }
   this.includedContents = new ReactiveVar(includedContentObjects);
-
 });
 
-// Template.contentGroupForm.rendered = function() {
-//   $('.demo1').colorpicker();
-// }
 
 Template.contentGroupForm.onRendered(function () {
   let canvas = $('#canvas_picker')[0];
@@ -55,21 +51,9 @@ Template.contentGroupForm.helpers({
   isSelectContent: function isSelectContent() {
     return Template.instance().isSelectContent.get();
   },
-  includedContentsGestures: {
-      'tap .content-row': function (event, templateInstance){
-        console.log("tap has worked!!!");
-      },
-      // 'panright .content-row': function (event, templateInstance){
-      //   console.log("panright has worked!!!");
-      //   console.log("event = ", event);
-      //   $(event.target.parentElement).css({
-      //     'transform': 'translate(' + event.deltaX + 'px,' + event.deltaY + 'px)'
-      //   });
-      // },
-  },
   includedContents: function includedContents() {
     let includedContentsWithExtra = Template.instance().includedContents.get();
-    if (!!includedContentsWithExtra) {
+    if (includedContentsWithExtra) {
       const l = includedContentsWithExtra.length;
       if (l > 0) {
         for (i = 0; i < l; i++) {
@@ -107,23 +91,21 @@ Template.contentGroupForm.events({
       }
     }
     const colour = templateInstance.colour.get();
+    const name = $('#nameOfContentGroup').val();
     const contentGroup = { _id: this._id,
-                      name: $('#nameOfContentGroup').val(),
+                      name: name,
                       duration: $('#durationOfContentGroup').val(),
                       blocked: $('#blocked').is(':checked'),
                       colour: colour,
                       contentIds: contentIds,
                     };
     Meteor.call('upsertContentGroup', contentGroup);
+    toastr["success"]("Content-group '" + name + "' has been saved.");
   },
   'click #btn-select-content': function selectContent(event, templateInstance) {
     event.preventDefault();
     templateInstance.isSelectContent.set(true);
   },
-  // 'click #button-close-content-collection': function closeMediaCollection(event, templateInstance) {
-  //   event.preventDefault();
-  //   templateInstance.isSelectContent.set(false);
-  // },
   'click #button-close-contentList': function closeContentCollection(event, templateInstance) {
     event.preventDefault();
     templateInstance.isSelectContent.set(false);

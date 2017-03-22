@@ -29,11 +29,12 @@ Template.playlistsList.events({
   'keyup #playlist-filter-input': function setFilterText(event, templateInstance) {
     templateInstance.filterText.set(event.currentTarget.value);
   },
-  'click #button-delete-confired': function deletePlaylist(event, templateInstance) {
+  'click #button-delete-confirmed': function deletePlaylist(event, templateInstance) {
     event.preventDefault();
     const playlist = templateInstance.playlistToDelete.get();
     templateInstance.playlistToDelete.set();
     Meteor.call('deletePlaylist', playlist._id);
+    toastr["success"]("Playlist '" + playlist.name + "' has been deleted.");
   },
   'click .glyphicon-trash': function deletePlaylist(event, templateInstance) {
     event.preventDefault();

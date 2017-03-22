@@ -56,9 +56,6 @@
         <fieldset>
           <button type="submit" class="btn-u btn-u-default" id="btn-select-content" style="margin-left: 12px; margin-bottom: 10px;">Add content</button>
           <div id="content-collection-fieldset">
-            <!-- {{#if isSelectContent}}
-              {{> contentsList disableButtonNew=true disableButtonAddToCG=true enableButtonCloseListOfContents=true}}
-            {{/if}} -->
             {{#if isSelectContent}}
               {{#with getOptions}}
               {{> contentsList}}

@@ -44,11 +44,12 @@ Template.contentGroupsList.events({
   'keyup #contentGroup-filter-input': function (event, templateInstance) {
     templateInstance.filterText.set(event.currentTarget.value);
   },
-  'click #button-delete-confired': function deleteContentGroup(event, templateInstance) {
+  'click #button-delete-confirmed': function deleteContentGroup(event, templateInstance) {
     event.preventDefault();
     const contentGroup = templateInstance.contentGroupToDelete.get();
     templateInstance.contentGroupToDelete.set();
     Meteor.call('deleteContentGroup', contentGroup._id);
+    toastr["success"]("Content-group '" + contentGroup.name + "' has been deleted.");
   },
   'click .glyphicon-trash': function deleteContentGroup(event, templateInstance) {
     event.preventDefault();

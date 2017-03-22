@@ -64,11 +64,12 @@ Template.contentsList.events({
   'keyup #content-filter-input': function (event, templateInstance) {
     templateInstance.filterText.set(event.currentTarget.value);
   },
-  'click #button-delete-confired': function deleteContent(event, templateInstance) {
+  'click #button-delete-confirmed': function deleteContent(event, templateInstance) {
     event.preventDefault();
     const content = templateInstance.contentToDelete.get();
     templateInstance.contentToDelete.set();
     Meteor.call('deleteContent', content._id);
+    toastr["success"]("Content '" + content.name + "' has been deleted.");
   },
   'click .glyphicon-trash': function deleteContent(event, templateInstance) {
     event.preventDefault();

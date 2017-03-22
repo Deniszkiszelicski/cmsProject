@@ -54,11 +54,12 @@ Template.playersList.helpers({
 });
 
 Template.playersList.events({
-  'click #button-delete-confired': function deletePlayer(event, templateInstance) {
+  'click #button-delete-confirmed': function deletePlayer(event, templateInstance) {
     event.preventDefault();
-    const content = templateInstance.playerToDelete.get();
+    const player = templateInstance.playerToDelete.get();
     templateInstance.playerToDelete.set();
-    Meteor.call('deletePlayer', content._id);
+    Meteor.call('deletePlayer', player._id);
+    toastr["success"]("'" + player.name + "' (ID = " + player.playerId + ") player has been deleted.");
   },
   'click .glyphicon-trash': function deletePlayer(event, templateInstance) {
     event.preventDefault();

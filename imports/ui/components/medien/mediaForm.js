@@ -36,9 +36,6 @@ Template.mediaForm.helpers({
   currentUpload: function () {
     return Template.instance().currentUpload.get();
   },
-  // categories: function () {
-  //   return ["Allergist", "Cardiologist", "Dentist", "Dermatologist"];
-  // },
   category: function () {
     const category = this.category;
     return category;
@@ -52,13 +49,15 @@ Template.mediaForm.events({
   'click #media-form .button-save': function upsertMedia(event, templateInstance) {
     event.preventDefault();
     let fileId = templateInstance.uploadedFileId.get();
+    const name = $('#nameOfMedia').val();
     Meteor.call('upsertMedia',
       { _id: this._id,
-        name: $('#nameOfMedia').val(),
+        name: name,
         category: $('#searchCategories').val(),
         type: templateInstance.uploadedFileType.get(),
         // createdAt: Date.now(),
         fileId: fileId });
+    toastr["success"]("Media '" + name + "' has been saved.");
   },
   'change #fileInput': function (e, templateInstance) {
     if (e.currentTarget.files && e.currentTarget.files[0]) {
@@ -90,20 +89,8 @@ Template.mediaForm.events({
         templateInstance.uploadedFileId.set(fileObj._id);
         templateInstance.currentUpload.set(false);
         templateInstance.uploadedFileName.set(fileObj.name);
-        // console.log("on end of upload, fileObje = ", fileObj);
-
-
-
-
       });
       upload.start();
-
-
     }
-
-
   },
-
-
-
 });

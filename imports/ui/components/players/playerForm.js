@@ -132,11 +132,12 @@ Template.playerForm.events({
       }
     }
     const playlistId = $('#select-playlist').val();
-
+    const name = $('#name').val();
+    const playerId = $('#playerId').val();
     Meteor.call('upsertPlayer',
       { _id: this._id,
-        name: $('#name').val(),
-        playerId: $('#playerId').val(),
+        name: name,
+        playerId: playerId,
         location: $('#location').val(),
         address: $('#address').val(),
         postIndex: $('#postIndex').val(),
@@ -176,7 +177,7 @@ Template.playerForm.events({
         contentGroupIds: contentGroupIds,
         playlistId: playlistId,
        });
-        // Play time hours end
+    toastr["success"]("Player '" + name + "' (ID = " + playerId + ") has been saved.");
   },
   'click #btn-show-linkedContentGroups': function showLinkedCG(event, templateInstance) {
     event.preventDefault();

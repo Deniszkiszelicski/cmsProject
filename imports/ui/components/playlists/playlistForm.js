@@ -99,12 +99,14 @@ Template.playlistForm.events({
         contentGroupIds.push(contentGroups[i]._id);
       }
     }
+    const name = $('#name').val();
     const playlist = { _id: this._id,
-                      name: $('#name').val(),
+                      name: name,
                       tickerText: $('#tickerText').val(),
                       contentGroupIds: contentGroupIds,
                     };
     Meteor.call('upsertPlaylist', playlist);
+    toastr["success"]("Playlist '" + name + "' has been saved.");
   },
   'keyup #playerId, mouseout #playerId': function storeSelectedPlayerId(event, templateInstance){
     event.preventDefault();

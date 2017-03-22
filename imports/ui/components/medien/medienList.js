@@ -33,11 +33,12 @@ Template.medienList.helpers({
 });
 
 Template.medienList.events({
-  'click #button-delete-confired': function deleteMedia(event, templateInstance) {
+  'click #button-delete-confirmed': function deleteMedia(event, templateInstance) {
     event.preventDefault();
     const media = templateInstance.mediaToDelete.get();
     templateInstance.mediaToDelete.set();
     Meteor.call('deleteMedia', media._id);
+    toastr["success"]("Media '" + media.name + "' has been deleted.");
   },
   'click .glyphicon-trash': function deleteMedia(event, templateInstance) {
     event.preventDefault();

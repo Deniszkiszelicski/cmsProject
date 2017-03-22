@@ -142,8 +142,9 @@ Template.contentForm.events({
 
     const isTypeMedia = templateInstance.isTypeMedia.get();
     const conjunction = $(typeOfConjunction).is(':checked') ? "and" : "or";
+    const name = $('#nameOfContent').val();
     let content = { _id: this._id,
-                      name: $('#nameOfContent').val(),
+                      name: name,
                       duration: $('#durationOfContent').val(),
                       type: isTypeMedia ? 'm' : 't',
                       mixInTicker: $('#mixInTicker').is(':checked'),
@@ -175,6 +176,7 @@ Template.contentForm.events({
     }
 
     Meteor.call('upsertContent', content);
+    toastr["success"]("Content '" + name + "' has been saved.");
   },
   'click #btn-select-media': function selectMedia(event, templateInstance) {
     event.preventDefault();
