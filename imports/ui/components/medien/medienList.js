@@ -10,6 +10,7 @@ Template.registerHelper("prettifyDate", function(date) {
 
 Template.medienList.onCreated(function () {
   this.filterText = new ReactiveVar();
+  this.mediaToDelete = new ReactiveVar();
 });
 
 Meteor.subscribe('files.images.all');
@@ -22,9 +23,25 @@ Template.medienList.helpers({
     let filterText = Template.instance().filterText.get();
     return Medien.find({name: { $regex: new RegExp(filterText), $options: 'i' }}).fetch();
   },
+  mediaToDelete: function mediaToDelete() {
+    const media = Template.instance().mediaToDelete.get();
+    if (media) {
+      return "Delete '" + media.name + "' media.";
+    }
+  },
 });
 
 Template.medienList.events({
+  'click #button-delete-confired': function deleteMedia(event, templateInstance) {
+    event.preventDefault();
+    const media = templateInstance.mediaToDelete.get();
+    templateInstance.mediaToDelete.set();
+    Meteor.call('deleteMedia', media._id);
+  },
+  'click .glyphicon-trash': function deleteMedia(event, templateInstance) {
+    event.preventDefault();
+    templateInstance.mediaToDelete.set(this);
+  },
   'keyup #media-filter-input': function (event, templateInstance) {
     templateInstance.filterText.set(event.currentTarget.value);
   }

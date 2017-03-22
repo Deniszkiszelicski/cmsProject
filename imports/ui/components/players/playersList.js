@@ -54,7 +54,7 @@ Template.playersList.helpers({
 });
 
 Template.playersList.events({
-  'click #button-delete-player': function deletePlayer(event, templateInstance) {
+  'click #button-delete-confired': function deletePlayer(event, templateInstance) {
     event.preventDefault();
     const content = templateInstance.playerToDelete.get();
     templateInstance.playerToDelete.set();
