@@ -17,13 +17,11 @@ Template.contentForm.onCreated(function () {
   } else {
     this.isTypeMedia = new ReactiveVar(false);
   }
-
   let media;
   if (!!this.data.mediaId) {
     media = Medien.findOne({ _id: this.data.mediaId });
   }
   this.media = new ReactiveVar(media);
-
   const roleId = Meteor.user().profile.role;
   const networkId = Roles.findOne({ _id: roleId }).networkId;
   const network = Networks.findOne({ _id: networkId });
@@ -43,7 +41,10 @@ Template.contentForm.helpers({
   },
   getTypePresence: function getTypeValue() {
     const assortiment = Template.instance().data.assortiment;
-    return assortiment.indexOf(this.valueOf()) > -1 ? "checked" : "";
+    if (assortiment) {
+      return assortiment.indexOf(this.valueOf()) > -1 ? "checked" : "";
+    }
+
   },
   regions: function getArrayOfRegions(event) {
     const regions = Template.instance().regions.get();
@@ -51,7 +52,9 @@ Template.contentForm.helpers({
   },
   getRegionPresence: function getRegionPresence() {
     const regions = Template.instance().data.regions;
-    return regions.indexOf(this.valueOf()) > -1 ? "checked" : "";
+    if (regions) {
+      return regions.indexOf(this.valueOf()) > -1 ? "checked" : "";
+    }
   },
   selectedMedia: function selectedMedia() {
     let mediaWithExtra = Template.instance().media.get();
@@ -138,7 +141,6 @@ Template.contentForm.events({
     });
 
     const isTypeMedia = templateInstance.isTypeMedia.get();
-    console.log("AND:", $(typeOfConjunction).is(':checked'));
     const conjunction = $(typeOfConjunction).is(':checked') ? "and" : "or";
     let content = { _id: this._id,
                       name: $('#nameOfContent').val(),

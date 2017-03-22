@@ -24,7 +24,8 @@
             <i type="button" class="glyphicon glyphicon-pencil" id="button-edit-content"></i>
           {{/if}}
           {{#if enableButtonDelete}}
-          <i type="button" class="glyphicon glyphicon-trash" id="button-delete-content"></i>
+          <i type="button" class="glyphicon glyphicon-trash" id="button-delete-content"
+            data-toggle="modal" data-target="#deleteConfirmation"></i>
           {{/if}}
           {{#if enableButtonRemove}}
             <i type="button" class="glyphicon glyphicon-remove" id="button-remove-content"></i>

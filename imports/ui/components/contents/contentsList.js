@@ -8,11 +8,19 @@ Meteor.subscribe('contents');
 
 Template.contentsList.onCreated(function () {
   this.filterText = new ReactiveVar();
+  this.contentToDelete = new ReactiveVar();
 });
 
 Template.contentsList.helpers({
   contents: () => {
     return Contents.find().fetch();
+  },
+  contentToDelete: function contentToDelete() {
+    const content = Template.instance().contentToDelete.get();
+    if (content) {
+      return "Delete '" + content.name + "' content.";
+    }
+
   },
   filteredContents: function filteredContents() {
     let contentIds = [];
@@ -54,5 +62,15 @@ Template.contentsList.helpers({
 Template.contentsList.events({
   'keyup #content-filter-input': function (event, templateInstance) {
     templateInstance.filterText.set(event.currentTarget.value);
-  }
+  },
+  'click #button-delete-confired': function deleteContent(event, templateInstance) {
+    event.preventDefault();
+    const content = templateInstance.contentToDelete.get();
+    templateInstance.contentToDelete.set();
+    Meteor.call('deleteContent', content._id);
+  },
+  'click .glyphicon-trash': function deleteContent(event, templateInstance) {
+    event.preventDefault();
+    templateInstance.contentToDelete.set(this);
+  },
 });
