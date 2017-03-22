@@ -98,13 +98,19 @@ Template.contentGroupForm.helpers({
 });
 
 Template.contentGroupForm.events({
+
   'click #btn-save-contentGroup': function saveContentGroupForm(event, templateInstance) {
+
     event.preventDefault();
+
+    templateInstance.isSelectContent.set(false);
+
     let contents = templateInstance.includedContents.get();
     const l = contents.length;
     let contentIds = [];
     $('.sortRow').each(function(){
       contentIds.push($(this).val());
+      console.log(contentIds);
     });
     // if (l > 0) {
     //   for (i = 0; i < l; i++) {
@@ -130,6 +136,10 @@ Template.contentGroupForm.events({
   //   templateInstance.isSelectContent.set(false);
   // },
   'click #button-close-contentList': function closeContentCollection(event, templateInstance) {
+    event.preventDefault();
+    templateInstance.isSelectContent.set(false);
+  },
+  'click #closeContentForm1' : function closeContentCollection1(event, templateInstance) {
     event.preventDefault();
     templateInstance.isSelectContent.set(false);
   },
