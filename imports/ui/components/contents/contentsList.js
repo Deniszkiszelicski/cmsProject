@@ -1,6 +1,7 @@
 import { Template } from 'meteor/templating';
 import '../../../api/contents/methods';
 import '../../../api/contents/collection';
+import '../modals/deleteConfirmation';
 import './contentsList.html';
 import './content';
 

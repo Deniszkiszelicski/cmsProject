@@ -2,6 +2,7 @@ import { Template } from 'meteor/templating';
 import moment from 'moment';
 import '../../../api/medien/methods';
 import '../../../api/medien/collection';
+import '../modals/deleteConfirmation';
 import './medienList.html';
 
 Template.registerHelper("prettifyDate", function(date) {
