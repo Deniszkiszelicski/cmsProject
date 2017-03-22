@@ -47,7 +47,6 @@ Template.medienPage.events({
   'click #button-play-media': function closeForm(event, templateInstance) {
     event.preventDefault();
     $('#media-video-modal').modal('show');
-    console.log("from the medien page, this = ", this);
     templateInstance.video.set(this);
   },
 });
