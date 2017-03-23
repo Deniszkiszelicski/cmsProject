@@ -52,7 +52,6 @@ Template.editNetworkItem.events({
 
     var region = String(this);
     var id = event.currentTarget.name;
-    console.log(id,region, "calling");
     Meteor.call ('deleteOneRegion' ,id,region);
 
   },
@@ -63,7 +62,6 @@ Template.editNetworkItem.events({
 
     var sortiment = String(this);
     var id = event.currentTarget.name;
-    console.log(id,sortiment, "calling");
     Meteor.call ('deleteOneSortiment' ,id,sortiment);
 
   },

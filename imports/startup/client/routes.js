@@ -1,6 +1,7 @@
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 
+
 FlowRouter.triggers.enter([function(context, redirect) {
 	if(!Meteor.userId()){
 		FlowRouter.go('signIn');

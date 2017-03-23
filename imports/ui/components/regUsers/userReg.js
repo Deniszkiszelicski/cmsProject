@@ -82,10 +82,10 @@ toastr.success("Data Saved", "Create User");
 'click #addPlayer': function (event, templateInstance){
   event.preventDefault();
   var onePlayer = $('#onePlayer').val();
- // assignedPlayers.push(Players.findOne({"playerId": onePlayer})._id);
 
 
- console.log(Players.findOne({"playerId": onePlayer}));
+
+
  Playervalue.push({playerId:(Players.findOne({"playerId": onePlayer}).playerId),id:(Players.findOne({"playerId": onePlayer})._id)});
  templateInstance.counter.set(Playervalue);
 document.getElementById("onePlayer").value='';

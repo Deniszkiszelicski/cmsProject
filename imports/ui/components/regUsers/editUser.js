@@ -37,7 +37,6 @@ Template.editUser2.helpers({
   },
 
   playerName: (id) =>{
-    console.log(Players.findOne({_id:id}).name);
     return Players.findOne({_id:id}).name;
   },
   playerIds: (id) =>{
