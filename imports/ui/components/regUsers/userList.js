@@ -1,4 +1,5 @@
-
+import Tabular from 'meteor/aldeed:tabular';
+import { check } from 'meteor/check';
 import { Template } from 'meteor/templating';
 import { $ } from 'meteor/jquery';
 import { Meteor } from 'meteor/meteor';
@@ -41,6 +42,7 @@ Template.usersList.helpers({
   isUserEdit: function isUserEdit() {
     return Template.instance().isUserEdit.get();
   },
+
 });
 
 Template.usersList.events({
@@ -69,9 +71,6 @@ Template.usersList.events({
   'submit .edit': function closeEditForm(event, templateInstance) {
     templateInstance.isUserEdit.set(false);
   },
-
-
-
 
   'keyup #users-filter-input': function filter(event, templateInstance) {
     templateInstance.filterText.set(event.currentTarget.value);

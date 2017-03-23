@@ -24,6 +24,7 @@ Template.userReg1.helpers({
   isCreateNew: function isCreateNew() {
     return Template.instance().isCreateNew.get();
   },
+
 });
 
 Template.userReg1.events({
@@ -40,7 +41,7 @@ Template.userReg1.events({
     event.preventDefault();
     templateInstance.isCreateNew.set(false);
   },
-  
+
 
 });
 
