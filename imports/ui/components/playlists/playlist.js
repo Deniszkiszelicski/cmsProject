@@ -30,8 +30,4 @@ Template.playlist.helpers({
 });
 
 Template.playlist.events({
-  'click #button-delete-playlist': function deleteContentGroup(event) {
-    event.preventDefault();
-    Meteor.call('deletePlaylist', this._id);
-  },
 });

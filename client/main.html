@@ -7,9 +7,13 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <script src="https://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"></script> -->
 
   <link rel="shortcut icon" href="favicon.ico">
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin">
+  <link href="toastr.css" rel="stylesheet"/>
+  <script src="toastr.js"></script>
 
 </head>
 <body>
@@ -18,11 +22,23 @@
   <script type="text/javascript">
     jQuery(document).ready(function() {
       App.init();
-    //   $('#start').datepicker();
-    //   $('#start1').datepicker();
-    //   $('.hasDatepicker').datepicker({
-    //   format: 'mm-dd-yyyy'
-    // });
+      toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "200",
+        "hideDuration": "1500",
+        "timeOut": "2500",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "slideToggle",
+        "hideMethod": "fadeOut"
+      }
     });
   </script>
 

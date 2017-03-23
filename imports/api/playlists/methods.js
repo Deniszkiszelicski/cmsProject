@@ -7,12 +7,14 @@ Meteor.methods({
       Playlists.update({ _id: playlist._id },
         { $set: {
                           name: playlist.name,
+                          tickerText: playlist.tickerText,
                           contentGroupIds: playlist.contentGroupIds,
                         },
           });
     } else {
       Playlists.insert({
                           name: playlist.name,
+                          tickerText: playlist.tickerText,
                           contentGroupIds: playlist.contentGroupIds,
                         },
           );

@@ -1,32 +1,46 @@
 import { Template } from 'meteor/templating';
 import '../../../api/contents/methods';
 import '../../../api/contents/collection';
-import './contentsList.html';
+import '../modals/deleteConfirmation';
 import './content';
+import './contentsList.html';
 
 Meteor.subscribe('contents');
 
 Template.contentsList.onCreated(function () {
   this.filterText = new ReactiveVar();
+  this.contentToDelete = new ReactiveVar();
 });
 
 Template.contentsList.helpers({
   contents: () => {
     return Contents.find().fetch();
   },
+  contentToDelete: function contentToDelete() {
+    const content = Template.instance().contentToDelete.get();
+    if (content) {
+      return "Delete '" + content.name + "' content.";
+    }
+  },
   filteredContents: function filteredContents() {
-    const contentIds = this.contents;
+    let contentIds = [];
+    const contentIdsWithColour = this.contents;
     let contentsWithOptions = [];
-    if (!!contentIds) {
+    if (contentIdsWithColour) {
+      for (let i = 0; i < contentIdsWithColour.length; i++) {
+        contentIds.push(contentIdsWithColour[i].id);
+      }
       const contents = Contents.find({ _id: { "$in" : contentIds } }).fetch();
-      //place content objects according to received content ids
       const l = contentIds.length;
       for (i = 0; i < l; i++) {
         const currentContentId = contentIds[i];
         const ll = contents.length;
         for (j = 0; j < ll; j++) {
-          if (contents[j]._id == currentContentId) {
-            contentsWithOptions.push(contents[j]);
+          let currentContentObj = contents[j];
+          if (currentContentObj._id == currentContentId) {
+            const colour = contentIdsWithColour[i].colour;
+            currentContentObj["colour"] = colour;
+            contentsWithOptions.push(currentContentObj);
           }
         }
       }
@@ -48,6 +62,16 @@ Template.contentsList.helpers({
 Template.contentsList.events({
   'keyup #content-filter-input': function (event, templateInstance) {
     templateInstance.filterText.set(event.currentTarget.value);
-  }
-
+  },
+  'click #button-delete-confirmed': function deleteContent(event, templateInstance) {
+    event.preventDefault();
+    const content = templateInstance.contentToDelete.get();
+    templateInstance.contentToDelete.set();
+    Meteor.call('deleteContent', content._id);
+    toastr["success"]("Content '" + content.name + "' has been deleted.");
+  },
+  'click .glyphicon-trash': function deleteContent(event, templateInstance) {
+    event.preventDefault();
+    templateInstance.contentToDelete.set(this);
+  },
 });
