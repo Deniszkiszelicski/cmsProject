@@ -47,6 +47,12 @@ Template.playerForm.helpers({
     const includedCGsWithOptions = { contentGroups: includedCGs, options: options};
     return includedCGsWithOptions;
   },
+  getDistricts: function getDistricts() {
+    const districts = [ "Burgenland", "Kärnten", "Niederösterreich",
+                        "Oberösterreich", "Salzburg", "Steiermark",
+                        "Tirol", "Vorarlberg", "Wien"];
+    return districts;
+  },
   includedContents: function includedContents() {
     const includedCGs = Template.instance().includedCGs.get();
     let includedContentIds = [];
@@ -92,10 +98,15 @@ Template.playerForm.helpers({
   playlists: function playlists() {
     const playlistId = Template.instance().playlistId.get();
     return Playlists.find({ _id: {$ne : playlistId } }).fetch();
-    // return Playlists.find({}).fetch();
   },
   isPlaylistChosen: function isPlaylistChosen() {
     if (this.playlistId) {
+      return true;
+    }
+    return false;
+  },
+  isDistrictChosen: function isDistrictChosen() {
+    if (this.district) {
       return true;
     }
     return false;
