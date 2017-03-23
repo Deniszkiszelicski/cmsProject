@@ -18,20 +18,9 @@ Template.contentGroup.helpers({
   isBlocked: function isBlocked() {
     return this.blocked ? "yes" : "no";
   },
-  // enableButtonEdit: function enableButtonEdit() {
-  //   console.log("enableButtonEdit this = ", this);
-  //   if (!!this) {
-  //     return this.enableButtonEdit;
-  //   }
-  //   return false;
-  // },
 });
 
 Template.contentGroup.events({
-  'click #button-delete-contentGroup': function deleteContentGroup(event) {
-    event.preventDefault();
-    Meteor.call('deleteContentGroup', this._id);
-  },
   'click #button-edit-contentGroup': function editContentGroup(event, templateInstance) {
     event.preventDefault();
     templateInstance.isEditMode.set(true);
@@ -39,7 +28,6 @@ Template.contentGroup.events({
   },
   'click #button-close-contentGroup-form, click .button-save': function closeForm(event, templateInstance) {
     event.preventDefault();
-    // event.stopPropagation();
     templateInstance.isEditMode.set(false);
   },
 });

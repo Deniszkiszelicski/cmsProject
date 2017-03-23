@@ -1,19 +1,19 @@
-import Tabular from 'meteor/aldeed:tabular';
+// import Tabular from 'meteor/aldeed:tabular';
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { check } from 'meteor/check';
-import './playersList.html';
-import './player';
 import '../../../api/players/methods';
 import '../../../api/players/collection';
-
-// Meteor.subscribe('players');
+import '../modals/deleteConfirmation';
+import './player';
+import './playersList.html';
 
 Template.playersList.onCreated(function onCreated() {
   this.currentPage = new ReactiveVar(this.data.options.initialPage);
   this.showPerPage = new ReactiveVar(this.data.options.initialShowPerPage);
   this.currentRangeOfPages = new ReactiveVar(this.data.options.initialRangeOfPages);
   this.filterText = new ReactiveVar();
+  this.playerToDelete = new ReactiveVar();
   this.autorun(() => {
     const currentPage = this.currentPage.get();
     const showPerPage = this.showPerPage.get();
@@ -22,13 +22,11 @@ Template.playersList.onCreated(function onCreated() {
       this.subscribe('players', false, currentPage, showPerPage, filterText);
     }
   });
-
 });
 
 Template.playersList.helpers({
   players: function players() {
-    return players = Players.find().fetch();
-    // return players;
+    return Players.find().fetch();
   },
   showPerPage: function showPerPage(position) {
     return Template.instance().showPerPage.get();
@@ -39,7 +37,6 @@ Template.playersList.helpers({
   },
   isActive: function isActive(position) {
     const currentRangeOfPages = Template.instance().currentRangeOfPages.get();
-    // console.log("this = ", this.options.currentPage);
     const currentPage = Template.instance().currentPage.get();
     const currentPosition = currentRangeOfPages.indexOf(currentPage) + 1;
     if (currentPosition == position) {
@@ -47,16 +44,32 @@ Template.playersList.helpers({
     }
     return "";
   },
+  playerToDelete: function playerToDelete() {
+    const playerVar = Template.instance().playerToDelete.get();
+    if (playerVar) {
+      const player = playerVar;
+      return "Delete '" + player.name + "' (ID = " + player.playerId + ") player.";
+    }
+  },
 });
 
 Template.playersList.events({
+  'click #button-delete-confirmed': function deletePlayer(event, templateInstance) {
+    event.preventDefault();
+    const player = templateInstance.playerToDelete.get();
+    templateInstance.playerToDelete.set();
+    Meteor.call('deletePlayer', player._id);
+    toastr["success"]("'" + player.name + "' (ID = " + player.playerId + ") player has been deleted.");
+  },
+  'click .glyphicon-trash': function deletePlayer(event, templateInstance) {
+    event.preventDefault();
+    templateInstance.playerToDelete.set(this);
+  },
   'click .pagination .page-number': function goToPage(event, templateInstance) {
     const pageN = event.currentTarget.dataset.page;
     templateInstance.currentPage.set(parseInt(pageN));
   },
   'click .pagination .page-go-back': function goBack(event, templateInstance) {
-    // const pageN = event.currentTarget.dataset.page;
-    // templateInstance.currentPage.set(pageN);
     const currentPage = templateInstance.currentPage.get();
     if (currentPage == 1) {
       return 0;

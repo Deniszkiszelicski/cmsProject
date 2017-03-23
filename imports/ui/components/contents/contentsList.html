@@ -4,21 +4,16 @@
       <div class="panel-heading">
         <span>{{options.header}}</span>
         {{#if options.enableButtonCloseListOfContents}}
-        <i type="button" class="glyphicon glyphicon-remove" id="button-close-contentList"></i>
+          <i type="button" class="glyphicon glyphicon-remove" id="button-close-contentList"></i>
         {{/if}}
-
         {{#if options.enableButtonAddToCG}}
-        <button type="button" class="btn btn-default">Add to Content-Group</button>
+          <button type="button" class="btn btn-default">Add to Content-Group</button>
         {{/if}}
-
         {{#if options.enableButtonNewContent}}
-          <!-- {{#unless disableButtonNew}} -->
           <button type="button" class="btn btn-default button-new">New content</button>
-          <!-- {{/unless}} -->
         {{/if}}
-
         <input type="text" class="form-control filter-input"
-        placeholder="Type text to filter by name" id="content-filter-input">
+          placeholder="Type text to filter by name" id="content-filter-input">
       </div>
       <div class="panel-body">
         <table class="table table-striped table-list" id="contentTable">
@@ -39,14 +34,10 @@
             {{#each filteredContents}}
               {{> content}}
             {{/each}}
-
           </tbody>
-
         </table>
-
       </div>
     </div>
-
-
   </div>
+  {{>deleteConfirmation message=contentToDelete}}
 </template>

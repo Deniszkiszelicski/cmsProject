@@ -11,6 +11,11 @@ Template.content.helpers({
   mayEdit: function mayEdit() {
     return true;
   },
+  getColour: function getColour() {
+    if (this) {
+      return this.colour;
+    }
+  },
   disableButtonDelete: function disableButtonDelete() {
     if (!!this) {
       return this.disableButtonDelete;
@@ -48,10 +53,6 @@ Template.content.helpers({
 });
 
 Template.content.events({
-  'click #button-delete-content': function deleteContent(event) {
-    event.preventDefault();
-    Meteor.call('deleteContent', this._id);
-  },
   'click #button-edit-content': function editContent(event, templateInstance) {
     event.preventDefault();
     templateInstance.isEditMode.set(true);

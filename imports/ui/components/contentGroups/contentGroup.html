@@ -12,7 +12,8 @@
           <i type="button" class="glyphicon glyphicon-pencil" id="button-edit-contentGroup"></i>
         {{/if}}
         {{#if enableButtonDelete}}
-          <i type="button" class="glyphicon glyphicon-trash" id="button-delete-contentGroup"></i>
+          <i type="button" class="glyphicon glyphicon-trash"
+            data-toggle="modal" data-target="#deleteConfirmation"></i>
         {{/if}}
         {{#if enableButtonRemove}}
           <i type="button" class="glyphicon glyphicon-remove" id="button-remove-contentGroup"></i>

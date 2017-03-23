@@ -25,16 +25,20 @@ Template.playlistContentPart.helpers({
   },
   includedContents: function includedContents() {
     const includedCGs = Template.instance().includedCGs.get();
-    let includedContentIds = [];
+    let contentIdsWithColour = [];
     for (i = 0; i < includedCGs.length; i++) {
-      includedContentIds = includedContentIds.concat(includedCGs[i].contentIds);
+      const contentIds = includedCGs[i].contentIds;
+      const colour = includedCGs[i].colour;
+      for (j = 0; j < contentIds.length; j++) {
+        const contentIdWithColour = { id: contentIds[j], colour: colour };
+        contentIdsWithColour.push(contentIdWithColour);
+      }
     }
-    let includedContentObjects;
     const options = { header: "Included contents", enableButtonDelete: false,
                       enableButtonEdit: false, enableButtonRemove: true,
                       enableButtonNewCG: false, enableFilter: false,
                       enableButtonCloseListOfContents: false };
-    const includedContentsWithOptions = { contents: includedContentIds, options: options};
+    const includedContentsWithOptions = { contents: contentIdsWithColour, options: options};
     return includedContentsWithOptions;
   },
 });

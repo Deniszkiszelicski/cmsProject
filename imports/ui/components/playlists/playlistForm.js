@@ -39,16 +39,20 @@ Template.playlistForm.helpers({
   },
   includedContents: function includedContents() {
     const includedCGs = Template.instance().includedCGs.get();
-    let includedContentIds = [];
+    let contentIdsWithColour = [];
     for (i = 0; i < includedCGs.length; i++) {
-      includedContentIds = includedContentIds.concat(includedCGs[i].contentIds);
+      const contentIds = includedCGs[i].contentIds;
+      const colour = includedCGs[i].colour;
+      for (j = 0; j < contentIds.length; j++) {
+        const contentIdWithColour = { id: contentIds[j], colour: colour };
+        contentIdsWithColour.push(contentIdWithColour);
+      }
     }
-    let includedContentObjects;
     const options = { header: "Included contents", enableButtonDelete: false,
                       enableButtonEdit: false, enableButtonRemove: true,
                       enableButtonNewCG: false, enableFilter: false,
                       enableButtonCloseListOfContents: false };
-    const includedContentsWithOptions = { contents: includedContentIds, options: options};
+    const includedContentsWithOptions = { contents: contentIdsWithColour, options: options};
     return includedContentsWithOptions;
   },
   allContentGroups: function allContentGroups() {
@@ -95,11 +99,14 @@ Template.playlistForm.events({
         contentGroupIds.push(contentGroups[i]._id);
       }
     }
+    const name = $('#name').val();
     const playlist = { _id: this._id,
-                      name: $('#name').val(),
+                      name: name,
+                      tickerText: $('#tickerText').val(),
                       contentGroupIds: contentGroupIds,
                     };
     Meteor.call('upsertPlaylist', playlist);
+    toastr["success"]("Playlist '" + name + "' has been saved.");
   },
   'keyup #playerId, mouseout #playerId': function storeSelectedPlayerId(event, templateInstance){
     event.preventDefault();
