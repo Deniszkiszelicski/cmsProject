@@ -11,6 +11,20 @@ ContentsSchema = new SimpleSchema({
     type: Number,
     optional: true,
   },
+  type: {
+    type: String,
+    allowedValues: ["m", "t"], //m=media, t=template
+  },
+  template: {
+    type: String,
+    optional: true,
+    autoValue: function () {
+      const requirement = this.field('type').value == 't';
+      if (!requirement) {
+        return null;
+      }
+    },
+  },
   mixInTicker: {
     type: Boolean,
   },
@@ -23,6 +37,10 @@ ContentsSchema = new SimpleSchema({
   category: {
     type: String,
     optional: true,
+  },
+  conjunction: {
+    type: String,
+    allowedValues: ["and", "or"],
   },
   startDate: {
     type: String,
@@ -74,6 +92,13 @@ ContentsSchema = new SimpleSchema({
   },
   mediaId: {
     type: String,
+    optional: true,
+    autoValue: function () {
+      const requirement = this.field('type').value == 'm';
+      if (!requirement) {
+        return null;
+      }
+    },
   },
   createdAt: {
     type: Date,

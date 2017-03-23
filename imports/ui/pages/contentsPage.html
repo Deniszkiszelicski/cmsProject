@@ -3,12 +3,11 @@
     {{#with getCurrentContent}}
       {{> contentForm}}
     {{/with}}
+  {{else}}
+  <br>
+    {{#with options}}
+      {{> contentsList}}
+    {{/with}}
   {{/if}}
   <br>
-  {{#with options}}
-    <!-- {{> contentsList isCreateNew=isCreateNew}} -->
-    {{> contentsList}}
-  {{/with}}
-  <br>
-
 </template>

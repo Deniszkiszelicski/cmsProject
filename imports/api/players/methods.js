@@ -1,6 +1,17 @@
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 
+// WebApp.connectHandlers.use("/test", function(req, res, next) {
+//   res.writeHead(200);
+//   res.end("Hello world from: " + Meteor.release);
+// });
+
+// Picker.route('test', function(params, req, res, next) {
+//   // var post = Posts.findOne(params._id);
+//   console.log("params = ", params);
+//   res.end("post.content");
+// });
+
 Meteor.methods({
   //  TODO: Add check for remaining fields
   upsertPlayer: function (player) {
@@ -102,5 +113,10 @@ Meteor.methods({
   },
   deletePlayer: function(id) {
     Players.remove(id);
+  },
+  test: function(id) {
+    const res = Players.findOne({ playerId: id });
+    console.log("res = ", res);
+    return res;
   },
 });

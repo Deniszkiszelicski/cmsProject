@@ -1,17 +1,10 @@
 <template name ="content">
-
-
   <script type="text/javascript">
-  $('tbody').sortable({
-    update: function(event,ui){
-      console.log('done');
-    }
-  });
-
+    $('tbody').sortable({
+      update: function(event, ui){ }
+    });
   </script>
-
-
-  <tr class="content-row">
+  <tr class="content-row" draggable="true" style="background-color: {{getColour}}">
   <td><input type="checkbox"></td>
       <td>
         <div class="thumbnails thumbnail-style">
@@ -27,18 +20,17 @@
           {{this}}
         {{/each}}
       </td>
-
       <td>{{assortiment}}</td>
       <td>
         <input type="text" class="sortRow" value="{{_id}}" HIDDEN>
         <div class="media-row-controls">
-          <!-- {{#if mayEdit}} -->
           <i type="button" class="glyphicon glyphicon-play-circle" id="button-play-content"></i>
           {{#if enableButtonEdit}}
             <i type="button" class="glyphicon glyphicon-pencil" id="button-edit-content"></i>
           {{/if}}
           {{#if enableButtonDelete}}
-          <i type="button" class="glyphicon glyphicon-trash" id="button-delete-content"></i>
+          <i type="button" class="glyphicon glyphicon-trash" id="button-delete-content"
+            data-toggle="modal" data-target="#deleteConfirmation"></i>
           {{/if}}
           {{#if enableButtonRemove}}
             <i type="button" class="glyphicon glyphicon-remove" id="button-remove-content"></i>
@@ -46,43 +38,4 @@
         </div>
       </td>
     </tr>
-
-
-
-
-  <!-- {{#if isEditMode}}
-      <tr>
-        <td colspan="6">
-          {{#with this}}
-          {{> contentForm}}
-          {{/with}}
-        </td>
-      </tr>
-
-  {{else}}
-    <tr>
-      <td><input type="checkbox"></td>
-      <td>thumbnail</td>
-      <td>{{name}}</td>
-      <td>{{duration}}</td>
-      <td>{{type}}</td>
-      <td>{{createdAt}}</td>
-      <td>
-        {{#each regions}}
-          {{this}}
-        {{/each}}
-      </td>
-
-      <td>{{assortiment}}</td>
-      <td>play button</td>
-      <td>
-        <div class="media-row-controls">
-          {{#if mayEdit}}
-            <i type="button" class="glyphicon glyphicon-pencil" id="button-edit-content"></i>
-          {{/if}}
-          <i type="button" class="glyphicon glyphicon-trash" id="button-delete-content"></i>
-        </div>
-      </td>
-    </tr>
-  {{/if}} -->
 </template>

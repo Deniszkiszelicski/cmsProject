@@ -26,7 +26,8 @@
             {{#if mayEdit}}
               <i type="button" class="glyphicon glyphicon-pencil" id="button-edit-media"></i>
             {{/if}}
-            <i type="button" class="glyphicon glyphicon-trash" id="button-delete-media"></i>
+            <i type="button" class="glyphicon glyphicon-trash"
+            data-toggle="modal" data-target="#deleteConfirmation"></i>
             <i type="button" class="fa fa-play" data-target="#media-video-modal" id="button-play-media"></i>
           </div>
         </td>

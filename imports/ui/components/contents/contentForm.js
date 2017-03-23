@@ -11,12 +11,17 @@ Meteor.subscribe('medien');
 Template.contentForm.onCreated(function () {
   this.isSelectMedia = new ReactiveVar(false);
   this.isNewMedia = new ReactiveVar(false);
+  const type = this.data.type || "m"; //m=media, t=template
+  if(type == "m") {
+    this.isTypeMedia = new ReactiveVar(true);
+  } else {
+    this.isTypeMedia = new ReactiveVar(false);
+  }
   let media;
   if (!!this.data.mediaId) {
     media = Medien.findOne({ _id: this.data.mediaId });
   }
   this.media = new ReactiveVar(media);
-
   const roleId = Meteor.user().profile.role;
   const networkId = Roles.findOne({ _id: roleId }).networkId;
   const network = Networks.findOne({ _id: networkId });
@@ -36,7 +41,10 @@ Template.contentForm.helpers({
   },
   getTypePresence: function getTypeValue() {
     const assortiment = Template.instance().data.assortiment;
-    return assortiment.indexOf(this.valueOf()) > -1 ? "checked" : "";
+    if (assortiment) {
+      return assortiment.indexOf(this.valueOf()) > -1 ? "checked" : "";
+    }
+
   },
   regions: function getArrayOfRegions(event) {
     const regions = Template.instance().regions.get();
@@ -44,7 +52,9 @@ Template.contentForm.helpers({
   },
   getRegionPresence: function getRegionPresence() {
     const regions = Template.instance().data.regions;
-    return regions.indexOf(this.valueOf()) > -1 ? "checked" : "";
+    if (regions) {
+      return regions.indexOf(this.valueOf()) > -1 ? "checked" : "";
+    }
   },
   selectedMedia: function selectedMedia() {
     let mediaWithExtra = Template.instance().media.get();
@@ -100,6 +110,18 @@ Template.contentForm.helpers({
                         enableButtonNewMedia: false,
                         header: "List of all Medien", } };
   },
+  getType: function getType() {
+    return Template.instance().isTypeMedia.get() ? "Media" : "Template";
+  },
+  isTypeMedia: function isTypeMedia() {
+    return Template.instance().isTypeMedia.get();
+  },
+  isConjAnd: function isConjAnd() {
+    return this.conjunction == "and" ? "checked" : "";
+  },
+  isConjOr: function isConjAnd() {
+    return this.conjunction == "and" ? "" : "checked";
+  },
 });
 
 Template.contentForm.events({
@@ -117,11 +139,14 @@ Template.contentForm.events({
         regions.push($(this).val());
       }
     });
-    const mediaId = templateInstance.media.get()._id;
 
-    const content = { _id: this._id,
-                      name: $('#nameOfContent').val(),
+    const isTypeMedia = templateInstance.isTypeMedia.get();
+    const conjunction = $(typeOfConjunction).is(':checked') ? "and" : "or";
+    const name = $('#nameOfContent').val();
+    let content = { _id: this._id,
+                      name: name,
                       duration: $('#durationOfContent').val(),
+                      type: isTypeMedia ? 'm' : 't',
                       mixInTicker: $('#mixInTicker').is(':checked'),
                       collectStatisticts: $('#collectStatisticts').is(':checked'),
                       visibleForAll: $('#visibleForAll').is(':checked'),
@@ -140,9 +165,18 @@ Template.contentForm.events({
                       deleteAfterFinish: $('#deleteAfterFinish').is(':checked'),
                       assortiment: assortiment,
                       regions: regions,
-                      mediaId: mediaId,
+                      conjunction: conjunction,
                     };
+    if (isTypeMedia) {
+      const mediaId = templateInstance.media.get()._id;
+      content['mediaId'] = mediaId;
+    } else {
+      const templateText = $('#templateText').val();
+      content['template'] = templateText;
+    }
+
     Meteor.call('upsertContent', content);
+    toastr["success"]("Content '" + name + "' has been saved.");
   },
   'click #btn-select-media': function selectMedia(event, templateInstance) {
     event.preventDefault();
@@ -171,5 +205,13 @@ Template.contentForm.events({
     event.preventDefault();
     templateInstance.media.set(this);
     templateInstance.isSelectMedia.set(false);
+  },
+  'click #select-media': function selectMedia(event, templateInstance){
+    event.preventDefault();
+    templateInstance.isTypeMedia.set(true);
+  },
+  'click #select-template': function selectTemplate(event, templateInstance){
+    event.preventDefault();
+    templateInstance.isTypeMedia.set(false);
   },
 });
