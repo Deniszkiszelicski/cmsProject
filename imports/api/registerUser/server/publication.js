@@ -9,12 +9,13 @@ Meteor.publish('userInformation', function registerUsers() {
   // }
 );
 });
+// Meteor.publish('users', function regUsers(skipCount){
+//   return Meteor.users.find({});
+//
+//
+// });
+
 Meteor.publish('users', function regUsers(skipCount){
-  return Meteor.users.find({});
 
-
-});
-
-Meteor.publish('filteredUsers', function regUsers(skipCount){
-  return Meteor.users.find({});
+  return Meteor.users.find({},{skip:skipCount,limit:1});
 });

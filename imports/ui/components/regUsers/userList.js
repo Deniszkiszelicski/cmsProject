@@ -1,5 +1,4 @@
-import Tabular from 'meteor/aldeed:tabular';
-import { check } from 'meteor/check';
+
 import { Template } from 'meteor/templating';
 import { $ } from 'meteor/jquery';
 import { Meteor } from 'meteor/meteor';
@@ -10,11 +9,8 @@ import '../../../api/registerUser/methods';
 import '../../../api/registerUser/registerUser';
 import '../../components/regUsers/editUser';
 
-
-
-Meteor.subscribe('users');
 Meteor.subscribe('roles');
-
+  Session.setDefault("skip",0);
 
 
 
@@ -22,12 +18,16 @@ Meteor.subscribe('roles');
 Template.usersList.onCreated(function onCreated() {
   this.isUserEdit = new ReactiveVar(false);
   this.filterText = new ReactiveVar();
+  this.usersPerPage = new ReactiveVar(2);
+  this.autorun(() => {
+  const usersPerPage1 = this.usersPerPage.get();
+    Meteor.subscribe('users',Session.get("skip"));
+
+  });
 
 });
 
 Template.usersList.helpers({
-
-
   filteredUsers: () => {
     let filterText = Template.instance().filterText.get();
     return Meteor.users.find({ "profile.name": { $regex : new RegExp(filterText), $options:'i' }}).fetch();
@@ -74,6 +74,25 @@ Template.usersList.events({
 
   'keyup #users-filter-input': function filter(event, templateInstance) {
     templateInstance.filterText.set(event.currentTarget.value);
+  },
+  'click #nextPage': function nextPage(event,templateInstance){
+    event.preventDefault();
+    var no = Template.instance().usersPerPage.get()
+    Session.set("skip",Session.get("skip") + 1);
+    console.log(no);
+  },
+  'click #prevPage': function prevPage(event,templateInstance){
+    event.preventDefault();
+    let no = Template.instance().usersPerPage.get()
+    if(Session.get('skip') >= 1){
+      Session.set('skip',Session.get('skip') - 1);
+      console.log(no);
+    }
+  },
+  'keyup #userPerPage': function userPerPage(event, templateInstance){
+    templateInstance.usersPerPage.set(event.currentTarget.value);
+    let no = Template.instance().usersPerPage.get()
+
   },
 
 });
