@@ -24,6 +24,7 @@ Template.contentGroupForm.onCreated(function () {
     }
   }
   this.includedContents = new ReactiveVar(includedContentObjects);
+
 });
 
 
@@ -36,6 +37,41 @@ Template.contentGroupForm.onRendered(function () {
   $(img).load(function(){
     context.drawImage(img, 0, 0);
     contextVar.set(context);
+  });
+  $('#included-contents').sortable({
+    cursor: "move",
+    // start: function(event, ui) {
+    //     // creates a temporary attribute on the element with the old index
+    //     $(this).attr('data-previndex', ui.item.index());
+    //     console.log("ui.item.index() = ", ui.item.index());
+    // },
+    // update: function (event, ui) {
+    //   const newIndex = ui.item.index();
+    //   const oldIndex = $(this).attr('data-previndex');
+    //   $(this).removeAttr('data-previndex');
+    //   console.log("newIndex = ", newIndex);
+    //   console.log("oldIndex = ", oldIndex);
+    //
+    //   const el = ui.item.get(0);
+    //   const before = ui.item.prev().get(0);
+    //   const after = ui.item.next().get(0);
+    //   const thisObj = Blaze.getData(el);
+    //
+    //   console.log("thisObj = ", thisObj);
+    //   const parentObj = Template.instance();
+    //   const cgObject = Blaze.getData(this);
+    //   console.log("cgObject = ", cgObject);
+    //   console.log("parentObj = ", parentObj);
+    //   console.log("this", this);
+    //   console.log("text = ", Blaze.TemplateInstance.data());
+    //   console.log("el.height()", $(el).height());
+    //   console.log("ui.item", ui.item);
+    //   console.log("before", before);
+    //   console.log("after", after);
+    //   console.log("ui.position", ui.position);
+    //   console.log("ui.originalPosition", ui.originalPosition);
+    //   console.log("this", this);
+    // }
   });
 });
 
@@ -82,25 +118,14 @@ Template.contentGroupForm.helpers({
 });
 
 Template.contentGroupForm.events({
-
   'click #btn-save-contentGroup': function saveContentGroupForm(event, templateInstance) {
-
     event.preventDefault();
-
     templateInstance.isSelectContent.set(false);
-
     let contents = templateInstance.includedContents.get();
-    const l = contents.length;
     let contentIds = [];
-    $('.sortRow').each(function(){
-      contentIds.push($(this).val());
-      console.log(contentIds);
+    $('#included-contents .content-row').each(function(){
+      contentIds.push(Blaze.getData(this)._id);
     });
-    // if (l > 0) {
-    //   for (i = 0; i < l; i++) {
-    //     contentIds.push(contents[i]._id);
-    //   }
-    // }
     const colour = templateInstance.colour.get();
     const name = $('#nameOfContentGroup').val();
     const contentGroup = { _id: this._id,
@@ -118,10 +143,6 @@ Template.contentGroupForm.events({
     templateInstance.isSelectContent.set(true);
   },
   'click #button-close-contentList': function closeContentCollection(event, templateInstance) {
-    event.preventDefault();
-    templateInstance.isSelectContent.set(false);
-  },
-  'click #closeContentForm1' : function closeContentCollection1(event, templateInstance) {
     event.preventDefault();
     templateInstance.isSelectContent.set(false);
   },
@@ -161,18 +182,4 @@ Template.contentGroupForm.events({
   'keyup #colorpicker input': function (event, templateInstance) {
     templateInstance.colour.set(event.currentTarget.value);
   },
-  // 'drag .content-row': function onDragStart(event, templateInstance) {
-  //   // event.preventDefault();
-  //   // event.dataTransfer.setData("myD", event.target.id);
-  //   console.log("ondragstart triggered, event.target.id=", event);
-  // },
-  // 'mouseup .content-row': function saveSort(event){
-  //   event.preventDefault();
-  //   var sorted = [];
-  //   $('.sortRow').each(function(){
-  //     sorted.push($(this).val());
-  //   });
-  //   console.log(sorted);
-  //   Meteor.call('saveSort',{_id:Session.get("selectedGrp"),sorted});
-  // }
 });
