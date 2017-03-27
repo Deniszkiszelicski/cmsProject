@@ -1,4 +1,8 @@
 <template name="contentsPage">
+  {{#with getVideoId}}
+    {{> videoModal}}
+  {{/with}}
+  
   {{#if isCreateNew}}
     {{#with getCurrentContent}}
       {{> contentForm}}
