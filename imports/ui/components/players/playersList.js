@@ -13,6 +13,8 @@ Template.playersList.onCreated(function onCreated() {
   this.showPerPage = new ReactiveVar(this.data.options.initialShowPerPage);
   this.currentRangeOfPages = new ReactiveVar(this.data.options.initialRangeOfPages);
   this.filterText = new ReactiveVar();
+  this.currentPageButton = new ReactiveVar();
+  this.playersReceived = new ReactiveVar();
   this.playerToDelete = new ReactiveVar();
   this.autorun(() => {
     const currentPage = this.currentPage.get();
@@ -26,20 +28,36 @@ Template.playersList.onCreated(function onCreated() {
 
 Template.playersList.helpers({
   players: function players() {
-    return Players.find().fetch();
+    const playersCurPage = Players.find().fetch();
+    Template.instance().playersReceived.set(playersCurPage.length);
+    const currentPageButton = Template.instance().currentPageButton.get();
+    const showPerPage = Template.instance().showPerPage.get();
+    const buttons = $('.pagination > li');
+    $.each(buttons, function( index, value ) {
+      $(value).removeClass("link-disabled");
+    });
+    if (showPerPage > playersCurPage.length) {
+      const buttonsToDisable = buttons.slice(currentPageButton + 1);
+      $.each(buttonsToDisable, function( index, value ) {
+        $(value).addClass("link-disabled");
+      });
+    }
+    return playersCurPage;
   },
   showPerPage: function showPerPage(position) {
     return Template.instance().showPerPage.get();
   },
   getPageN: function getPageN(position) {
     const currentRangeOfPages = Template.instance().currentRangeOfPages.get();
-    return currentRangeOfPages[position - 1];
+    const pageNumber = currentRangeOfPages[position - 1];
+    return pageNumber;
   },
   isActive: function isActive(position) {
     const currentRangeOfPages = Template.instance().currentRangeOfPages.get();
     const currentPage = Template.instance().currentPage.get();
     const currentPosition = currentRangeOfPages.indexOf(currentPage) + 1;
     if (currentPosition == position) {
+      Template.instance().currentPageButton.set(position);
       return "active";
     }
     return "";
@@ -68,6 +86,7 @@ Template.playersList.events({
   'click .pagination .page-number': function goToPage(event, templateInstance) {
     const pageN = event.currentTarget.dataset.page;
     templateInstance.currentPage.set(parseInt(pageN));
+    $('.pagination > li:nth-child(4) > a').attr('disabled', true);
   },
   'click .pagination .page-go-back': function goBack(event, templateInstance) {
     const currentPage = templateInstance.currentPage.get();
