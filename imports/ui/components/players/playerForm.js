@@ -100,7 +100,7 @@ Template.playerForm.helpers({
     return Playlists.find({ _id: {$ne : playlistId } }).fetch();
   },
   isPlaylistChosen: function isPlaylistChosen() {
-    if (this.playlistId) {
+    if (Template.instance().playlistId.get()) {
       return true;
     }
     return false;
