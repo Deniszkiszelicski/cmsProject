@@ -149,6 +149,7 @@ Template.playerForm.events({
       { _id: this._id,
         name: name,
         playerId: playerId,
+        tickerText: $('#tickerText').val(),
         location: $('#location').val(),
         address: $('#address').val(),
         postIndex: $('#postIndex').val(),

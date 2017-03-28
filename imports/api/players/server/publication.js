@@ -108,7 +108,7 @@ Api.addRoute('getPlaylistForPlayer', {authRequired: false}, {
             const playlist = Playlists.findOne({ _id: playlistId });
             responseXML += "<" + '\\?xml version="1.0" encoding="utf-8" ?>\n'.slice(1, 41);
             responseXML += "<playlist>\n<scroller>\n<text><![CDATA[";
-            responseXML += playlist.tickerText;
+            responseXML += player.tickerText;
             responseXML += " ]]></text>\n<hidescroller>0</hidescroller>\n</scroller>\n";
             testEntry.addTag("playlistName", playlist.name);
             const contentGroupIds = playlist.contentGroupIds;

@@ -3,18 +3,16 @@ import { Meteor } from 'meteor/meteor';
 Meteor.methods({
   //  TODO: Add check for fields
   upsertPlaylist: function (playlist) {
-    if (!!playlist._id ) {
+    if (playlist._id ) {
       Playlists.update({ _id: playlist._id },
         { $set: {
                           name: playlist.name,
-                          tickerText: playlist.tickerText,
                           contentGroupIds: playlist.contentGroupIds,
                         },
           });
     } else {
       Playlists.insert({
                           name: playlist.name,
-                          tickerText: playlist.tickerText,
                           contentGroupIds: playlist.contentGroupIds,
                         },
           );

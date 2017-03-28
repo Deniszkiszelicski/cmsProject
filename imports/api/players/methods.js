@@ -64,6 +64,7 @@ Meteor.methods({
           assortiment: player.assortiment,
           regions: player.regions,
           contentGroupIds: player.contentGroupIds,
+          tickerText: player.tickerText,
           playlistId:player.playlistId,
         }
       });
@@ -107,6 +108,7 @@ Meteor.methods({
           assortiment: player.assortiment,
           regions: player.regions,
           contentGroupIds: player.contentGroupIds,
+          tickerText: player.tickerText,
           playlistId:player.playlistId,
       });
     }
