@@ -107,6 +107,7 @@ Template.playersList.events({
     const showPerPage = parseInt(event.currentTarget.value);
     if (showPerPage > 0) {
       templateInstance.showPerPage.set(showPerPage);
+
     }
   },
   'keyup #player-filter-input': function (event, templateInstance) {

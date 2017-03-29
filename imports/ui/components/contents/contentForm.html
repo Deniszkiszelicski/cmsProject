@@ -1,22 +1,35 @@
-<template name="contentForm">
+<template name="contentForm"><br>
   <!-- TODO: delete style -->
 
-  <br>
+  <div class="breadcrumbs ">
+    <div class="container contentHeader">
+      <h3 class="pull-left">New Content</h3>
+      <i type="button" class="glyphicon glyphicon-remove" id="button-close-content-form" style="float:right;"></i>
+      <!-- <ul class="pull-right breadcrumb">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="">Features</a></li>
+        <li class="active">Form States</li>
+      </ul> -->
+    </div></div>
+    <div class="container content">
   <div class="tab-v1 content-form">
     <ul class="nav nav-tabs">
-      <li>
+      <li class="active">
         <a href="#content-main" data-toggle="tab" area-expanded="true">Content</a>
       </li>
       <li>
         <a href="#content-details" data-toggle="tab" area-expanded="false">Details</a>
       </li>
+      <button type="submit" class="btn-u btn-u-default button-save" id="btn-save-content" style="float:right;">Save</button>
     </ul>
     <div class="tab-content">
-      <div class="tab-pane fade active in" id="content-main">
+      <div class="tab-pane fade active in" id="content-main"><br>
+        <div class=row>
         <form class="sky-form" action="#" id="sky-form">
-          <header>Content
+
+          <!-- <header>Content
             <i type="button" class="glyphicon glyphicon-remove" id="button-close-content-form"></i>
-          </header>
+          </header> -->
 
           <fieldset>
             <div class="row">
@@ -141,16 +154,17 @@
 							</div>
           </fieldset>
 
-          <footer>
+          <!-- <footer>
             <button type="submit" class="btn-u btn-u-default button-save" id="btn-save-content">Save</button>
-          </footer>
+          </footer> -->
         </form>
+      </div>
       </div>
       <div class="tab-pane fade" id="content-details">
         <form class="sky-form" action="#" id="sky-form">
-          <header>Schedule
+          <!-- <header>Schedule
             <i type="button" class="glyphicon glyphicon-remove" id="button-close-content-form"></i>
-          </header>
+          </header> -->
           <fieldset>
             <label class="label"><h4>Schedule</h4></label>
             <div class="row">
@@ -225,11 +239,12 @@
             </div>
           </fieldset>
           <br>
-
         </form>
       </div>
-    </div>
-  </div>
+    </div><br><div class="panel-footer">
+                  <button type="submit" class="btn-u btn-u-default button-save" id="btn-save-content">Save</button>
+                </div>
+  </div></div>
 
 <!-- </div> -->
 <!-- </div> -->

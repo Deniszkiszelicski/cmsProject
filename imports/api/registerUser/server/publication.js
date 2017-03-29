@@ -1,21 +1,14 @@
 import { Meteor } from 'meteor/meteor';
 
-Meteor.publish('userInformation', function registerUsers() {
-  return UserInformation.find(
-  //   {
-  //   userId: this.userId,
-  // }, {
-  //   fields: { name: 1, role: 1, email: 1 },
-  // }
-);
-});
-// Meteor.publish('users', function regUsers(skipCount){
-//   return Meteor.users.find({});
-//
-//
-// });
 
-Meteor.publish('users', function regUsers(skipCount){
-
-  return Meteor.users.find({},{skip:skipCount,limit:1});
+Meteor.publish('users', function regUsers(usersPerPage, noOfUsersPerPage,filterText) {
+  if (usersPerPage && noOfUsersPerPage) {
+    const nr = noOfUsersPerPage;
+    const skip = usersPerPage;
+    if (filterText) {
+      return Meteor.users.find({ 'profile.name': { $regex: new RegExp(filterText), $options: 'i' } },{ skip: skip, limit: nr });
+    } else {
+      return Meteor.users.find({}, { skip: skip, limit: nr });
+    }
+  }
 });

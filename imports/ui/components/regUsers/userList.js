@@ -10,33 +10,32 @@ import '../../../api/registerUser/registerUser';
 import '../../components/regUsers/editUser';
 
 Meteor.subscribe('roles');
-  Session.setDefault("skip",0);
-
-
 
 
 Template.usersList.onCreated(function onCreated() {
   this.isUserEdit = new ReactiveVar(false);
   this.filterText = new ReactiveVar();
-  this.usersPerPage = new ReactiveVar(2);
+  this.usersPerPage = new ReactiveVar(1);
+  this.noOfUsersPerPage = new ReactiveVar(5);
   this.autorun(() => {
-  const usersPerPage1 = this.usersPerPage.get();
-    Meteor.subscribe('users',Session.get("skip"));
-
+    const usersPerPage = this.usersPerPage.get();
+    const noOfUsersPerPage = this.noOfUsersPerPage.get();
+    const filterText = this.filterText.get();
+    this.subscribe('users', usersPerPage, noOfUsersPerPage, filterText);
   });
-
 });
 
 Template.usersList.helpers({
   filteredUsers: () => {
-    let filterText = Template.instance().filterText.get();
-    return Meteor.users.find({ "profile.name": { $regex : new RegExp(filterText), $options:'i' }}).fetch();
+    return Meteor.users.find().fetch();
+    // const filterText = Template.instance().filterText.get();
+    // return Meteor.users.find({ 'profile.name': { $regex: new RegExp(filterText), $options: 'i' } }).fetch();
   },
 
-  roleName: (id)=>{
-    const role = Roles.findOne({_id:id});
+  roleName: (id) =>{
+    const role = Roles.findOne({ _id: id });
     if (role) {
-      return Roles.findOne({_id:id}).roleName;
+      return Roles.findOne({ _id: id }).roleName;
     }
   },
   isUserEdit: function isUserEdit() {
@@ -50,16 +49,14 @@ Template.usersList.events({
     event.preventDefault();
 
 
-    Meteor.users.remove({_id:Session.get("selectedUser") });
-    toastr.success("Deleted", "User");
-
+    Meteor.users.remove({ _id: Session.get('selectedUser') });
+    toastr.success('Deleted', 'User');
   },
   'click #editUser': function editItem(event, templateInstance) {
     event.preventDefault();
 
     templateInstance.isUserEdit.set(true);
-    Session.set('id',this._id);
-
+    Session.set('id', this._id);
   },
   'click #closeEditUser': function closeEditUser(event, templateInstance) {
     templateInstance.isUserEdit.set(false);
@@ -75,23 +72,28 @@ Template.usersList.events({
   'keyup #users-filter-input': function filter(event, templateInstance) {
     templateInstance.filterText.set(event.currentTarget.value);
   },
-  'click #nextPage': function nextPage(event,templateInstance){
+  'click #nextPage': function nextPage(event, templateInstance){
     event.preventDefault();
-    var no = Template.instance().usersPerPage.get()
-    Session.set("skip",Session.get("skip") + 1);
-    console.log(no);
+    const noOfUsersPerPage = Template.instance().noOfUsersPerPage.get();
+    const no = Template.instance().usersPerPage.get();
+    templateInstance.usersPerPage.set(no + noOfUsersPerPage);
   },
-  'click #prevPage': function prevPage(event,templateInstance){
+  'click #prevPage': function prevPage(event, templateInstance){
     event.preventDefault();
-    let no = Template.instance().usersPerPage.get()
-    if(Session.get('skip') >= 1){
-      Session.set('skip',Session.get('skip') - 1);
-      console.log(no);
+    const noOfUsersPerPage = Template.instance().noOfUsersPerPage.get();
+    const no = Template.instance().usersPerPage.get();
+    if (no > noOfUsersPerPage){
+      templateInstance.usersPerPage.set(no - noOfUsersPerPage);
     }
   },
   'keyup #userPerPage': function userPerPage(event, templateInstance){
-    templateInstance.usersPerPage.set(event.currentTarget.value);
-    let no = Template.instance().usersPerPage.get()
+    const noOfUsersPerPage = parseInt(event.currentTarget.value);
+    if (noOfUsersPerPage > 0) {
+      templateInstance.noOfUsersPerPage.set(noOfUsersPerPage);
+    }else{
+      templateInstance.noOfUsersPerPage.set(5);
+    }
+    console.log(noOfUsersPerPage);
 
   },
 
