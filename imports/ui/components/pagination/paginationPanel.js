@@ -83,7 +83,7 @@ Template.paginationPanel.onCreated(function onCreated() {
     if (position == 3 && (currentPage == 3 || (currentPage == currentRangeOfPages[0] && currentPage != 1))) {
       return "active";
     }
-    if (position == 4 && (4 <= currentRangeOfPages[1] && currentRangeOfPages[1] < lastPageNumber && currentPage != currentRangeOfPages[2])) {
+    if (position == 4 && ((4 <= currentRangeOfPages[1] && currentRangeOfPages[1] < lastPageNumber && currentPage != currentRangeOfPages[2]) || currentPage == 4)) {
       return "active";
     }
     if (position == 5 && currentRangeOfPages[2] == currentPage) {
