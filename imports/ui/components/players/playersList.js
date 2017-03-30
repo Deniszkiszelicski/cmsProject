@@ -231,16 +231,21 @@ Template.playersList.events({
   },
   'click .pagination .page-go-back': function goBack(event, templateInstance) {
     const currentPage = templateInstance.currentPage.get();
-    if (currentPage == 1) {
-      return 0;
-    }
+    // if (currentPage == 1) {
+    //   return 0;
+    // }
+    const lastPageNumber = templateInstance.lastPageNumber.get();
     const oldRangeOfPages = templateInstance.currentRangeOfPages.get();
     const position = oldRangeOfPages.indexOf(currentPage);
     let newRangeOfPages = oldRangeOfPages;
-    if (position > 0) {
+
+
+
+    if (currentPage < 3 || (lastPageNumber == oldRangeOfPages[2] && currentPage != oldRangeOfPages[1])) {
       templateInstance.currentPage.set(currentPage - 1);
-    }
-    if (position == 0) {
+      // newRangeOfPages.unshift(oldRangeOfPages[0] - 1);
+      // newRangeOfPages.pop();
+    } else {
       templateInstance.currentPage.set(currentPage - 1);
       newRangeOfPages.unshift(oldRangeOfPages[0] - 1);
       newRangeOfPages.pop();
