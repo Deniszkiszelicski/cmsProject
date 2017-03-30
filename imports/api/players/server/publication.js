@@ -4,6 +4,8 @@ import { Meteor } from 'meteor/meteor';
 Meteor.publish('players', function(playlistUserForm, currentPage, showPerPage, filterText) {
   if(currentPage && showPerPage) {
     const skip = (currentPage - 1) * showPerPage;
+    // const size = Players.find().count();
+    // console.log("size = ", size);
     if (filterText) {
       return Players.find({ playerId: { $regex: new RegExp(filterText), $options: 'i' } }, { sort: { name: 1 }, skip: skip, limit: showPerPage});
     } else {
@@ -13,6 +15,10 @@ Meteor.publish('players', function(playlistUserForm, currentPage, showPerPage, f
   if(playlistUserForm) {
     return Players.find({});
   }
+});
+
+Meteor.publish('countPlayers', function() {
+  return new Counter('countPlayers', Players.find());
 });
 
 let Api = new Restivus({

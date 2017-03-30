@@ -81,6 +81,7 @@ mongo-id@1.0.6
 mrt:jquery-ui@1.9.2
 msavin:jetsetter@2.0.0
 msavin:mongol@2.0.1
+natestrauser:publish-performant-counts@0.1.2
 nimble:restivus@0.8.12
 npm-bcrypt@0.9.2
 npm-mongo@2.2.24

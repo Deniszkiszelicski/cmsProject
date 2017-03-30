@@ -9,7 +9,7 @@ import './playersPage.html';
 
 Template.playersPage.onCreated(function onCreated() {
   this.initialPage = new ReactiveVar(1);
-  this.initialRangeOfPages = new ReactiveVar([1, 2, 3, 4, 5]);
+  this.initialRangeOfPages = new ReactiveVar([1, 2, 3]);
   this.initialShowPerPage = new ReactiveVar(10);
 
   this.isCreateNew = new ReactiveVar(false);
