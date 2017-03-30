@@ -117,50 +117,85 @@ Template.paginationPanel.helpers({
     if (position == 1 && lastPageNumber != 1) {
       const textForButton = Template.instance().textForButton(1, lastPageNumber, currentPage, rangeOfPages);
       const isActive = Template.instance().isActive(1, lastPageNumber, currentPage, rangeOfPages);
+      let isDisable = "";
+      if (textForButton == "...") {
+        isDisable = " link-disabled";
+      }
       const options = { textForButton: textForButton,
-                        isActive: isActive, };
+                        isActive: isActive,
+                        isDisable: isDisable };
       return { options: options };
     }
     if (position == 2 && 1 < lastPageNumber) {
       const textForButton = Template.instance().textForButton(2, lastPageNumber, currentPage, rangeOfPages);
       const isActive = Template.instance().isActive(2, lastPageNumber, currentPage, rangeOfPages);
+      let isDisable = "";
+      if (textForButton == "...") {
+        isDisable = " link-disabled";
+      }
       const options = { textForButton: textForButton,
-                        isActive: isActive, };
+                        isActive: isActive,
+                        isDisable: isDisable };
       return { options: options };
     }
     if (position == 3 && 2 < lastPageNumber) {
       const textForButton = Template.instance().textForButton(3, lastPageNumber, currentPage, rangeOfPages);
       const isActive = Template.instance().isActive(3, lastPageNumber, currentPage, rangeOfPages);
+      let isDisable = "";
+      if (textForButton == "...") {
+        isDisable = " link-disabled";
+      }
       const options = { textForButton: textForButton,
-                        isActive: isActive, };
+                        isActive: isActive,
+                        isDisable: isDisable };
       return { options: options };
     }
     if (position == 4 && 3 < lastPageNumber) {
       const textForButton = Template.instance().textForButton(4, lastPageNumber, currentPage, rangeOfPages);
       const isActive = Template.instance().isActive(4, lastPageNumber, currentPage, rangeOfPages);
+      let isDisable = "";
+      if (textForButton == "...") {
+        isDisable = " link-disabled";
+      }
       const options = { textForButton: textForButton,
-                        isActive: isActive, };
+                        isActive: isActive,
+                        isDisable: isDisable };
       return { options: options };
     }
     if (position == 5 && 4 < lastPageNumber) {
       const textForButton = Template.instance().textForButton(5, lastPageNumber, currentPage, rangeOfPages);
       const isActive = Template.instance().isActive(5, lastPageNumber, currentPage, rangeOfPages);
+      let isDisable = "";
+      if (textForButton == "...") {
+        isDisable = " link-disabled";
+      }
       const options = { textForButton: textForButton,
-                        isActive: isActive, };
+                        isActive: isActive,
+                        isDisable: isDisable };
       return { options: options };
     }
     if (position == 6 && lastPageNumber > 5 && (lastPageNumber - rangeOfPages[2] == 2 || 3 <= rangeOfPages[0] && !(rangeOfPages[2] == lastPageNumber))) {
       const textForButton = Template.instance().textForButton(6, lastPageNumber, currentPage, rangeOfPages);
       const isActive = Template.instance().isActive(6, lastPageNumber, currentPage, rangeOfPages);
+      let isDisable = "";
+      if (textForButton == "...") {
+        isDisable = " link-disabled";
+      }
       const options = { textForButton: textForButton,
-                        isActive: isActive, };
+                        isActive: isActive,
+                        isDisable: isDisable };
       return { options: options };
     }
     if (position == 7 && (lastPageNumber > 6 && 2 <= rangeOfPages[0]) && lastPageNumber != rangeOfPages[2] + 1 && !(rangeOfPages[2] == lastPageNumber)) {
       const textForButton = Template.instance().textForButton(7, lastPageNumber, currentPage, rangeOfPages);
       const isActive = Template.instance().isActive(7, lastPageNumber, currentPage, rangeOfPages);
+      let isDisable = "";
+      if (textForButton == "...") {
+        isDisable = " link-disabled";
+      }
       const options = { textForButton: textForButton,
-                        isActive: isActive, };
+                        isActive: isActive,
+                        isDisable: isDisable };
       return { options: options };
     }
     return false;

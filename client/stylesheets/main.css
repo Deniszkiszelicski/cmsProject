@@ -13,8 +13,6 @@
 
 .link-disabled {
   pointer-events: none;
-  background-color: green;
-  color: green;
 }
 
 div.p1, div.p2,div.p3{
