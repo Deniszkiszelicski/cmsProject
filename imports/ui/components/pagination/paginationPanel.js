@@ -103,20 +103,25 @@ Template.paginationPanel.onRendered(function onRendered() {
 Template.paginationPanel.helpers({
   showButton: function showButton(position) {
     const options = Template.currentData().options;
-    const lastPageNumber2 = options.lastPageNumber;
-    const lastPageNumber = lastPageNumber2;
-    Template.instance().lastPageNumber.set(lastPageNumber2);
+    const lastPageNumberNew = options.lastPageNumber;
+    const lastPageNumberOld = Template.instance().lastPageNumber.get();
+    if (lastPageNumberNew != lastPageNumberOld) {
+      Template.instance().currentPage.set(1);
+      Template.instance().currentRangeOfPages.set([1, 2, 3]);
+    }
+    Template.instance().lastPageNumber.set(lastPageNumberNew);
     const currentPage = Template.instance().currentPage.get();
+    // const currentPage = options.initialPage;
     const rangeOfPages = Template.instance().currentRangeOfPages.get();
-    if (position == 0 && lastPageNumber != 1 && currentPage != 1) {
+    if (position == 0 && lastPageNumberNew != 1 && currentPage != 1) {
       return true;
     }
-    if (position == 8 && lastPageNumber != 1 && lastPageNumber != currentPage) {
+    if (position == 8 && lastPageNumberNew != 1 && lastPageNumberNew != currentPage) {
       return true;
     }
-    if (position == 1 && lastPageNumber != 1) {
-      const textForButton = Template.instance().textForButton(1, lastPageNumber, currentPage, rangeOfPages);
-      const isActive = Template.instance().isActive(1, lastPageNumber, currentPage, rangeOfPages);
+    if (position == 1 && lastPageNumberNew != 1) {
+      const textForButton = Template.instance().textForButton(1, lastPageNumberNew, currentPage, rangeOfPages);
+      const isActive = Template.instance().isActive(1, lastPageNumberNew, currentPage, rangeOfPages);
       let isDisable = "";
       if (textForButton == "...") {
         isDisable = " link-disabled";
@@ -126,9 +131,9 @@ Template.paginationPanel.helpers({
                         isDisable: isDisable };
       return { options: options };
     }
-    if (position == 2 && 1 < lastPageNumber) {
-      const textForButton = Template.instance().textForButton(2, lastPageNumber, currentPage, rangeOfPages);
-      const isActive = Template.instance().isActive(2, lastPageNumber, currentPage, rangeOfPages);
+    if (position == 2 && 1 < lastPageNumberNew) {
+      const textForButton = Template.instance().textForButton(2, lastPageNumberNew, currentPage, rangeOfPages);
+      const isActive = Template.instance().isActive(2, lastPageNumberNew, currentPage, rangeOfPages);
       let isDisable = "";
       if (textForButton == "...") {
         isDisable = " link-disabled";
@@ -138,9 +143,9 @@ Template.paginationPanel.helpers({
                         isDisable: isDisable };
       return { options: options };
     }
-    if (position == 3 && 2 < lastPageNumber) {
-      const textForButton = Template.instance().textForButton(3, lastPageNumber, currentPage, rangeOfPages);
-      const isActive = Template.instance().isActive(3, lastPageNumber, currentPage, rangeOfPages);
+    if (position == 3 && 2 < lastPageNumberNew) {
+      const textForButton = Template.instance().textForButton(3, lastPageNumberNew, currentPage, rangeOfPages);
+      const isActive = Template.instance().isActive(3, lastPageNumberNew, currentPage, rangeOfPages);
       let isDisable = "";
       if (textForButton == "...") {
         isDisable = " link-disabled";
@@ -150,9 +155,9 @@ Template.paginationPanel.helpers({
                         isDisable: isDisable };
       return { options: options };
     }
-    if (position == 4 && 3 < lastPageNumber) {
-      const textForButton = Template.instance().textForButton(4, lastPageNumber, currentPage, rangeOfPages);
-      const isActive = Template.instance().isActive(4, lastPageNumber, currentPage, rangeOfPages);
+    if (position == 4 && 3 < lastPageNumberNew) {
+      const textForButton = Template.instance().textForButton(4, lastPageNumberNew, currentPage, rangeOfPages);
+      const isActive = Template.instance().isActive(4, lastPageNumberNew, currentPage, rangeOfPages);
       let isDisable = "";
       if (textForButton == "...") {
         isDisable = " link-disabled";
@@ -162,9 +167,9 @@ Template.paginationPanel.helpers({
                         isDisable: isDisable };
       return { options: options };
     }
-    if (position == 5 && 4 < lastPageNumber) {
-      const textForButton = Template.instance().textForButton(5, lastPageNumber, currentPage, rangeOfPages);
-      const isActive = Template.instance().isActive(5, lastPageNumber, currentPage, rangeOfPages);
+    if (position == 5 && 4 < lastPageNumberNew) {
+      const textForButton = Template.instance().textForButton(5, lastPageNumberNew, currentPage, rangeOfPages);
+      const isActive = Template.instance().isActive(5, lastPageNumberNew, currentPage, rangeOfPages);
       let isDisable = "";
       if (textForButton == "...") {
         isDisable = " link-disabled";
@@ -174,9 +179,9 @@ Template.paginationPanel.helpers({
                         isDisable: isDisable };
       return { options: options };
     }
-    if (position == 6 && lastPageNumber > 5 && (lastPageNumber - rangeOfPages[2] == 2 || 3 <= rangeOfPages[0] && !(rangeOfPages[2] == lastPageNumber))) {
-      const textForButton = Template.instance().textForButton(6, lastPageNumber, currentPage, rangeOfPages);
-      const isActive = Template.instance().isActive(6, lastPageNumber, currentPage, rangeOfPages);
+    if (position == 6 && lastPageNumberNew > 5 && (lastPageNumberNew - rangeOfPages[2] == 2 || 3 <= rangeOfPages[0] && !(rangeOfPages[2] == lastPageNumberNew))) {
+      const textForButton = Template.instance().textForButton(6, lastPageNumberNew, currentPage, rangeOfPages);
+      const isActive = Template.instance().isActive(6, lastPageNumberNew, currentPage, rangeOfPages);
       let isDisable = "";
       if (textForButton == "...") {
         isDisable = " link-disabled";
@@ -186,9 +191,9 @@ Template.paginationPanel.helpers({
                         isDisable: isDisable };
       return { options: options };
     }
-    if (position == 7 && (lastPageNumber > 6 && 2 <= rangeOfPages[0]) && lastPageNumber != rangeOfPages[2] + 1 && !(rangeOfPages[2] == lastPageNumber)) {
-      const textForButton = Template.instance().textForButton(7, lastPageNumber, currentPage, rangeOfPages);
-      const isActive = Template.instance().isActive(7, lastPageNumber, currentPage, rangeOfPages);
+    if (position == 7 && (lastPageNumberNew > 6 && 2 <= rangeOfPages[0]) && lastPageNumberNew != rangeOfPages[2] + 1 && !(rangeOfPages[2] == lastPageNumberNew)) {
+      const textForButton = Template.instance().textForButton(7, lastPageNumberNew, currentPage, rangeOfPages);
+      const isActive = Template.instance().isActive(7, lastPageNumberNew, currentPage, rangeOfPages);
       let isDisable = "";
       if (textForButton == "...") {
         isDisable = " link-disabled";
@@ -211,7 +216,7 @@ Template.paginationPanel.events({
       newRangeOfPages = [lastPageNumber - 2, lastPageNumber - 1, lastPageNumber]
     }
     if (pageN == 1) {
-      newRangeOfPages = [1, 2, 3]
+      newRangeOfPages = [1, 2, 3];
     }
     if (1 < pageN && pageN < lastPageNumber) {
       newRangeOfPages = [pageN -1, pageN, pageN +1]

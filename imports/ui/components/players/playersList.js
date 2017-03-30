@@ -49,13 +49,11 @@ Template.playersList.helpers({
   optionsForPagination: function getOptionsForPagination() {
     const initialPage = Template.instance().currentPage.get();
     const currentRangeOfPages = Template.instance().currentRangeOfPages.get();
-    const showPerPage = Template.instance().showPerPage.get();
     const lastPageNumber = Template.instance().lastPageNumber.get();
     const options = { initialPage: initialPage,
                       initialRangeOfPages: currentRangeOfPages,
-                      lastPageNumber: lastPageNumber,
-                      initialShowPerPage: showPerPage };
-    return { options: options};
+                      lastPageNumber: lastPageNumber, };
+    return { options: options };
   },
   playerToDelete: function playerToDelete() {
     const playerVar = Template.instance().playerToDelete.get();
@@ -95,10 +93,12 @@ Template.playersList.events({
     if (showPerPage > 0) {
       templateInstance.showPerPage.set(showPerPage);
       const playersCount = Counter.get("countPlayers");
+      templateInstance.currentPage.set(1);
       templateInstance.lastPageNumber.set(Math.ceil(playersCount / showPerPage));
     }
   },
   'keyup #player-filter-input': function (event, templateInstance) {
     templateInstance.filterText.set(event.currentTarget.value);
+    templateInstance.currentPage.set(1);
   },
 });
