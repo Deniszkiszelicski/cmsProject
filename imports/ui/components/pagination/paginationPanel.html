@@ -1,0 +1,31 @@
+<template name ="paginationPanel">
+  <ul class="pagination pagination-sm" style="margin: 3px; margin-right: 10px; float: right;">
+    {{#with showButton 0}}
+      <li><a class="page-go-back" href="#">«</a></li>
+    {{/with}}
+      {{#with showButton 1}}
+    {{>pageButton}}
+      {{/with}}
+    {{#with showButton 2}}
+      {{>pageButton }}
+    {{/with}}
+    {{#with showButton 3}}
+      {{>pageButton }}
+    {{/with}}
+    {{#with showButton 4}}
+      {{>pageButton }}
+    {{/with}}
+    {{#with showButton 5}}
+      {{>pageButton }}
+    {{/with}}
+    {{#with showButton 6}}
+      {{>pageButton }}
+    {{/with}}
+    {{#with showButton 7}}
+      {{>pageButton }}
+    {{/with}}
+    {{#with showButton 8}}
+      <li><a class="page-go-forward" href="#">»</a></li>
+    {{/with}}
+  </ul>
+</template>

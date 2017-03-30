@@ -11,36 +11,9 @@
           placeholder="Type text to filter by ID" id="player-filter-input">
 
           <!-- <div class="text-center"> -->
-
-          <ul class="pagination pagination-sm" style="margin: 3px; margin-right: 10px; float: right;">
-            {{#if showButton 0}}
-            <li><a class="page-go-back" href="#">«</a></li>
-            {{/if}}
-            {{#if showButton 1}}
-            <li class="{{isActive 1}}"><a class="page-number" href="#" data-page="{{textForButton 1}}">{{textForButton 1}}</a></li>
-            {{/if}}
-            {{#if showButton 2}}
-            <li class="{{isActive 2}}"><a class="page-number" href="#" data-page="{{textForButton 2}}">{{textForButton 2}}</a></li>
-            {{/if}}
-            {{#if showButton 3}}
-            <li class="{{isActive 3}}"><a class="page-number" href="#" data-page="{{textForButton 3}}">{{textForButton 3}}</a></li>
-            {{/if}}
-            {{#if showButton 4}}
-            <li class="{{isActive 4}}"><a class="page-number" href="#" data-page="{{textForButton 4}}">{{textForButton 4}}</a></li>
-            {{/if}}
-            {{#if showButton 5}}
-            <li class="{{isActive 5}}"><a class="page-number" href="#" data-page="{{textForButton 5}}">{{textForButton 5}}</a></li>
-            {{/if}}
-            {{#if showButton 6}}
-            <li class="{{isActive 6}}"><a class="page-number" href="#" data-page="{{textForButton 6}}">{{textForButton 6}}</a></li>
-            {{/if}}
-            {{#if showButton 7}}
-            <li class="{{isActive 7}}"><a class="page-number" href="#" data-page="{{textForButton 7}}">{{textForButton 7}}</a></li>
-            {{/if}}
-            {{#if showButton 8}}
-            <li><a class="page-go-forward" href="#">»</a></li>
-            {{/if}}
-          </ul>
+          {{#with optionsForPagination}}
+            {{> paginationPanel}}
+          {{/with}}
 
           <!-- <div class="row"> -->
             <!-- <div class="col-md-6"> -->
