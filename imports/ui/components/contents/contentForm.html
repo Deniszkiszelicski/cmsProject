@@ -1,16 +1,20 @@
 <template name="contentForm"><br>
   <!-- TODO: delete style -->
 
-  <div class="breadcrumbs ">
-    <div class="container contentHeader">
+
+
+  <div class="breadcrumbs secondHead">
+    <div class="container secondHead1">
       <h3 class="pull-left">New Content</h3>
-      <i type="button" class="glyphicon glyphicon-remove" id="button-close-content-form" style="float:right;"></i>
+
       <!-- <ul class="pull-right breadcrumb">
         <li><a href="index.html">Home</a></li>
         <li><a href="">Features</a></li>
         <li class="active">Form States</li>
       </ul> -->
-    </div></div>
+    </div></div><br><br>
+
+
     <div class="container content">
   <div class="tab-v1 content-form">
     <ul class="nav nav-tabs">
@@ -20,11 +24,12 @@
       <li>
         <a href="#content-details" data-toggle="tab" area-expanded="false">Details</a>
       </li>
-      <button type="submit" class="btn-u btn-u-default button-save" id="btn-save-content" style="float:right;">Save</button>
+        <button type="submit" class="btn-u btn-u-default button-save sButton" id="btn-save-content" style="float:right; ">Save</button>
+        <button type="button" class="btn-u btn-u-default cButton" id="button-close-content-form" style="float:right;">Close</button>
     </ul>
     <div class="tab-content">
       <div class="tab-pane fade active in" id="content-main"><br>
-        <div class=row>
+        <!-- <div class=row> -->
         <form class="sky-form" action="#" id="sky-form">
 
           <!-- <header>Content
@@ -32,7 +37,7 @@
           </header> -->
 
           <fieldset>
-            <div class="row">
+            <!-- <div class="row"> -->
 
               <section class="col col-6">
                 <label class="label">Name</label>
@@ -51,7 +56,7 @@
                   placeholder="Enter duration of content" value="{{this.duration}}">
                 </label>
               </section>
-            </div>
+            <!-- </div> -->
           </fieldset>
 
 
@@ -122,7 +127,7 @@
             <!-- <div class="col col-12"> -->
             <section>
               <!-- TODO: delete style -->
-              <div class="row"  style="margin-left: 7px; margin-bottom: 5px;">
+              <!-- <div class="row"  style="margin-left: 7px; margin-bottom: 5px;"> -->
 
 
 
@@ -134,14 +139,16 @@
                 <label class="checkbox-inline"><input type="checkbox" {{getVisibleForAll}} id="visibleForAll">Visible for all</label>
                 <br>
                 <br>
+              </section>
+              <section>
                 <!-- TODO: delete style -->
                 <label class="label">Category</label>
-                <label class="input" style="margin-top: 10px;">
+                <label class="input" >
                   <input class="col col-6" type="text" name="categoryOfContent" id="categoryOfContent"
                   placeholder="Enter category of content" value="{{this.category}}">
                 </label>
 
-              </div>
+              <!-- </div> -->
 
             </section>
             <!-- </div> -->
@@ -153,15 +160,22 @@
 								</section>
 							</div>
           </fieldset>
+          <fieldset style="margin-bottom:15px;">
+
+            <button type="submit" class="btn-u btn-u-default button-save sButton" id="btn-save-content" style="float:right;">Save</button>
+            <button type="button" class="btn-u btn-u-default cButton" id="button-close-content-form" style="float:right;">Close</button>
+
+          </fieldset>
+
 
           <!-- <footer>
             <button type="submit" class="btn-u btn-u-default button-save" id="btn-save-content">Save</button>
           </footer> -->
         </form>
-      </div>
+      <!-- </div> -->
       </div>
       <div class="tab-pane fade" id="content-details"><br>
-        <div class="row">
+        <!-- <div class="row"> -->
         <form class="sky-form" action="#" id="sky-form">
           <!-- <header>Schedule
             <i type="button" class="glyphicon glyphicon-remove" id="button-close-content-form"></i>
@@ -188,7 +202,7 @@
                 <label class="label" style="margin-left: 15px;">Days of week</label>
                 <!-- TODO: delete style -->
                 <!-- TODO: store days of week as an imbedded json object -->
-                <div class="row" style="margin-left: 15px;">
+                <span style="margin-left: 15px;">
                   <label class="checkbox-inline"><input type="checkbox" {{getMonday}} id="monday">Monday</label>
                   <label class="checkbox-inline"><input type="checkbox" {{getTuesday}} id="tuesday">Tuesday</label>
                   <label class="checkbox-inline"><input type="checkbox" {{getWednesday}} id="wednesday">Wednesday</label>
@@ -196,55 +210,61 @@
                   <label class="checkbox-inline"><input type="checkbox" {{getFriday}} id="friday">Friday</label>
                   <label class="checkbox-inline"><input type="checkbox" {{getSaturday}} id="saturday">Saturday</label>
                   <label class="checkbox-inline"><input type="checkbox" {{getSunday}} id="sunday">Sunday</label>
-                </div>
+                </span>
               </section>
               <section>
                 <label class="label" style="margin-left: 15px;">Play time hours</label>
                 <label class="input" style="margin-left: 15px;">
                   <!-- <div class="schedule-day"> -->
                     <form>
-                      <div class="row">
+                      <!-- <div class="row"> -->
 
                       <div class="col col-2">
                         <input type="text" class="form-control" id="playTimeHoursStart" placeholder="From" value="{{this.playTimeHoursStart}}">
                         <input type="text" class="form-control" id="playTimeHoursFinish" placeholder="To" value="{{this.playTimeHoursFinish}}">
                       </div>
 
-                      </div>
+                      <!-- </div> -->
                     </form>
                   <!-- </div> -->
                 </label>
                 <br>
                 <label class="checkbox-inline" style="margin-left: 15px;"><input type="checkbox" {{getDeleteAfterFinish}} id="deleteAfterFinish">Delete after finish date</label>
-              </section>
+              </section><br><br>
             </div>
           </fieldset>
           <fieldset>
             <label class="label"><h4>Assortiment</h4></label>
             <!-- TODO: delete style -->
-            <div class="row" style="margin-left: 10px;">
+            <span style="margin-left: 10px;">
               {{#each listOfAssortiment}}
                 <label class="checkbox-inline"><input type="checkbox" {{getTypePresence}} value="{{this}}" class="content-assortiment">{{this}}</label>
               {{/each}}
-            </div>
+            </span>
             <br>
           </fieldset>
 
           <fieldset>
             <label class="label"><h4>Region</h4></label>
             <!-- TODO: delete style -->
-            <div class="row" style="margin-left: 10px;">
+            <span style="margin-left: 10px;">
               {{#each regions}}
                 <label class="checkbox-inline"><input type="checkbox" {{getRegionPresence}} value="{{this}}" class="content-regions">{{this}}</label>
               {{/each}}
-            </div>
+            </span>
           </fieldset>
-          <br>
+          <fieldset style="margin-bottom:15px;">
+
+            <button type="submit" class="btn-u btn-u-default button-save sButton" id="btn-save-content" style="float:right;">Save</button>
+            <button type="button" class="btn-u btn-u-default cButton" id="button-close-content-form" style="float:right;">Close</button>
+
+          </fieldset>
+
         </form>
-      </div></div>
-    </div><br><div class="panel-footer">
-                  <button type="submit" class="btn-u btn-u-default button-save" id="btn-save-content">Save</button>
-                </div>
+      <!-- </div> -->
+    </div>
+    </div>
+
   </div></div>
 
 <!-- </div> -->

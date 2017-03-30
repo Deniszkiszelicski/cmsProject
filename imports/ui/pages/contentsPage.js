@@ -28,7 +28,7 @@ Template.contentsPage.helpers({
 });
 
 Template.contentsPage.events({
-  'click .button-new, click #button-edit-content': function createNewContent(event, templateInstance) {
+  'click #buttonNew, click #button-edit-content': function createNewContent(event, templateInstance) {
     event.preventDefault();
     templateInstance.currentContent.set(this);
     Session.set("isDefaultPageLayout", false);
