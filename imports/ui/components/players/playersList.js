@@ -40,6 +40,8 @@ Template.playersList.helpers({
     const playersCurPage = Players.find().fetch();
     Template.instance().playersReceived.set(playersCurPage.length);
     const showPerPage = Template.instance().showPerPage.get();
+    const currentRangeOfPages = Template.instance().currentRangeOfPages.get();
+    console.log("currentRangeOfPages = ", currentRangeOfPages);
     // const buttons = $('.pagination > li');
     // $.each(buttons, function( index, value ) {
     //   $(value).removeClass("link-disabled");
@@ -97,8 +99,8 @@ Template.playersList.helpers({
       return 1;
     }
     if (position == 2) {
-      console.log("position = ", position);
-      console.log("currentPage = ", currentPage);
+      // console.log("position = ", position);
+      // console.log("currentPage = ", currentPage);
       const a = currentRangeOfPages[0] > 3;
       if (currentRangeOfPages[0] > 3) {
         return "...";
@@ -107,8 +109,8 @@ Template.playersList.helpers({
       }
     }
     if (position == 3) {
-      console.log("position = ", position);
-      console.log("currentPage = ", currentPage);
+      // console.log("position = ", position);
+      // console.log("currentPage = ", currentPage);
 
       // if (const position = oldRangeOfPages.indexOf(currentPage)) {
       if (currentRangeOfPages[0] >= 4) {
@@ -179,8 +181,8 @@ Template.playersList.helpers({
     const lastPageNumber = Template.instance().lastPageNumber.get();
     const currentPosition = currentRangeOfPages.indexOf(currentPage) + 1;
     // console.log("isActive ", position);
-    console.log("isActive currentRangeOfPages", currentRangeOfPages);
-    console.log("isActive currentPage", currentPage);
+    // console.log("isActive currentRangeOfPages", currentRangeOfPages);
+    // console.log("isActive currentPage", currentPage);
     // console.log("isActive currentPosition", currentPosition);
     if (position == 1 && currentPage == 1) {
       return "active";
@@ -225,8 +227,21 @@ Template.playersList.events({
     templateInstance.playerToDelete.set(this);
   },
   'click .pagination .page-number': function goToPage(event, templateInstance) {
-    const pageN = event.currentTarget.dataset.page;
-    templateInstance.currentPage.set(parseInt(pageN));
+    const pageN = parseInt(event.currentTarget.dataset.page);
+    const lastPageNumber = templateInstance.lastPageNumber.get();
+    let newRangeOfPages = [];
+    if (pageN == lastPageNumber) {
+      newRangeOfPages = [lastPageNumber - 2, lastPageNumber - 1, lastPageNumber]
+    }
+    if (pageN == 1) {
+      newRangeOfPages = [1, 2, 3]
+    }
+    if (1 < pageN && pageN < lastPageNumber) {
+      newRangeOfPages = [pageN -1, pageN, pageN +1]
+    }
+    console.log("pageN = ", pageN);
+    templateInstance.currentPage.set(pageN);
+    templateInstance.currentRangeOfPages.set(newRangeOfPages);
     // $('.pagination > li:nth-child(4) > a').attr('disabled', true);
   },
   'click .pagination .page-go-back': function goBack(event, templateInstance) {
@@ -267,8 +282,8 @@ Template.playersList.events({
     }
     templateInstance.currentRangeOfPages.set(newRangeOfPages);
     templateInstance.currentPage.set(currentPage);
-    console.log("page-go-forward newRangeOfPages", newRangeOfPages);
-    console.log("page-go-forward currentPage", currentPage);
+    // console.log("page-go-forward newRangeOfPages", newRangeOfPages);
+    // console.log("page-go-forward currentPage", currentPage);
   },
   'keyup #player-per-page-input': function (event, templateInstance) {
     const showPerPage = parseInt(event.currentTarget.value);
