@@ -9,9 +9,7 @@ import './playersPage.html';
 
 Template.playersPage.onCreated(function onCreated() {
   this.initialPage = new ReactiveVar(1);
-  this.initialRangeOfPages = new ReactiveVar([1, 2, 3]);
   this.initialShowPerPage = new ReactiveVar(10);
-
   this.isCreateNew = new ReactiveVar(false);
   this.currentPlayer = new ReactiveVar();
   Session.set("isDefaultPageLayout", true);
@@ -26,11 +24,9 @@ Template.playersPage.helpers({
   },
   options: function getOptions() {
     const initialPage = Template.instance().initialPage.get();
-    const initialRangeOfPages = Template.instance().initialRangeOfPages.get();
     const initialShowPerPage = Template.instance().initialShowPerPage.get();
     const options = { header: "List of all players", initialPage: initialPage,
                       enableButtonNewPlayer: true, enableFilter: true,
-                      initialRangeOfPages: initialRangeOfPages,
                       initialShowPerPage: initialShowPerPage };
     const includedCGsWithOptions = { options: options};
     return includedCGsWithOptions;
@@ -49,49 +45,20 @@ Template.playersPage.events({
     templateInstance.isCreateNew.set(false);
   },
   'click .pagination .page-number': function goToPage(event, templateInstance) {
-    const pageN = event.currentTarget.dataset.page;
-    templateInstance.initialPage.set(parseInt(pageN));
+    const pageN = parseInt(event.currentTarget.dataset.page);
+    templateInstance.initialPage.set(pageN);
   },
   'click .pagination .page-go-forward': function goForward(event, templateInstance) {
-    const oldRangeOfPages = templateInstance.initialRangeOfPages.get();
-    let initialPage = templateInstance.initialPage.get();
-    const position = oldRangeOfPages.indexOf(initialPage);
-    let newRangeOfPages = oldRangeOfPages;
-    if (position < 4) {
-      initialPage = initialPage + 1;
-    }
-    if (position == 4) {
-      initialPage = initialPage + 1;
-      newRangeOfPages.push(oldRangeOfPages[4] + 1);
-      newRangeOfPages.shift();
-    }
-    templateInstance.initialRangeOfPages.set(newRangeOfPages);
-    templateInstance.initialPage.set(initialPage);
+    templateInstance.initialPage.set(templateInstance.initialPage.get() + 1);
   },
   'click .pagination .page-go-back': function goBack(event, templateInstance) {
-    // const pageN = event.currentTarget.dataset.page;
-    // templateInstance.initialPage.set(pageN);
-    const initialPage = templateInstance.initialPage.get();
-    if (initialPage == 1) {
-      return 0;
-    }
-    const oldRangeOfPages = templateInstance.initialRangeOfPages.get();
-    const position = oldRangeOfPages.indexOf(initialPage);
-    let newRangeOfPages = oldRangeOfPages;
-    if (position > 0) {
-      templateInstance.initialPage.set(initialPage - 1);
-    }
-    if (position == 0) {
-      templateInstance.initialPage.set(initialPage - 1);
-      newRangeOfPages.unshift(oldRangeOfPages[0] - 1);
-      newRangeOfPages.pop();
-    }
-    templateInstance.initialRangeOfPages.set(newRangeOfPages);
+    templateInstance.initialPage.set(templateInstance.initialPage.get() - 1);
   },
   'keyup #player-per-page-input': function (event, templateInstance) {
     const initialShowPerPage = parseInt(event.currentTarget.value);
     if (initialShowPerPage > 0) {
       templateInstance.initialShowPerPage.set(initialShowPerPage);
+      templateInstance.initialPage.set(1);
     }
   },
 });

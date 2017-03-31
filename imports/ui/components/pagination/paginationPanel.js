@@ -5,9 +5,21 @@ import './paginationPanel.html';
 
 Template.paginationPanel.onCreated(function onCreated() {
   const options = Template.currentData().options;
-  this.currentPage = new ReactiveVar(options.initialPage);
-  this.currentRangeOfPages = new ReactiveVar(options.initialRangeOfPages);
-  this.lastPageNumber = new ReactiveVar(options.lastPageNumber);
+  const currentPage = options.initialPage;
+  this.currentPage = new ReactiveVar(currentPage);
+  const lastPageNumber = options.lastPageNumber;
+  this.lastPageNumber = new ReactiveVar(lastPageNumber);
+  let rangeOfPages = [];
+  if (currentPage == 1 || currentPage == 2) {
+    rangeOfPages = [1, 2, 3];
+  } else {
+    if (currentPage == lastPageNumber && currentPage > 2) {
+      rangeOfPages = [lastPageNumber - 2, lastPageNumber - 1, lastPageNumber];
+    } else {
+      rangeOfPages = [currentPage - 1, currentPage, currentPage + 1];
+    }
+  }
+  this.currentRangeOfPages = new ReactiveVar(rangeOfPages);
   this.textForButton = function textForButton(position, lastPageNumber, currentPage, currentRangeOfPages) {
     if (position == 1) {
       return 1;
@@ -104,15 +116,27 @@ Template.paginationPanel.helpers({
   showButton: function showButton(position) {
     const options = Template.currentData().options;
     const lastPageNumberNew = options.lastPageNumber;
-    const lastPageNumberOld = Template.instance().lastPageNumber.get();
-    if (lastPageNumberNew != lastPageNumberOld) {
-      Template.instance().currentPage.set(1);
-      Template.instance().currentRangeOfPages.set([1, 2, 3]);
-    }
     Template.instance().lastPageNumber.set(lastPageNumberNew);
-    const currentPage = Template.instance().currentPage.get();
-    // const currentPage = options.initialPage;
-    const rangeOfPages = Template.instance().currentRangeOfPages.get();
+    const newCurrentPage = options.initialPage;
+    let currentPage = Template.instance().currentPage.get();
+    let rangeOfPages = [];
+    if (newCurrentPage != currentPage) {
+      currentPage = newCurrentPage;
+      Template.instance().currentPage.set(newCurrentPage);
+      if (currentPage == 1 || currentPage == 2) {
+        rangeOfPages = [1, 2, 3];
+      } else {
+        if (currentPage == lastPageNumberNew) {
+          rangeOfPages = [lastPageNumberNew - 2, lastPageNumberNew - 1, lastPageNumberNew];
+        } else {
+          rangeOfPages = [currentPage - 1, currentPage, currentPage + 1];
+        }
+      }
+      Template.instance().currentRangeOfPages.set(rangeOfPages);
+    } else {
+      rangeOfPages = Template.instance().currentRangeOfPages.get();
+    }
+
     if (position == 0 && lastPageNumberNew != 1 && currentPage != 1) {
       return true;
     }
@@ -215,7 +239,7 @@ Template.paginationPanel.events({
     if (pageN == lastPageNumber) {
       newRangeOfPages = [lastPageNumber - 2, lastPageNumber - 1, lastPageNumber]
     }
-    if (pageN == 1) {
+    if (pageN == 1 || pageN == 2) {
       newRangeOfPages = [1, 2, 3];
     }
     if (1 < pageN && pageN < lastPageNumber) {

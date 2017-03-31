@@ -15,9 +15,9 @@ Template.playersList.onCreated(function onCreated() {
   this.currentPage = new ReactiveVar(this.data.options.initialPage);
   const showPerPage = this.data.options.initialShowPerPage;
   this.showPerPage = new ReactiveVar(showPerPage);
-  this.currentRangeOfPages = new ReactiveVar(this.data.options.initialRangeOfPages);
+  // this.currentRangeOfPages = new ReactiveVar(this.data.options.initialRangeOfPages);
   this.filterText = new ReactiveVar();
-  this.playersReceived = new ReactiveVar();
+  // this.playersReceived = new ReactiveVar();
   this.playerToDelete = new ReactiveVar();
   this.autorun(() => {
     const currentPage = this.currentPage.get();
@@ -38,9 +38,9 @@ Template.playersList.onRendered(function OnRendered() {
 Template.playersList.helpers({
   players: function players() {
     const playersCurPage = Players.find().fetch();
-    Template.instance().playersReceived.set(playersCurPage.length);
-    const showPerPage = Template.instance().showPerPage.get();
-    const currentRangeOfPages = Template.instance().currentRangeOfPages.get();
+    // Template.instance().playersReceived.set(playersCurPage.length);
+    // const showPerPage = Template.instance().showPerPage.get();
+    // const currentRangeOfPages = Template.instance().currentRangeOfPages.get();
     return playersCurPage;
   },
   showPerPage: function showPerPage(position) {
@@ -48,10 +48,10 @@ Template.playersList.helpers({
   },
   optionsForPagination: function getOptionsForPagination() {
     const initialPage = Template.instance().currentPage.get();
-    const currentRangeOfPages = Template.instance().currentRangeOfPages.get();
+    // const currentRangeOfPages = Template.instance().currentRangeOfPages.get();
     const lastPageNumber = Template.instance().lastPageNumber.get();
     const options = { initialPage: initialPage,
-                      initialRangeOfPages: currentRangeOfPages,
+                      // initialRangeOfPages: currentRangeOfPages,
                       lastPageNumber: lastPageNumber, };
     return { options: options };
   },
