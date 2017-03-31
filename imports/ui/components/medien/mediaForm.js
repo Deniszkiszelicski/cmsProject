@@ -5,6 +5,7 @@ import '../../../api/medien/collection';
 import './searchCategory';
 import './mediaForm.html';
 
+
 Meteor.subscribe('medien');
 Meteor.subscribe('files.images.all');
 Meteor.subscribe('files.videos.all');
@@ -46,7 +47,7 @@ Template.mediaForm.helpers({
 });
 
 Template.mediaForm.events({
-  'click #media-form .button-save': function upsertMedia(event, templateInstance) {
+  'click .mediaSave': function upsertMedia(event, templateInstance) {
     event.preventDefault();
     let fileId = templateInstance.uploadedFileId.get();
     const name = $('#nameOfMedia').val();

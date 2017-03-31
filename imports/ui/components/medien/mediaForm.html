@@ -1,28 +1,53 @@
 <template name ="mediaForm">
-  <div class="panel panel-grey margin-bottom-40">
-    <div class="panel-heading">
-      <h3 class="panel-title">Create/edit media</h3>
-      <i type="button" class="glyphicon glyphicon-remove" id="button-close-media-form"></i>
+
+      <!-- <h3 class="panel-title">Create/edit</h3> -->
+      <!-- <i type="button" class="glyphicon glyphicon-remove" id="button-close-media-form"></i> -->
+
+  <div class="panel-v1  content-form">
+      <ul class="nav nav-tabs">
+        <button type="button" class="btn-u btn-u-default sButton mediaSave" style="float:right;">Save</button>
+        <button type="button" class="btn-u btn-u-default cButton" style="float:right;" id="buttonCloseMediaForm">Close</button>
+        <!-- <form class="form-inline" id=media-form role="form"> -->
+          <!-- <i type="button" class="fa fa-floppy-o button-save"></i> -->
+          <input type="text"
+            placeholder="Type text to filter by name" id="media-filter-input">
+
+
+
+
+
+
+
+        <!-- </form> -->
+      </ul><br>
+
+      <div class="panel-body sky-form">
+        <div class="col-sm-3">
+      <input type="text" name=""  id="nameOfMedia"
+        placeholder="Enter name of media" value="{{this.name}}">
+      </div>
+    <div class="col-sm-3">
+                {{> searchCategory category=category}}
+                <!-- <label for="category" class="sr-only">Category</label>
+                <input type="text" name="" class="form-control" id="category" placeholder="Enter category"> -->
     </div>
-    <div class="panel-body">
-      <form class="form-inline" id=media-form role="form">
-        <i type="button" class="fa fa-floppy-o button-save"></i>
-        <div class="form-group">
-          <label for="nameOfMedia" class="sr-only">Name</label>
-          <input type="text" name="" class="form-control" id="nameOfMedia"
-            placeholder="Enter name of media" value="{{this.name}}">
-        </div>
-        <div class="form-group">
-          {{#with this}}
-            {{> mediaUpload uploadedFileName=uploadedFileName}}
-          {{/with}}
-        </div>
-        <div class="form-group">
-          {{> searchCategory category=category}}
-          <!-- <label for="category" class="sr-only">Category</label>
-          <input type="text" name="" class="form-control" id="category" placeholder="Enter category"> -->
-        </div>
-      </form>
+    <div class="col-sm-3">
+
+
+                {{#with this}}
+                  {{> mediaUpload uploadedFileName=uploadedFileName}}
+                {{/with}}
+    </div></div><br><br>
+      <!-- <div class="panel-heading">
+        <div class="row" style="border:none;"> -->
+
+
+        <!-- <span>{{options.header}}</span> -->
+
+
+
+
+      <!-- </div>
+    </div> -->
     </div>
-  </div>
 </template>

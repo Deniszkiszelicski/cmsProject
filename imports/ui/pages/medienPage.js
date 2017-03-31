@@ -35,12 +35,12 @@ Template.medienPage.helpers({
 });
 
 Template.medienPage.events({
-  'click .button-new': function createNewMedia(event, templateInstance) {
+  'click #buttonNew': function createNewMedia(event, templateInstance) {
     event.preventDefault();
     Session.set("isDefaultPageLayout", false);
     templateInstance.isCreateNew.set(true);
   },
-  'click #button-close-media-form, click .button-save': function closeForm(event, templateInstance) {
+  'click #buttonCloseMediaForm, click #mediaSave': function closeForm(event, templateInstance) {
     event.preventDefault();
     templateInstance.isCreateNew.set(false);
   },

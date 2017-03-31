@@ -1,46 +1,90 @@
 <template name ="medienList">
-  <div class="row">
-    <!-- <div class="col-md-10 col-md-offset-1"> -->
-      <div class="panel panel-default panel-table">
+
+
+
+    <div class="panel-v1  content-form">
+      <ul class="nav nav-tabs">
+        {{#if isCreateNew}}
+        {{else}}
+          {{#if options.enableButtonNewMedia}}
+            <button type="button" class="btn-u btn-u-default sButton" style="float:right;" id="buttonNew">New media</button>
+            <input type="text"
+              placeholder="Type text to filter by name" id="media-filter-input">
+          {{/if}}
+        {{/if}}
+
+      </ul>
+      <!-- <div class="panel-heading">
+        <div class="row" style="border:none;"> -->
+
+
+        <!-- <span>{{options.header}}</span> -->
+        {{#if options.enableButtonCloseListOfContents}}
+          <i type="button" class="glyphicon glyphicon-remove" id="button-close-contentList"></i>
+        {{/if}}
+
+
+
+      <!-- </div>
+    </div> --><br>
+      <div class="panel-body sky-form">
+        <table class="table table-striped table-list" id="contentTable">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Type</th>
+              <th>Created date</th>
+              <th>Controls</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each filteredMedien}}
+              {{#with this}}
+                {{>media}}
+              {{/with}}
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+      <!-- old -->
+      <!-- <div class="panel panel-default panel-table">
         <div class="panel-heading">
           <span>{{options.header}}</span>
           {{#if options.enableButtonCloseListOfMedien}}
           <i type="button" class="glyphicon glyphicon-remove" id="button-close-media-collection"></i>
           {{/if}}
-          {{#if isCreateNew}}
-          {{else}}
-            {{#if options.enableButtonNewMedia}}
-              <button type="button" class="btn btn-default button-new">New media</button>
-            {{/if}}
-          {{/if}}
 
-          <input type="text" class="form-control filter-input"
-            placeholder="Type text to filter by name" id="media-filter-input">
+
+
         </div>
         <div class="panel-body">
           <table class="table table-striped table-list">
             <thead>
               <tr>
-                <th></th>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Type</th>
-                <th>Created date</th>
-                <th>Controls</th>
+
               </tr>
             </thead>
-            <tbody>
+            <tbody> -->
               <!-- {{#each medien}} -->
-              {{#each filteredMedien}}
-                {{#with this}}
-                  {{>media}}
-                {{/with}}
-            	{{/each}}
-            </tbody>
+
+            <!-- </tbody>
           </table>
         </div>
-      </div>
+      </div> -->
+      <!-- old -->
     <!-- </div> -->
-  </div>
+  <!-- </div> -->
   {{>deleteConfirmation message=mediaToDelete}}
 </template>
