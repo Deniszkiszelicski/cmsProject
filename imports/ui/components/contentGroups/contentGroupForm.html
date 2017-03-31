@@ -29,9 +29,9 @@
     </div>
     <div class="panel-body">
       <form class="sky-form content-group-form" role="form">
-        <header>Content-group
+        <!-- <header>Content-group
           <i type="button" class="glyphicon glyphicon-remove" id="button-close-contentGroup-form"></i>
-        </header>
+        </header> -->
 
         <fieldset>
           <div class="row">
@@ -77,7 +77,7 @@
 
         <fieldset>
           <button type="submit" class="btn-u btn-u-default" id="btn-select-content" style="margin-left: 12px; margin-bottom: 10px;">Add content</button>
-          <div id="content-collection-fieldset">
+          <div id="content-collection-fieldset" >
             {{#if isSelectContent}}
               {{#with getOptions}}
               {{> contentsList}}

@@ -32,7 +32,7 @@ Template.media.events({
     event.preventDefault();
     templateInstance.isEditMode.set(true);
   },
-  'click #button-close-media-form, click .button-save': function closeForm(event, templateInstance) {
+  'click #buttonCloseMediaForm, click .mediaSave': function closeForm(event, templateInstance) {
     event.preventDefault();
     // event.stopPropagation();
     templateInstance.isEditMode.set(false);

@@ -28,7 +28,7 @@ Template.contentGroupsPage.helpers({
 });
 
 Template.contentGroupsPage.events({
-  'click .button-new, click #button-edit-contentGroup': function createNewContent(event, templateInstance) {
+  'click #newCgBtn, click #button-edit-contentGroup': function createNewContent(event, templateInstance) {
     event.preventDefault();
     templateInstance.currentContentGroup.set(this);
     Session.set("isDefaultPageLayout", false);

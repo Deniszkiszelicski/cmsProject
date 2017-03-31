@@ -1,45 +1,49 @@
 <template name ="contentGroupsList">
-  <div class="row">
-    <!-- <div class="col-md-10 col-md-offset-1"> -->
-      <div class="panel panel-default panel-table">
-        <div class="panel-heading">
-          <span>{{options.header}}</span>
-          {{#if options.enableButtonCloseListOfCG}}
-          <i type="button" class="glyphicon glyphicon-remove" id="button-close-contentGroup-collection"></i>
-          {{/if}}
-          {{#unless isCreateNew}}
-            {{#if options.enableButtonNewCG}}
-              <button type="button" class="btn btn-default button-new">New CG</button>
-            {{/if}}
-          {{/unless}}
 
-          {{#if options.enableFilter}}
-            <input type="text" class="form-control filter-input"
-              placeholder="Type text to filter by name" id="contentGroup-filter-input">
-          {{/if}}
-        </div>
-        <div class="panel-body">
-          <table class="table table-striped table-list">
-            <thead>
-              <tr>
-                <th></th>
-                <th>Name</th>
-                <th>Duration</th>
-                <th>Block</th>
-                <th>Controls</th>
-              </tr>
-            </thead>
-            <tbody>
-              {{#each filteredContentGroups}}
-                <!-- {{#with this}} -->
-                  {{> contentGroup}}
-                <!-- {{/with}} -->
-            	{{/each}}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    <!-- </div> -->
+  <div class="panel-v1  content-form">
+    <ul class="nav nav-tabs">
+
+      {{#unless isCreateNew}}
+        {{#if options.enableButtonNewCG}}
+          <button type="button" class="btn-u btn-u-default sButton" style="float:right;" id="newCgBtn">New Content-Group</button>
+        {{/if}}
+      {{/unless}}
+
+      {{#if options.enableFilter}}
+        <input type="text"
+          placeholder="Type text to filter by name" id="contentGroup-filter-input">
+      {{/if}}
+
+ </ul>
+ {{#if options.enableButtonCloseListOfCG}}
+ <i type="button" class="glyphicon glyphicon-remove" id="button-close-contentGroup-collection"></i>
+ {{/if}}
+    <!-- </div>
+  </div> --><br>
+    <div class="panel-body sky-form">
+      <table class="table table-striped table-list">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Duration</th>
+            <th>Block</th>
+            <th>Controls</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each filteredContentGroups}}
+            <!-- {{#with this}} -->
+              {{> contentGroup}}
+            <!-- {{/with}} -->
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
   </div>
+
+
+
+
   {{>deleteConfirmation message=contentGroupToDelete}}
 </template>
