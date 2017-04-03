@@ -163,3 +163,150 @@ Api.addRoute('getPlaylistForPlayer', {authRequired: false}, {
       this.done();
     },
   });
+
+  Api.addRoute('getPlaytimesForPlayer', {authRequired: false}, {
+      get: function () {
+        const playerId = this.queryParams.id;
+        if (playerId) {
+          const player = Players.findOne({ playerId: playerId} );
+          if (player) {
+            let responseXML = "<" + '\\?xml version="1.0" encoding="utf-8" ?>\n'.slice(1, 41);
+            responseXML += "<settings>";
+
+            responseXML += "<playtimes>";
+            responseXML += "<monday>";
+            let mondayStart1 = player.mondayStart1;
+            let mondayEnd1 = player.mondayEnd1;
+            if (mondayStart1 && mondayEnd1) {
+              responseXML += mondayStart1;
+              responseXML += "-";
+              responseXML += mondayEnd1;
+            }
+            let mondayStart2 = player.mondayStart2;
+            let mondayEnd2 = player.mondayEnd2;
+            if (mondayStart2 && mondayEnd2) {
+              responseXML += ",";
+              responseXML += mondayStart2;
+              responseXML += "-";
+              responseXML += mondayEnd2;
+            }
+            responseXML += "</monday>";
+
+            responseXML += "<tuesday>";
+            let tuesdayStart1 = player.tuesdayStart1;
+            let tuesdayEnd1 = player.tuesdayEnd1;
+            if (tuesdayStart1 && tuesdayEnd1) {
+              responseXML += tuesdayStart1;
+              responseXML += "-";
+              responseXML += tuesdayEnd1;
+            }
+            let tuesdayStart2 = player.tuesdayStart2;
+            let tuesdayEnd2 = player.tuesdayEnd2;
+            if (tuesdayStart2 && tuesdayEnd2) {
+              responseXML += ",";
+              responseXML += tuesdayStart2;
+              responseXML += "-";
+              responseXML += tuesdayEnd2;
+            }
+            responseXML += "</tuesday>";
+
+            responseXML += "<wednesday>";
+            let wednesdayStart1 = player.wednesdayStart1;
+            let wednesdayEnd1 = player.wednesdayEnd1;
+            if (wednesdayStart1 && wednesdayEnd1) {
+              responseXML += wednesdayStart1;
+              responseXML += "-";
+              responseXML += wednesdayEnd1;
+            }
+            let wednesdayStart2 = player.wednesdayStart2;
+            let wednesdayEnd2 = player.wednesdayEnd2;
+            if (wednesdayStart2 && wednesdayEnd2) {
+              responseXML += ",";
+              responseXML += wednesdayStart2;
+              responseXML += "-";
+              responseXML += wednesdayEnd2;
+            }
+            responseXML += "</wednesday>";
+
+            responseXML += "<thursday>";
+            let thursdayStart1 = player.thursdayStart1;
+            let thursdayEnd1 = player.thursdayEnd1;
+            if (thursdayStart1 && thursdayEnd1) {
+              responseXML += thursdayStart1;
+              responseXML += "-";
+              responseXML += thursdayEnd1;
+            }
+            let thursdayStart2 = player.thursdayStart2;
+            let thursdayEnd2 = player.thursdayEnd2;
+            if (thursdayStart2 && thursdayEnd2) {
+              responseXML += ",";
+              responseXML += thursdayStart2;
+              responseXML += "-";
+              responseXML += thursdayEnd2;
+            }
+            responseXML += "</thursday>";
+
+            responseXML += "<friday>";
+            let fridayStart1 = player.fridayStart1;
+            let fridayEnd1 = player.fridayEnd1;
+            if (fridayStart1 && fridayEnd1) {
+              responseXML += fridayStart1;
+              responseXML += "-";
+              responseXML += fridayEnd1;
+            }
+            let fridayStart2 = player.fridayStart2;
+            let fridayEnd2 = player.fridayEnd2;
+            if (fridayStart2 && fridayEnd2) {
+              responseXML += ",";
+              responseXML += fridayStart2;
+              responseXML += "-";
+              responseXML += fridayEnd2;
+            }
+            responseXML += "</friday>";
+
+            responseXML += "<saturday>";
+            let saturdayStart1 = player.saturdayStart1;
+            let saturdayEnd1 = player.saturdayEnd1;
+            if (saturdayStart1 && saturdayEnd1) {
+              responseXML += saturdayStart1;
+              responseXML += "-";
+              responseXML += saturdayEnd1;
+            }
+            let saturdayStart2 = player.saturdayStart2;
+            let saturdayEnd2 = player.saturdayEnd2;
+            if (saturdayStart2 && saturdayEnd2) {
+              responseXML += ",";
+              responseXML += saturdayStart2;
+              responseXML += "-";
+              responseXML += saturdayEnd2;
+            }
+            responseXML += "</saturday>";
+
+            responseXML += "<sunday>";
+            let sundayStart1 = player.sundayStart1;
+            let sundayEnd1 = player.sundayEnd1;
+            if (sundayStart1 && sundayEnd1) {
+              responseXML += sundayStart1;
+              responseXML += "-";
+              responseXML += sundayEnd1;
+            }
+            let sundayStart2 = player.sundayStart2;
+            let sundayEnd2 = player.sundayEnd2;
+            if (sundayStart2 && sundayEnd2) {
+              responseXML += ",";
+              responseXML += sundayStart2;
+              responseXML += "-";
+              responseXML += sundayEnd2;
+            }
+            responseXML += "</sunday>";
+
+
+            responseXML += "</playtimes>";
+
+            responseXML += "</settings>";
+            this.response.write(responseXML);
+          }
+        }
+        this.done();
+      },
+    });
