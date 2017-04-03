@@ -1,10 +1,18 @@
 <template name="playlistsPage">
   {{#if isCreateNew}}
+  <div class="breadcrumbs secondHead" style="margin-top:0px;">
+    <div class="container secondHead1">
+      <h3 class="pull-left">Create/Edit Playlist</h3>
+      </div></div><br><br>
     {{#with getCurrentPlaylist}}
       {{> playlistForm}}
     {{/with}}
   {{else}}
-    <br>
+  <div class="breadcrumbs secondHead" style="margin-top:0px;">
+    <div class="container secondHead1">
+      <h3 class="pull-left">Playlists</h3>
+      </div></div><br><br>
+
     {{> playlistsList isCreateNew=isCreateNew}}
   {{/if}}
   <br>

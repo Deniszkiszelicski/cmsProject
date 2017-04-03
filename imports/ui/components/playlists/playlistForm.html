@@ -1,14 +1,20 @@
 <template name="playlistForm">
 
-  <div class="panel panel-grey margin-bottom-40">
-    <div class="panel-heading">
-    </div>
-    <div class="panel-body">
+  <!-- <div class="panel panel-grey margin-bottom-40"> -->
+    <!-- <div class="panel-heading">
+    </div> -->
+    <ul class="nav nav-tabs">
+      <button type="button" class="btn-u btn-u-default  button-save sButton" id="btn-save-playlist" style="float:right;">Save</button>
+      <button type="button" class="btn-u btn-u-default cButton" style="float:right;" id="button-close-playlist-form">Close</button>
+
+    </ul><br>
+
+
+
+    <!-- <div class="panel-body"> -->
+      <div class="panel-body sky-form" style="padding:0px;">
       <!-- <div class="tab-pane fade" id="playlist"> -->
         <form class="sky-form playlist-form" role="form" id="playlist-form">
-          <header>Playlist
-            <i type="button" class="glyphicon glyphicon-remove" id="button-close-playlist-form"></i>
-          </header>
 
           <fieldset>
             <div class="row">
@@ -45,11 +51,14 @@
           </fieldset>
 
           <fieldset>
-            <button type="submit" class="btn-u btn-u-default" id="btn-show-linkedContentGroups" style="margin-left: 12px; margin-bottom: 10px;">Manage content-groups</button>
+            <button type="submit" class="btn-u btn-u-default cButton" id="btn-show-linkedContentGroups" style="margin-bottom:15px;">Manage content-groups</button>
             <div id="contentGroup-collection-fieldset">
               {{#if isShowCGs}}
                 {{#with allContentGroups}}
+                <button type="button" class="btn-u btn-u-default cButton" style="float:right; margin-top:10px;" id="button-close-contentGroup-collection">Close list</button>
+              
                   {{> contentGroupsList}}
+                  <button type="button" class="btn-u btn-u-default cButton" style="float:right; margin-top:3px;" id="button-close-contentGroup-collection">Close list</button>
                 {{/with}}
               {{/if}}
             </div>
@@ -68,12 +77,13 @@
               {{/with}}
             </div>
           </fieldset>
-          <footer>
-            <i type="button" class="fa fa-floppy-o button-save" id="btn-save-playlist"></i>
-          </footer>
+          <fieldset>
+            <button type="button" class="btn-u btn-u-default  button-save sButton" id="btn-save-playlist" style="float:right;">Save</button>
+            <button type="button" class="btn-u btn-u-default cButton" style="float:right;" id="button-close-playlist-form">Close</button>
+          </fieldset>
         </form>
       <!-- </div> -->
     </div>
-  </div>
+  <!-- </div> -->
 
 </template>
