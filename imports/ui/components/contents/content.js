@@ -42,6 +42,14 @@ Template.content.helpers({
     isEditMode = false;
     return isEditMode ? "warning" : "";
   },
+  getType: function getType() {
+    if (this.type == "t") {
+      return "template";
+    } else {
+      const mediaType = Medien.findOne({ _id: this.mediaId }).type;
+      return mediaType;
+    }
+  },
   file: function () {
     const media = Medien.findOne({ _id: this.mediaId });
     let fileId = "";

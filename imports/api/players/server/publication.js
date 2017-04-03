@@ -1,8 +1,11 @@
 import { Meteor } from 'meteor/meteor';
+// import { Builder } from 'xmlbuilder';
 
 Meteor.publish('players', function(playlistUserForm, currentPage, showPerPage, filterText) {
   if(currentPage && showPerPage) {
     const skip = (currentPage - 1) * showPerPage;
+    // const size = Players.find().count();
+    // console.log("size = ", size);
     if (filterText) {
       return Players.find({ playerId: { $regex: new RegExp(filterText), $options: 'i' } }, { sort: { name: 1 }, skip: skip, limit: showPerPage});
     } else {
@@ -12,6 +15,10 @@ Meteor.publish('players', function(playlistUserForm, currentPage, showPerPage, f
   if(playlistUserForm) {
     return Players.find({});
   }
+});
+
+Meteor.publish('countPlayers', function() {
+  return new Counter('countPlayers', Players.find());
 });
 
 let Api = new Restivus({
@@ -80,7 +87,6 @@ Entry.prototype.addPeriodTags = function (startDate, finishDate, monday, tuesday
     result2 += "</sunday>\n";
     this.period2 = result2;
   }
-
 }
 Entry.prototype.assembleEntry = function (){
   const tags = Object.keys(this).sort();
@@ -106,6 +112,10 @@ Api.addRoute('getPlaylistForPlayer', {authRequired: false}, {
           const playlistId = player.playlistId;
           if (playlistId) {
             const playlist = Playlists.findOne({ _id: playlistId });
+            responseXML += "<" + '\\?xml version="1.0" encoding="utf-8" ?>\n'.slice(1, 41);
+            responseXML += "<playlist>\n<scroller>\n<text><![CDATA[";
+            responseXML += player.tickerText;
+            responseXML += " ]]></text>\n<hidescroller>0</hidescroller>\n</scroller>\n";
             testEntry.addTag("playlistName", playlist.name);
             const contentGroupIds = playlist.contentGroupIds;
             const contentGroupIdsLength = contentGroupIds.length;
@@ -146,6 +156,7 @@ Api.addRoute('getPlaylistForPlayer', {authRequired: false}, {
               }
             }
           }
+          responseXML += "</playlist>";
           this.response.write(responseXML);
         }
       }

@@ -153,6 +153,10 @@ PlayersSchema = new SimpleSchema({
     type: String,
     optional: true,
   },
+  tickerText: {
+    type: String,
+    optional: true,
+  },
   createdAt: {
     type: Date,
     autoValue: function() {

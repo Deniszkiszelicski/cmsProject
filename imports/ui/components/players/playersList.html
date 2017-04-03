@@ -11,16 +11,9 @@
           placeholder="Type text to filter by ID" id="player-filter-input">
 
           <!-- <div class="text-center"> -->
-
-          <ul class="pagination pagination-sm" style="margin: 3px; margin-right: 10px; float: right;">
-            <li><a class="page-go-back" href="#">«</a></li>
-            <li class="{{isActive 1}}"><a class="page-number" href="#" data-page="{{getPageN 1}}">{{getPageN 1}}</a></li>
-            <li class="{{isActive 2}}"><a class="page-number" href="#" data-page="{{getPageN 2}}">{{getPageN 2}}</a></li>
-            <li class="{{isActive 3}}"><a class="page-number" href="#" data-page="{{getPageN 3}}">{{getPageN 3}}</a></li>
-            <li class="{{isActive 4}}"><a class="page-number" href="#" data-page="{{getPageN 4}}">{{getPageN 4}}</a></li>
-            <li class="{{isActive 5}}"><a class="page-number" href="#" data-page="{{getPageN 5}}">{{getPageN 5}}</a></li>
-            <li><a class="page-go-forward" href="#">»</a></li>
-          </ul>
+          {{#with optionsForPagination}}
+            {{> paginationPanel}}
+          {{/with}}
 
           <!-- <div class="row"> -->
             <!-- <div class="col-md-6"> -->

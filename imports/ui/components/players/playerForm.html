@@ -64,11 +64,24 @@
                     </label>
                   </section>
                   <section class="col col-3">
-                    <label class="label">District</label>
+                    <!-- <label class="label">District</label>
                     <label class="input">
                       <input type="text" name="district" id="district"
                       placeholder="Enter district" value="{{this.district}}">
-                    </label>
+                    </label> -->
+                    <label class="label">District</label>
+                    <label class="select">
+    									<select id="district">
+                        {{#if isDistrictChosen}}
+                          <option value="{{district}}">{{district}}</option>
+                        {{else}}
+                        <option value="0">Choose district</option>
+                        {{/if}}
+                        {{#each getDistricts}}
+                          <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+    									</select>
+    								</label>
                   </section>
 
                 </div>
@@ -350,6 +363,15 @@
                     <label class="label">Duration of private</label>
                     <label class="input">
                       30 min(s)
+                    </label>
+                  </section>
+                </div>
+                <div class="row">
+                  <section class="col col-11">
+                    <label class="label">Ticker text</label>
+                    <label class="input">
+                      <input type="text" name="tickerText" id="tickerText"
+                      placeholder="Enter Ticker text" value="{{this.tickerText}}">
                     </label>
                   </section>
                 </div>

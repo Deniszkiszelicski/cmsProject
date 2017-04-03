@@ -1,13 +1,13 @@
 <template name="contentsPage">
-
-
+  {{#with getVideoId}}
+    {{> videoModal}}
+  {{/with}}
   {{#if isCreateNew}}
-
     {{#with getCurrentContent}}
       {{> contentForm}}
     {{/with}}
   {{else}}
-  
+
   <div class="breadcrumbs secondHead" style="margin-top:0px;">
   <div class="container secondHead1">
     <h3 class="pull-left">Contents</h3>
