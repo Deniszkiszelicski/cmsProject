@@ -1,6 +1,4 @@
 <template name="contentGroupForm">
-  <!-- TODO: delete style -->
-
   <!-- Modal -->
 <div class="modal" id="myModal33" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -22,9 +20,6 @@
   </div>
 </div>
 <!-- modal -->
-
-  <!-- <div class="panel panel-grey margin-bottom-40"> -->
-
     <ul class="nav nav-tabs">
       <button type="button" class="btn-u btn-u-default sButton" id="closeContentForm1" data-toggle="modal" data-target="#myModal33" style="float:right;">Save</button>
       <button type="button" class="btn-u btn-u-default cButton" style="float:right;" id="button-close-contentGroup-form">Close</button>
@@ -34,10 +29,6 @@
 
     <div class="panel-body sky-form" style="padding:0px;">
       <form class="sky-form content-group-form" role="form">
-        <!-- <header>Content-group
-          <i type="button" class="glyphicon glyphicon-remove" id="button-close-contentGroup-form"></i>
-        </header> -->
-
         <fieldset>
           <div class="row">
             <section class="col col-6">
@@ -91,13 +82,7 @@
               {{#with getOptions}}
               <button type="button" class="btn-u btn-u-default cButton" style="float:right; margin-top:10px;" id="button-close-contentList">Close list</button>
               {{> contentsList}}
-
-                <!-- <button type="submit" class="btn-u btn-u-default button-save" id="btn-save-contentGroup">Save</button> -->
-
                 <button type="button" class="btn-u btn-u-default cButton" style="float:right; margin-top:3px;" id="button-close-contentList">Close list</button>
-
-
-
               {{/with}}
             {{/if}}
             </fieldset>
@@ -137,13 +122,11 @@
         </fieldset>
 
         <fieldset>
-          <!-- <button type="submit" class="btn-u btn-u-default button-save" id="btn-save-contentGroup">Save</button> -->
           <button type="button" class="btn-u btn-u-default sButton" id="closeContentForm1" data-toggle="modal" data-target="#myModal33" style="float:right; margin-bottom:20px">Save</button>
           <button type="button" class="btn-u btn-u-default cButton" style="float:right;" id="button-close-contentGroup-form">Close</button>
 
         </fieldset>
       </form>
     </div>
-  <!-- </div> -->
 
 </template>

@@ -1,21 +1,10 @@
 <template name="playlistForm">
-
-  <!-- <div class="panel panel-grey margin-bottom-40"> -->
-    <!-- <div class="panel-heading">
-    </div> -->
     <ul class="nav nav-tabs">
       <button type="button" class="btn-u btn-u-default  button-save sButton" id="btn-save-playlist" style="float:right;">Save</button>
       <button type="button" class="btn-u btn-u-default cButton" style="float:right;" id="button-close-playlist-form">Close</button>
-
     </ul><br>
-
-
-
-    <!-- <div class="panel-body"> -->
       <div class="panel-body sky-form" style="padding:0px;">
-      <!-- <div class="tab-pane fade" id="playlist"> -->
         <form class="sky-form playlist-form" role="form" id="playlist-form">
-
           <fieldset>
             <div class="row">
               <section class="col col-4">
@@ -46,17 +35,14 @@
                   placeholder="Enter Ticker text" value="{{this.tickerText}}">
                 </label>
               </section>
-
             </div>
           </fieldset>
-
           <fieldset>
             <button type="submit" class="btn-u btn-u-default cButton" id="btn-show-linkedContentGroups" style="margin-bottom:15px;">Manage content-groups</button>
             <div id="contentGroup-collection-fieldset">
               {{#if isShowCGs}}
                 {{#with allContentGroups}}
                 <button type="button" class="btn-u btn-u-default cButton" style="float:right; margin-top:10px;" id="button-close-contentGroup-collection">Close list</button>
-              
                   {{> contentGroupsList}}
                   <button type="button" class="btn-u btn-u-default cButton" style="float:right; margin-top:3px;" id="button-close-contentGroup-collection">Close list</button>
                 {{/with}}
@@ -82,8 +68,5 @@
             <button type="button" class="btn-u btn-u-default cButton" style="float:right;" id="button-close-playlist-form">Close</button>
           </fieldset>
         </form>
-      <!-- </div> -->
     </div>
-  <!-- </div> -->
-
 </template>
