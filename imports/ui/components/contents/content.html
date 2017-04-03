@@ -1,12 +1,5 @@
 <template name ="content">
-
-  <script type="text/javascript">
-    $('tbody').sortable({
-      update: function(event, ui){ }
-    });
-  </script>
-  
-  <tr class="content-row" draggable="true" style="background-color: {{getColour}}">
+  <tr class="content-row" style="background-color: {{getColour}}">
   <td><input type="checkbox"></td>
       <td>
         <div class="thumbnails thumbnail-style">
@@ -15,7 +8,7 @@
       </td>
       <td>{{name}}</td>
       <td>{{duration}}</td>
-      <td>{{type}}</td>
+      <td>{{getType}}</td>
       <td>{{prettifyDate createdAt}}</td>
       <td>
         {{#each regions}}
@@ -24,7 +17,6 @@
       </td>
       <td>{{assortiment}}</td>
       <td>
-        <input type="text" class="sortRow" value="{{_id}}" HIDDEN>
         <div class="media-row-controls">
           <i type="button" class="glyphicon glyphicon-play-circle" id="button-play-content"></i>
           {{#if enableButtonEdit}}

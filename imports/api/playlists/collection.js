@@ -6,10 +6,6 @@ PlaylistsSchema = new SimpleSchema({
   name: {
     type: String,
   },
-  tickerText: {
-    type: String,
-    optional: true,
-  },
   contentGroupIds: {
     type: [String],
     optional: true,

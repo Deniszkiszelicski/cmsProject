@@ -30,16 +30,16 @@ Template.contentsList.helpers({
       for (let i = 0; i < contentIdsWithColour.length; i++) {
         contentIds.push(contentIdsWithColour[i].id);
       }
-      const contents = Contents.find({ _id: { "$in" : contentIds } }).fetch();
+      const contents = Contents.find({ _id: { "$in" : contentIds } }, {fields: {'colour': 0 }}).fetch();
       const l = contentIds.length;
-      for (i = 0; i < l; i++) {
+      for (let i = 0; i < l; i++) {
         const currentContentId = contentIds[i];
         const ll = contents.length;
         for (j = 0; j < ll; j++) {
-          let currentContentObj = contents[j];
+          let currentContentObj = Object.assign({}, contents[j]);
           if (currentContentObj._id == currentContentId) {
             const colour = contentIdsWithColour[i].colour;
-            currentContentObj["colour"] = colour;
+            currentContentObj['colour'] = colour;
             contentsWithOptions.push(currentContentObj);
           }
         }

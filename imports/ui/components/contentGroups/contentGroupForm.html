@@ -1,33 +1,13 @@
 <template name="contentGroupForm">
-  <!-- Modal -->
-<div class="modal" id="myModal33" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Content Group</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <h4>Save change?</h4>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-        <button type="button" class="btn btn-primary" id="btn-save-contentGroup" data-dismiss="modal" >Yes</button>
-      </div>
+  <br>
+  <ul class="nav nav-tabs">
+    <button type="button" class="btn-u btn-u-default sButton" style="float:right; margin-bottom:20px" id="btn-save-contentGroup">Save</button>
+    <button type="button" class="btn-u btn-u-default cButton" style="float:right;" id="button-close-contentGroup-form">Close</button>
+  </ul>
+  <div class="panel panel-grey margin-bottom-40">
+    <div class="panel-heading">
     </div>
-  </div>
-</div>
-<!-- modal -->
-    <ul class="nav nav-tabs">
-      <button type="button" class="btn-u btn-u-default sButton" id="closeContentForm1" data-toggle="modal" data-target="#myModal33" style="float:right;">Save</button>
-      <button type="button" class="btn-u btn-u-default cButton" style="float:right;" id="button-close-contentGroup-form">Close</button>
-
-    </ul><br>
-
-
-    <div class="panel-body sky-form" style="padding:0px;">
+    <div class="panel-body">
       <form class="sky-form content-group-form" role="form">
         <fieldset>
           <div class="row">
@@ -73,11 +53,8 @@
 
         <fieldset>
           <button type="submit" class="btn-u btn-u-default cButton" id="btn-select-content">Add content</button>
-
           <div id="content-collection-fieldset" >
             <fieldset>
-
-
             {{#if isSelectContent}}
               {{#with getOptions}}
               <button type="button" class="btn-u btn-u-default cButton" style="float:right; margin-top:10px;" id="button-close-contentList">Close list</button>
@@ -94,7 +71,6 @@
                 Included contents
               </div>
               <div class="panel-body">
-                {{#HammerTouchArea gestureMap=includedContentsGestures}}
                 <table class="table table-striped table-list" id="includedContents-table">
                   <thead>
                     <tr>
@@ -109,24 +85,22 @@
                       <th>Controls</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody id="included-contents">
                     {{#each includedContents}}
                     {{> content}}
                     {{/each}}
                   </tbody>
                 </table>
-                {{/HammerTouchArea}}
               </div>
             </div>
           {{/if}}
         </fieldset>
-
-        <fieldset>
-          <button type="button" class="btn-u btn-u-default sButton" id="closeContentForm1" data-toggle="modal" data-target="#myModal33" style="float:right; margin-bottom:20px">Save</button>
+        <fieldset>      
+          <button type="button" class="btn-u btn-u-default sButton" style="float:right; margin-bottom:20px" id="btn-save-contentGroup">Save</button>
           <button type="button" class="btn-u btn-u-default cButton" style="float:right;" id="button-close-contentGroup-form">Close</button>
-
         </fieldset>
       </form>
     </div>
 
+  </div>
 </template>

@@ -48,6 +48,7 @@ Template.playlistForm.helpers({
         contentIdsWithColour.push(contentIdWithColour);
       }
     }
+    console.log("in playlistForm contentIdsWithColour = ", contentIdsWithColour);
     const options = { header: "Included contents", enableButtonDelete: false,
                       enableButtonEdit: false, enableButtonRemove: true,
                       enableButtonNewCG: false, enableFilter: false,
@@ -102,7 +103,6 @@ Template.playlistForm.events({
     const name = $('#name').val();
     const playlist = { _id: this._id,
                       name: name,
-                      tickerText: $('#tickerText').val(),
                       contentGroupIds: contentGroupIds,
                     };
     Meteor.call('upsertPlaylist', playlist);
