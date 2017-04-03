@@ -1,6 +1,10 @@
 <template name="contentGroupForm">
   <!-- TODO: delete style -->
   <br>
+  <ul class="nav nav-tabs">
+    <button type="button" class="btn-u btn-u-default sButton" style="float:right; margin-bottom:20px" id="btn-save-contentGroup">Save</button>
+    <button type="button" class="btn-u btn-u-default cButton" style="float:right;" id="button-close-contentGroup-form">Close</button>
+  </ul>
   <div class="panel panel-grey margin-bottom-40">
     <div class="panel-heading">
     </div>
@@ -93,7 +97,7 @@
           {{/if}}
         </fieldset>
         <fieldset>
-          <button type="button" class="btn-u btn-u-default sButton" id="closeContentForm1" data-toggle="modal" data-target="#myModal33" style="float:right; margin-bottom:20px">Save</button>
+          <button type="button" class="btn-u btn-u-default sButton" style="float:right; margin-bottom:20px" id="btn-save-contentGroup">Save</button>
           <button type="button" class="btn-u btn-u-default cButton" style="float:right;" id="button-close-contentGroup-form">Close</button>
         </fieldset>
       </form>
