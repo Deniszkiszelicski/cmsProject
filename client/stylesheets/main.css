@@ -1,3 +1,21 @@
+input[type='checkbox'].tags-checkbox:checked + label > i:first-of-type,
+input[type='checkbox'].tags-checkbox + label > i:last-of-type{
+    display: none;
+}
+input[type='checkbox'].tags-checkbox:checked + label > i:last-of-type{
+    display: inline-block;
+}
+@media (min-width: 768px) {
+  .modalRoles {
+    width: 700px;
+    margin: 30px auto;
+  }
+}
+  @media (min-width: 992px) {
+  .modalRoles {
+    width: 1000px;
+  }
+}
 .sky-form a {
     color: #404040;
 }
