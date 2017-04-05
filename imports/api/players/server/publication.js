@@ -2,23 +2,75 @@ import { Meteor } from 'meteor/meteor';
 // import { Builder } from 'xmlbuilder';
 
 Meteor.publish('players', function(playlistUserForm, currentPage, showPerPage, filterText) {
-  if(currentPage && showPerPage) {
-    const skip = (currentPage - 1) * showPerPage;
-    // const size = Players.find().count();
-    // console.log("size = ", size);
-    if (filterText) {
-      return Players.find({ playerId: { $regex: new RegExp(filterText), $options: 'i' } }, { sort: { name: 1 }, skip: skip, limit: showPerPage});
-    } else {
-      return Players.find({}, { sort: { name: 1 }, skip: skip, limit: showPerPage});
-    }
-  }
   if(playlistUserForm) {
     return Players.find({});
   }
+  const userId = this.userId;
+  if (userId) {
+    const user = Meteor.users.findOne({ _id: userId });
+    const roleId = user.profile.role;
+    const role = Roles.findOne({ _id: roleId });
+    if (role) {
+      if (role.seeAllPlayers) {
+        const networkId = role.networkId;
+        if(currentPage && showPerPage) {
+          const skip = (currentPage - 1) * showPerPage;
+          if (filterText) {
+            return Players.find({ $and: [ { playerId: { $regex: new RegExp(filterText), $options: 'i' } },
+                                          { networkId: networkId } ]  }, { sort: { name: 1 }, skip: skip, limit: showPerPage});
+          } else {
+            return Players.find({ networkId: networkId }, { sort: { name: 1 }, skip: skip, limit: showPerPage});
+          }
+        }
+      } else {
+        const playerIds = user.profile.assignedPlayers;
+        if(currentPage && showPerPage) {
+          const skip = (currentPage - 1) * showPerPage;
+          if (filterText) {
+            return Players.find({ $and: [ { playerId: { $regex: new RegExp(filterText), $options: 'i' } },
+                                          { _id: { $in: playerIds } } ]  }, { sort: { name: 1 }, skip: skip, limit: showPerPage});
+          } else {
+            return Players.find({ _id: { $in: playerIds } }, { sort: { name: 1 }, skip: skip, limit: showPerPage});
+          }
+        }
+      }
+    }
+  }
 });
 
-Meteor.publish('countPlayers', function() {
-  return new Counter('countPlayers', Players.find());
+Meteor.publish('countPlayers', function(currentPage, showPerPage, filterText) {
+  const userId = this.userId;
+  if (userId) {
+    const user = Meteor.users.findOne({ _id: userId });
+    const roleId = user.profile.role;
+    const role = Roles.findOne({ _id: roleId });
+    if (role) {
+      if (role.seeAllPlayers) {
+        const networkId = role.networkId;
+        if(currentPage && showPerPage) {
+          const skip = (currentPage - 1) * showPerPage;
+          if (filterText) {
+            return new Counter('countPlayers', Players.find({ $and: [ { playerId: { $regex: new RegExp(filterText), $options: 'i' } },
+                                          { networkId: networkId } ]  }, { sort: { name: 1 }, skip: skip, limit: showPerPage}));
+          } else {
+            return new Counter('countPlayers', Players.find({ networkId: networkId }, { sort: { name: 1 }, skip: skip, limit: showPerPage}));
+          }
+        }
+      } else {
+        const playerIds = user.profile.assignedPlayers;
+        if(currentPage && showPerPage) {
+          const skip = (currentPage - 1) * showPerPage;
+          if (filterText) {
+            return new Counter('countPlayers', Players.find({ $and: [ { playerId: { $regex: new RegExp(filterText), $options: 'i' } },
+                                          { _id: { $in: playerIds } } ]  }, { sort: { name: 1 }, skip: skip, limit: showPerPage}));
+          } else {
+            return new Counter('countPlayers', Players.find({ _id: { $in: playerIds } }, { sort: { name: 1 }, skip: skip, limit: showPerPage}));
+          }
+        }
+      }
+    }
+  }
+  // return new Counter('countPlayers', Players.find());
 });
 
 let Api = new Restivus({
@@ -299,10 +351,7 @@ Api.addRoute('getPlaylistForPlayer', {authRequired: false}, {
               responseXML += sundayEnd2;
             }
             responseXML += "</sunday>";
-
-
             responseXML += "</playtimes>";
-
             responseXML += "</settings>";
             this.response.write(responseXML);
           }

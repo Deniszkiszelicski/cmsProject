@@ -5,8 +5,6 @@ import '../../../api/players/collection';
 import '../playlists/playlistContentPart';
 import './playerForm.html';
 
-Meteor.subscribe('players');
-
 Template.playerForm.onCreated(function () {
   this.isShowCGs = new ReactiveVar(false);
   this.playlistId = new ReactiveVar(this.data.playlistId);

@@ -17,6 +17,7 @@ Template.playersList.onCreated(function onCreated() {
   this.showPerPage = new ReactiveVar(showPerPage);
   this.filterText = new ReactiveVar();
   this.playerToDelete = new ReactiveVar();
+  this.lastPageNumber = new ReactiveVar(1);
   this.autorun(() => {
     const currentPage = this.currentPage.get();
     const showPerPage = this.showPerPage.get();
@@ -24,9 +25,15 @@ Template.playersList.onCreated(function onCreated() {
     if (currentPage && showPerPage) {
       this.subscribe('players', false, currentPage, showPerPage, filterText);
     }
+    const playersCount = Counter.get("countPlayers", currentPage, showPerPage, filterText);
+    const lastPageNumber = Math.ceil(playersCount / showPerPage);
+    this.lastPageNumber.set(lastPageNumber > 0 ? lastPageNumber : 1);
+    console.log("playersCount = ", playersCount);
+    console.log("showPerPage = ", showPerPage);
+    console.log("lastPageNumber = ", Math.ceil(playersCount / showPerPage));
   });
-  const playersCount = Counter.get("countPlayers");
-  this.lastPageNumber = new ReactiveVar(Math.ceil(playersCount / showPerPage));
+  // const playersCount = Counter.get("countPlayers", currentPage, showPerPage, filterText);
+  // this.lastPageNumber = new ReactiveVar(Math.ceil(playersCount / showPerPage));
 });
 
 Template.playersList.onRendered(function OnRendered() {
