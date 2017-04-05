@@ -1,7 +1,8 @@
 <template name ="playerForm">
+    <div class="container content">
       <div class="tab-v1 player-form">
         <ul class="nav nav-tabs">
-          <li>
+          <li class="active">
             <a href="#player-main" data-toggle="tab" area-expanded="true">Player</a>
           </li>
           <li>
@@ -10,13 +11,13 @@
           <li>
             <a href="#playlist" data-toggle="tab" area-expanded="false">Playlist</a>
           </li>
+          <button type="submit" class="btn-u btn-u-default button-save sButton" id="btn-save-content" style="float:right; ">Save</button>
+          <button type="button" class="btn-u btn-u-default cButton" id="button-close-player-form" style="float:right;">Close</button>
+
         </ul>
         <div class="tab-content">
-          <div class="tab-pane fade active in" id="player-main">
+          <div class="tab-pane fade active in" id="player-main"><br>
             <form class="sky-form" action=# id="sky-form">
-              <header>Player
-                <i type="button" class="glyphicon glyphicon-remove" id="button-close-player-form"></i>
-              </header>
 
               <fieldset>
                 <div class="row">
@@ -286,54 +287,55 @@
 
                 </div>
               </fieldset>
-              <footer>
-                <i type="button" class="fa fa-floppy-o button-save"></i>
-                <!-- <button type="submit" class="btn-u btn-u-default button-save" id="btn-save-content">Save</button> -->
-              </footer>
+              <fieldset style="margin-bottom:15px">
+                <button type="submit" class="btn-u btn-u-default button-save sButton" id="btn-save-content" style="float:right; ">Save</button>
+                <button type="button" class="btn-u btn-u-default cButton" id="button-close-player-form" style="float:right;">Close</button>
+              </fieldset>
             </form>
           </div>
 
-          <div class="tab-pane fade" id="player-details">
+          <div class="tab-pane fade" id="player-details"><br>
             <form class="sky-form" action="#" id="sky-form">
-              <header>Details
-                <i type="button" class="glyphicon glyphicon-remove" id="button-close-player-form"></i>
-              </header>
-              <fieldset>
+
+              <fieldset style="margin-bottom:20px;">
+          <div class="row" style="padding-left:20px">
+
                 <label class="label">Assortiment</label>
-                <!-- TODO: delete style -->
-                <div class="row" style="margin-left: 10px;">
+  
+
                   {{#each listOfAssortiment}}
-                    <label class="checkbox-inline"><input type="checkbox" {{getTypePresence}} value="{{this}}" class="player-assortiment">{{this}}</label>
+                    <label class="checkbox-inline" style="margin-bottom:20px;"><input type="checkbox" {{getTypePresence}} value="{{this}}" class="player-assortiment">{{this}}</label>
                   {{/each}}
                 </div>
-                <br>
+
               </fieldset>
 
-              <fieldset>
+              <fieldset style="margin-bottom:20px;">
+                  <div class="row" style="padding-left:20px">
+
+
                 <label class="label">Region</label>
-                <!-- TODO: delete style -->
-                <div class="row" style="margin-left: 10px;">
+
+
                   {{#each regions}}
-                    <label class="checkbox-inline"><input type="checkbox" {{getRegionPresence}} value="{{this}}" class="player-regions">{{this}}</label>
+                    <label class="checkbox-inline" style="margin-bottom:20px;"><input type="checkbox" {{getRegionPresence}} value="{{this}}" class="player-regions">{{this}}</label>
                   {{/each}}
                 </div>
               </fieldset>
-              <br>
-              <footer>
-                <i type="button" class="fa fa-floppy-o button-save"></i>
-                <!-- <button type="submit" class="btn-u btn-u-default button-save" id="btn-save-content">Save</button> -->
-              </footer>
+
+              <fieldset style="margin-bottom:15px">
+                <button type="submit" class="btn-u btn-u-default button-save sButton" id="btn-save-content" style="float:right; ">Save</button>
+                <button type="button" class="btn-u btn-u-default cButton" id="button-close-player-form" style="float:right;">Close</button>
+              </fieldset>
             </form>
           </div>
 
 
 
 
-          <div class="tab-pane fade" id="playlist">
+          <div class="tab-pane fade" id="playlist"><br>
             <form class="sky-form playlist-form" role="form">
-              <header>Playlist
-                <i type="button" class="glyphicon glyphicon-remove" id="button-close-player-form"></i>
-              </header>
+
 
               <fieldset>
                 <div class="row">
@@ -380,12 +382,14 @@
               {{#with getPlaylist}}
                 {{> playlistContentPart}}
               {{/with}}
-              <footer>
-                <i type="button" class="fa fa-floppy-o button-save"></i>
-              </footer>
+              <fieldset style="margin-bottom:15px">
+                <button type="submit" class="btn-u btn-u-default button-save sButton" id="btn-save-content" style="float:right; ">Save</button>
+                <button type="button" class="btn-u btn-u-default cButton" id="button-close-player-form" style="float:right;">Close</button>
+              </fieldset>
             </form>
           </div>
         </div>
-
       </div>
+      </div>
+
 </template>

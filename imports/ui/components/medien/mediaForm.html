@@ -5,17 +5,28 @@
         <button type="button" class="btn-u btn-u-default cButton" style="float:right;" id="buttonCloseMediaForm">Close</button>
       </ul><br>
       <div class="panel-body sky-form">
+        <div class="col-sm-2"><br>
+          <div class="thumbnails thumbnail-style">
+            <!-- todo:image link -->
+            <img src="{{imageFile.link}}" alt="{{imageFile.name}}"  width="71" height="40"/>
+          </div>
+        </div>
         <div class="col-sm-3">
-      <input type="text" name=""  id="nameOfMedia"
-        placeholder="Enter name of media" value="{{this.name}}">
+            Name : <br>
+            <input type="text" name=""  id="nameOfMedia"
+              placeholder="Enter name of media" value="{{this.name}}">
       </div>
+        <div class="col-sm-3">
+            Category :
+                    {{> searchCategory category=category}}
+        </div>
     <div class="col-sm-3">
-                {{> searchCategory category=category}}
-    </div>
-    <div class="col-sm-3">
-                {{#with this}}
-                  {{> mediaUpload uploadedFileName=uploadedFileName}}
-                {{/with}}
+      <span style="margin-left:5px;"> File :</span>
+        {{#with this}}
+          {{> mediaUpload uploadedFileName=uploadedFileName}}
+        {{/with}}
+
+
     </div></div><br><br>
     </div>
 </template>

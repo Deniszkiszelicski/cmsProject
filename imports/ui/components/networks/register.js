@@ -19,7 +19,7 @@ var resultH;
 
 
 Template.registerNetwork.events({
-  'submit .register-form1': function (event) {
+  'click #saveNetwork': function (event) {
 
     event.preventDefault();
     var footer1 = '';
@@ -103,4 +103,3 @@ Template.registerNetwork.events({
 },
 
     });
-    

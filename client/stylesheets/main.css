@@ -1,3 +1,37 @@
+.sky-form a {
+    color: #404040;
+}
+.btnGrp{
+  border-radius: 0px;
+  height: 39px;
+  padding: 6px 10px;
+  outline: none;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 0;
+    background: #fff;
+    color: #404040;
+    font: 15px/23px 'Open Sans', Helvetica, Arial, sans-serif;
+
+}
+.pagination>li>a, .pagination>li>span{
+  color:#717984;
+}
+.pagination-sm>li:last-child>a{
+  border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.pagination-sm>li:first-child>a{
+  border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.pagination>.active>a, .pagination>.active>a:focus,
+ .pagination>.active>a:hover, .pagination>.active>span,
+  .pagination>.active>span:focus, .pagination>.active>span:hover{
+  background-color:#72c02c;
+  border-color: #72c02c;
+
+}
 .sButton{
   margin-left:5px;
   background-color:#72c02c;
@@ -234,12 +268,12 @@ div.p1, div.p2,div.p3{
   line-height: 26px;
 }
 
-.player-form, #media-form, .panel-heading{
+ #media-form, .panel-heading{
   position: relative;
   font-size: 24px;
 }
 
-#button-close-player-form{
+/*#button-close-player-form{
   margin-top: 20px;
   margin-right: 15px;
   color: red;
@@ -248,7 +282,7 @@ div.p1, div.p2,div.p3{
   top: 1px;
   right: 5px;
   font-size: 1em;
-}
+}*/
 
 /*#button-close-contentList,*/
  #button-close-media-collection{
