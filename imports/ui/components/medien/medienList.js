@@ -35,9 +35,18 @@ Template.medienList.helpers({
     return Medien.find().fetch();
   },
   filteredMedien: () => {
-    // let filterText = Template.instance().filterText.get();
-    // return Medien.find({name: { $regex: new RegExp(filterText), $options: 'i' }}).fetch();
-    return Medien.find().fetch();
+    const medienCurPage = Medien.find().fetch();
+    const userId = Meteor.userId();
+    const roleId = Meteor.users.findOne({ _id: userId }).profile.role;
+    const role = Roles.findOne({ _id: roleId });
+    const mayEdit = role.editVideoImg;
+    const mayDelete = role.deleteVideoImg;
+    const options = { enableButtonEditMedia: mayEdit,
+                      enableButtonDeleteMedia: mayDelete };
+    medienCurPage.forEach(function(element) {
+      element["options"] = options;
+    });
+    return medienCurPage;
   },
   mediaToDelete: function mediaToDelete() {
     const media = Template.instance().mediaToDelete.get();
