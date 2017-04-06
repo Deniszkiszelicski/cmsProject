@@ -9,8 +9,6 @@ import '../pagination/paginationPanel';
 import './player';
 import './playersList.html';
 
-Meteor.subscribe('countPlayers');
-
 Template.playersList.onCreated(function onCreated() {
   this.currentPage = new ReactiveVar(this.data.options.initialPage);
   const showPerPage = this.data.options.initialShowPerPage;
@@ -24,16 +22,13 @@ Template.playersList.onCreated(function onCreated() {
     const filterText = this.filterText.get();
     if (currentPage && showPerPage) {
       this.subscribe('players', false, currentPage, showPerPage, filterText);
+      this.subscribe('countPlayers', currentPage, showPerPage, filterText);
     }
-    const playersCount = Counter.get("countPlayers", currentPage, showPerPage, filterText);
+
+    const playersCount = Counter.get("countPlayers");
     const lastPageNumber = Math.ceil(playersCount / showPerPage);
     this.lastPageNumber.set(lastPageNumber > 0 ? lastPageNumber : 1);
-    console.log("playersCount = ", playersCount);
-    console.log("showPerPage = ", showPerPage);
-    console.log("lastPageNumber = ", Math.ceil(playersCount / showPerPage));
   });
-  // const playersCount = Counter.get("countPlayers", currentPage, showPerPage, filterText);
-  // this.lastPageNumber = new ReactiveVar(Math.ceil(playersCount / showPerPage));
 });
 
 Template.playersList.onRendered(function OnRendered() {
@@ -60,6 +55,16 @@ Template.playersList.helpers({
       const player = playerVar;
       return "Delete '" + player.name + "' (ID = " + player.playerId + ") player.";
     }
+  },
+  enableButtonNewPlayer: function enableButtonNewPlayer() {
+    const options = this.options;
+    const userId = Meteor.userId();
+    const roleId = Meteor.users.findOne({ _id: userId }).profile.role;
+    const role = Roles.findOne({ _id: roleId });
+    if (options.enableButtonNewPlayer && role.createPlayer) {
+      return true;
+    }
+    return false;
   },
 });
 

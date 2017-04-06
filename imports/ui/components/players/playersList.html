@@ -3,9 +3,13 @@
       <div class="panel panel-default panel-table">
         <div class="panel-heading">
           <span>{{options.header}}</span>
-          {{#if options.enableButtonNewPlayer}}
+
+          {{#if enableButtonNewPlayer}}
             <button type="button" class="btn btn-default button-new">New player</button>
           {{/if}}
+          <!-- {{#if options.enableButtonNewPlayer}}
+            <button type="button" class="btn btn-default button-new">New player</button>
+          {{/if}} -->
 
           <input type="text" class="form-control filter-input"
           placeholder="Type text to filter by ID" id="player-filter-input">

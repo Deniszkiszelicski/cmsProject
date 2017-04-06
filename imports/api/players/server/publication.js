@@ -1,5 +1,4 @@
 import { Meteor } from 'meteor/meteor';
-// import { Builder } from 'xmlbuilder';
 
 Meteor.publish('players', function(playlistUserForm, currentPage, showPerPage, filterText) {
   if(playlistUserForm) {
@@ -24,7 +23,7 @@ Meteor.publish('players', function(playlistUserForm, currentPage, showPerPage, f
         }
       } else {
         const playerIds = user.profile.assignedPlayers;
-        if(currentPage && showPerPage) {
+        if(currentPage && showPerPage && playerIds.length > 0) {
           const skip = (currentPage - 1) * showPerPage;
           if (filterText) {
             return Players.find({ $and: [ { playerId: { $regex: new RegExp(filterText), $options: 'i' } },
@@ -40,6 +39,7 @@ Meteor.publish('players', function(playlistUserForm, currentPage, showPerPage, f
 
 Meteor.publish('countPlayers', function(currentPage, showPerPage, filterText) {
   const userId = this.userId;
+  let cursor;
   if (userId) {
     const user = Meteor.users.findOne({ _id: userId });
     const roleId = user.profile.role;
@@ -50,10 +50,10 @@ Meteor.publish('countPlayers', function(currentPage, showPerPage, filterText) {
         if(currentPage && showPerPage) {
           const skip = (currentPage - 1) * showPerPage;
           if (filterText) {
-            return new Counter('countPlayers', Players.find({ $and: [ { playerId: { $regex: new RegExp(filterText), $options: 'i' } },
-                                          { networkId: networkId } ]  }, { sort: { name: 1 }, skip: skip, limit: showPerPage}));
+            cursor = Players.find({ $and: [ { playerId: { $regex: new RegExp(filterText), $options: 'i' } },
+                                          { networkId: networkId } ]  }, { sort: { name: 1 }, skip: skip, limit: showPerPage});
           } else {
-            return new Counter('countPlayers', Players.find({ networkId: networkId }, { sort: { name: 1 }, skip: skip, limit: showPerPage}));
+            cursor = Players.find({ networkId: networkId }, { sort: { name: 1 }, skip: skip, limit: showPerPage});
           }
         }
       } else {
@@ -61,16 +61,16 @@ Meteor.publish('countPlayers', function(currentPage, showPerPage, filterText) {
         if(currentPage && showPerPage) {
           const skip = (currentPage - 1) * showPerPage;
           if (filterText) {
-            return new Counter('countPlayers', Players.find({ $and: [ { playerId: { $regex: new RegExp(filterText), $options: 'i' } },
-                                          { _id: { $in: playerIds } } ]  }, { sort: { name: 1 }, skip: skip, limit: showPerPage}));
+            cursor = Players.find({ $and: [ { playerId: { $regex: new RegExp(filterText), $options: 'i' } },
+                                          { _id: { $in: playerIds } } ]  }, { sort: { name: 1 }, skip: skip, limit: showPerPage});
           } else {
-            return new Counter('countPlayers', Players.find({ _id: { $in: playerIds } }, { sort: { name: 1 }, skip: skip, limit: showPerPage}));
+            cursor = Players.find({ _id: { $in: playerIds } }, { sort: { name: 1 }, skip: skip, limit: showPerPage});
           }
         }
       }
     }
   }
-  // return new Counter('countPlayers', Players.find());
+  return new Counter('countPlayers', cursor);
 });
 
 let Api = new Restivus({
