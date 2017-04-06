@@ -101,7 +101,7 @@ Template.playersList.events({
     const currentPage = templateInstance.currentPage.get();
     templateInstance.currentPage.set(currentPage + 1);
   },
-  'keyup #player-per-page-input': function (event, templateInstance) {
+  'keyup #records-per-page-input': function (event, templateInstance) {
     const showPerPage = parseInt(event.currentTarget.value);
     if (showPerPage > 0) {
       templateInstance.showPerPage.set(showPerPage);
