@@ -1,4 +1,4 @@
-<template name ="networksList"><br>
+<template name ="networksList">
   <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -19,71 +19,85 @@
     </div>
   </div>
 </div>
-
-  {{#if isEdit}}
-    {{>editNetworkItem}}
-  {{/if}}
-  <div class="sky-form">
-    <!-- <div class="col-md-10 col-md-offset-1"> -->
-      <div class=" panel-default panel-table">
-
-
-        <div class="panel-heading">
-
-          <span>List of Networks</span>
-          <button type="button" class="btn btn-default" id="btn" style="float:right;">Create new Network</button>
-        </div>
-        <div class="panel-body">
-          <table class="table table-striped table-list">
-            <thead>
-              <tr>
-                <th>Logo</th>
-                <th>Name</th>
-                <th>NetworkId</th>
-                <th>Privat Content</th>
-                <th>DMX Light</th>
-                <th>Log update time</th>
-
-              </tr>
-            </thead>
-            <tbody>
-              {{#each networks}}
-              <tr>
-                <td><div class="thumbcontainer" style="width:200px; height:150px overflow: auto;">
-                  <img src="{{logo}}" alt="..." class="img-thumbnail" style="width:100%; height:auto;  display: block;"></div></td>
-
-                <td>{{netName}}
-                </td>
-                <td>{{netId}}
-                </td>
-                <td>{{#if privatContent}}
-                    <span class="glyphicon glyphicon-ok"></span>
-                    {{else}}
-                    <span class="glyphicon glyphicon-minus " ></span>
-                    {{/if}}
-
-                </td>
-                <td>{{#if dmxLight}}
-                    <span class="glyphicon glyphicon-ok"></span>
-                    {{else}}
-                    <span class="glyphicon glyphicon-minus"></span>
-                    {{/if}}
-                </td>
-                <td>{{logUpdateTime}}
-                  <i type="button" class="glyphicon glyphicon-pencil" id="editNList" style="float: right;"></i>
-                    <i type="button" class="glyphicon glyphicon-trash" style="float: right;" data-toggle="modal" data-target="#myModal" id="selectDel"></i>
-                </td>
-              </tr>
+<!-- novo -->
+{{#if isEdit}}
+<div class="breadcrumbs secondHead" style="margin-top:0px;">
+  <div class="container secondHead1">
+    <h3 class="pull-left">Edit Network</h3>
+  </div></div>
+  <br><br>
+  {{>editNetworkItem}}
+  {{else}}
+  <div class="breadcrumbs secondHead" style="margin-top:0px;">
+    <div class="container secondHead1">
+      <h3 class="pull-left"> Networks</h3>
+    </div></div>
+    <br><br>
 
 
 
+<ul class="nav nav-tabs">
+
+  <button type="button" class="btn-u btn-u-default sButton" id="btn" style="float:right;">Create new Network</button>
 
 
-            	{{/each}}
-            </tbody>
-          </table>
-        </div>
+      </ul>
+    <br>
+      <div class="panel-body sky-form">
+        <table class="table table-striped table-list">
+          <thead>
+            <tr>
+              <th>Logo</th>
+              <th>Name</th>
+              <th>NetworkId</th>
+              <th>Privat Content</th>
+              <th>DMX Light</th>
+              <th>Log update time</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {{#each networks}}
+            <tr>
+              <td><div class="thumbnails thumbnail-style">
+                <img src="{{logo}}" alt="..."  width="71" height="40"></div></td>
+
+              <td>{{netName}}
+              </td>
+              <td>{{netId}}
+              </td>
+              <td>{{#if privatContent}}
+                  <span class="glyphicon glyphicon-ok"></span>
+                  {{else}}
+                  <span class="glyphicon glyphicon-minus " ></span>
+                  {{/if}}
+
+              </td>
+              <td>{{#if dmxLight}}
+                  <span class="glyphicon glyphicon-ok"></span>
+                  {{else}}
+                  <span class="glyphicon glyphicon-minus"></span>
+                  {{/if}}
+              </td>
+              <td>{{logUpdateTime}}
+                <i type="button" class="glyphicon glyphicon-pencil" id="editNList" style="float: right;"></i>
+                  <i type="button" class="glyphicon glyphicon-trash" style="float: right;" data-toggle="modal" data-target="#myModal" id="selectDel"></i>
+              </td>
+            </tr>
+
+
+
+
+
+            {{/each}}
+          </tbody>
+        </table>
       </div>
-    <!-- </div> -->
-  </div><br><br>
+
+<!-- novo -->
+
+
+
+  <br><br>
+  {{/if}}
 </template>

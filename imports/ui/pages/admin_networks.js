@@ -25,7 +25,7 @@ Template.adminNetworks.events({
     templateInstance.isCreateNew.set(true);
   },
 
-  'submit .register-form1': function closeForm(event, templateInstance) {
+  'click #saveNetwork': function closeForm(event, templateInstance) {
     event.preventDefault();
     templateInstance.isCreateNew.set(false);
   },

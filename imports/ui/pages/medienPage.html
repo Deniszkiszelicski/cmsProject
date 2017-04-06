@@ -4,36 +4,21 @@
   <div class="breadcrumbs secondHead">
     <div class="container secondHead1">
       <h3 class="pull-left">Create/Edit Medien</h3>
-
-      <!-- <ul class="pull-right breadcrumb">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="">Features</a></li>
-        <li class="active">Form States</li>
-      </ul> -->
     </div></div><br><br>
     {{else}}
     <div class="breadcrumbs secondHead">
       <div class="container secondHead1">
         <h3 class="pull-left">Medien</h3>
 
-        <!-- <ul class="pull-right breadcrumb">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="">Features</a></li>
-          <li class="active">Form States</li>
-        </ul> -->
       </div></div><br><br>
   {{/if}}
-  <!-- <button type="button" class="btn btn-secondary button-new">New Media</button> -->
   {{#with getVideoId}}
     {{> videoModal}}
   {{/with}}
-
   {{#if isCreateNew}}
     {{>mediaForm}}
   {{/if}}
-
   {{#with getOptions}}
   {{>medienList}}
   {{/with}}
-
 </template>

@@ -22,7 +22,7 @@ Template.roleEdit.helpers({
 
 });
 Template.roleEdit.events({
-  'submit .editRole-form': function editItem(event) {
+  'click #saveEditRole': function editItem(event) {
 
 event.preventDefault();
 
@@ -40,7 +40,7 @@ event.preventDefault();
                                  editContent: $('#editContent').is(":checked"),
                                  deleteContent: $('#deleteContent').is(":checked"),
                                  createContentGrp: $('#createContentGrp').is(":checked"),
-                                 editContentGrp: $('#editContentGrp').is(":checked"),
+                                 editPlaylist: $('#editPlaylist').is(":checked"),
                                  deleteContentGrp: $('#deleteContentGrp').is(":checked"),
                                  createPlaylist: $('#createPlaylist').is(":checked"),
                                  grantContentGrpAccess: $('#grantContentGrpAccess').is(":checked"),
@@ -58,6 +58,5 @@ event.preventDefault();
                                  seeAllPlayers: $('#seeAllPlayers').is(":checked"),
                                  });
                                  toastr.success("Role saved","Edit Role");
-
 }
 });

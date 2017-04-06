@@ -1,0 +1,124 @@
+<template name="adminDocs">
+  <br>
+  <div class="breadcrumbs secondHead">
+    <div class="container secondHead1">
+      <h3 class="pull-left">Documentation/notes</h3>
+    </div></div><br><br>
+    {{#if isCreateNew}}
+    {{>newDocForm}}
+    {{else}}
+    <!-- modal -->
+    <div class="modal fade" id="myModal65" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Document</h5>
+
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>Are yo sure to delete "{{docInfo.docName}}" ? </h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="deleteDoc" data-dismiss="modal">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <!-- modal -->
+    <!-- modal -->
+    <div class="modal fade" id="myModalInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+      <div class="modal-dialog modalRoles" role="document" >
+        <div class="modal-content">
+          {{#with docInfo}}
+          <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel"> "{{docName}}" Info</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+
+
+            {{docContent}}
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+          {{/with}}
+        </div>
+      </div>
+    </div>
+
+    <!-- modal -->
+    <!-- modal -->
+    <div class="modal fade" id="myModalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+      <div class="modal-dialog modalRoles" role="document" >
+        <div class="modal-content">
+          {{#with docInfo}}
+          <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel"> "{{docName}}" Edit</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+
+
+            <label class="label">Document Name:</label>
+            <label class="input">
+              <input type="text"  class="form-control" id="editDocName" value="{{docName}}" >
+            </label>
+  </div>
+            <textarea name="name" rows="15" cols="118" style="resize:none;" id="editDocContent">{{docContent}}</textarea>
+
+
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="saveEditDoc" data-dismiss="modal">Save</button>
+          </div>
+          {{/with}}
+        </div>
+      </div>
+    </div>
+
+    <!-- modal -->
+
+    <ul class="nav nav-tabs">
+  <button type="button" class="btn-u btn-u-default button-new sButton" id="newDoc" style="float:right;">Create New Document</button>
+      </ul>
+    <br>
+    <div class="panel-body sky-form">
+          <table class="table table-striped table-list">
+            <thead>
+              <tr>
+                <th><strong>Name</strong></th>
+              </tr><br>
+            </thead>
+            <tbody>
+                {{#each documents}}
+              <tr>
+              <th>
+                  {{docName}}
+                <i type="button" class="glyphicon glyphicon-pencil" style="float: right;" id="editDoc" data-toggle="modal" data-target="#myModalEdit"></i>
+                  <i type="button" class="glyphicon glyphicon-trash" style="float: right;" data-toggle="modal" data-target="#myModal65" id="selectDel"></i>
+                  <i type="button" class="glyphicon glyphicon-info-sign" style="float: right;" data-toggle="modal" data-target="#myModalInfo" id="selectInfo"></i>
+              </th>
+            </tr>{{/each}}
+            </tbody>
+          </table>
+  </div><br><br>
+  {{/if}}
+
+
+
+</template>

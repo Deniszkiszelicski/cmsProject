@@ -1,4 +1,6 @@
 <template name ="contentsList">
+
+<div class="panel-v1  content-form">
   <ul class="nav nav-tabs">
 
     {{#if options.enableButtonNewContent}}
@@ -36,5 +38,7 @@
       </tbody>
     </table>
   </div>
+</div>
   {{>deleteConfirmation message=contentToDelete}}
+
 </template>

@@ -1,10 +1,19 @@
 <template name="playersPage">
   <br>
   {{#if isCreateNew}}
+  <div class="breadcrumbs secondHead">
+    <div class="container secondHead1">
+      <h3 class="pull-left">Create/Edit Players</h3>
+    </div></div><br><br>
     {{#with getCurrentPlayer}}
       {{>playerForm}}
     {{/with}}
   {{else}}
+  <div class="breadcrumbs secondHead">
+    <div class="container secondHead1">
+      <h3 class="pull-left">Players</h3>
+
+    </div></div><br><br>
     {{#with options}}
       {{>playersList}}
     {{/with}}

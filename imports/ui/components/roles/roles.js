@@ -24,7 +24,7 @@ Template.adminRole.helpers({
 });
 
 Template.adminRole.events({
-  'submit .register-form': function (event) {
+  'click #saveNewRole': function (event) {
 
     event.preventDefault();
 

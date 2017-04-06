@@ -15,19 +15,10 @@
           placeholder="Type text to filter by name" id="media-filter-input">
 
       </ul>
-      <!-- <div class="panel-heading">
-        <div class="row" style="border:none;"> -->
-
-
-        <!-- <span>{{options.header}}</span> -->
         {{#if options.enableButtonCloseListOfContents}}
           <i type="button" class="glyphicon glyphicon-remove" id="buttonCloseMediaForm"></i>
         {{/if}}
-
-
-
-      <!-- </div>
-    </div> --><br>
+<br>
       <div class="panel-body sky-form">
         <table class="table table-striped table-list" id="contentTable">
           <thead>
@@ -51,41 +42,5 @@
       </div>
     </div>
 
-
-
-
-
-
-
-
-
-      <!-- old -->
-      <!-- <div class="panel panel-default panel-table">
-        <div class="panel-heading">
-          <span>{{options.header}}</span>
-          {{#if options.enableButtonCloseListOfMedien}}
-          <i type="button" class="glyphicon glyphicon-remove" id="button-close-media-collection"></i>
-          {{/if}}
-
-
-
-        </div>
-        <div class="panel-body">
-          <table class="table table-striped table-list">
-            <thead>
-              <tr>
-
-              </tr>
-            </thead>
-            <tbody> -->
-              <!-- {{#each medien}} -->
-
-            <!-- </tbody>
-          </table>
-        </div>
-      </div> -->
-      <!-- old -->
-    <!-- </div> -->
-  <!-- </div> -->
-  {{>deleteConfirmation message=mediaToDelete}}
+  {{>deleteConfirmation message=mediaToDelete}}<br>
 </template>

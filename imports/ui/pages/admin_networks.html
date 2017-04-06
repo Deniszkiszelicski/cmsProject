@@ -3,10 +3,18 @@
 
 
 {{#if isCreateNew}}
+<div class="breadcrumbs secondHead" style="margin-top:0px;">
+  <div class="container secondHead1">
+    <h3 class="pull-left">Create Network</h3>
+  </div></div>
+  <br><br>
+
   {{>registerNetwork}}
-{{/if}}
+
+{{else}}
+
 
 {{>networksList}}
-
+{{/if}}
 
 </template>
