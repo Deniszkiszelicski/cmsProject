@@ -22,3 +22,6 @@ import '../../api/roles/roles';
 import '../../api/admin_networks/methods';
 import '../../api/admin_networks/networks';
 import '../../api/admin_networks/server/publication';
+import '../../api/admin_docs/server/publications';
+import '../../api/admin_docs/admin_docs';
+import '../../api/admin_docs/methods';

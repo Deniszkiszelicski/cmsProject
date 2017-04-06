@@ -1,0 +1,32 @@
+<template name="newDocForm">
+
+  <ul class="nav nav-tabs">
+
+        <button type="button" class="btn-u btn-u-default sButton" style="float:right;" id="saveDoc">Save</button>
+        <button type="button" class="btn-u btn-u-default cButton" style="float:right;" id="closeCreateDoc">Close</button>
+      </ul><br>
+      <form class="sky-form doc-form">
+        <fieldset>
+              <div class="row" style="border:none">
+                <div class="form-group col-lg-4">
+                <label class="label">Document Name</label>
+                <label class="input"><input type="text"  class="form-control" id="docName" value=""></label></div>
+              </div>
+
+        </fieldset>
+        <fieldset>
+          <div class="row" style="border:none">
+            <textarea name="editorDoc" id="docText" rows="20" cols="136" style="resize:none"></textarea>
+        <!-- <script>
+        CKEDITOR.replace( 'editorDoc' );
+        CKEDITOR.config.allowedContent=true;
+
+        </script> -->
+
+          </div>
+        </fieldset>
+      </form>
+      <br><br><button type="button" class="btn-u btn-u-default sButton" style="float:right;" id="saveDoc">Save</button>
+  <button type="button" class="btn-u btn-u-default cButton" style="float:right;" id="closeCreateDoc">Close</button>
+<br><br><br><br>
+</template>
