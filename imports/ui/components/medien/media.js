@@ -4,7 +4,7 @@ import '../../../api/medien/methods';
 import '../../../api/medien/collection';
 import './media.html';
 
-Meteor.subscribe('medien');
+// Meteor.subscribe('medien');
 Meteor.subscribe('files.images.all');
 
 Template.media.onCreated(function onCreated() {

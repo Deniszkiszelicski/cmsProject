@@ -6,11 +6,13 @@ import { $ } from 'meteor/jquery';
 import './contentForm.html';
 
 Meteor.subscribe('contents');
-Meteor.subscribe('medien');
 
 Template.contentForm.onCreated(function () {
   this.isSelectMedia = new ReactiveVar(false);
   this.isNewMedia = new ReactiveVar(false);
+  this.autorun(() => {
+    this.subscribe('medien');
+  });
   const type = this.data.type || "m"; //m=media, t=template
   if(type == "m") {
     this.isTypeMedia = new ReactiveVar(true);

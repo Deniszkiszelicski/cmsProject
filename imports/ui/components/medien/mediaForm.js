@@ -6,7 +6,7 @@ import './searchCategory';
 import './mediaForm.html';
 
 
-Meteor.subscribe('medien');
+// Meteor.subscribe('medien');
 Meteor.subscribe('files.images.all');
 Meteor.subscribe('files.videos.all');
 

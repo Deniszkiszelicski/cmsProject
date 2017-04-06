@@ -9,24 +9,25 @@ import '../pagination/paginationPanel';
 import './player';
 import './playersList.html';
 
-Meteor.subscribe('countPlayers');
-
 Template.playersList.onCreated(function onCreated() {
   this.currentPage = new ReactiveVar(this.data.options.initialPage);
   const showPerPage = this.data.options.initialShowPerPage;
   this.showPerPage = new ReactiveVar(showPerPage);
   this.filterText = new ReactiveVar();
   this.playerToDelete = new ReactiveVar();
+  this.lastPageNumber = new ReactiveVar(1);
   this.autorun(() => {
     const currentPage = this.currentPage.get();
     const showPerPage = this.showPerPage.get();
     const filterText = this.filterText.get();
     if (currentPage && showPerPage) {
       this.subscribe('players', false, currentPage, showPerPage, filterText);
+      this.subscribe('countPlayers', currentPage, showPerPage, filterText);
     }
+    const playersCount = Counter.get("countPlayers");
+    const lastPageNumber = Math.ceil(playersCount / showPerPage);
+    this.lastPageNumber.set(lastPageNumber > 0 ? lastPageNumber : 1);
   });
-  const playersCount = Counter.get("countPlayers");
-  this.lastPageNumber = new ReactiveVar(Math.ceil(playersCount / showPerPage));
 });
 
 Template.playersList.onRendered(function OnRendered() {
@@ -35,6 +36,16 @@ Template.playersList.onRendered(function OnRendered() {
 Template.playersList.helpers({
   players: function players() {
     const playersCurPage = Players.find().fetch();
+    const userId = Meteor.userId();
+    const roleId = Meteor.users.findOne({ _id: userId }).profile.role;
+    const role = Roles.findOne({ _id: roleId });
+    const mayEdit = role.editPlayer;
+    const mayDelete = role.deletePlayer;
+    const options = { enableButtonEditPlayer: mayEdit,
+                      enableButtonDeletePlayer: mayDelete};
+    playersCurPage.forEach(function(element) {
+      element["options"] = options;
+    });
     return playersCurPage;
   },
   showPerPage: function showPerPage(position) {
@@ -53,6 +64,16 @@ Template.playersList.helpers({
       const player = playerVar;
       return "Delete '" + player.name + "' (ID = " + player.playerId + ") player.";
     }
+  },
+  enableButtonNewPlayer: function enableButtonNewPlayer() {
+    const options = this.options;
+    const userId = Meteor.userId();
+    const roleId = Meteor.users.findOne({ _id: userId }).profile.role;
+    const role = Roles.findOne({ _id: roleId });
+    if (options.enableButtonNewPlayer && role.createPlayer) {
+      return true;
+    }
+    return false;
   },
 });
 

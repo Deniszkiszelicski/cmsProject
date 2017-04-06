@@ -1,100 +1,36 @@
 <template name ="playersList">
-
   <ul class="nav nav-tabs">
-
     {{#if options.enableButtonNewPlayer}}
-            <button type="button" class="btn-u btn-u-default button-new sButton" style="float:right;">New player</button>
-          {{/if}}
+      <button type="button" class="btn-u btn-u-default button-new sButton" style="float:right;">New player</button>
+    {{/if}}
+    <input type="text"
+      placeholder="Type text to filter by ID" id="player-filter-input">
+    <input type="text"
+      id="player-per-page-input" value="{{showPerPage}}" style="width: 30px; float:right;">
+    <span style="float:right;padding-top:2px;padding-right:5px;">Players/page </span>
+  </ul>
 
+  <br>
 
-            <input type="text"
-          placeholder="Type text to filter by ID" id="player-filter-input">
-
-
-
-        <input type="text"
-              id="player-per-page-input" value="{{showPerPage}}" style="width: 30px; float:right;">
-              <span style="float:right;padding-top:2px;padding-right:5px;">Players/page </span>
-
-
-        </ul>
-      <br>
-        <div class="panel-body sky-form">
-          <table class="table table-striped table-list" id="contentTable">
-            <thead>
-              <tr>
-                <th></th>
-                <th>Name</th>
-                <th>Content-groups</th>
-                <th>Controls</th>
-              </tr>
-            </thead>
-            <tbody>
-              {{#each players}}
-                {{> player}}
-            	{{/each}}
-            </tbody>
-          </table>
-
-            {{#with optionsForPagination}}
-            {{> paginationPanel}}
-          {{/with}}
-
-
-        </div>
-
-
-  <!-- <div class="row">
-      <div class="panel panel-default panel-table">
-        <div class="panel-heading">
-          <span>{{options.header}}</span>
-          {{#if options.enableButtonNewPlayer}}
-            <button type="button" class="btn btn-default button-new">New player</button>
-          {{/if}}
-
-          <input type="text" class="form-control filter-input"
-          placeholder="Type text to filter by ID" id="player-filter-input">
-
-
-          {{#with optionsForPagination}}
-            {{> paginationPanel}}
-          {{/with}}
-
-
-
-
-              <input type="text" class="form-control filter-input"
-              id="player-per-page-input" value="{{showPerPage}}" style="width: 50px;">
-              <span style="float: right; font-size: 55%; margin: 5px;">Players/page</span>
-
-
-
-
-
-        </div>
-        <div class="panel-body">
-          <table class="table table-striped table-list">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Location</th>
-                <th>Player-Id</th>
-                <th>Post index</th>
-                <th>Town/City</th>
-                <th>Status</th>
-                <th>Last update</th>
-                <th>Controls</th>
-              </tr>
-            </thead>
-            <tbody>
-              {{#each players}}
-                {{> player}}
-            	{{/each}}
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-  </div> -->
+  <div class="panel-body sky-form">
+    <table class="table table-striped table-list" id="contentTable">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Name</th>
+          <th>Content-groups</th>
+          <th>Controls</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each players}}
+          {{> player}}
+      	{{/each}}
+      </tbody>
+    </table>
+    {{#with optionsForPagination}}
+      {{> paginationPanel}}
+    {{/with}}
+  </div>
   {{>deleteConfirmation message=playerToDelete}}
 </template>

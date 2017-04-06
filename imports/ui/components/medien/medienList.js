@@ -5,6 +5,8 @@ import '../../../api/medien/collection';
 import '../modals/deleteConfirmation';
 import './medienList.html';
 
+Meteor.subscribe('files.images.all');
+
 Template.registerHelper("prettifyDate", function(date) {
   return moment(date).format('Do MMM YY, HH:mm');
 });
@@ -12,9 +14,10 @@ Template.registerHelper("prettifyDate", function(date) {
 Template.medienList.onCreated(function () {
   this.filterText = new ReactiveVar();
   this.mediaToDelete = new ReactiveVar();
+  this.autorun(() => {
+    this.subscribe('medien');
+  });
 });
-
-Meteor.subscribe('files.images.all');
 
 Template.medienList.helpers({
   medien: () => {
