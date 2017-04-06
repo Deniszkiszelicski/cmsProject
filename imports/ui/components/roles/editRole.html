@@ -232,66 +232,113 @@
                   <tbody>
                     <tr>
 
-                      <td><input type='checkbox' id="adminMenu" class='tags-checkbox sr-only'/>
+                      <td>{{#if adminMenu}}<input type='checkbox' id="adminMenu" class='tags-checkbox sr-only' checked/>
     <label for='adminMenu'>
         <i class='glyphicon glyphicon-eye-close' style="color:red"></i>
         <i class='glyphicon glyphicon-eye-open' style="color:green"></i>
         <span class='label-content'></span>
-    </label></td>
-                      <td><input type='checkbox' id="netzMenu" class='tags-checkbox sr-only'/>
+    </label>{{else}}<input type='checkbox' id="adminMenu" class='tags-checkbox sr-only'/>
+<label for='adminMenu'>
+<i class='glyphicon glyphicon-eye-close' style="color:red"></i>
+<i class='glyphicon glyphicon-eye-open' style="color:green"></i>
+<span class='label-content'></span></label>{{/if}}</td>
+                      <td>{{#if netzMenu}}<input type='checkbox' id="netzMenu" class='tags-checkbox sr-only' checked/>
     <label for='netzMenu'>
         <i class='glyphicon glyphicon-ban-circle'></i>
         <i class='glyphicon glyphicon-ok-circle'></i>
         <span class='label-content'></span>
-    </label></td>
-                      <td><input type='checkbox' id="userMenu" class='tags-checkbox sr-only'/>
+    </label>{{else}}<input type='checkbox' id="netzMenu" class='tags-checkbox sr-only'/>
+<label for='netzMenu'>
+<i class='glyphicon glyphicon-ban-circle'></i>
+<i class='glyphicon glyphicon-ok-circle'></i>
+<span class='label-content'></span></label>{{/if}}</td>
+                      <td>{{#if userMenu}}<input type='checkbox' id="userMenu" class='tags-checkbox sr-only' checked/>
     <label for='userMenu'>
         <i class='glyphicon glyphicon-ban-circle'></i>
         <i class='glyphicon glyphicon-ok-circle'></i>
         <span class='label-content'></span>
-    </label></td>
-                      <td><input type='checkbox' id="roleMenu" class='tags-checkbox sr-only'/>
+    </label>{{else}}<input type='checkbox' id="userMenu" class='tags-checkbox sr-only'/>
+<label for='userMenu'>
+<i class='glyphicon glyphicon-ban-circle'></i>
+<i class='glyphicon glyphicon-ok-circle'></i>
+<span class='label-content'></span></label>{{/if}}</td>
+                      <td>{{#if roleMenu}}<input type='checkbox' id="roleMenu" class='tags-checkbox sr-only' checked/>
     <label for='roleMenu'>
         <i class='glyphicon glyphicon-ban-circle'></i>
         <i class='glyphicon glyphicon-ok-circle'></i>
         <span class='label-content'></span>
-    </label></td>
-                      <td><input type='checkbox' id="contentMenu" class='tags-checkbox sr-only'/>
+    </label>{{else}}<input type='checkbox' id="roleMenu" class='tags-checkbox sr-only'/>
+<label for='roleMenu'>
+<i class='glyphicon glyphicon-ban-circle'></i>
+<i class='glyphicon glyphicon-ok-circle'></i>
+<span class='label-content'></span>
+</label>{{/if}}</td>
+                      <td>{{#if contentMenu}}<input type='checkbox' id="contentMenu" class='tags-checkbox sr-only' checked/>
     <label for='contentMenu'>
         <i class='glyphicon glyphicon-ban-circle'></i>
         <i class='glyphicon glyphicon-ok-circle'></i>
         <span class='label-content'></span>
-    </label></td>
-                      <td><input type='checkbox' id="statisticMenu" class='tags-checkbox sr-only'/>
+    </label>{{else}}<input type='checkbox' id="contentMenu" class='tags-checkbox sr-only'/>
+<label for='contentMenu'>
+<i class='glyphicon glyphicon-ban-circle'></i>
+<i class='glyphicon glyphicon-ok-circle'></i>
+<span class='label-content'></span>
+</label>{{/if}}</td>
+                      <td>{{#if statisticMenu}}<input type='checkbox' id="statisticMenu" class='tags-checkbox sr-only' checked/>
     <label for='statisticMenu'>
         <i class='glyphicon glyphicon-ban-circle'></i>
         <i class='glyphicon glyphicon-ok-circle'></i>
         <span class='label-content'></span>
-    </label></td>
-                      <td><input type='checkbox' id="homeEditMenu" class='tags-checkbox sr-only'/>
+    </label>{{else}}<input type='checkbox' id="statisticMenu" class='tags-checkbox sr-only'/>
+<label for='statisticMenu'>
+<i class='glyphicon glyphicon-ban-circle'></i>
+<i class='glyphicon glyphicon-ok-circle'></i>
+<span class='label-content'></span>
+</label>{{/if}}</td>
+                      <td>{{#if homeEditMenu}}<input type='checkbox' id="homeEditMenu" class='tags-checkbox sr-only' checked/>
     <label for='homeEditMenu'>
         <i class='glyphicon glyphicon-ban-circle'></i>
         <i class='glyphicon glyphicon-ok-circle'></i>
         <span class='label-content'></span>
-    </label></td>
-                      <td><input type='checkbox' id="seeMedia" class='tags-checkbox sr-only'/>
+    </label>{{else}}<input type='checkbox' id="homeEditMenu" class='tags-checkbox sr-only'/>
+<label for='homeEditMenu'>
+<i class='glyphicon glyphicon-ban-circle'></i>
+<i class='glyphicon glyphicon-ok-circle'></i>
+<span class='label-content'></span>
+</label>{{/if}}</td>
+                      <td>{{#if seeMedia}}<input type='checkbox' id="seeMedia" class='tags-checkbox sr-only' checked/>
     <label for='seeMedia'>
         <i class='glyphicon glyphicon-ban-circle'> own</i>
         <i class='glyphicon glyphicon-ok-circle'> all</i>
         <span class='label-content'></span>
-    </label></td>
-                      <td><input type='checkbox' id="seeContent" class='tags-checkbox sr-only'/>
+    </label>{{else}}<input type='checkbox' id="seeMedia" class='tags-checkbox sr-only'/>
+<label for='seeMedia'>
+<i class='glyphicon glyphicon-ban-circle'> own</i>
+<i class='glyphicon glyphicon-ok-circle'> all</i>
+<span class='label-content'></span>
+</label>{{/if}}</td>
+                      <td>{{#if seeContent}}<input type='checkbox' id="seeContent" class='tags-checkbox sr-only' checked/>
     <label for='seeContent'>
         <i class='glyphicon glyphicon-ban-circle'> own</i>
         <i class='glyphicon glyphicon-ok-circle'> all</i>
         <span class='label-content'></span>
-    </label></td>
-                      <td><input type='checkbox' id="seeAllPlayers" class='tags-checkbox sr-only'/>
+    </label>{{else}}<input type='checkbox' id="seeContent" class='tags-checkbox sr-only'/>
+<label for='seeContent'>
+<i class='glyphicon glyphicon-ban-circle'> own</i>
+<i class='glyphicon glyphicon-ok-circle'> all</i>
+<span class='label-content'></span>
+</label>{{/if}}</td>
+                      <td>{{#if seeAllPlayers}}<input type='checkbox' id="seeAllPlayers" class='tags-checkbox sr-only' checked/>
     <label for='seeAllPlayers'>
         <i class='glyphicon glyphicon-ban-circle'> own</i>
         <i class='glyphicon glyphicon-ok-circle'> all</i>
         <span class='label-content'></span>
-    </label></td>
+    </label>{{else}}<input type='checkbox' id="seeAllPlayers" class='tags-checkbox sr-only'/>
+<label for='seeAllPlayers'>
+<i class='glyphicon glyphicon-ban-circle'> own</i>
+<i class='glyphicon glyphicon-ok-circle'> all</i>
+<span class='label-content'></span>
+</label>{{/if}}</td>
                     </tr>
                   </tbody>
                 </table>
