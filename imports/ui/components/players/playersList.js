@@ -24,7 +24,6 @@ Template.playersList.onCreated(function onCreated() {
       this.subscribe('players', false, currentPage, showPerPage, filterText);
       this.subscribe('countPlayers', currentPage, showPerPage, filterText);
     }
-
     const playersCount = Counter.get("countPlayers");
     const lastPageNumber = Math.ceil(playersCount / showPerPage);
     this.lastPageNumber.set(lastPageNumber > 0 ? lastPageNumber : 1);
@@ -37,7 +36,23 @@ Template.playersList.onRendered(function OnRendered() {
 Template.playersList.helpers({
   players: function players() {
     const playersCurPage = Players.find().fetch();
+    const userId = Meteor.userId();
+    const roleId = Meteor.users.findOne({ _id: userId }).profile.role;
+    const role = Roles.findOne({ _id: roleId });
+    const mayEdit = role.editPlayer || role.godMode;
+    const options = { enableButtonEditPlayer: mayEdit };
+    playersCurPage.forEach(function(element) {
+      element["options"] = options;
+    });
     return playersCurPage;
+  },
+  optionsForPlayers: function getOptions() {
+    const userId = Meteor.userId();
+    const roleId = Meteor.users.findOne({ _id: userId }).profile.role;
+    const role = Roles.findOne({ _id: roleId });
+    const mayEdit = role.editPlayer || role.godMode;
+    const options = { enableButtonEditPlayer: mayEdit };
+    return { options: options };
   },
   showPerPage: function showPerPage(position) {
     return Template.instance().showPerPage.get();
