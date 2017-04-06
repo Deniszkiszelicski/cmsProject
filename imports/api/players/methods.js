@@ -121,11 +121,15 @@ Meteor.methods({
     }
   },
   deletePlayer: function(id) {
-    Players.remove(id);
-  },
-  test: function(id) {
-    const res = Players.findOne({ playerId: id });
-    console.log("res = ", res);
-    return res;
+    const userId = this.userId;
+    if (userId) {
+      const roleId = Meteor.users.findOne({ _id: userId }).profile.role;
+      const role = Roles.findOne({ _id: roleId });
+      if (role) {
+        if (role.deletePlayer) {
+          Players.remove(id);
+        }
+      }
+    }
   },
 });

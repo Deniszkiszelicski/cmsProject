@@ -39,20 +39,14 @@ Template.playersList.helpers({
     const userId = Meteor.userId();
     const roleId = Meteor.users.findOne({ _id: userId }).profile.role;
     const role = Roles.findOne({ _id: roleId });
-    const mayEdit = role.editPlayer || role.godMode;
-    const options = { enableButtonEditPlayer: mayEdit };
+    const mayEdit = role.editPlayer;
+    const mayDelete = role.deletePlayer;
+    const options = { enableButtonEditPlayer: mayEdit,
+                      enableButtonDeletePlayer: mayDelete};
     playersCurPage.forEach(function(element) {
       element["options"] = options;
     });
     return playersCurPage;
-  },
-  optionsForPlayers: function getOptions() {
-    const userId = Meteor.userId();
-    const roleId = Meteor.users.findOne({ _id: userId }).profile.role;
-    const role = Roles.findOne({ _id: roleId });
-    const mayEdit = role.editPlayer || role.godMode;
-    const options = { enableButtonEditPlayer: mayEdit };
-    return { options: options };
   },
   showPerPage: function showPerPage(position) {
     return Template.instance().showPerPage.get();
