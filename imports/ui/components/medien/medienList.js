@@ -41,8 +41,10 @@ Template.medienList.helpers({
   filteredMedien: () => {
     const medienCurPage = Medien.find().fetch();
     const role = Template.instance().currentRole.get();
-    const mayEdit = role.editVideoImg;
-    const mayDelete = role.deleteVideoImg;
+    let [mayEdit, mayDelete] = [false, false];
+    if (role) {
+      [mayEdit, mayDelete] = [role.editVideoImg, role.deleteVideoImg];
+    }
     const options = { enableButtonEditMedia: mayEdit,
                       enableButtonDeleteMedia: mayDelete };
     medienCurPage.forEach(function(element) {
