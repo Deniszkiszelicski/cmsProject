@@ -1,5 +1,10 @@
 <template name ="playersList">
-
+  <div class="breadcrumbs secondHead">
+    <div class="container secondHead1">
+      <h3 class="pull-left">Players</h3>
+      <input type="text"
+    placeholder="Type text to filter by ID" id="player-filter-input" style="float:right;margin-top:15px;">
+      </div></div><br><br>
   <ul class="nav nav-tabs">
 
     {{#if options.enableButtonNewPlayer}}
@@ -7,8 +12,7 @@
           {{/if}}
 
 
-            <input type="text"
-          placeholder="Type text to filter by ID" id="player-filter-input">
+
 
 
 

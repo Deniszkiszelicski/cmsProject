@@ -13,4 +13,11 @@ Meteor.methods({
     AdminDocumentation.remove(id);
     toastr.success("Deleted", "Role");
   },
+  editDoc:function(adminDocumentationObject){
+  AdminDocumentation.update({_id:adminDocumentationObject._id},
+    {docName: adminDocumentationObject.docName,
+     docContent: adminDocumentationObject.docContent
+
+    });
+  },
 });

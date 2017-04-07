@@ -12,11 +12,13 @@ Template.registerHelper("prettifyDate", function(date) {
 Template.medienList.onCreated(function () {
   this.filterText = new ReactiveVar();
   this.mediaToDelete = new ReactiveVar();
+
 });
 
 Meteor.subscribe('files.images.all');
 
 Template.medienList.helpers({
+
   medien: () => {
     return Medien.find().fetch();
   },
@@ -46,5 +48,10 @@ Template.medienList.events({
   },
   'keyup #media-filter-input': function (event, templateInstance) {
     templateInstance.filterText.set(event.currentTarget.value);
-  }
+  },
+
+
+
+
+
 });

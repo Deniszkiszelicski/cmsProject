@@ -10,9 +10,10 @@ Meteor.subscribe('contentGroups');
 Template.contentGroupsList.onCreated(function () {
   this.filterText = new ReactiveVar();
   this.contentGroupToDelete = new ReactiveVar();
+
 });
 
-Template.contentGroupsList.helpers({
+  Template.contentGroupsList.helpers({
   filteredContentGroups: function filteredContentGroups() {
     const contentGroups = this.contentGroups;
     let contentGroupsWithOptions;
@@ -43,6 +44,7 @@ Template.contentGroupsList.helpers({
 Template.contentGroupsList.events({
   'keyup #contentGroup-filter-input': function (event, templateInstance) {
     templateInstance.filterText.set(event.currentTarget.value);
+
   },
   'click #button-delete-confirmed': function deleteContentGroup(event, templateInstance) {
     event.preventDefault();

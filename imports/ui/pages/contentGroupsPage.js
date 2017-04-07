@@ -4,6 +4,7 @@ import '../components/contentGroups/contentGroupsList';
 import '../components/contentGroups/contentGroupForm';
 import './contentGroupsPage.html';
 
+
 Template.contentGroupsPage.onCreated(function () {
   this.isCreateNew = new ReactiveVar(false);
   this.currentContentGroup = new ReactiveVar();
@@ -38,4 +39,5 @@ Template.contentGroupsPage.events({
     event.preventDefault();
     templateInstance.isCreateNew.set(false);
   },
+
 });
