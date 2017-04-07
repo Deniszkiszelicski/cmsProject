@@ -18,6 +18,10 @@ Template.medienList.onCreated(function () {
   this.lastPageNumber = new ReactiveVar(1);
   this.filterText = new ReactiveVar();
   this.mediaToDelete = new ReactiveVar();
+  const userId = Meteor.userId();
+  const roleId = Meteor.users.findOne({ _id: userId }).profile.role;
+  const role = Roles.findOne({ _id: roleId });
+  this.currentRole = new ReactiveVar(role);
   this.autorun(() => {
     const currentPage = this.currentPage.get();
     const showPerPage = this.showPerPage.get();
@@ -36,9 +40,7 @@ Template.medienList.helpers({
   },
   filteredMedien: () => {
     const medienCurPage = Medien.find().fetch();
-    const userId = Meteor.userId();
-    const roleId = Meteor.users.findOne({ _id: userId }).profile.role;
-    const role = Roles.findOne({ _id: roleId });
+    const role = Template.instance().currentRole.get();
     const mayEdit = role.editVideoImg;
     const mayDelete = role.deleteVideoImg;
     const options = { enableButtonEditMedia: mayEdit,
@@ -47,6 +49,14 @@ Template.medienList.helpers({
       element["options"] = options;
     });
     return medienCurPage;
+  },
+  enableButtonNewMedia: function enableButtonNewMedia() {
+    const role = Template.instance().currentRole.get();
+    let mayCreate = false;
+    if (role) {
+      mayCreate = role.createVideoImg;
+    }
+    return this.options.enableButtonNewMedia && mayCreate;
   },
   mediaToDelete: function mediaToDelete() {
     const media = Template.instance().mediaToDelete.get();
@@ -92,7 +102,6 @@ Template.medienList.events({
   },
   'keyup #records-per-page-input': function (event, templateInstance) {
     const showPerPage = parseInt(event.currentTarget.value);
-    console.log("records per page updated", showPerPage);
     if (showPerPage > 0) {
       templateInstance.showPerPage.set(showPerPage);
       const medienCount = Counter.get("countMedien");

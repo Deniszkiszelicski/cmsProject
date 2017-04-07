@@ -1,16 +1,20 @@
-
 <template name="medienPage"><br>
   {{#if isCreateNew}}
   <div class="breadcrumbs secondHead">
     <div class="container secondHead1">
       <h3 class="pull-left">Create/Edit Medien</h3>
-    </div></div><br><br>
+    </div>
+  </div>
+  <br>
+  <br>
     {{else}}
-    <div class="breadcrumbs secondHead">
-      <div class="container secondHead1">
-        <h3 class="pull-left">Medien</h3>
-
-      </div></div><br><br>
+  <div class="breadcrumbs secondHead">
+    <div class="container secondHead1">
+      <h3 class="pull-left">Medien</h3>
+    </div>
+  </div>
+  <br>
+  <br>
   {{/if}}
   {{#with getVideoId}}
     {{> videoModal}}
@@ -19,6 +23,6 @@
     {{>mediaForm}}
   {{/if}}
   {{#with getOptions}}
-  {{>medienList}}
+    {{>medienList}}
   {{/with}}
 </template>
