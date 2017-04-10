@@ -1,28 +1,6 @@
 
 <template name ="usersList"><br>
 
-  <!-- modal -->
-
-  <!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                  <h4 id="myModalLabel1" class="modal-title">Delete User</h4>
-              </div>
-              <div class="modal-body">
-                  <h4>Are you sure to delete User?</h4>
-
-              </div>
-              <div class="modal-footer">
-                  <button data-dismiss="modal" class="btn-u btn-u-default" type="button">Close</button>
-                  <button class="btn-u" type="button" id="deleteUser" data-dismiss="modal">Save changes</button>
-              </div>
-            </div>
-      </div>
-  </div> -->
-  <!-- End Modal -->
-
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -46,67 +24,59 @@
 
   {{#if isUserEdit}}
     {{>editUser2}}
-  {{/if}}
+  {{else}}
 
+  <div class="breadcrumbs secondHead">
+  <div class="container secondHead1">
+    <h3 class="pull-left">Users</h3>
+    <input type="text"
+      placeholder="Type text to filter by name" id="users-filter-input" style="float:right;margin-top:15px;">
+  </div></div><br><br>
 
-<!-- {{#each filteredUsers}} -->
+<!-- new -->
+<div class="panel-v1  content-form">
+    <ul class="nav nav-tabs">
+      <button type="button" class="btn-u btn-u-default sButton" id="btn2" style="float:right;">Create new User</button>
+    </ul>
+<br>
+    <div class="panel-body sky-form">
+      <table class="table table-striped table-list">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Email</th>
+            <th>Controls</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each filteredUsers}}
 
-  <div class="sky-form">
-    <!-- <div class="col-md-10 col-md-offset-1"> -->
-      <div class=" panel-default panel-table">
-        <div class="panel-heading">
-          <span>List of users</span>
-          <button type="button" class="btn btn-default" id="btn2" style="float:right;">Create new User</button>
+          <tr>
 
-          <input type="text" class="form-control filter-input"
-            placeholder="Type text to filter by name" id="users-filter-input">
-            <input type="text" id="userPerPage" class="form-control filter-input" value="" style="width: 50px;" placeholder="5">
-            <span style="float: right; font-size: 55%; margin: 5px;">Users/page</span>
+            <td>{{ profile.name}}
+            </td>
+            <td>
+              {{ roleName profile.role}}
+            </td>
 
-        </div>
-        <div class="panel-body">
-          <table class="table table-striped table-list">
-            <thead>
-              <tr>
+            <td>{{ emails.[0].address}}
+            </td>
+            <td><i type="button" class="glyphicon glyphicon-pencil" id="editUser"></i>
+              <i type="button" class="glyphicon glyphicon-trash"  data-toggle="modal" data-target="#myModal" id="selectUserDel"></i>
+            </td>
+          </tr>
 
-                <th>Name</th>
-                <th>Role</th>
-                <th>Email</th>
-
-
-              </tr>
-            </thead>
-            <tbody>
-              {{#each filteredUsers}}
-
-              <tr>
-
-                <td>{{ profile.name}}
-                </td>
-                <td>
-                  {{ roleName profile.role}}
-                </td>
-
-                <td>{{ emails.[0].address}}<i type="button" class="glyphicon glyphicon-pencil" id="editUser" style="float: right;"></i>
-                  <i type="button" class="glyphicon glyphicon-trash" style="float: right;" data-toggle="modal" data-target="#myModal" id="selectUserDel"></i>
-                </td>
-              </tr>
-
-              {{/each}}
-            </tbody>
-
-          </table>
-
-
-
-        </div>
-
-
-      </div>
-
-    <!-- </div> -->
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
   </div>
+<!-- new -->
 
+
+  <input type="text" id="userPerPage" class="form-control filter-input" value="" style="width: 50px;" placeholder="5">
+  <span style="float: right; font-size: 55%; margin: 5px;">Users/page</span>
 
   <nav>
 
@@ -127,7 +97,7 @@
     </ul>
   </nav>
 
-<br><br>
+<br><br>{{/if}}
 
   <!-- {{/each}} -->
 

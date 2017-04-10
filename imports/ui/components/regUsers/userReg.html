@@ -1,26 +1,161 @@
 <template name="registerUser2"><br>
-  <div class="tab-v1 content-form">
-      <!-- <div class="col-md-10 col-md-offset-1"> -->
-          <form class="sky-form register" autocomplete="off">
-              <div class=" panel-default">
-                  <div class="panel-heading">
-                    <span>User Registration</span>
-                      <i type="button" class="glyphicon glyphicon-remove" style="color:red;" id="closeUserCreate"></i>
-                  </div>
+
+    <div class="breadcrumbs secondHead">
+    <div class="container secondHead1">
+      <h3 class="pull-left">New Content</h3>
+    </div></div><br><br>
+
+
+            <ul class="nav nav-tabs">
+
+        <button type="submit" class="btn-u btn-u-default button-save sButton" style="float:right; ">Save</button>
+        <button type="button" class="btn-u btn-u-default cButton" id="closeUserCreate" style="float:right;">Close</button>
+    </ul><br>
+
+    <!-- new -->
+    <div class="panel-body sky-form">
+        <form class="tab-v1 content-form register" autocomplete="off">
+              <!-- <div class="panel-default"> -->
+
+
+                  <fieldset>
+                    <div class="row" style="border:none;">
+
+
+                      <div class="form-group col-lg-4">
+                    <label class="label">Email</label>
+                    <label class="input">
+                        <input type="email" id="email" value="" REQUIRED></label></div><div class="form-group col-lg-4">
+                      <label class="label">Password</label>
+                      <label class="input">
+                        <input type="password" name="" id="password" value="" autocomplete="new-password" REQUIRED></label></div><div class="form-group col-lg-4">
+                        <label class="label">Name</label>
+                        <label class="input">
+                            <input type="text" id="firstname" value="" REQUIRED></label>
+
+                      </div>
+
+
+
+
+
+
+
+
+    </div>
+  </fieldset>
+<fieldset>
+    <div class="row" style="border:none;">
+
+
+                        <div class="form-group col-lg-3">
+                            <label class="label">Privat Content</label>
+
+
+                          {{#if privatContent}}
+                          <label class="radio-inline"><input type="radio" id="privatContent" name="optradio1" checked>Yes</label>
+
+                          <label class="radio-inline"><input type="radio" id="privatContent" name="optradio1" >No</label>
+                          {{else}}
+                          <label class="radio-inline"><input type="radio" id="privatContent" name="optradio1" >Yes</label>
+
+                          <label class="radio-inline"><input type="radio" id="privatContent" name="optradio1" checked>No</label>
+                          {{/if}}
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label class="label">DMX-Light</label>
+
+                          {{#if dmxLight}}
+                          <label class="radio-inline"><input type="radio" id="dmxLight" name="optradio2" checked>Yes</label>
+                          <label class="radio-inline"><input type="radio" id="dmxLight" name="optradio2">No</label>
+                          {{else}}
+                          <label class="radio-inline"><input type="radio" id="dmxLight" name="optradio2" >Yes</label>
+                          <label class="radio-inline"><input type="radio" id="dmxLight" name="optradio2" checked>No</label>
+                          {{/if}}
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label class="label">Log Updatetime</label>
+
+                            <label class="input">
+                            <input id="logUpdateTime" type="text" placeholder="Nr.of days" value="{{logUpdateTime}}">
+                            </label>
+
+                        </div>
+
+                        </div>  </fieldset>
+      <fieldset>
+<div class="row" style="border:none;">
+
+
+          <div class="form-group col-lg-6">
+            <label class="label">Add new Sortiment</label>
+          <label class="input">  <div class="input-group" >
+            <input type="text" class="form-control"  value="" id="oneSortiment" placeholder="type new sortiment name">
+            <span class="input-group-btn">
+            <a href="#" class="btn btn-default btnGrp" type="button"  id="addNewSortiment">Add</a>
+          </span></div> </label>
+
+            <label class="label">Edit/Delete Sortiment</label>
+           <div class="well" style="max-height: 150px;overflow: auto;">
+                        {{#each sortiment}}
+
+                    <label class="input">  <div class="input-group sortimentList"  >
+                      <input type="text" class="form-control"  id="sortimentList" value="{{this}}" >
+                      <span class="input-group-btn">
+                      <button href="#" class="btn btn-default btnGrp" type="button" name="{{../_id}}" id="deleteOneSortiment">X</button>
+                      </span>
+                      </div></label>{{/each}}
+    </div>
+</div>
+
+<div class="form-group col-lg-6">
+  <label class="label">Add new Region</label>
+  <label class="input"><div class="input-group"  >
+  <input type="text" class="form-control"  value="" id="oneRegion" placeholder="type new region name">
+  <span class="input-group-btn">
+  <a href="#" class="btn btn-default btnGrp" type="button"  id="addNewRegion">Add</a>
+</span></div></label>
+
+  <label class="label">Edit/Delete Region</label>
+ <div class="well" style="max-height: 150px;overflow: auto;">
+              {{#each region}}
+
+            <label class="input"><div class="input-group regionList"  >
+            <input type="text" class="form-control" id="regionList" value="{{this}}" >
+            <span class="input-group-btn">
+            <button href="#" class="btn btn-default btnGrp" type="button" name="{{../_id}}" id="deleteOneRegion">X</button>
+            </span>
+            </div></label>{{/each}}
+</div>
+</div>
+
+
+
+
+</div>  </fieldset>
+
+                    <!-- </div> -->
+
+
+                <!-- </div> -->
+
+        <!-- </div> -->
+
+    <br>
+    <button type="button" class="btn-u btn-u-default  button-save sButton" id="editSubmit" style="float:right;">Save</button>
+    <button type="button" class="btn-u btn-u-default cButton" id="closeEditList" style="float:right;">Close</button>
+    <br><br><br><br>
+
+
+
+    <!-- new -->
+
+
+              <!-- <div class=" panel-default">
+
                   <div class="panel-body">
 
-                      <div class="form-group col-lg-12">
-                          <label>Email</label>
-                          <input type="email"  class="form-control" id="email" value="" REQUIRED>
-                      </div>
-                      <div class="form-group col-lg-12">
-                          <label>Password</label>
-                          <input type="password" name="" class="form-control" id="password" value="" autocomplete="new-password" REQUIRED>
-                      </div>
-                      <div class="form-group col-lg-12">
-                          <label>Name</label>
-                          <input type="text" name="" class="form-control" id="firstname" value="" REQUIRED>
-                      </div>
+
 
                        <div class="form-group col-lg-12">
 
@@ -49,7 +184,7 @@
          <h3 class="text-center">Assign Player/s</h3>
 
          <div class="form-group col-lg-8 col-md-offset-2">
-           <!-- <label for="sortiment">Add new Sortiment</label> -->
+
            <div class="input-group"  >
            <input list="searchResults" type="text" class="form-control filter-input" value="" id="onePlayer" placeholder="type player ID">
            <datalist id="searchResults">
@@ -82,10 +217,12 @@
                   </div>
                   <div class="panel-footer">
                       <button type="submit" class="btn btn-default">Save</button>
-                  </div>
-              </div>
-          </form>
+                  </div> -->
+              </form>  </div>
+              <!-- </div></form> -->
+            <!-- </div> -->
+
       <!-- </div> -->
-  </div>
+
 
 </template>
