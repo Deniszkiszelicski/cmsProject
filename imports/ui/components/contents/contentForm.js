@@ -5,7 +5,7 @@ import '../medien/mediaForm';
 import { $ } from 'meteor/jquery';
 import './contentForm.html';
 
-Meteor.subscribe('contents');
+// Meteor.subscribe('contents');
 
 Template.contentForm.onCreated(function () {
   this.isSelectMedia = new ReactiveVar(false);

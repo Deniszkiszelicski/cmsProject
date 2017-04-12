@@ -15,21 +15,25 @@ Meteor.publish('medien', function(currentPage, showPerPage, filterText) {
         if (currentPage && showPerPage) {
           const skip = (currentPage - 1) * showPerPage;
           if (filterText) {
-            return Medien.find({ $and: [ { playerId: { $regex: new RegExp(filterText), $options: 'i' } },
+            return Medien.find({ $and: [ { name: { $regex: new RegExp(filterText), $options: 'i' } },
                                 { author: { $in: userIdsOfThisNetwork } } ] }, { sort: { name: 1 }, skip: skip, limit: showPerPage});
           } else {
             return Medien.find({ author: { $in: userIdsOfThisNetwork } }, { sort: { name: 1 }, skip: skip, limit: showPerPage});
           }
+        } else {
+          return Medien.find({ author: { $in: userIdsOfThisNetwork } }, { sort: { name: 1 }});
         }
       } else {
         if (currentPage && showPerPage) {
           const skip = (currentPage - 1) * showPerPage;
           if (filterText) {
-            return Medien.find({ $and: [ { playerId: { $regex: new RegExp(filterText), $options: 'i' } },
+            return Medien.find({ $and: [ { name: { $regex: new RegExp(filterText), $options: 'i' } },
                                 { author: userId } ] }, { sort: { name: 1 }, skip: skip, limit: showPerPage});
           } else {
             return Medien.find({ author: userId }, { sort: { name: 1 }, skip: skip, limit: showPerPage});
           }
+        } else {
+          return Medien.find({ author: userId }, { sort: { name: 1 }});
         }
       }
     }
@@ -52,21 +56,25 @@ Meteor.publish('countMedien', function(currentPage, showPerPage, filterText) {
         if (currentPage && showPerPage) {
           const skip = (currentPage - 1) * showPerPage;
           if (filterText) {
-            cursor = Medien.find({ $and: [ { playerId: { $regex: new RegExp(filterText), $options: 'i' } },
+            cursor = Medien.find({ $and: [ { name: { $regex: new RegExp(filterText), $options: 'i' } },
                                 { author: { $in: userIdsOfThisNetwork } } ] }, { sort: { name: 1 }, skip: skip, limit: showPerPage});
           } else {
             cursor = Medien.find({ author: { $in: userIdsOfThisNetwork } }, { sort: { name: 1 }, skip: skip, limit: showPerPage});
           }
+        } else {
+          cursor = Medien.find({ author: { $in: userIdsOfThisNetwork } }, { sort: { name: 1 }});
         }
       } else {
         if (currentPage && showPerPage) {
           const skip = (currentPage - 1) * showPerPage;
           if (filterText) {
-            cursor = Medien.find({ $and: [ { playerId: { $regex: new RegExp(filterText), $options: 'i' } },
+            cursor = Medien.find({ $and: [ { name: { $regex: new RegExp(filterText), $options: 'i' } },
                                 { author: userId } ] }, { sort: { name: 1 }, skip: skip, limit: showPerPage});
           } else {
             cursor = Medien.find({ author: userId });
           }
+        } else {
+          cursor = Medien.find({ author: userId }, { sort: { name: 1 }});
         }
       }
     }
