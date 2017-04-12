@@ -18,6 +18,7 @@ var Playervalue = [];
 Template.registerUser2.onCreated(function onCreated() {
   this.autorun(() => {
     this.subscribe('players', true);
+    Playervalue = [];
   });
   this.counter = new ReactiveVar();
   this.filterText = new ReactiveVar();
@@ -43,15 +44,19 @@ Template.registerUser2.helpers({
 });
 
 Template.registerUser2.events({
-  'submit .register': function (event) {
-
+  'click #userReg': function saveUser(event) {
+    console.log("sdfghsdfg");
     event.preventDefault();
 
 
-    const assignedPlayers = [];
-    const email = event.target.email.value;
-    const password = event.target.password.value;
-    const firstname = event.target.firstname.value;
+
+    var assignedPlayers = [];
+    const email = $('#email').val();
+    // event.target.email.value;
+    const password = $('#password').val();
+    // event.target.password.value;
+    const firstname = $('#firstname').val();
+    // event.target.firstname.value;
 
     const role = $('.assignedRole').children('#checked:checked').val();
 
@@ -62,7 +67,11 @@ Template.registerUser2.events({
     const user = { email: email, password: password, profile:
        { name: firstname, assignedPlayers: assignedPlayers, role: role } };
     Accounts.createUser(user);
+
     toastr.success('Data Saved', 'Create User');
+
+
+
   },
   'click #addPlayer': function fu(event, templateInstance) {
     event.preventDefault();
