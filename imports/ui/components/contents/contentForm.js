@@ -188,7 +188,7 @@ Template.contentForm.events({
     event.preventDefault();
     templateInstance.isNewMedia.set(true);
   },
-  'click #button-close-media-form': function closeForm(event, templateInstance) {
+  'click #buttonCloseMediaForm': function closeForm(event, templateInstance) {
     event.preventDefault();
     event.stopPropagation();
     templateInstance.isNewMedia.set(false);
@@ -197,7 +197,7 @@ Template.contentForm.events({
     event.preventDefault();
     templateInstance.isSelectMedia.set(false);
   },
-  'click .content-form .button-save': function saveNewMedia(event, templateInstance) {
+  'click .content-form .mediaSave': function saveNewMedia(event, templateInstance) {
     event.preventDefault();
     templateInstance.isNewMedia.set(false);
     const media = Medien.findOne({}, { sort: { 'createdAt': -1 } });

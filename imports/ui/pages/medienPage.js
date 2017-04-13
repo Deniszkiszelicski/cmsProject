@@ -40,7 +40,7 @@ Template.medienPage.events({
     Session.set("isDefaultPageLayout", false);
     templateInstance.isCreateNew.set(true);
   },
-  'click #buttonCloseMediaForm, click #mediaSave': function closeForm(event, templateInstance) {
+  'click #buttonCloseMediaForm, click .mediaSave': function closeForm(event, templateInstance) {
     event.preventDefault();
     templateInstance.isCreateNew.set(false);
   },
