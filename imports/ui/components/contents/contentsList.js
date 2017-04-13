@@ -101,6 +101,7 @@ Template.contentsList.helpers({
 Template.contentsList.events({
   'keyup #content-filter-input': function (event, templateInstance) {
     templateInstance.filterText.set(event.currentTarget.value);
+    templateInstance.currentPage.set(1);
   },
   'click #button-delete-confirmed': function deleteContent(event, templateInstance) {
     event.preventDefault();
