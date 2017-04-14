@@ -54,7 +54,12 @@ Images = new FilesCollection({
     }
   },
   onAfterUpload: function (fileRef) {
-    console.log("inserted id = ", fileRef._id);
+    // console.log("inserted id = ", fileRef._id);
+  },
+  storagePath: function () {
+    const path = Meteor.settings.saveImagesPath;
+    return path;
+    // return 'assets/app/uploads';
   },
 });
 
@@ -62,7 +67,15 @@ Videos = new FilesCollection({
   // debug: true,
   // throttle: false,
   // chunkSize: 1024*1024,
-  storagePath: 'assets/app/uploads/videos',
+  // storagePath: 'assets/app/uploads/videos',
+  storagePath: function () {
+    // const path = Meteor.settings.testSaveFilesPath;
+    // console.log("path = ", path);
+    // return '';
+    const path = Meteor.settings.saveVideosPath;
+    return path;
+    // return 'assets/app/uploads/videos';
+  },
   // collectionName: 'uploadedFiles',
   collectionName: 'Videos',
   allowClientCode: true,
