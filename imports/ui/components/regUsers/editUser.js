@@ -8,7 +8,6 @@ import '../../components/logoutbutton';
 import '../../components/regUsers/userReg';
 import '../../components/regUsers/userList';
 
-
 Meteor.subscribe('users');
 Meteor.subscribe('roles');
 var Playervalue = [];
@@ -37,7 +36,10 @@ Template.editUser2.helpers({
     return Players.findOne({ _id: id }).name;
   },
   playerIds: (id) =>{
-    return Players.findOne({ _id: id }).playerId;
+    const player = Players.findOne({ _id: id });
+    if (player) {
+      return player.playerId;
+    }
   },
   playerInformation: () =>{
     return Players.find().fetch();
@@ -48,8 +50,6 @@ Template.editUser2.helpers({
   onePlayer: () =>{
     return Template.instance().counter.get(Playervalue);
   },
-
-
 });
 
 Template.editUser2.events({

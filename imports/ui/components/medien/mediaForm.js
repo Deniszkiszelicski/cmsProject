@@ -6,7 +6,7 @@ import './searchCategory';
 import './mediaForm.html';
 
 
-Meteor.subscribe('medien');
+// Meteor.subscribe('medien');
 Meteor.subscribe('files.images.all');
 Meteor.subscribe('files.videos.all');
 
@@ -40,6 +40,10 @@ Template.mediaForm.helpers({
   category: function () {
     const category = this.category;
     return category;
+  },
+  getCategories: function getCategories () {
+    const categories = Medien.find({}, { fields: { category: 1 } }).fetch().map(function(it) { return it.category; });
+    return _.uniq(categories);
   },
   uploadedFileName: function () {
     return Template.instance().uploadedFileName.get();

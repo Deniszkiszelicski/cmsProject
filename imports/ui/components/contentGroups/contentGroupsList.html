@@ -1,20 +1,18 @@
 <template name ="contentGroupsList">
-  
-
   <div class="panel-v1  content-form">
     <ul class="nav nav-tabs">
-
       {{#unless isCreateNew}}
-        {{#if options.enableButtonNewCG}}
+        {{#if enableButtonNewCG}}
           <button type="button" class="btn-u btn-u-default sButton" style="float:right;" id="newCgBtn">New Content-Group</button>
         {{/if}}
       {{/unless}}
-
+      <input type="text"
+        id="records-per-page-input" value="{{showPerPage}}" style="width: 30px; float:right;">
+      <span style="float:right;padding-top:2px;padding-right:5px;">Records/page </span>
       {{#if options.enableFilter}}
         <input type="text"
           placeholder="Type text to filter by name" id="contentGroup-filter-input">
       {{/if}}
-
  </ul>
  {{#if options.enableButtonCloseListOfCG}}
  <i type="button" class="glyphicon glyphicon-remove" id="button-close-contentGroup-collection"></i>
@@ -38,10 +36,9 @@
         </tbody>
       </table>
     </div>
+    {{#with optionsForPagination}}
+      {{> paginationPanel}}
+    {{/with}}
   </div>
-
-
-
-
   {{>deleteConfirmation message=contentGroupToDelete}}
 </template>

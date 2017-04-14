@@ -3,26 +3,55 @@ import '../../../api/contents/methods';
 import '../../../api/contents/collection';
 import '../modals/deleteConfirmation';
 import './content';
+import '../pagination/paginationPanel';
 import './contentsList.html';
 
-Meteor.subscribe('contents');
-
 Template.contentsList.onCreated(function () {
+  this.currentPage = new ReactiveVar(this.data.options.initialPage);
+  const showPerPage = this.data.options.initialShowPerPage;
+  this.showPerPage = new ReactiveVar(showPerPage);
+  this.lastPageNumber = new ReactiveVar(1);
   this.filterText = new ReactiveVar();
   this.contentToDelete = new ReactiveVar();
+  const userId = Meteor.userId();
+  const roleId = Meteor.users.findOne({ _id: userId }).profile.role;
+  const role = Roles.findOne({ _id: roleId });
+  this.autorun(() => {
+    const currentPage = this.currentPage.get();
+    const showPerPage = this.showPerPage.get();
+    const filterText = this.filterText.get();
+    this.subscribe('medien');
+    this.subscribe('contents', currentPage, showPerPage, filterText);
+    this.subscribe('countContents', currentPage, showPerPage, filterText);
+    const contentsCount = Counter.get("countContents");
+    const lastPageNumber = Math.ceil(contentsCount / showPerPage);
+    this.lastPageNumber.set(lastPageNumber > 0 ? lastPageNumber : 1);
+  });
 });
 
 Template.contentsList.helpers({
-  contents: () => {
-    return Contents.find().fetch();
-  },
   contentToDelete: function contentToDelete() {
     const content = Template.instance().contentToDelete.get();
     if (content) {
       return "Delete '" + content.name + "' content.";
     }
   },
+  showPerPage: function showPerPage() {
+    return Template.instance().showPerPage.get();
+  },
+  optionsForPagination: function getOptionsForPagination() {
+    const initialPage = Template.instance().currentPage.get();
+    const lastPageNumber = Template.instance().lastPageNumber.get();
+    const options = { initialPage: initialPage,
+                      lastPageNumber: lastPageNumber, };
+    return { options: options };
+  },
   filteredContents: function filteredContents() {
+    const userId = Meteor.userId();
+    const roleId = Meteor.users.findOne({ _id: userId }).profile.role;
+    const role = Roles.findOne({ _id: roleId });
+    const mayEdit = role.editContent;
+    const mayDelete = role.deleteContent;
     let contentIds = [];
     const contentIdsWithColour = this.contents;
     let contentsWithOptions = [];
@@ -51,17 +80,28 @@ Template.contentsList.helpers({
     const l = contentsWithOptions.length;
     if (l > 0) {
       for (i = 0; i < l; i++) {
-        contentsWithOptions[i]["enableButtonDelete"] = this.options.enableButtonDelete;
-        contentsWithOptions[i]["enableButtonEdit"] = this.options.enableButtonEdit;
+        contentsWithOptions[i]["enableButtonDelete"] = mayDelete && this.options.enableButtonDelete;
+        contentsWithOptions[i]["enableButtonEdit"] = mayEdit && this.options.enableButtonEdit;
       }
     }
     return contentsWithOptions;
+  },
+  enableButtonNewContent: function enableButtonNewContent() {
+    const options = this.options;
+    const userId = Meteor.userId();
+    const roleId = Meteor.users.findOne({ _id: userId }).profile.role;
+    const role = Roles.findOne({ _id: roleId });
+    if (options.enableButtonNewContent && role.createContent) {
+      return true;
+    }
+    return false;
   },
 });
 
 Template.contentsList.events({
   'keyup #content-filter-input': function (event, templateInstance) {
     templateInstance.filterText.set(event.currentTarget.value);
+    templateInstance.currentPage.set(1);
   },
   'click #button-delete-confirmed': function deleteContent(event, templateInstance) {
     event.preventDefault();
@@ -73,5 +113,26 @@ Template.contentsList.events({
   'click .glyphicon-trash': function deleteContent(event, templateInstance) {
     event.preventDefault();
     templateInstance.contentToDelete.set(this);
+  },
+  'click .pagination .page-number': function goToPage(event, templateInstance) {
+    const pageN = parseInt(event.currentTarget.dataset.page);
+    templateInstance.currentPage.set(pageN);
+  },
+  'click .pagination .page-go-back': function goBack(event, templateInstance) {
+    const currentPage = templateInstance.currentPage.get();
+    templateInstance.currentPage.set(currentPage - 1);
+  },
+  'click .pagination .page-go-forward': function goForward(event, templateInstance) {
+    const currentPage = templateInstance.currentPage.get();
+    templateInstance.currentPage.set(currentPage + 1);
+  },
+  'keyup #records-per-page-input': function (event, templateInstance) {
+    const showPerPage = parseInt(event.currentTarget.value);
+    if (showPerPage > 0) {
+      templateInstance.showPerPage.set(showPerPage);
+      const contentsCount = Counter.get("countContents");
+      templateInstance.currentPage.set(1);
+      templateInstance.lastPageNumber.set(Math.ceil(contentsCount / showPerPage));
+    }
   },
 });

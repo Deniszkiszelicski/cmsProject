@@ -55,9 +55,8 @@ event.preventDefault();
                                  seeMedia: $('#seeMedia').is(":checked"),
                                  seeContent: $('#seeContent').is(":checked"),
                                  seeContentGroup: $('#seeContentGroup').is(":checked"),
-                                 seeAllPlayers: $('#seeAllPlayers').is(":checked")
+                                 seeAllPlayers: $('#seeAllPlayers').is(":checked"),
                                  });
                                  toastr.success("Role saved","Edit Role");
-
 }
 });

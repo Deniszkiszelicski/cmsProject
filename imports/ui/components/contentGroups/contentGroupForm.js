@@ -10,6 +10,12 @@ Template.contentGroupForm.onCreated(function () {
   this.canvasContext = new ReactiveVar();
   this.showColourPicker = new ReactiveVar(false);
   this.colour = new ReactiveVar(this.data.colour);
+  this.autorun(() => {
+    this.subscribe('medien');
+    this.subscribe('contents');
+    // this.subscribe('contentGroups', currentPage, showPerPage, filterText);
+    // this.subscribe('countContentGroups', currentPage, showPerPage, filterText);
+  });
 
   let includedContentObjects = [];
   const includedContentIds = this.data.contentIds;

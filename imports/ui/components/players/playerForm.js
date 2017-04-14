@@ -5,13 +5,12 @@ import '../../../api/players/collection';
 import '../playlists/playlistContentPart';
 import './playerForm.html';
 
-Meteor.subscribe('players');
-
 Template.playerForm.onCreated(function () {
   this.isShowCGs = new ReactiveVar(false);
   this.playlistId = new ReactiveVar(this.data.playlistId);
   const roleId = Meteor.user().profile.role;
   const networkId = Roles.findOne({ _id: roleId }).networkId;
+  this.networkId = new ReactiveVar(networkId);
   const network = Networks.findOne({ _id: networkId });
   const assortiment = network.sortiment;
   const regions = network.region;
@@ -145,6 +144,10 @@ Template.playerForm.events({
     const playlistId = $('#select-playlist').val();
     const name = $('#name').val();
     const playerId = $('#playerId').val();
+    let networkId = templateInstance.networkId.get();
+    if (networkId) {
+      networkId = Session.get("currentNetworkId");
+    }
     Meteor.call('upsertPlayer',
       { _id: this._id,
         name: name,
@@ -188,6 +191,7 @@ Template.playerForm.events({
         regions: regions,
         contentGroupIds: contentGroupIds,
         playlistId: playlistId,
+        networkId: networkId,
        });
     toastr["success"]("Player '" + name + "' (ID = " + playerId + ") has been saved.");
   },

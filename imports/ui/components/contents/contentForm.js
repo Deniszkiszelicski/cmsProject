@@ -5,12 +5,14 @@ import '../medien/mediaForm';
 import { $ } from 'meteor/jquery';
 import './contentForm.html';
 
-Meteor.subscribe('contents');
-Meteor.subscribe('medien');
+// Meteor.subscribe('contents');
 
 Template.contentForm.onCreated(function () {
   this.isSelectMedia = new ReactiveVar(false);
   this.isNewMedia = new ReactiveVar(false);
+  this.autorun(() => {
+    this.subscribe('medien');
+  });
   const type = this.data.type || "m"; //m=media, t=template
   if(type == "m") {
     this.isTypeMedia = new ReactiveVar(true);
@@ -186,7 +188,7 @@ Template.contentForm.events({
     event.preventDefault();
     templateInstance.isNewMedia.set(true);
   },
-  'click #button-close-media-form': function closeForm(event, templateInstance) {
+  'click #buttonCloseMediaForm': function closeForm(event, templateInstance) {
     event.preventDefault();
     event.stopPropagation();
     templateInstance.isNewMedia.set(false);
@@ -195,7 +197,7 @@ Template.contentForm.events({
     event.preventDefault();
     templateInstance.isSelectMedia.set(false);
   },
-  'click .content-form .button-save': function saveNewMedia(event, templateInstance) {
+  'click .content-form .mediaSave': function saveNewMedia(event, templateInstance) {
     event.preventDefault();
     templateInstance.isNewMedia.set(false);
     const media = Medien.findOne({}, { sort: { 'createdAt': -1 } });

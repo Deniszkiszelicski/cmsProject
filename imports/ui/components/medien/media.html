@@ -22,15 +22,17 @@
       {{else}}
         <td>
           <div class="media-row-controls">
-            {{#if mayEdit}}
+            {{#if options.enableButtonEditMedia}}
               <i type="button" class="glyphicon glyphicon-pencil" id="button-edit-media"></i>
             {{/if}}
+            {{#if options.enableButtonDeleteMedia}}
             <i type="button" class="glyphicon glyphicon-trash"
             data-toggle="modal" data-target="#deleteConfirmation"></i>
+            {{/if}}
             <i type="button" class="fa fa-play" data-target="#media-video-modal" id="button-play-media"></i>
           </div>
         </td>
       {{/if}}
     </tr>
-  {{/if}}  
+  {{/if}}
 </template>
