@@ -41,6 +41,10 @@ Template.mediaForm.helpers({
     const category = this.category;
     return category;
   },
+  getCategories: function getCategories () {
+    const categories = Medien.find({}, { fields: { category: 1 } }).fetch().map(function(it) { return it.category; });
+    return _.uniq(categories);
+  },
   uploadedFileName: function () {
     return Template.instance().uploadedFileName.get();
   }
