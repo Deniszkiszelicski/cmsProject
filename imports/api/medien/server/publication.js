@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+fs = Npm.require('fs-extra');
 
 Meteor.publish('medien', function(currentPage, showPerPage, filterText) {
   const userId = this.userId;
