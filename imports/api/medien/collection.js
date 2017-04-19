@@ -57,8 +57,19 @@ Images = new FilesCollection({
     // console.log("inserted id = ", fileRef._id);
   },
   storagePath: function () {
+    const userId = this.userId;
     const path = Meteor.settings.saveImagesPath;
+    if (userId) {
+      const roleId = Meteor.users.findOne({ _id: userId }).profile.role;
+      const role = Roles.findOne({ _id: roleId });
+      if (role) {
+        const networkId = role.networkId;
+
+        return path + "/" + networkId.toString() + "/original";
+      }
+    }
     return path;
+
     // return 'assets/app/uploads';
   },
 });
