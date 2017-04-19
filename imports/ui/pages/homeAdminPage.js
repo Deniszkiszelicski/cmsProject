@@ -25,7 +25,7 @@ var result;
 
 Template.homeAdminPage.events({
 
-  'submit .submitEditHome': function homeSubmit(event) {
+  'submit .submitEditHome , click #saveHome': function homeSubmit(event) {
     event.preventDefault();
 
 
