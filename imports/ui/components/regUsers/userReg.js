@@ -69,7 +69,7 @@ Template.registerUser2.events({
     Accounts.createUser(user);
 
     toastr.success('Data Saved', 'Create User');
-
+    console.log(assignedPlayers);
 
 
   },

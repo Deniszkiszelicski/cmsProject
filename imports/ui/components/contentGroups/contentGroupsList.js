@@ -6,8 +6,6 @@ import './contentGroup';
 import '../pagination/paginationPanel';
 import './contentGroupsList.html';
 
-// Meteor.subscribe('contentGroups');
-
 Template.contentGroupsList.onCreated(function () {
   this.currentPage = new ReactiveVar(this.data.options.initialPage);
   const showPerPage = this.data.options.initialShowPerPage;

@@ -34,12 +34,14 @@
       <label class="label">Role</label>
       <label class="select">
         <select class="assignedRole">
-          <option value="0">Choose Role</option>
+          {{#with user}}
+          <option value="{{profile.role}}" id="checked">Choose Role</option>
+          {{/with}}
           {{#each rolesInformation}}
           <option value="{{this._id}}"  id="checked">{{this.roleName}} </option>
         {{/each}}
         {{#with user}}
-          <option value="{{this._id}}"  id="checked" CHECKED>{{roleName profile.role}}</option>
+          <option value="{{profile.role}}"  id="checked" style="color:red;">{{roleName profile.role}}</option>
         {{/with}}
         </select>
       </label>
@@ -57,7 +59,7 @@
       <a href="#" class="btn btn-default btnGrp" type="button"  id="addPlayer">Add</a>
     </span></div></label>
       <label class="label">Assigned Players list</label>
-     <div class="well" style="max-height: 150px;overflow: auto;">
+     <div class="well assignedPlayersList" style="max-height: 150px;overflow: auto;">
        {{#with user}}{{#each profile.assignedPlayers}}
        <label class="input"><div class="input-group regionList"  >
        <input type="text" class="form-control" value="Player Id :{{playerIds this}} " DISABLED>

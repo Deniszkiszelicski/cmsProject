@@ -1,43 +1,36 @@
 <template name ="playersList">
-  <div class="breadcrumbs secondHead">
-    <div class="container secondHead1">
-      <h3 class="pull-left">Players</h3>
-      <input type="text"
-      placeholder="Type text to filter by ID" id="player-filter-input" style="float:right;margin-top:15px;">
-    </div></div><br><br>
-    <div class="panel-v1  content-form">
-      <ul class="nav nav-tabs">
-        {{#if enableButtonNewPlayer}}
-        <button type="button" class="btn-u btn-u-default button-new sButton" style="float:right;">New player</button>
-        {{/if}}
-        <input type="text"
-        placeholder="Type text to filter by ID" id="player-filter-input">
-        <input type="text"
-        id="records-per-page-input" value="{{showPerPage}}" style="width: 30px; float:right;">
-        <span style="float:right;padding-top:2px;padding-right:5px;">Records/page </span>
-      </ul>
-      <br>
+  <ul class="nav nav-tabs">
+    {{#if enableButtonNewPlayer}}
+      <button type="button" class="btn-u btn-u-default button-new sButton" style="float:right;">New player</button>
+    {{/if}}
+    <input type="text"
+      placeholder="Type text to filter by ID" id="player-filter-input">
+    <input type="text"
+      id="records-per-page-input" value="{{showPerPage}}" style="width: 30px; float:right;">
+    <span style="float:right;padding-top:2px;padding-right:5px;">Records/page </span>
+  </ul>
 
-      <div class="panel-body sky-form">
-        <table class="table table-striped table-list" id="contentTable">
-          <thead>
-            <tr>
-              <th></th>
-              <th>Name</th>
-              <th>Content-groups</th>
-              <th>Controls</th>
-            </tr>
-          </thead>
-          <tbody>
-            {{#each players}}
-            {{> player}}
-            {{/each}}
-          </tbody>
-        </table>
-        {{#with optionsForPagination}}
-        {{> paginationPanel}}
-        {{/with}}
-      </div>
-      {{>deleteConfirmation message=playerToDelete}}
-    </div>
-  </template>
+  <br>
+
+  <div class="panel-body sky-form">
+    <table class="table table-striped table-list" id="contentTable">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Name</th>
+          <th>Content-groups</th>
+          <th>Controls</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each players}}
+          {{> player}}
+      	{{/each}}
+      </tbody>
+    </table>
+    {{#with optionsForPagination}}
+      {{> paginationPanel}}
+    {{/with}}
+  </div>
+  {{>deleteConfirmation message=playerToDelete}}
+</template>

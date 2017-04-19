@@ -52,9 +52,9 @@
       <a href="#" class="btn btn-default btnGrp" type="button"  id="addPlayer">Add</a>
     </span></div></label>
       <label class="label">Assigned Players list</label>
-     <div class="well" style="max-height: 150px;overflow: auto;">
+     <div class="well assignedPlayersList" style="max-height: 150px;overflow: auto;">
                   {{#each onePlayer}}
-                <label class="input"><div class="input-group regionList"  >
+                <label class="input"><div class="input-group assignedPlayersList"  >
                 <input type="text" class="form-control" value="Player Id :{{this.playerId}}" DISABLED>
                 <span class="input-group-btn">
                 <button href="#" class="btn btn-default btnGrp" type="button" name="{{../_id}}" id="deleteOnePlayer">X</button>

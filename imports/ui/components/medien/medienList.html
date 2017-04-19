@@ -1,4 +1,15 @@
 <template name ="medienList">
+  {{#if enableButtonNewMedia}}
+  <div class="breadcrumbs secondHead">
+    <div class="container secondHead1">
+      <h3 class="pull-left">Medien</h3>
+      <input type="text"
+        placeholder="Type text to filter by name" id="media-filter-input" style="float:right;margin-top:15px;">
+    </div>
+  </div>
+  <br>
+  <br>
+  {{/if}}
   <div class="panel-v1  content-form">
     <ul class="nav nav-tabs">
       {{#if enableButtonNewMedia}}
