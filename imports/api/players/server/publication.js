@@ -173,8 +173,13 @@ Api.addRoute('getPlaylistForPlayer', {authRequired: false}, {
             const contentGroupIdsLength = contentGroupIds.length;
             if (contentGroupIdsLength > 0) {
               const contentGroupObjects = ContentGroups.find({ _id: { $in: contentGroupIds } }, { limit: contentGroupIdsLength }).fetch();
-              for (let i = 0; i < contentGroupObjects.length; i++) {
-                const contentIds = contentGroupObjects[i].contentIds;
+              for (let i = 0; i < contentGroupIds.length; i++) {
+                const contentGrpObjTemp = contentGroupObjects.find((contentGrpObj) => {
+                  return contentGrpObj._id == contentGroupIds[i];
+                }); // 130
+                // const contentIds = contentGroupObjects[i].contentIds;
+                console.log("contentGrpObjTemp = ", contentGrpObjTemp);
+                const contentIds = contentGrpObjTemp.contentIds;
                 const contentIdsLength = contentIds.length;
                 if (contentIdsLength > 0) {
                   for (let i = 0; i < contentIds.length; i++) {
@@ -191,13 +196,13 @@ Api.addRoute('getPlaylistForPlayer', {authRequired: false}, {
                           testEntry.addTag("type", 1);
                           const image = Images.findOne({ _id: media.fileId});
                           if (image) {
-                            testEntry.addTag("filename", image.name);
+                            testEntry.addTag("filename", image._id + ".jpg");
                           }
                         } else {
                           testEntry.addTag("type", 0);
                           const video = Videos.findOne({ _id: media.fileId});
                           if (video) {
-                            testEntry.addTag("filename", video.name);
+                            testEntry.addTag("filename", video._id + ".mp4");
                           }
                         }
                       }
