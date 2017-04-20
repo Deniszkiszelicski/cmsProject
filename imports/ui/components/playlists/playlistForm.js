@@ -9,19 +9,27 @@ Meteor.subscribe('playlists');
 Template.playlistForm.onCreated(function () {
   this.isShowCGs = new ReactiveVar(false);
   this.playerId = new ReactiveVar(this.data.playerId);
-  let includedCGObjects = [];
-  const includedCGIds = this.data.contentGroupIds;
-  if(!!includedCGIds) {
-    const sizeOfIncCGIds = includedCGIds.length;
-    if (sizeOfIncCGIds > 0) {
-      for (i = 0; i < sizeOfIncCGIds; i++) {
-        let tempCGId = includedCGIds[i];
-        let tempCG = ContentGroups.findOne({ _id: tempCGId});
-        includedCGObjects.push(tempCG);
+  this.autorun(() => {
+    this.subscribe('medien');
+    this.subscribe('contents');
+    this.subscribe('contentGroups');
+    let includedCGObjects = [];
+    const includedCGIds = this.data.contentGroupIds;
+    if(!!includedCGIds) {
+      const sizeOfIncCGIds = includedCGIds.length;
+      if (sizeOfIncCGIds > 0) {
+        for (i = 0; i < sizeOfIncCGIds; i++) {
+          let tempCGId = includedCGIds[i];
+          let tempCG = ContentGroups.findOne({ _id: tempCGId});
+          if (tempCG) {
+            includedCGObjects.push(tempCG);
+          }
+        }
       }
     }
-  }
-  this.includedCGs = new ReactiveVar(includedCGObjects);
+    this.includedCGs = new ReactiveVar(includedCGObjects);
+  });
+
 });
 
 Template.playlistForm.helpers({
@@ -48,7 +56,6 @@ Template.playlistForm.helpers({
         contentIdsWithColour.push(contentIdWithColour);
       }
     }
-    console.log("in playlistForm contentIdsWithColour = ", contentIdsWithColour);
     const options = { header: "Included contents", enableButtonDelete: false,
                       enableButtonEdit: false, enableButtonRemove: true,
                       enableButtonNewCG: false, enableFilter: false,

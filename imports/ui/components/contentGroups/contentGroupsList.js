@@ -33,6 +33,7 @@ Template.contentGroupsList.onCreated(function () {
 
 Template.contentGroupsList.helpers({
   filteredContentGroups: function filteredContentGroups() {
+    const options = Template.currentData();
     const contentGroups = this.contentGroups;
     let contentGroupsWithOptions;
     if (contentGroups) {
