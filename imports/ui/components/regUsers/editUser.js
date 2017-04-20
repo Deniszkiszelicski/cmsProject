@@ -15,6 +15,7 @@ var Playervalue = [];
 Template.editUser2.onCreated(function onCreated() {
   this.autorun(() => {
     this.subscribe('players', true);
+    Playervalue = [];
   });
   this.counter = new ReactiveVar();
   this.filterText = new ReactiveVar();
@@ -52,14 +53,12 @@ Template.editUser2.helpers({
 });
 
 Template.editUser2.events({
-  'submit .edit': function editUser(event) {
+  'click #userEdit': function editUser(event) {
     event.preventDefault();
-
-
-    const email = event.target.email.value;
-    const password = event.target.password.value;
-    const firstname = event.target.firstname.value;
-    const assignedPlayers = [];
+    var assignedPlayers = [];
+    const email = $('#email').val();
+    const password = $('#password').val();
+    const firstname = $('#firstname').val();
     const role = $('#checked:checked').val();
 
     $('.assignedPlayersList').children('#playerList').each(function f() {

@@ -114,5 +114,5 @@ Template.medienList.events({
   'keyup #media-filter-input': function (event, templateInstance) {
     templateInstance.filterText.set(event.currentTarget.value);
     templateInstance.currentPage.set(1);
-  }
+  },
 });

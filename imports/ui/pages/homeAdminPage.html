@@ -4,7 +4,7 @@
     <div class="container secondHead1">
       <h3 class="pull-left">Edit Homepage</h3>
     </div></div><br><br>
-      	<div class="container" >
+      	<!-- <div class="container" > -->
           <form class="form submitEditHome" name="Form" novalidate>
   <div class="tab-v1">
     <ul class="nav nav-tabs">
@@ -213,7 +213,7 @@
         {
           contentsCss : "stylesheets/editor.css"
         });CKEDITOR.config.allowedContent=true;
-        
+
         </script>
 
                 </div>
@@ -343,91 +343,23 @@
         </div>
         <!-- Tab v3 -->
 
-
-
-
-
       </div>
       <div class="tab-pane fade in" id="footer">
-        <!-- <hr><h4>Footer</h4> -->
-        <!-- Tab v3 --> <br>
+       <br>
         <div class="row tab-v1">
-          <!-- <div class="col-sm-3">
-            <ul class="nav nav-pills nav-stacked">
-              <li class="active"><a href="#footerA" data-toggle="tab"><i class="fa fa-comments"></i>Footer 1</a></li>
-              <li><a href="#footerB" data-toggle="tab"><i class="fa fa-comments"></i>Footer 2</a></li>
-              <li><a href="#footerC" data-toggle="tab"><i class="fa fa-comments"></i>Footer 3</a></li>
-              <li><a href="#footerD" data-toggle="tab"><i class="fa fa-comments"></i>Footer 4</a></li>
-            </ul>
-          </div> -->
-          <!-- <div class="col-sm-9">
-            <div class="tab-content">
-              <div class="tab-pane fade in active" id="footerA">
-                <h4>Footer 1</h4> -->
 
                 <div class="form-group col-lg-12">
-
-
                     <textarea name="editor3" id="footer1">{{homePageData.footer1}}</textarea>
                 <script>
                 CKEDITOR.replace( 'editor3',{height:250});
                 CKEDITOR.config.allowedContent=true;
                 </script>
-
                 </div>
               </div>
-              <!-- <div class="tab-pane fade in" id="footerB">
-                <h4>Footer 2</h4>
-                <div class="form-group col-lg-6">
-
-
-                    <textarea name="editor4" id="footer2">{{homePageData.footer2}}</textarea>
-                <script>
-                CKEDITOR.replace( 'editor4',{height:100});
-                </script>
-
-                </div>
-              </div>
-              <div class="tab-pane fade in" id="footerC">
-                <h4>Footer 3</h4>
-                <div class="form-group col-lg-6">
-
-
-                    <textarea name="editor5" id="footer3">{{homePageData.footer3}}</textarea>
-                <script>
-                CKEDITOR.replace( 'editor5',{height:100});
-                </script>
-
-                </div>
-              </div>
-              <div class="tab-pane fade in" id="footerD">
-                <h4>Footer 4</h4>
-                <div class="form-group col-lg-6">
-
-
-                    <textarea name="editor6" id="footer4">{{homePageData.footer4}}</textarea>
-                <script>
-                CKEDITOR.replace( 'editor6',{height:100});
-                </script>
-
-                </div>
-              </div> -->
-            <!-- </div>
-          </div>
-        </div> -->
-        <!-- Tab v3 -->
-
-
-
-
-
       </div>
       <div class="tab-pane fade in" id="image">
         <br>
      <div class="row tab-v1">
-        <!-- <hr><h4>Image</h4> -->
-
-
         <div class="form-group col-lg-12">
             <div class="form-group col-lg-6">
             </div>
@@ -440,43 +372,15 @@
                 </div>
               </div>
 </div>
-
 <div class="container">
-
   <img src="{{homePageData.homeImage}}" class="img-rounded" alt="Cinque Terre" width="912" height="354">
 </div>
-
-
-
 </div>
       </div>
-
-
     </div>
-
-
-
-
-
-
   </div>
-
-
-                    <!-- </div> -->
-
-
-                <!-- </div> -->
             </form>
-          </div>
-        <!-- </div> -->
-    <!-- </div> -->
     <br><br>
-
-      <button type="submit" class="btn-u btn-u-default homeSubmit sButton" style="float:right;margin-right:-10px;">Save</button>
-
+      <button type="button" class="btn-u btn-u-default homeSubmit sButton" id="saveHome" style="float:right;">Save</button>
       <br><br><br>
-
-
-
-
 </template>

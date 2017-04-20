@@ -4,6 +4,7 @@ import '../components/contentGroups/contentGroupsList';
 import '../components/contentGroups/contentGroupForm';
 import './contentGroupsPage.html';
 
+
 Template.contentGroupsPage.onCreated(function () {
   this.initialPage = new ReactiveVar(1);
   this.initialShowPerPage = new ReactiveVar(10);

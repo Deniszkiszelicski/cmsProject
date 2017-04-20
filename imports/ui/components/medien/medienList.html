@@ -1,17 +1,28 @@
 <template name ="medienList">
+  {{#if enableButtonNewMedia}}
+  <div class="breadcrumbs secondHead">
+    <div class="container secondHead1">
+      <h3 class="pull-left">Medien</h3>
+      <input type="text"
+        placeholder="Type text to filter by name" id="media-filter-input" style="float:right;margin-top:15px;">
+    </div>
+  </div>
+  <br>
+  <br>
+  {{/if}}
   <div class="panel-v1  content-form">
     <ul class="nav nav-tabs">
       {{#if enableButtonNewMedia}}
-        <button type="button" class="btn-u btn-u-default sButton" style="float:right;" id="buttonNew">New media</button>
+      <button type="button" class="btn-u btn-u-default sButton" style="float:right;" id="buttonNew">New media</button>
       {{/if}}
       <input type="text"
       placeholder="Type text to filter by name" id="media-filter-input">
       <input type="text"
-        id="records-per-page-input" value="{{showPerPage}}" style="width: 30px; float:right;">
+      id="records-per-page-input" value="{{showPerPage}}" style="width: 30px; float:right;">
       <span style="float:right;padding-top:2px;padding-right:5px;">Records/page </span>
     </ul>
     {{#if options.enableButtonCloseListOfContents}}
-      <i type="button" class="glyphicon glyphicon-remove" id="buttonCloseMediaForm"></i>
+    <i type="button" class="glyphicon glyphicon-remove" id="buttonCloseMediaForm"></i>
     {{/if}}
     <br>
     <div class="panel-body sky-form">
@@ -28,17 +39,16 @@
         </thead>
         <tbody>
           {{#each filteredMedien}}
-            {{#with this}}
-              {{>media}}
-            {{/with}}
+          {{#with this}}
+          {{>media}}
+          {{/with}}
           {{/each}}
         </tbody>
       </table>
       {{#with optionsForPagination}}
-        {{> paginationPanel}}
+      {{> paginationPanel}}
       {{/with}}
     </div>
   </div>
-
   {{>deleteConfirmation message=mediaToDelete}}<br>
 </template>

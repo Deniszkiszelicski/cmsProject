@@ -33,7 +33,7 @@ Template.userReg1.events({
     templateInstance.isCreateNew.set(true);
   },
 
-  'submit .register': function closeForm(event, templateInstance) {
+  'click #userReg': function closeForm(event, templateInstance) {
     event.preventDefault();
     templateInstance.isCreateNew.set(false);
   },

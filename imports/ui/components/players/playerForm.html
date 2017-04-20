@@ -14,7 +14,8 @@
           <button type="submit" class="btn-u btn-u-default button-save sButton" id="btn-save-content" style="float:right; ">Save</button>
           <button type="button" class="btn-u btn-u-default cButton" id="button-close-player-form" style="float:right;">Close</button>
 
-        </ul>
+        </ul><br>
+
         <div class="tab-content">
           <div class="tab-pane fade active in" id="player-main"><br>
             <form class="sky-form" action=# id="sky-form">
@@ -301,11 +302,17 @@
           <div class="row" style="padding-left:20px">
 
                 <label class="label">Assortiment</label>
-  
+
 
                   {{#each listOfAssortiment}}
-                    <label class="checkbox-inline" style="margin-bottom:20px;"><input type="checkbox" {{getTypePresence}} value="{{this}}" class="player-assortiment">{{this}}</label>
+
+                    <label class="checkbox-inline" style="margin-bottom:20px;"><input id="assortiment" type="checkbox" {{getTypePresence}} value="{{this}}" class="player-assortiment">{{this}}</label>
                   {{/each}}
+
+
+
+
+
                 </div>
 
               </fieldset>
@@ -389,6 +396,7 @@
             </form>
           </div>
         </div>
+
       </div>
       </div>
 

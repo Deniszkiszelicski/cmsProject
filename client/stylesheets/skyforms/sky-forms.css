@@ -303,7 +303,7 @@
 	left: -9999px;
 }
 .sky-form .toggle i {
-	content: '';
+	content: 'AUS';
 	position: absolute;
 	top: 4px;
 	right: 0;
@@ -316,7 +316,7 @@
 	background: #fff;
 }
 .sky-form .toggle i:after {
-	content: 'OFF';
+	content: '';
 	position: absolute;
 	top: 2px;
 	right: 8px;

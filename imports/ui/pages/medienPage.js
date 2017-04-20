@@ -19,6 +19,10 @@ Template.medienPage.onCreated(function onCreated() {
 });
 
 Template.medienPage.helpers({
+  isNew: function isNew() {
+  return Template.instance().isNew.get();
+  },
+
   isCreateNew: function isCreateNew() {
     return !Session.get("isDefaultPageLayout") && Template.instance().isCreateNew.get();
   },
@@ -39,10 +43,14 @@ Template.medienPage.events({
     event.preventDefault();
     Session.set("isDefaultPageLayout", false);
     templateInstance.isCreateNew.set(true);
+
+
   },
   'click #buttonCloseMediaForm, click .mediaSave': function closeForm(event, templateInstance) {
     event.preventDefault();
     templateInstance.isCreateNew.set(false);
+
+
   },
   'click #button-play-media': function closeForm(event, templateInstance) {
     event.preventDefault();

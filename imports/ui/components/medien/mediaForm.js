@@ -63,6 +63,7 @@ Template.mediaForm.events({
         // createdAt: Date.now(),
         fileId: fileId });
     toastr["success"]("Media '" + name + "' has been saved.");
+    
   },
   'change #fileInput': function (e, templateInstance) {
     if (e.currentTarget.files && e.currentTarget.files[0]) {

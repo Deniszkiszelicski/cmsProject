@@ -1,3 +1,34 @@
+.sky-form .input input:focus{
+  border-color: #72c02c;
+}
+.ui-datepicker {
+      background: rgba(255,255,255,1);
+}
+.ui-widget-content {
+    border: 1px solid #72c02c;
+  }
+ .ui-icon-circle-triangle-e{
+  margin-left: 30px;
+}
+.ui-datepicker .ui-datepicker-next {
+  left: 0;
+margin-left: 212px;
+top: 0;
+margin-top: 0px;
+}
+
+
+.sky-form .input:hover input, .sky-form .select:hover select, .sky-form .textarea:hover textarea, .sky-form .radio:hover i, .sky-form .checkbox:hover i, .sky-form .toggle:hover i, .sky-form .ui-slider-handle:hover {
+    border-color: #72c02c;
+  }
+
+.sky-form .radio input:checked + i, .sky-form .checkbox input:checked + i, .sky-form .toggle input:checked + i {
+    border-color: #72c02c;
+}
+.sky-form .toggle i:before {
+    background-color: #404040;
+}
+
 input[type='checkbox'].tags-checkbox:checked + label > i:first-of-type,
 input[type='checkbox'].tags-checkbox + label > i:last-of-type{
     display: none;
