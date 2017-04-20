@@ -189,8 +189,16 @@ Api.addRoute('getPlaylistForPlayer', {authRequired: false}, {
                       if (media) {
                         if (media.type == "image") {
                           testEntry.addTag("type", 1);
+                          const image = Images.findOne({ _id: media.fileId});
+                          if (image) {
+                            testEntry.addTag("filename", image.name);
+                          }
                         } else {
                           testEntry.addTag("type", 0);
+                          const video = Videos.findOne({ _id: media.fileId});
+                          if (video) {
+                            testEntry.addTag("filename", video.name);
+                          }
                         }
                       }
                       testEntry.addPeriodTags(content.startDate, content.finishDate, content.monday,
