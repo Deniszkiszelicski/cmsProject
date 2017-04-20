@@ -13,23 +13,22 @@ Template.playlistForm.onCreated(function () {
     this.subscribe('medien');
     this.subscribe('contents');
     this.subscribe('contentGroups');
-    let includedCGObjects = [];
-    const includedCGIds = this.data.contentGroupIds;
-    if(!!includedCGIds) {
-      const sizeOfIncCGIds = includedCGIds.length;
-      if (sizeOfIncCGIds > 0) {
-        for (i = 0; i < sizeOfIncCGIds; i++) {
-          let tempCGId = includedCGIds[i];
-          let tempCG = ContentGroups.findOne({ _id: tempCGId});
-          if (tempCG) {
-            includedCGObjects.push(tempCG);
-          }
+  });
+  let includedCGObjects = [];
+  const includedCGIds = this.data.contentGroupIds;
+  if(!!includedCGIds) {
+    const sizeOfIncCGIds = includedCGIds.length;
+    if (sizeOfIncCGIds > 0) {
+      for (i = 0; i < sizeOfIncCGIds; i++) {
+        let tempCGId = includedCGIds[i];
+        let tempCG = ContentGroups.findOne({ _id: tempCGId});
+        if (tempCG) {
+          includedCGObjects.push(tempCG);
         }
       }
     }
-    this.includedCGs = new ReactiveVar(includedCGObjects);
-  });
-
+  }
+  this.includedCGs = new ReactiveVar(includedCGObjects);
 });
 
 Template.playlistForm.helpers({
@@ -122,7 +121,7 @@ Template.playlistForm.events({
   'click #button-remove-contentGroup': function removeCG(event, templateInstance) {
     event.preventDefault();
     let includedCGs = templateInstance.includedCGs.get();
-    const index = includedCGs.indexOf(this);
+    const index = this.index;
     if (index > -1) {
       includedCGs.splice(index, 1);
     }

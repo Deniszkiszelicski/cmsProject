@@ -51,6 +51,7 @@ Template.contentGroupsList.helpers({
         contentGroupsWithOptions[i]["enableButtonDelete"] = mayDelete && this.options.enableButtonDelete;
         contentGroupsWithOptions[i]["enableButtonEdit"] = mayEdit && this.options.enableButtonEdit;
         contentGroupsWithOptions[i]["enableButtonRemove"] = this.options.enableButtonRemove;
+        contentGroupsWithOptions[i]["index"] = i;
       }
     }
     return contentGroupsWithOptions;
