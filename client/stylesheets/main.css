@@ -1,3 +1,4 @@
+
 .sky-form .input input:focus{
   border-color: #72c02c;
 }
@@ -177,11 +178,15 @@ ul.nav.nav-tabs a{
   border-color:#717984;
 }
 
-.glyphicon-ok-circle{
+.glyphicon-ok{
   color:green;
+  cursor: pointer;
+   cursor: hand;
 }
-.glyphicon-ban-circle{
+.glyphicon-remove{
   color:red;
+  cursor: pointer;
+   cursor: hand;
 }
 
 .link-disabled {
@@ -368,7 +373,7 @@ div.p1, div.p2,div.p3{
   margin-right: 15px;
   color: red;
   cursor: pointer;
-  position: absolute;
+  /*position: absolute;*/
   top: 1px;
   right: 5px;
   font-size: 1em;

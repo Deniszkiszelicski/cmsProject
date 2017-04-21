@@ -48,7 +48,7 @@ Template.playlistForm.helpers({
         contentIdsWithColour.push(contentIdWithColour);
       }
     }
-    console.log("in playlistForm contentIdsWithColour = ", contentIdsWithColour);
+    // console.log("in playlistForm contentIdsWithColour = ", contentIdsWithColour);
     const options = { header: "Included contents", enableButtonDelete: false,
                       enableButtonEdit: false, enableButtonRemove: true,
                       enableButtonNewCG: false, enableFilter: false,
