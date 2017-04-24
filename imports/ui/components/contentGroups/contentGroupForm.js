@@ -126,7 +126,10 @@ Template.contentGroupForm.events({
     let contents = templateInstance.includedContents.get();
     let contentIds = [];
     $('#included-contents .content-row').each(function saveIncludedContents(){
-      contentIds.push(Blaze.getData(this)._id);
+      const content = Blaze.getData(this);
+      if (content) {
+        contentIds.push(content._id);
+      }
     });
     const allowedUsers = templateInstance.allowedUsers.get();
     const allowedUsersIds = allowedUsers.map((element) => {
