@@ -176,9 +176,7 @@ Api.addRoute('getPlaylistForPlayer', {authRequired: false}, {
               for (let i = 0; i < contentGroupIds.length; i++) {
                 const contentGrpObjTemp = contentGroupObjects.find((contentGrpObj) => {
                   return contentGrpObj._id == contentGroupIds[i];
-                }); // 130
-                // const contentIds = contentGroupObjects[i].contentIds;
-                console.log("contentGrpObjTemp = ", contentGrpObjTemp);
+                });
                 const contentIds = contentGrpObjTemp.contentIds;
                 const contentIdsLength = contentIds.length;
                 if (contentIdsLength > 0) {

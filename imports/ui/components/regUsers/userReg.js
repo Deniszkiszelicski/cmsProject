@@ -45,7 +45,6 @@ Template.registerUser2.helpers({
 
 Template.registerUser2.events({
   'click #userReg': function saveUser(event) {
-    console.log("sdfghsdfg");
     event.preventDefault();
 
 
@@ -67,11 +66,7 @@ Template.registerUser2.events({
     const user = { email: email, password: password, profile:
        { name: firstname, assignedPlayers: assignedPlayers, role: role } };
     Accounts.createUser(user);
-
     toastr.success('Data Saved', 'Create User');
-    console.log(assignedPlayers);
-
-
   },
   'click #addPlayer': function fu(event, templateInstance) {
     event.preventDefault();

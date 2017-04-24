@@ -17,6 +17,14 @@ ContentGroupsSchema = new SimpleSchema({
     type: [String],
     optional: true,
   },
+  allowedUsersIds: {
+    type: [String],
+    optional: true,
+  },
+  visibleForAll: {
+		type: Boolean,
+		defaultValue: true,
+	},
   colour: {
     type: String,
     optional: true,

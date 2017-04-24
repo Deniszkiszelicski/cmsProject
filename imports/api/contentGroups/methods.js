@@ -15,6 +15,8 @@ Meteor.methods({
                               duration: contentGroup.duration,
                               blocked: contentGroup.blocked,
                               contentIds: contentGroup.contentIds,
+                              allowedUsersIds: contentGroup.allowedUsersIds,
+                              visibleForAll: contentGroup.visibleForAll,
                               colour: contentGroup.colour,
                             },
               );
@@ -26,6 +28,8 @@ Meteor.methods({
                               duration: contentGroup.duration,
                               blocked: contentGroup.blocked,
                               contentIds: contentGroup.contentIds,
+                              allowedUsersIds: contentGroup.allowedUsersIds,
+                              visibleForAll: contentGroup.visibleForAll,
                               colour: contentGroup.colour,
                             },
               });

@@ -1,7 +1,10 @@
 import { Meteor } from 'meteor/meteor';
 
 
-Meteor.publish('users', function regUsers(usersPerPage, noOfUsersPerPage,filterText) {
+Meteor.publish('users', function regUsers(usersPerPage, noOfUsersPerPage,filterText, showAll) {
+  if (showAll) {
+    return Meteor.users.find({});
+  }
   if (usersPerPage && noOfUsersPerPage) {
     const nr = noOfUsersPerPage;
     const skip = usersPerPage;

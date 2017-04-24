@@ -458,3 +458,10 @@ div.p1, div.p2,div.p3{
   float: left;
   /*margin-top: 55px;*/
 }
+
+
+#button-add-user{
+  border-radius: 0;
+  background-color: #72c02c;
+  color: white;
+}

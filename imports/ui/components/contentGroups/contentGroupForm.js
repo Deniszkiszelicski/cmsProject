@@ -2,19 +2,35 @@ import { Template } from 'meteor/templating';
 import { Session } from 'meteor/session';
 import '../../../api/contentGroups/methods';
 import '../../../api/contentGroups/collection';
+import './userRow';
 import { $ } from 'meteor/jquery';
 import './contentGroupForm.html';
 
 Template.contentGroupForm.onCreated(function () {
   this.isSelectContent = new ReactiveVar(false);
   this.canvasContext = new ReactiveVar();
+  this.allowedUsers = new ReactiveVar([]);
+  this.allUsers = new ReactiveVar();
   this.showColourPicker = new ReactiveVar(false);
+  this.visibleForAll = new ReactiveVar(this.data.visibleForAll);
   this.colour = new ReactiveVar(this.data.colour);
   this.autorun(() => {
     this.subscribe('medien');
     this.subscribe('contents');
-    // this.subscribe('contentGroups', currentPage, showPerPage, filterText);
-    // this.subscribe('countContentGroups', currentPage, showPerPage, filterText);
+    this.subscribe('users', false, false, false, true);
+    const allUsers = Meteor.users.find().fetch();
+    this.allUsers.set(allUsers);
+    const allowedUsersIds = this.data.allowedUsersIds;
+    if (allowedUsersIds) {
+      const allowedUsers = allUsers.filter((element) => {
+        const id = element._id;
+        const index = allowedUsersIds.indexOf(id);
+        return index > -1;
+      });
+      this.allowedUsers.set(allowedUsers);
+    } else {
+      this.allowedUsers.set([]);
+    }
   });
 
   let includedContentObjects = [];
@@ -46,38 +62,6 @@ Template.contentGroupForm.onRendered(function () {
   });
   $('#included-contents').sortable({
     cursor: "move",
-    // start: function(event, ui) {
-    //     // creates a temporary attribute on the element with the old index
-    //     $(this).attr('data-previndex', ui.item.index());
-    //     console.log("ui.item.index() = ", ui.item.index());
-    // },
-    // update: function (event, ui) {
-    //   const newIndex = ui.item.index();
-    //   const oldIndex = $(this).attr('data-previndex');
-    //   $(this).removeAttr('data-previndex');
-    //   console.log("newIndex = ", newIndex);
-    //   console.log("oldIndex = ", oldIndex);
-    //
-    //   const el = ui.item.get(0);
-    //   const before = ui.item.prev().get(0);
-    //   const after = ui.item.next().get(0);
-    //   const thisObj = Blaze.getData(el);
-    //
-    //   console.log("thisObj = ", thisObj);
-    //   const parentObj = Template.instance();
-    //   const cgObject = Blaze.getData(this);
-    //   console.log("cgObject = ", cgObject);
-    //   console.log("parentObj = ", parentObj);
-    //   console.log("this", this);
-    //   console.log("text = ", Blaze.TemplateInstance.data());
-    //   console.log("el.height()", $(el).height());
-    //   console.log("ui.item", ui.item);
-    //   console.log("before", before);
-    //   console.log("after", after);
-    //   console.log("ui.position", ui.position);
-    //   console.log("ui.originalPosition", ui.originalPosition);
-    //   console.log("this", this);
-    // }
   });
 });
 
@@ -93,6 +77,18 @@ Template.contentGroupForm.helpers({
   },
   isSelectContent: function isSelectContent() {
     return Template.instance().isSelectContent.get();
+  },
+  getUsers: function getUsers() {
+    return Template.instance().allUsers.get();
+  },
+  allowedUsers: function getAllowedUsers() {
+    return Template.instance().allowedUsers.get();
+  },
+  isVisibleForAll: function isVisibleForAll() {
+    return Template.instance().visibleForAll.get();
+  },
+  isVisibleForAllChecked: function isVisibleForAllChecked() {
+    return Template.instance().visibleForAll.get() ? "checked": "";
   },
   includedContents: function includedContents() {
     let includedContentsWithExtra = Template.instance().includedContents.get();
@@ -129,8 +125,12 @@ Template.contentGroupForm.events({
     templateInstance.isSelectContent.set(false);
     let contents = templateInstance.includedContents.get();
     let contentIds = [];
-    $('#included-contents .content-row').each(function(){
+    $('#included-contents .content-row').each(function saveIncludedContents(){
       contentIds.push(Blaze.getData(this)._id);
+    });
+    const allowedUsers = templateInstance.allowedUsers.get();
+    const allowedUsersIds = allowedUsers.map((element) => {
+      return element._id;
     });
     const colour = templateInstance.colour.get();
     const name = $('#nameOfContentGroup').val();
@@ -138,8 +138,10 @@ Template.contentGroupForm.events({
                       name: name,
                       duration: $('#durationOfContentGroup').val(),
                       blocked: $('#blocked').is(':checked'),
+                      visibleForAll: $('#visibleForAll').is(':checked'),
                       colour: colour,
                       contentIds: contentIds,
+                      allowedUsersIds: allowedUsersIds,
                     };
     Meteor.call('upsertContentGroup', contentGroup);
     toastr["success"]("Content-group '" + name + "' has been saved.");
@@ -187,5 +189,26 @@ Template.contentGroupForm.events({
   },
   'keyup #colorpicker input': function (event, templateInstance) {
     templateInstance.colour.set(event.currentTarget.value);
+  },
+  'click #button-add-user': function addUser(event, templateInstance){
+    let allowedUsers = templateInstance.allowedUsers.get();
+    const allUsers = templateInstance.allUsers.get();
+    const userName = $('#allowedUserslist').val();
+    const user = allUsers.find((element) => {
+      return element.profile.name == userName;
+    });
+    allowedUsers.push(user);
+    templateInstance.allowedUsers.set(allowedUsers);
+  },
+  'click #button-remove-user': function renoveUser(event, templateInstance){
+    let allowedUsers = templateInstance.allowedUsers.get();
+    const index = allowedUsers.indexOf(this);
+    if (index > -1) {
+      allowedUsers.splice(index, 1);
+    }
+    templateInstance.allowedUsers.set(allowedUsers);
+  },
+  'click #visibleForAll': function visibleForAll(event, templateInstance){
+    templateInstance.visibleForAll.set(!templateInstance.visibleForAll.get());
   },
 });
