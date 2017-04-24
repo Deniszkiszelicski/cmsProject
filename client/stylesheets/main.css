@@ -1,4 +1,7 @@
-
+.editIcon , .deleteIcon , .infoIcon{
+  cursor: pointer;
+   cursor: hand;
+}
 .sky-form .input input:focus{
   border-color: #72c02c;
 }
