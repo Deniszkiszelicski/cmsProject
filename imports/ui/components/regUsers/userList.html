@@ -62,8 +62,15 @@
 
             <td>{{ emails.[0].address}}
             </td>
-            <td><i type="button" class="glyphicon glyphicon-pencil" id="editUser"></i>
-              <i type="button" class="glyphicon glyphicon-trash"  data-toggle="modal" data-target="#myModal" id="selectUserDel"></i>
+            <td>
+            
+            <i type="button" class="editIcon" id="editUser" style="float: right;">
+                  <img src="edit.png" alt="Mountain View" style="width:20px;height:20px;">
+                </i>
+            
+              <i type="button" class="deleteIcon" style="float: right;" data-toggle="modal" data-target="#myModal" id="selectDel">
+                    <img src="trash.png" alt="Mountain View" style="width:20px;height:20px;">
+                  </i>
             </td>
           </tr>
 

@@ -1,7 +1,31 @@
-.editIcon , .deleteIcon , .infoIcon{
+  input[type=checkbox] {
+display:none;
+}
+ 
+input[type=checkbox] + label
+{
+background: url("uncheck.png") no-repeat;
+background-size: 50%;
+height: 35px;
+width: 35px;
+display:inline-block;
+/*padding: 0 0 0 0px;*/
+}
+input[type=checkbox]:checked + label
+{
+background: url("check.png") no-repeat;
+background-size: 50%;
+height: 35px;
+width: 35px;
+display:inline-block;
+/*padding: 0 0 0 0px;*/
+}
+
+.editIcon , .deleteIcon , .infoIcon, .playIcon{
   cursor: pointer;
    cursor: hand;
 }
+
 .sky-form .input input:focus{
   border-color: #72c02c;
 }
@@ -182,14 +206,16 @@ ul.nav.nav-tabs a{
 }
 
 .glyphicon-ok{
-  color:green;
+  
   cursor: pointer;
    cursor: hand;
+   
 }
 .glyphicon-remove{
-  color:red;
+  
   cursor: pointer;
    cursor: hand;
+   
 }
 
 .link-disabled {

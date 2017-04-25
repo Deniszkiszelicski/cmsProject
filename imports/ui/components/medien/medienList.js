@@ -42,7 +42,7 @@ Template.medienList.events({
     Meteor.call('deleteMedia', media._id);
     toastr["success"]("Media '" + media.name + "' has been deleted.");
   },
-  'click .glyphicon-trash': function deleteMedia(event, templateInstance) {
+  'click #glyphicon-trash': function deleteMedia(event, templateInstance) {
     event.preventDefault();
     templateInstance.mediaToDelete.set(this);
   },

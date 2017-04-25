@@ -70,7 +70,7 @@ Template.contentsList.events({
     Meteor.call('deleteContent', content._id);
     toastr["success"]("Content '" + content.name + "' has been deleted.");
   },
-  'click .glyphicon-trash': function deleteContent(event, templateInstance) {
+  'click #glyphicon-trash': function deleteContent(event, templateInstance) {
     event.preventDefault();
     templateInstance.contentToDelete.set(this);
   },
