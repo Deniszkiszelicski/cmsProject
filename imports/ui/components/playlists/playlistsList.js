@@ -36,7 +36,7 @@ Template.playlistsList.events({
     Meteor.call('deletePlaylist', playlist._id);
     toastr["success"]("Playlist '" + playlist.name + "' has been deleted.");
   },
-  'click .glyphicon-trash': function deletePlaylist(event, templateInstance) {
+  'click #button-delete-playlist': function deletePlaylist(event, templateInstance) {
     event.preventDefault();
     templateInstance.playlistToDelete.set(this);
   },

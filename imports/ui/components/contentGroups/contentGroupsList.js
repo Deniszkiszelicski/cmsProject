@@ -53,7 +53,7 @@ Template.contentGroupsList.events({
     Meteor.call('deleteContentGroup', contentGroup._id);
     toastr["success"]("Content-group '" + contentGroup.name + "' has been deleted.");
   },
-  'click .glyphicon-trash': function deleteContentGroup(event, templateInstance) {
+  'click #button-delete-grp': function deleteContentGroup(event, templateInstance) {
     event.preventDefault();
     templateInstance.contentGroupToDelete.set(this);
   },

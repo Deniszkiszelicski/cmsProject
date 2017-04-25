@@ -128,8 +128,8 @@ input[type='checkbox'].tags-checkbox:checked + label > i:last-of-type{
     overflow: hidden;
     padding: 2px 30% 6px;
     border-bottom: solid 2px #eee;
-    margin-left: -31%;
-    margin-right: -31%;
+    margin-left: -36%;
+    margin-right: -36%;
     margin-top: -20px;
 }
 .secondHead1{
@@ -138,6 +138,10 @@ input[type='checkbox'].tags-checkbox:checked + label > i:last-of-type{
   top:inherit;
 
     overflow:hidden;
+}
+ .pull-left{
+  padding-left: 50px;
+  /*text on the breadcrumb*/
 }
 .contentHeader .glyphicon-remove {
     margin-top: 0px;

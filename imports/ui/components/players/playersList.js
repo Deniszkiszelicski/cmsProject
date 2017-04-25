@@ -64,7 +64,7 @@ Template.playersList.events({
     Meteor.call('deletePlayer', player._id);
     toastr["success"]("'" + player.name + "' (ID = " + player.playerId + ") player has been deleted.");
   },
-  'click .glyphicon-trash': function deletePlayer(event, templateInstance) {
+  'click #button-delete-player': function deletePlayer(event, templateInstance) {
     event.preventDefault();
     templateInstance.playerToDelete.set(this);
   },

@@ -11,10 +11,16 @@
       <td>
         <div class="player-row-controls">
           {{#if mayEdit}}
-            <i type="button" class="glyphicon glyphicon-pencil" id="button-edit-player"></i>
+            <!-- <i type="button" class="glyphicon glyphicon-pencil" id="button-edit-player"></i> -->
+            <i type="button" class="editIcon" id="button-edit-player" style="float: right;">
+                  <img src="edit.png" alt="Mountain View" style="width:20px;height:20px;">
+                </i>
           {{/if}}
-          <i type="button" class="glyphicon glyphicon-trash"
-            data-toggle="modal" data-target="#deleteConfirmation"></i>
+         <!--  <i type="button" class="glyphicon glyphicon-trash"
+            data-toggle="modal" data-target="#deleteConfirmation"></i> -->
+            <i type="button" class="deleteIcon" style="float: right;" data-toggle="modal" data-target="#deleteConfirmation" id="button-delete-player">
+                    <img src="trash.png" alt="Mountain View" style="width:20px;height:20px;">
+                  </i>
         </div>
       </td>
     </tr>
