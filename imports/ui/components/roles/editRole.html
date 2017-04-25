@@ -225,6 +225,7 @@
                       <th>Home Menu</th>
                       <th>Media</th>
                       <th>Content</th>
+                      <th>Content-group</th>
                       <th>Players</th>
                     </tr>
                   </thead>
@@ -326,6 +327,19 @@
 <i class='glyphicon glyphicon-ok-circle'> all</i>
 <span class='label-content'></span>
 </label>{{/if}}</td>
+
+<td>{{#if seeAllContentGroups}}<input type='checkbox' id="seeAllContentGroups" class='tags-checkbox sr-only' checked/>
+<label for='seeAllContentGroups'>
+<i class='glyphicon glyphicon-ban-circle'> own</i>
+<i class='glyphicon glyphicon-ok-circle'> all</i>
+<span class='label-content'></span>
+</label>{{else}}<input type='checkbox' id="seeAllContentGroups" class='tags-checkbox sr-only'/>
+<label for='seeAllContentGroups'>
+<i class='glyphicon glyphicon-ban-circle'> own</i>
+<i class='glyphicon glyphicon-ok-circle'> all</i>
+<span class='label-content'></span>
+</label>{{/if}}</td>
+
                       <td>{{#if seeAllPlayers}}<input type='checkbox' id="seeAllPlayers" class='tags-checkbox sr-only' checked/>
     <label for='seeAllPlayers'>
         <i class='glyphicon glyphicon-ban-circle'> own</i>

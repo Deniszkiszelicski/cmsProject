@@ -47,7 +47,7 @@ Meteor.publish('countContentGroups', function(currentPage, showPerPage, filterTe
     const roleId = Meteor.users.findOne({ _id: userId }).profile.role;
     const role = Roles.findOne({ _id: roleId });
     if (role) {
-      if (role.seeContentGroup || true) {
+      if (role.seeAllContentGroups || true) {
         const networkId = role.networkId;
         let roleIdsOfThisNetwork = Roles.find({ networkId: networkId }, { fields: { _id: 1 } }).fetch();
         roleIdsOfThisNetwork = _(roleIdsOfThisNetwork).pluck("_id");
