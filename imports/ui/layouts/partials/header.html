@@ -1,13 +1,19 @@
 <template name="header">
 
+
   <div class="header-fixed">
+
   	<div class="wrapper">
+
+
   		<!--=== Header v3 ===-->
   		<div class="header-v3 header-sticky">
+
   			<!-- Navbar -->
   			<div class="navbar navbar-default mega-menu" role="navigation">
   				<div class="container">
   					<!-- Brand and toggle get grouped for better mobile display -->
+
 
   					<div class="navbar-header">
 
@@ -21,6 +27,26 @@
   						</a>{{/with}}
 
   					</div>
+            <!-- topbar -->
+            <div class="header">
+
+
+            <div class="topbar">
+          <ul class="loginbar pull-right">
+            <li class="hoverSelector">
+
+              <a>{{currentUser}}</a>
+
+            </li>
+            <li class="topbar-devider"></li>
+            <li><a>{{currentRole}}</a></li>
+            <li class="topbar-devider"></li>
+            <li><a>Log Out</a></li>
+          </ul>
+        </div>
+      </div>
+        <!-- topbar -->
+
 
   					<!-- Collect the nav links, forms, and other content for toggling -->
   					<div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
@@ -72,14 +98,14 @@
                   {{#if showNetworkSelection}}
                     {{> networkSelection}}
                   {{/if}}
-                  {{> logoutButton}}
+
   							</ul>
-                <div id="currentUser">
+                <!-- <div id="currentUser">
                   Logged in as <strong>{{currentUser}}</strong> user&nbsp;
                 </div>
                 <div id="currentRole">
                   with <strong>{{currentRole}}</strong> role&nbsp;
-                </div>
+                </div> -->
                 <div id="currentNetwork">
                   in <strong>{{currentNetwork}}</strong> network.
                 </div>

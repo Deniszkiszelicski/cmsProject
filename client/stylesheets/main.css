@@ -1,7 +1,17 @@
+.header {
+    border-bottom:none;
+}
+.header-v3 .dropdown > a::after {
+    content: "";
+}
+.header-v3 .dropdown > a::after, .header-v3 .dropdown-submenu > a::after {
+    content: "";
+}
+
   input[type=checkbox] {
 display:none;
 }
- 
+
 input[type=checkbox] + label
 {
 background: url("uncheck.png") no-repeat;
@@ -210,16 +220,16 @@ ul.nav.nav-tabs a{
 }
 
 .glyphicon-ok{
-  
+
   cursor: pointer;
    cursor: hand;
-   
+
 }
 .glyphicon-remove{
-  
+
   cursor: pointer;
    cursor: hand;
-   
+
 }
 
 .link-disabled {
