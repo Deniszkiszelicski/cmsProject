@@ -9,6 +9,9 @@ PlayersSchema = new SimpleSchema({
   playerId: {
     type: String,
   },
+  networkId: {
+    type: String,
+  },
   location: {
     type: String,
     optional: true,

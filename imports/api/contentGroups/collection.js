@@ -17,6 +17,14 @@ ContentGroupsSchema = new SimpleSchema({
     type: [String],
     optional: true,
   },
+  allowedUsersIds: {
+    type: [String],
+    optional: true,
+  },
+  visibleForAll: {
+		type: Boolean,
+		defaultValue: true,
+	},
   colour: {
     type: String,
     optional: true,
@@ -27,7 +35,7 @@ ContentGroupsSchema = new SimpleSchema({
       if (this.isInsert) {
         return new Date();
       } else if (this.isUpsert) {
-        return {$setOnInsert: new Date()};
+        return { $setOnInsert: new Date() };
       } else {
         this.unset();  // Prevent user from supplying their own value
       }
@@ -36,7 +44,13 @@ ContentGroupsSchema = new SimpleSchema({
   author: {
 		type: String,
 		autoValue: function() {
-			return this.userId;
+      if (this.isInsert) {
+        return this.userId;
+      } else if (this.isUpsert) {
+        return {$setOnInsert: this.userId};
+      } else {
+        this.unset();
+      }
 		}
 	},
 });

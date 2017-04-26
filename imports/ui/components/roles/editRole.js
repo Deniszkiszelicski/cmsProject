@@ -54,10 +54,10 @@ event.preventDefault();
                                  homeEditMenu: $('#homeEditMenu').is(":checked"),
                                  seeMedia: $('#seeMedia').is(":checked"),
                                  seeContent: $('#seeContent').is(":checked"),
-                                 seeContentGroup: $('#seeContentGroup').is(":checked"),
-                                 seeAllPlayers: $('#seeAllPlayers').is(":checked")
+                                //  seeContentGroup: $('#seeContentGroup').is(":checked"),
+                                 seeAllContentGroups: $('#seeAllContentGroups').is(":checked"),
+                                 seeAllPlayers: $('#seeAllPlayers').is(":checked"),
                                  });
                                  toastr.success("Role saved","Edit Role");
-
 }
 });

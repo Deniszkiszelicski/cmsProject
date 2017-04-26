@@ -9,11 +9,7 @@ import '../../../api/registerUser/methods';
 import '../../../api/registerUser/registerUser';
 
 Meteor.subscribe('networks');
-Meteor.subscribe('players');
-
-
 var Playervalue = [];
-
 
 Template.registerUser2.onCreated(function onCreated() {
   this.autorun(() => {
@@ -36,42 +32,25 @@ Template.registerUser2.helpers({
     return Roles.find().fetch();
   },
   onePlayer: () =>{
-
     return Template.instance().counter.get(Playervalue);
   },
-
-
 });
 
 Template.registerUser2.events({
   'click #userReg': function saveUser(event) {
-    console.log("sdfghsdfg");
     event.preventDefault();
-
-
-
     var assignedPlayers = [];
     const email = $('#email').val();
-    // event.target.email.value;
     const password = $('#password').val();
-    // event.target.password.value;
     const firstname = $('#firstname').val();
-    // event.target.firstname.value;
-
     const role = $('.assignedRole').children('#checked:checked').val();
-
-
     $('.assignedPlayersList').children('#playerList').each(function func() {
       assignedPlayers.push($(this).val());
     });
     const user = { email: email, password: password, profile:
        { name: firstname, assignedPlayers: assignedPlayers, role: role } };
     Accounts.createUser(user);
-
     toastr.success('Data Saved', 'Create User');
-    console.log(assignedPlayers);
-
-
   },
   'click #addPlayer': function fu(event, templateInstance) {
     event.preventDefault();

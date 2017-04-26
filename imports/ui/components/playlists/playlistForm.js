@@ -9,6 +9,11 @@ Meteor.subscribe('playlists');
 Template.playlistForm.onCreated(function () {
   this.isShowCGs = new ReactiveVar(false);
   this.playerId = new ReactiveVar(this.data.playerId);
+  this.autorun(() => {
+    this.subscribe('medien');
+    this.subscribe('contents');
+    this.subscribe('contentGroups');
+  });
   let includedCGObjects = [];
   const includedCGIds = this.data.contentGroupIds;
   if(!!includedCGIds) {
@@ -17,7 +22,9 @@ Template.playlistForm.onCreated(function () {
       for (i = 0; i < sizeOfIncCGIds; i++) {
         let tempCGId = includedCGIds[i];
         let tempCG = ContentGroups.findOne({ _id: tempCGId});
-        includedCGObjects.push(tempCG);
+        if (tempCG) {
+          includedCGObjects.push(tempCG);
+        }
       }
     }
   }
@@ -48,7 +55,6 @@ Template.playlistForm.helpers({
         contentIdsWithColour.push(contentIdWithColour);
       }
     }
-    // console.log("in playlistForm contentIdsWithColour = ", contentIdsWithColour);
     const options = { header: "Included contents", enableButtonDelete: false,
                       enableButtonEdit: false, enableButtonRemove: true,
                       enableButtonNewCG: false, enableFilter: false,
@@ -115,7 +121,7 @@ Template.playlistForm.events({
   'click #button-remove-contentGroup': function removeCG(event, templateInstance) {
     event.preventDefault();
     let includedCGs = templateInstance.includedCGs.get();
-    const index = includedCGs.indexOf(this);
+    const index = this.index;
     if (index > -1) {
       includedCGs.splice(index, 1);
     }

@@ -10,6 +10,11 @@ Meteor.subscribe('playlists');
 Template.playlistsList.onCreated(function () {
   this.filterText = new ReactiveVar();
   this.playlistToDelete = new ReactiveVar();
+  this.autorun(() => {
+    this.subscribe('medien');
+    this.subscribe('contents');
+    this.subscribe('contentGroups');
+  });
 });
 
 Template.playlistsList.helpers({
