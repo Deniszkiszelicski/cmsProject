@@ -19,26 +19,42 @@ Meteor.methods({
     //     createdAt: media.createdAt,
     //     fileId: media.fileId },
     //     { upsert: true, multi: false });
-    if (!!media._id ) {
-      Medien.update({ _id: media._id },
-        { $set: {
-          name: media.name,
-          category: media.category,
-          type: media.type,
-          fileId: media.fileId
+    const userId = this.userId;
+    if (userId) {
+      const roleId = Meteor.users.findOne({ _id: userId }).profile.role;
+      const role = Roles.findOne({ _id: roleId });
+      if (role) {
+        if (role.createVideoImg && !media._id) {
+          Medien.insert(
+            { name: media.name,
+              category: media.category,
+              type: media.type,
+              fileId: media.fileId },
+              );
         }
-        });
-    } else {
-      Medien.insert(
-        { name: media.name,
-          category: media.category,
-          type: media.type,
-          fileId: media.fileId },
-          );
+        if (role.editVideoImg && media._id) {
+          Medien.update({ _id: media._id },
+            { $set: {
+              name: media.name,
+              category: media.category,
+              type: media.type,
+              fileId: media.fileId
+                    }
+            });
+        }
+      }
     }
-
   },
   deleteMedia: function(id) {
-    Medien.remove(id);
+    const userId = this.userId;
+    if (userId) {
+      const roleId = Meteor.users.findOne({ _id: userId }).profile.role;
+      const role = Roles.findOne({ _id: roleId });
+      if (role) {
+        if (role.deleteVideoImg) {
+          Medien.remove(id);
+        }
+      }
+    }
   },
 });

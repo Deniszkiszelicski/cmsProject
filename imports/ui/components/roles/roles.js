@@ -55,6 +55,7 @@ Template.adminRole.events({
                                  seeMedia: $('#seeMedia').is(":checked"),
                                  seeContent: $('#seeContent').is(":checked"),
                                  seeAllPlayers: $('#seeAllPlayers').is(":checked"),
+                                 seeAllContentGroups: $('#seeAllContentGroups').is(":checked"),
 
     });
     toastr.success("Role saved","New Role");

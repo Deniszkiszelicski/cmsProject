@@ -54,7 +54,7 @@ Template.playersPage.events({
   'click .pagination .page-go-back': function goBack(event, templateInstance) {
     templateInstance.initialPage.set(templateInstance.initialPage.get() - 1);
   },
-  'keyup #player-per-page-input': function (event, templateInstance) {
+  'keyup #records-per-page-input': function (event, templateInstance) {
     const initialShowPerPage = parseInt(event.currentTarget.value);
     if (initialShowPerPage > 0) {
       templateInstance.initialShowPerPage.set(initialShowPerPage);

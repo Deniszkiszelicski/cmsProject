@@ -1,7 +1,7 @@
   input[type=checkbox] {
 display:none;
 }
- 
+
 input[type=checkbox] + label
 {
 background: url("uncheck.png") no-repeat;
@@ -210,16 +210,16 @@ ul.nav.nav-tabs a{
 }
 
 .glyphicon-ok{
-  
+
   cursor: pointer;
    cursor: hand;
-   
+
 }
 .glyphicon-remove{
-  
+
   cursor: pointer;
    cursor: hand;
-   
+
 }
 
 .link-disabled {
@@ -401,16 +401,13 @@ div.p1, div.p2,div.p3{
   position: relative;
 }
 
-.content-form .glyphicon-remove{
-  margin-top: 20px;
-  margin-right: 15px;
+/*.content-form .glyphicon-remove{
   color: red;
   cursor: pointer;
-  /*position: absolute;*/
   top: 1px;
   right: 5px;
   font-size: 1em;
-}
+}*/
 
 #button-close-media-form{
   margin-top: 20px;
@@ -428,9 +425,6 @@ div.p1, div.p2,div.p3{
   color: #0082C8;
   cursor: pointer;
   float: left;
-  /*position: absolute;*/
-  /*top: 800px;*/
-  /*right: 5px;*/
   font-size: 3em;
 }
 
@@ -494,5 +488,11 @@ div.p1, div.p2,div.p3{
 
 #currentUser, #currentRole, #currentNetwork{
   float: left;
-  /*margin-top: 55px;*/
+}
+
+
+#button-add-user{
+  border-radius: 0;
+  background-color: #72c02c;
+  color: white;
 }

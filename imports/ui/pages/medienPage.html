@@ -1,11 +1,4 @@
-
 <template name="medienPage"><br>
-  {{#if isCreateNew}}
-  
-
-    {{else}}
-
-  {{/if}}
   {{#with getVideoId}}
     {{> videoModal}}
   {{/with}}
@@ -13,6 +6,6 @@
     {{>mediaForm}}
   {{/if}}
   {{#with getOptions}}
-  {{>medienList}}
+    {{>medienList}}
   {{/with}}
 </template>

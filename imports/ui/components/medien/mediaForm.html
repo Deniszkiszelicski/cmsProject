@@ -8,7 +8,7 @@
       <div class="panel-body sky-form">
         <div class="col-sm-2"><br>
           <div class="thumbnails thumbnail-style">
-            <!-- todo:image link -->
+
             <img src="{{imageFile.link}}" alt="{{imageFile.name}}"  width="71" height="40"/>
           </div>
         </div>
@@ -18,8 +18,13 @@
               placeholder="Enter name of media" value="{{this.name}}">
       </div>
         <div class="col-sm-3">
-            Category :
-                    {{> searchCategory category=category}}
+            Category : <br>
+            <input list="categories" id="searchCategories" value="{{category}}">
+            <datalist id="categories">
+              {{#each getCategories}}
+                <option value="{{this}}"></option>
+              {{/each}}
+            </datalist>
         </div>
     <div class="col-sm-3">
       <span style="margin-left:5px;"> File :</span>

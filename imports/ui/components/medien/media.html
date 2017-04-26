@@ -22,24 +22,22 @@
       {{else}}
         <td>
           <div class="media-row-controls">
-            {{#if mayEdit}}
-              <!-- <i type="button" class="glyphicon glyphicon-pencil" id="button-edit-media"></i> -->
-              <i type="button" class="editIcon" id="button-edit-media" style="float: right;padding-left: 7px;">
-                  <img src="edit.png" alt="Mountain View" style="width:20px;height:20px;">
-                </i>
+            {{#if options.enableButtonEditMedia}}
+            <i type="button" class="editIcon" id="button-edit-media" style="float: right;padding-left: 7px;">
+                <img src="edit.png" alt="Mountain View" style="width:20px;height:20px;">
+              </i>
             {{/if}}
-           <!--  <i type="button" class="glyphicon glyphicon-trash"
-            data-toggle="modal" data-target="#deleteConfirmation" id="glyphicon-trash"></i> -->
+            {{#if options.enableButtonDeleteMedia}}
             <i type="button" class="deleteIcon" id="glyphicon-trash" style="float: right;padding-left: 7px;" data-toggle="modal" data-target="#deleteConfirmation" >
                     <img src="trash.png" alt="Mountain View" style="width:20px;height:20px;">
                   </i>
-                  <i type="button" class="playIcon" style="float: right;" data-target="#media-video-modal" id="button-play-media">
-                    <img src="play.png" alt="Mountain View" style="width:20px;height:20px;">
-                  </i>
-           <!--  <i type="button" class="fa fa-play" data-target="#media-video-modal" id="button-play-media"></i> -->
+            {{/if}}
+            <i type="button" class="playIcon" style="float: right;" data-target="#media-video-modal" id="button-play-media">
+              <img src="play.png" alt="Mountain View" style="width:20px;height:20px;">
+            </i>
           </div>
         </td>
       {{/if}}
     </tr>
-  {{/if}}  
+  {{/if}}
 </template>

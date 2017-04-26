@@ -4,6 +4,7 @@ import '../../../api/contents/collection';
 import './content.html';
 
 Template.content.onCreated(function onCreated() {
+  // console.log("content.onCreated");
   this.isEditMode = new ReactiveVar(false);
 });
 
@@ -42,16 +43,23 @@ Template.content.helpers({
     isEditMode = false;
     return isEditMode ? "warning" : "";
   },
-  getType: function getType() {
-    if (this.type == "t") {
-      return "template";
-    } else {
-      const mediaType = Medien.findOne({ _id: this.mediaId }).type;
-      return mediaType;
+  getType: function getContentType() {
+    if (this.type) {
+      if (this.type == "t") {
+        return "template";
+      } else {
+        const media = Medien.findOne({ _id: this.mediaId });
+        if (media) {
+          return media.type;
+        }
+      }
     }
+    return "N/A"
   },
   file: function () {
+    // console.log("in file this = ", this);
     const media = Medien.findOne({ _id: this.mediaId });
+    // console.log("in file media = ", media);
     let fileId = "";
     if(!!media){
       fileId = media.fileId;
@@ -70,6 +78,4 @@ Template.content.events({
     event.stopPropagation();
     templateInstance.isEditMode.set(false);
   },
-
-
 });

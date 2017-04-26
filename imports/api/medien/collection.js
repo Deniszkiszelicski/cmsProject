@@ -41,7 +41,7 @@ MedienSchema = new SimpleSchema({
 });
 
 Medien.attachSchema(MedienSchema);
-
+// fs = Npm.require('fs-extra');
 Images = new FilesCollection({
   collectionName: 'Images',
   allowClientCode: false, // Disallow remove files from Client
@@ -54,7 +54,23 @@ Images = new FilesCollection({
     }
   },
   onAfterUpload: function (fileRef) {
-    console.log("inserted id = ", fileRef._id);
+    // console.log("inserted id = ", fileRef._id);
+  },
+  storagePath: function (fileObj) {
+    const userId = fileObj.userId;
+    const path = Meteor.settings.saveImagesPath;
+    if (userId) {
+      const roleId = Meteor.users.findOne({ _id: userId }).profile.role;
+      const role = Roles.findOne({ _id: roleId });
+      if (role) {
+        const networkId = role.networkId;
+        const networkIdVisible = Networks.findOne({ _id: networkId }).netId;
+        const fullPath = path + "/" + networkIdVisible.toString() + "/original";
+        fs.ensureDirSync(fullPath);
+        return fullPath;
+      }
+    }
+    return path;
   },
 });
 
@@ -62,7 +78,23 @@ Videos = new FilesCollection({
   // debug: true,
   // throttle: false,
   // chunkSize: 1024*1024,
-  storagePath: 'assets/app/uploads/videos',
+  // storagePath: 'assets/app/uploads/videos',
+  storagePath: function (fileObj) {
+    const userId = fileObj.userId;
+    const path = Meteor.settings.saveVideosPath;
+    if (userId) {
+      const roleId = Meteor.users.findOne({ _id: userId }).profile.role;
+      const role = Roles.findOne({ _id: roleId });
+      if (role) {
+        const networkId = role.networkId;
+        const networkIdVisible = Networks.findOne({ _id: networkId }).netId;
+        const fullPath = path + "/" + networkIdVisible.toString() + "/original";
+        fs.ensureDirSync(fullPath);
+        return fullPath;
+      }
+    }
+    return path;
+  },
   // collectionName: 'uploadedFiles',
   collectionName: 'Videos',
   allowClientCode: true,
@@ -101,28 +133,4 @@ Videos = new FilesCollection({
     }
     return true;
   },
-  // interceptDownload(http, fileRef, version) {
-  //   if (useDropBox || useS3) {
-  //     const path = (fileRef && fileRef.versions && fileRef.versions[version] && fileRef.versions[version].meta && fileRef.versions[version].meta.pipeFrom) ? fileRef.versions[version].meta.pipeFrom : void 0;
-  //     if (path) {
-  //       // If file is successfully moved to Storage
-  //       // We will pipe request to Storage
-  //       // So, original link will stay always secure
-  //
-  //       // To force ?play and ?download parameters
-  //       // and to keep original file name, content-type,
-  //       // content-disposition and cache-control
-  //       // we're using low-level .serve() method
-  //       this.serve(http, fileRef, fileRef.versions[version], version, Request({
-  //         url: path,
-  //         headers: _.pick(http.request.headers, 'range', 'accept-language', 'accept', 'cache-control', 'pragma', 'connection', 'upgrade-insecure-requests', 'user-agent')
-  //       }));
-  //       return true;
-  //     }
-  //     // While file is not yet uploaded to Storage
-  //     // We will serve file from FS
-  //     return false;
-  //   }
-  //   return false;
-  // }
 });

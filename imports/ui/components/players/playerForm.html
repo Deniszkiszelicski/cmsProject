@@ -301,9 +301,9 @@
               <fieldset style="margin-bottom:20px;">
           <div class="row" style="padding-left:20px">
                 <label class="label">Assortiment</label>
-                  {{#each listOfAssortiment}}                  
-                      <span style="position: relative; top:-25px;">{{this}}</span><input id="{{this}}" type="checkbox" {{getTypePresence}} value="{{this}}" class="player-assortiment">                
-                    <label for="{{this}}"></label>       
+                  {{#each listOfAssortiment}}
+                      <span style="position: relative; top:-25px;">{{this}}</span><input id="{{this}}" type="checkbox" {{getTypePresence}} value="{{this}}" class="player-assortiment">
+                    <label for="{{this}}"></label>
                   {{/each}}
                 </div>
               </fieldset>
@@ -347,7 +347,6 @@
                           <option value="{{_id}}">{{name}}</option>
                         {{/each}}
     									</select>
-    									<!-- <i></i> -->
     								</label>
     							</section>
                   <section class="col col-3">
