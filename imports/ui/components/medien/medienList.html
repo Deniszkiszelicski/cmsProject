@@ -40,6 +40,9 @@
         <img src="info3.png" alt="Mountain View" style="width:25px;height:25px; margin-left:5px;"></i>
         <button type="button" class="btn-u btn-u-default sButton" style="float:right;" id="buttonNew">New media</button>
       {{/if}}
+      <input type="text"
+      id="records-per-page-input" value="{{showPerPage}}" style="width: 30px; float:right;">
+      <span style="float:right;padding-top:2px;padding-right:5px;">Records/page </span>
     </ul>
     {{#if options.enableButtonCloseListOfContents}}
       <button type="button" class="btn-u btn-u-default cButton" style="float:right;" id="buttonCloseMediaForm">Close</button>
@@ -65,6 +68,9 @@
           {{/each}}
         </tbody>
       </table>
+      {{#with optionsForPagination}}
+      {{> paginationPanel}}
+      {{/with}}
     </div>
   </div>
   {{>deleteConfirmation message=mediaToDelete}}<br>
