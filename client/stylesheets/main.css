@@ -1,5 +1,22 @@
+.topbarA + .tooltip > .tooltip-inner{
+  background-color: white;
+  color:#717984;
+  border: 1px solid #717984;
+
+
+}
+.tooltip{
+  width: 300px;
+
+}
 .topbarA{
   text-decoration: none !important;
+  cursor: pointer;
+   cursor: hand;
+}
+.topbarB{
+  text-decoration: none !important;
+  cursor:default;
 }
 .header {
     border-bottom:none;
@@ -33,6 +50,30 @@ width: 35px;
 display:inline-block;
 /*padding: 0 0 0 0px;*/
 }
+/*radio*/
+input[type=radio] {
+display:none;
+}
+
+input[type=radio] + label
+{
+background: url("uncheck.png") no-repeat;
+background-size: 50%;
+height: 35px;
+width: 35px;
+display:inline-block;
+/*padding: 0 0 0 0px;*/
+}
+input[type=radio]:checked + label
+{
+background: url("check.png") no-repeat;
+background-size: 50%;
+height: 35px;
+width: 35px;
+display:inline-block;
+/*padding: 0 0 0 0px;*/
+}
+/*radio*/
 
 .editIcon , .deleteIcon , .infoIcon, .playIcon{
   cursor: pointer;

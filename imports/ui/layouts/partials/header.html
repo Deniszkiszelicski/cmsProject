@@ -35,16 +35,21 @@
           <ul class="loginbar pull-right">
             <li class="hoverSelector">
             <img src="user.png" alt="Mountain View" style="width:10px;height:10px;">
-              <a class="topbarA">{{currentUser}}</a>
+              <a class="topbarA" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Email : {{curUserInfo}}">{{currentUser.name}}</a>
 
             </li>
             <li class="topbar-devider"></li>
-            <li><a class="topbarA">{{currentRole}}</a></li>
+            <li><a class="topbarB">{{currentRole}}</a></li>
             <li class="topbar-devider"></li>
             <li><a href="" id="logout">Log Out</a></li>
           </ul>
         </div>
       </div>
+      <script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
         <!-- topbar -->
 
 
@@ -64,7 +69,7 @@
   								</li>
                   <li class="dropdown">
   									<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-  										Manage Content
+  										Manage Content <img src="down.png" alt="" style="width:10px;height:10px;">
   									</a>
   									<ul class="dropdown-menu">
                       <li><a href="medien" class="page-link">Medien</a></li>
@@ -75,7 +80,7 @@
   								</li>
   								<li class="dropdown">
   									<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-  										Admin
+  										Admin <img src="down.png" alt="" style="width:10px;height:10px;">
   									</a>
   									<ul class="dropdown-menu">
   										<li><a href="admin_networks">Networks</a></li>

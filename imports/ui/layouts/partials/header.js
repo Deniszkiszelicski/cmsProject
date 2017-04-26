@@ -19,7 +19,13 @@ Template.header.helpers({
   currentUser: function displayCurrentUser () {
     const user = Meteor.user();
     if (user) {
-      return user.profile.name;
+      return user.profile;
+    }
+  },
+  curUserInfo: function curUserInfo (){
+    const user = Meteor.user();
+    if (user){
+      return user.emails[0].address;
     }
   },
   currentRole: function displayCurrentRole () {
