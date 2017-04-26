@@ -200,7 +200,9 @@ Template.contentGroupForm.events({
     const user = allUsers.find((element) => {
       return element.profile.name == userName;
     });
-    allowedUsers.push(user);
+    if (user) {
+      allowedUsers.push(user);
+    }
     templateInstance.allowedUsers.set(allowedUsers);
   },
   'click #button-remove-user': function renoveUser(event, templateInstance){
