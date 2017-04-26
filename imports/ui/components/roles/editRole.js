@@ -43,7 +43,7 @@ event.preventDefault();
                                  editPlaylist: $('#editPlaylist').is(":checked"),
                                  deleteContentGrp: $('#deleteContentGrp').is(":checked"),
                                  createPlaylist: $('#createPlaylist').is(":checked"),
-                                 grantContentGrpAccess: $('#grantContentGrpAccess').is(":checked"),
+                                 editContentGrp: $('#editContentGrp').is(":checked"),
                                  deletePlaylist: $('#deletePlaylist').is(":checked"),
                                  adminMenu: $('#adminMenu').is(":checked"),
                                  netzMenu: $('#netzMenu').is(":checked"),
