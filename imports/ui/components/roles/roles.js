@@ -40,7 +40,7 @@ Template.adminRole.events({
                                  editContent: $('#editContent').is(":checked"),
                                  deleteContent: $('#deleteContent').is(":checked"),
                                  createContentGrp: $('#createContentGrp').is(":checked"),
-                                 grantContentGrpAccess: $('#grantContentGrpAccess').is(":checked"),
+                                 editContentGrp: $('#editContentGrp').is(":checked"),
                                  deleteContentGrp: $('#deleteContentGrp').is(":checked"),
                                  createPlaylist: $('#createPlaylist').is(":checked"),
                                  editPlaylist: $('#editPlaylist').is(":checked"),
