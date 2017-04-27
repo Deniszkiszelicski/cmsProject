@@ -61,8 +61,8 @@ Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie co
 
 
 <ul class="nav nav-tabs">
-  <i type="button" class="infoIcon" id="info" style="float: right;" data-toggle="modal" data-target="#infoModal">
-                    <img src="info3.png" alt="Mountain View" style="width:25px;height:25px; margin-left:5px;"></i>
+  <button type="button" class="btn-u btn-u-default sButton" id="info" style="float:right;" data-toggle="modal" data-target="#infoModal">Info</button>
+                    
 
   <button type="button" class="btn-u btn-u-default sButton" id="btn" style="float:right;">Create new Network</button>
 
@@ -106,21 +106,16 @@ Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie co
                   {{/if}}
               </td>
               <td>{{logUpdateTime}}
-               
-                <i type="button" class="editIcon" id="editNList" style="float: right;">
-                  <img src="edit.png" alt="Mountain View" style="width:20px;height:20px;">
+              <i type="button" class="editIcon" id="editNList" style="float: right;margin-top: -15px;margin-left: 7px;">
+                  <span style="font-size: 25px;font-style: normal;">&#9998;</span>
                 </i>
-                
-                   <i type="button" class="deleteIcon" style="float: right;" data-toggle="modal" data-target="#myModal" id="selectDel">
-                    <img src="trash.png" alt="Mountain View" style="width:20px;height:20px;">
+                  <i type="button" class="deleteIcon" style="float: right;margin-top: -15px;margin-left: 7px;" data-toggle="modal" data-target="#myModal" id="selectDel">
+                    <span style="font-size: 25px;font-style: normal;">&#128465;</span>
                   </i>
+                 
+
               </td>
             </tr>
-
-
-
-
-
             {{/each}}
           </tbody>
         </table>

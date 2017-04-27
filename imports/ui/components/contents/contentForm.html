@@ -95,15 +95,15 @@
             <label class="label">Info</label>
             <section>
               <div class="col col-3">
-                <span style="position: relative; top:-25px;">Mix in Ticker</span><input id="mixInTicker" type="checkbox" {{getMixInTicker}} >
+                <span>Mix in Ticker &nbsp;</span><input id="mixInTicker" type="checkbox" {{getMixInTicker}} >
               <label for="mixInTicker"></label>
                 <!-- <label class="toggle"><input type="checkbox" {{getMixInTicker}} id="mixInTicker"><i class="no-rounded"></i>Mix in Ticker</label> -->
             </div>  <div class="col col-3">
-              <span style="position: relative; top:-25px;">Collect statistics</span><input id="collectStatisticts" type="checkbox" {{getCollectStatisticts}} >
+              <span>Collect statistics &nbsp;</span><input id="collectStatisticts" type="checkbox" {{getCollectStatisticts}} >
             <label for="collectStatisticts"></label>
                 <!-- <label class="toggle"><input type="checkbox" {{getCollectStatisticts}} id="collectStatisticts"><i class="no-rounded"></i>Collect statistics</label> -->
             </div>  <div class="col col-3">
-              <span style="position: relative; top:-25px;">Visible for all</span><input id="visibleForAll" type="checkbox" {{getVisibleForAll}} >
+              <span>Visible for all &nbsp;</span><input id="visibleForAll" type="checkbox" {{getVisibleForAll}} >
             <label for="visibleForAll"></label>
                 <!-- <label class="toggle"><input type="checkbox" {{getVisibleForAll}} id="visibleForAll"><i class="no-rounded"></i>Visible for all</label> -->
                 </div>
@@ -120,10 +120,10 @@
             <div class="row">
 								<section class="col col-5">
 									<label class="label">Type of cunjunction</label>
-                  <span style="position: relative; top:-25px;">AND (both required)</span>
+                  <span>AND (both required)&nbsp;&nbsp;&nbsp;</span>
 									<input type="radio" name="radio-toggle" {{isConjAnd}} id="typeOfConjunction">
-                  <label for="typeOfConjunction"></label>
-                  <span style="position: relative; top:-25px;">OR (any required)</span>
+                  <label for="typeOfConjunction"></label><br>
+                  <span>OR (any required)&nbsp;&nbsp;&nbsp;</span>
 									<input type="radio" name="radio-toggle" {{isConjOr}} id="rad2">
                   <label for="rad2"></label>
 
@@ -172,13 +172,19 @@
               <section>
                 <label class="label" style="margin-left: 15px;">Days of week</label>
                 <span style="margin-left: 15px;">
-                  <div class="col col-3"><label class="toggle"><input type="checkbox" {{getMonday}} id="monday"><i class="no-rounded"></i>Monday</label>
-                  </div>  <div class="col col-3"><label class="toggle"><input type="checkbox" {{getTuesday}} id="tuesday"><i class="no-rounded"></i>Tuesday</label>
-                  </div>  <div class="col col-3"><label class="toggle"><input type="checkbox" {{getWednesday}} id="wednesday"><i class="no-rounded"></i>Wednesday</label>
-                  </div>  <div class="col col-3"><label class="toggle"><input type="checkbox" {{getThursday}} id="thursday"><i class="no-rounded"></i>Thursday</label>
-                  </div>  <div class="col col-3"><label class="toggle"><input type="checkbox" {{getFriday}} id="friday"><i class="no-rounded"></i>Friday</label>
-                  </div>  <div class="col col-3"><label class="toggle"><input type="checkbox" {{getSaturday}} id="saturday"><i class="no-rounded"></i>Saturday</label>
-                  </div>  <div class="col col-3"><label class="toggle"><input type="checkbox" {{getSunday}} id="sunday"><i class="no-rounded"></i>Sunday</label>
+                  <div class="col col-3"><input type="checkbox" {{getMonday}} id="monday">Monday&nbsp;&nbsp;&nbsp; <label for="monday"></label>
+                  </div>
+                  <div class="col col-3"><input type="checkbox" {{getTuesday}} id="tuesday">Tuesday&nbsp;&nbsp;&nbsp;<label for="tuesday"></label>
+                  </div>
+                  <div class="col col-3"><input type="checkbox" {{getWednesday}} id="wednesday">Wednesday&nbsp;&nbsp;&nbsp;<label for="wednesday"></label>
+                  </div>  
+                  <div class="col col-3"><input type="checkbox" {{getThursday}} id="thursday">Thursday&nbsp;&nbsp;&nbsp;<label for="thursday"></label>
+                  </div>  
+                  <div class="col col-3"><input type="checkbox" {{getFriday}} id="friday">Friday&nbsp;&nbsp;&nbsp;<label for="friday"></label>
+                  </div>  
+                  <div class="col col-3"><input type="checkbox" {{getSaturday}} id="saturday">Saturday&nbsp;&nbsp;&nbsp;<label for="saturday"></label>
+                  </div>  
+                  <div class="col col-3"><input type="checkbox" {{getSunday}} id="sunday">Sunday&nbsp;&nbsp;&nbsp;<label for="sunday"></label>
                   </div>  <div class="col col-3">
                   </div></span>
               </section><br>
@@ -198,7 +204,7 @@
                     </form>
                 </label>
                 <br><div class="col col-5">
-                <label class="toggle" style="margin-left: 15px;"><input type="checkbox" {{getDeleteAfterFinish}} id="deleteAfterFinish"><i class="no-rounded"></i>Delete after finish date</label>
+                <input type="checkbox" {{getDeleteAfterFinish}} id="deleteAfterFinish">Delete after finish date&nbsp;&nbsp;&nbsp; <label for="deleteAfterFinish"></label>
               </div></section>
 
             <!-- </div> -->
@@ -209,9 +215,9 @@
 
 
             <label class="label"><h4>Assortiment</h4></label>
-            <span style="margin-left: 10px;">
+            <span >
               {{#each listOfAssortiment}}
-                <label class="toggle"><input type="checkbox" {{getTypePresence}} value="{{this}}" class="content-assortiment"><i class="no-rounded"></i>{{this}}</label>
+                <input type="checkbox" id="{{this}}" {{getTypePresence}} value="{{this}}" class="content-assortiment">{{this}}:&nbsp;<label for="{{this}}"></label><br>
               {{/each}}
             </span>
             <br>
@@ -220,9 +226,9 @@
           <section class="col col-6">
 
             <label class="label"><h4>Region</h4></label>
-            <span style="margin-left: 10px;">
+            <span >
               {{#each regions}}
-                <label class="toggle"><input type="checkbox" {{getRegionPresence}} value="{{this}}" class="content-regions"><i class="no-rounded"></i>{{this}}</label>
+                <input type="checkbox" id="{{this}}" {{getRegionPresence}} value="{{this}}" class="content-regions">{{this}}:&nbsp;<label for="{{this}}"></label><br>
               {{/each}}
             </span>
 

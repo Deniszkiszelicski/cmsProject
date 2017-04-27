@@ -1,3 +1,4 @@
+
 .topbarA + .tooltip > .tooltip-inner{
   background-color: white;
   color:#717984;
@@ -77,8 +78,20 @@ cursor: pointer;
 input[type=radio] {
 display:none;
 }
-
-input[type=radio] + label
+input[type=radio]:checked + label:before
+{
+  content: "\2714\ ";
+  color: green;
+  cursor: pointer;
+   cursor: hand;
+}
+input[type=radio] + label:before{
+   content: "\2715\ ";
+   color: red;
+   cursor: pointer;
+    cursor: hand;
+}
+/*input[type=radio] + label
 {
 background: url("uncheck.png") no-repeat;
 background-size: 50%;
@@ -87,9 +100,8 @@ width: 35px;
 display:inline-block;
 cursor: pointer;
  cursor: hand;
-/*padding: 0 0 0 0px;*/
-}
-input[type=radio]:checked + label
+}*/
+/*input[type=radio]:checked + label
 {
 background: url("check.png") no-repeat;
 background-size: 50%;
@@ -98,8 +110,8 @@ width: 35px;
 display:inline-block;
 cursor: pointer;
  cursor: hand;
-/*padding: 0 0 0 0px;*/
-}
+
+}*/
 /*radio*/
 
 .editIcon , .deleteIcon , .infoIcon, .playIcon{

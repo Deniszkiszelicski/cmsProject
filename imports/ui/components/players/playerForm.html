@@ -302,8 +302,8 @@
           <div class="row" style="padding-left:20px">
                 <label class="label">Assortiment</label>
                   {{#each listOfAssortiment}}
-                      <span style="position: relative; top:-25px;">{{this}}</span><input id="{{this}}" type="checkbox" {{getTypePresence}} value="{{this}}" class="player-assortiment">
-                    <label for="{{this}}"></label>
+                      <span >{{this}}</span><input id="{{this}}" type="checkbox" {{getTypePresence}} value="{{this}}" class="player-assortiment">
+                    <label for="{{this}}"></label>&nbsp;&nbsp;&nbsp;
                   {{/each}}
                 </div>
               </fieldset>
@@ -312,8 +312,8 @@
                   <div class="row" style="padding-left:20px">
                 <label class="label">Region</label>
                   {{#each regions}}
-                   <span style="position: relative; top:-25px;">{{this}}</span> <input id="{{this}}" type="checkbox" {{getRegionPresence}} value="{{this}}" class="player-regions">
-                    <label for="{{this}}"></label>
+                   <span>{{this}} </span> <input id="{{this}}" type="checkbox" {{getRegionPresence}} value="{{this}}" class="player-regions">
+                    <label for="{{this}}"></label>&nbsp;&nbsp;&nbsp;
                   {{/each}}
                 </div>
               </fieldset>

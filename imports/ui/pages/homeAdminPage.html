@@ -35,8 +35,8 @@ Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie co
       <li><a href="#mainContent" data-toggle="tab">Main Content</a></li>
       <li><a href="#footer" data-toggle="tab">Footer</a></li>
       <li><a href="#image" data-toggle="tab">Image</a></li>
-      <i type="button" class="infoIcon" id="info" style="float: right;" data-toggle="modal" data-target="#infoModal">
-                    <img src="info3.png" alt="Mountain View" style="width:25px;height:25px; margin-left:5px;"></i>
+      <button type="button" class="btn-u btn-u-default sButton" id="info" style="float: right;" data-toggle="modal" data-target="#infoModal">Info</button>
+                    
       <button type="submit" class="btn-u btn-u-default homeSubmit sButton"  style="float:right">Save</button>
     </ul>
     <div class="tab-content" >
@@ -62,9 +62,12 @@ Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie co
               <div class="tab-pane fade in active" id="news1">
               {{#if homePageData.news1active}}
 
-              <input type="checkbox" aria-label="..." id="news1active" checked>Active
+              <input type="checkbox" aria-label="..." id="news1active" checked>
+              <label for="news1active"></label>
+              Active
                 {{else}}
-              <input type="checkbox" aria-label="..." id="news1active" >Active
+              <input type="checkbox" aria-label="..." id="news1active" >
+              <label for="news1active"></label>Active
                   {{/if}}
                 <h4>News 1</h4>
                 <div class="form-group col-lg-12">
@@ -81,8 +84,9 @@ Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie co
 
               </div><div class="tab-pane fade in" id="news2">
             {{#if homePageData.news2active}}
-              <input type="checkbox" aria-label="..." id="news2active" checked>Active
-                {{else}}<input type="checkbox" aria-label="..." id="news2active">Active{{/if}}
+              <input type="checkbox" aria-label="..." id="news2active" checked>
+              <label for="news2active"></label>Active
+                {{else}}<input type="checkbox" aria-label="..." id="news2active"><label for="news2active"></label>Active{{/if}}
                 <h4>News 2</h4>
 
                 <div class="form-group col-lg-12">
@@ -100,8 +104,8 @@ Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie co
                 </div>
               </div><div class="tab-pane fade in" id="news3">
               {{#if homePageData.news3active}}
-              <input type="checkbox" aria-label="..." id="news3active" checked>Active
-                {{else}}<input type="checkbox" aria-label="..." id="news3active">Active{{/if}}
+              <input type="checkbox" aria-label="..." id="news3active" checked><label for="news3active"></label>Active
+                {{else}}<input type="checkbox" aria-label="..." id="news3active"><label for="news3active"></label>Active{{/if}}
                 <h4>News 3</h4>
                 <div class="form-group col-lg-12">
                     <textarea name="editor8" id="headline3" >{{homePageData.headline3}}</textarea>
@@ -116,8 +120,8 @@ Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie co
                 </div>
               </div><div class="tab-pane fade in" id="news4">
               {{#if homePageData.news4active}}
-              <input type="checkbox" aria-label="..." id="news4active" checked>Active
-                {{else}}<input type="checkbox" aria-label="..." id="news4active">Active{{/if}}
+              <input type="checkbox" aria-label="..." id="news4active" checked><label for="news4active"></label>Active
+                {{else}}<input type="checkbox" aria-label="..." id="news4active"><label for="news4active"></label>Active{{/if}}
                 <h4>News 4</h4>
                 <div class="form-group col-lg-12">
                     <textarea name="editor14" id="headline4" >{{homePageData.headline4}}</textarea>
@@ -132,8 +136,8 @@ Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie co
                 </div>
               </div><div class="tab-pane fade in" id="news5">
               {{#if homePageData.news5active}}
-              <input type="checkbox" aria-label="..." id="news5active" checked>Active
-                {{else}}<input type="checkbox" aria-label="..." id="news5active">Active{{/if}}
+              <input type="checkbox" aria-label="..." id="news5active" checked><label for="news5active"></label>Active
+                {{else}}<input type="checkbox" aria-label="..." id="news5active"><label for="news5active"></label>Active{{/if}}
                 <h4>News 5</h4>
                 <div class="form-group col-lg-12">
                     <textarea name="editor15" id="headline5" >{{homePageData.headline5}}</textarea>
@@ -148,8 +152,8 @@ Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie co
                 </div>
               </div><div class="tab-pane fade in" id="news6">
               {{#if homePageData.news6active}}
-              <input type="checkbox" aria-label="..." id="news6active" checked>Active
-                {{else}}<input type="checkbox" aria-label="..." id="news6active">Active{{/if}}
+              <input type="checkbox" aria-label="..." id="news6active" checked><label for="news6active"></label>Active
+                {{else}}<input type="checkbox" aria-label="..." id="news6active"><label for="news6active"></label>Active{{/if}}
                 <h4>News 6</h4>
                 <div class="form-group col-lg-12">
                     <textarea name="editor16" id="headline6" >{{homePageData.headline6}}</textarea>
@@ -164,8 +168,8 @@ Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie co
                 </div>
               </div><div class="tab-pane fade in" id="news7">
               {{#if homePageData.news7active}}
-              <input type="checkbox" aria-label="..." id="news7active" checked>Active
-                {{else}}<input type="checkbox" aria-label="..." id="news7active">Active{{/if}}
+              <input type="checkbox" aria-label="..." id="news7active" checked><label for="news7active"></label>Active
+                {{else}}<input type="checkbox" aria-label="..." id="news7active"><label for="news7active"></label>Active{{/if}}
                 <h4>News 7</h4>
                 <div class="form-group col-lg-12">
                     <textarea name="editor17" id="headline7" >{{homePageData.headline7}}</textarea>
@@ -180,8 +184,8 @@ Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie co
                 </div>
               </div><div class="tab-pane fade in" id="news8">
               {{#if homePageData.news8active}}
-              <input type="checkbox" aria-label="..." id="news8active" checked>Active
-                {{else}}<input type="checkbox" aria-label="..." id="news8active">Active{{/if}}
+              <input type="checkbox" aria-label="..." id="news8active" checked><label for="news8active"></label>Active
+                {{else}}<input type="checkbox" aria-label="..." id="news8active"><label for="news8active"></label>Active{{/if}}
                 <h4>News 8</h4>
                 <div class="form-group col-lg-12">
                     <textarea name="editor18" id="headline8" >{{homePageData.headline8}}</textarea>
@@ -196,8 +200,8 @@ Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie co
                 </div>
               </div><div class="tab-pane fade in" id="news9">
               {{#if homePageData.news9active}}
-              <input type="checkbox" aria-label="..." id="news9active" checked>Active
-                {{else}}<input type="checkbox" aria-label="..." id="news9active">Active{{/if}}
+              <input type="checkbox" aria-label="..." id="news9active" checked><label for="news9active"></label>Active
+                {{else}}<input type="checkbox" aria-label="..." id="news9active"><label for="news9active"></label>Active{{/if}}
                 <h4>News 9</h4>
                 <div class="form-group col-lg-12">
                     <textarea name="editor19" id="headline9" >{{homePageData.headline9}}</textarea>
@@ -212,8 +216,8 @@ Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie co
                 </div>
               </div><div class="tab-pane fade in" id="news10">
               {{#if homePageData.news10active}}
-              <input type="checkbox" aria-label="..." id="news10active" checked>Active
-                {{else}}<input type="checkbox" aria-label="..." id="news10active">Active{{/if}}
+              <input type="checkbox" aria-label="..." id="news10active" checked><label for="news10active"></label>Active
+                {{else}}<input type="checkbox" aria-label="..." id="news10active"><label for="news10active"></label>Active{{/if}}
                 <h4>News 10</h4>
                 <div class="form-group col-lg-12">
                     <textarea name="editor20" id="headline10" >{{homePageData.headline10}}</textarea>

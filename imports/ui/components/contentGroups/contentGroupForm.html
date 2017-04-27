@@ -52,10 +52,12 @@
               <canvas width="125" height="97" id="canvas_picker" style="visibility: {{showColourPicker}}"></canvas>
             </section>
             <section class="col col-3 offset-3">
-              <label class="checkbox-inline"><input type="checkbox" {{isBlocked}} id="blocked">Blocked</label>
+              <input type="checkbox" {{isBlocked}} id="blocked">Blocked&nbsp;&nbsp;&nbsp;
+              <label for="blocked"></label>
             </section>
             <section class="col col-3">
-              <label class="checkbox-inline"><input type="checkbox" {{isDefault}} id="default">Default</label>
+              <input type="checkbox" {{isDefault}} id="default">Default&nbsp;&nbsp;&nbsp;
+              <label for="default"></label>
             </section>
 
           </div>
@@ -114,7 +116,7 @@
       <form class="sky-form" action="#" id="sky-form">
         <fieldset>
           <!-- <section class="col col-12"> -->
-            <label class="checkbox-inline"><input type="checkbox" {{isVisibleForAllChecked}} id="visibleForAll">Make this content-group visible for all</label>
+            <input type="checkbox" {{isVisibleForAllChecked}} id="visibleForAll">Make this content-group visible for all &nbsp;&nbsp;&nbsp;<label for="visibleForAll"></label>
           <!-- </section> -->
           <br>
           {{#unless isVisibleForAll}}
