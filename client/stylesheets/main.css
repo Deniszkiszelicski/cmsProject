@@ -27,29 +27,52 @@
 .header-v3 .dropdown > a::after, .header-v3 .dropdown-submenu > a::after {
     content: "";
 }
+  .t1 , .t2 {
+    display: none;
+  }
+
 
   input[type=checkbox] {
 display:none;
+cursor: pointer;
+ cursor: hand;
 }
 
-input[type=checkbox] + label
-{
+input[type=checkbox] + label:before{
+   content: "\2715\ ";
+   color: red;
+   cursor: pointer;
+    cursor: hand;
+}
+/*{
 background: url("uncheck.png") no-repeat;
 background-size: 50%;
 height: 35px;
 width: 35px;
 display:inline-block;
-/*padding: 0 0 0 0px;*/
-}
-input[type=checkbox]:checked + label
+cursor: pointer;
+ cursor: hand;
+
+
+}*/
+input[type=checkbox]:checked + label:before
 {
+  content: "\2714\ ";
+  color: green;
+  cursor: pointer;
+   cursor: hand;
+}
+/*{
 background: url("check.png") no-repeat;
 background-size: 50%;
 height: 35px;
 width: 35px;
 display:inline-block;
-/*padding: 0 0 0 0px;*/
-}
+cursor: pointer;
+ cursor: hand;
+}*/
+
+
 /*radio*/
 input[type=radio] {
 display:none;
@@ -62,6 +85,8 @@ background-size: 50%;
 height: 35px;
 width: 35px;
 display:inline-block;
+cursor: pointer;
+ cursor: hand;
 /*padding: 0 0 0 0px;*/
 }
 input[type=radio]:checked + label
@@ -71,6 +96,8 @@ background-size: 50%;
 height: 35px;
 width: 35px;
 display:inline-block;
+cursor: pointer;
+ cursor: hand;
 /*padding: 0 0 0 0px;*/
 }
 /*radio*/
