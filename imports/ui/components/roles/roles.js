@@ -24,7 +24,7 @@ Template.adminRole.helpers({
 });
 
 Template.adminRole.events({
-  'submit .register-form': function (event) {
+  'click #saveNewRole': function (event) {
 
     event.preventDefault();
 
@@ -40,7 +40,7 @@ Template.adminRole.events({
                                  editContent: $('#editContent').is(":checked"),
                                  deleteContent: $('#deleteContent').is(":checked"),
                                  createContentGrp: $('#createContentGrp').is(":checked"),
-                                 grantContentGrpAccess: $('#grantContentGrpAccess').is(":checked"),
+                                 editContentGrp: $('#editContentGrp').is(":checked"),
                                  deleteContentGrp: $('#deleteContentGrp').is(":checked"),
                                  createPlaylist: $('#createPlaylist').is(":checked"),
                                  editPlaylist: $('#editPlaylist').is(":checked"),
@@ -55,6 +55,7 @@ Template.adminRole.events({
                                  seeMedia: $('#seeMedia').is(":checked"),
                                  seeContent: $('#seeContent').is(":checked"),
                                  seeAllPlayers: $('#seeAllPlayers').is(":checked"),
+                                 seeAllContentGroups: $('#seeAllContentGroups').is(":checked"),
 
     });
     toastr.success("Role saved","New Role");

@@ -1,216 +1,260 @@
 <template name ="roleEdit">
 
-  <div class="tab-v1 content-form">
-    <!-- <div class="col-md-10 col-md-offset-1"> -->
+  <ul class="nav nav-tabs">
+
+        <button type="button" class="btn-u btn-u-default sButton" style="float:right;" id="saveEditRole">Save</button>
+        <button type="button" class="btn-u btn-u-default cButton" style="float:right;" id="closeEditRole">Close</button>
+      </ul><br>
+
+
+{{#with editRole}}
       <form class="sky-form editRole-form">
-      <div class=" panel-default panel-table">
-        <div class="panel-heading">
-          <span>Edit Role</span>
-          <i type="button" class="glyphicon glyphicon-remove" style="color:red;" id="closeEditRole"></i>
 
-        </div>
+        <fieldset>
+              <div class="row" style="border:none">
 
-        <div class="panel-body">
-          {{#with editRole}}
-          <div>
-          <tr>
-            <td>Role Name :<input type="text" name="" class="form-control" id="roleName" value="{{roleName}}" placeholder="admin,user etc."><hr>
-            </td>
-          </tr>
-          </div>
-          <table class="table table-striped">
+                <div class="form-group col-lg-4">
+                <label class="label">Role Name</label>
+                <label class="input"><input type="text"  class="form-control" id="roleName" value="{{roleName}}"></label></div>
+              </div>
+            </fieldset>
+            <fieldset>
+              <div class="row" style="border:none">
+                <label class="label">permissions</label>
 
-            <tbody>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Player</th>
+                      <th>Video/Img</th>
+                      <th>Content</th>
+                      <th>Content Grp</th>
+                      <th>Playlist</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Create</td>
+                      <td>{{#if createPlayer}} <input type='checkbox' id="createPlayer"  value="{{this}}" checked/>
+    <label for='createPlayer'>
+
+    </label>{{else}}<input type='checkbox' id="createPlayer"  value="{{this}}"/>
+<label for='createPlayer'>
+
+</label>{{/if}}</td>
+                      <td>{{#if createVideoImg}} <input type='checkbox' id="createVideoImg" value="{{this}}" checked/>
+    <label for='createVideoImg'>
+
+    </label>{{else}}<input type='checkbox' id="createVideoImg"  value="{{this}}"/>
+<label for='createVideoImg'>
+
+</label>{{/if}}</td>
+                      <td>{{#if createContent}} <input type='checkbox' id="createContent" value="{{this}}" checked/>
+    <label for='createContent'>
+
+    </label>{{else}}<input type='checkbox' id="createContent"  value="{{this}}"/>
+<label for='createContent'>
+
+</label>{{/if}}</td>
+                      <td>{{#if createContentGrp}} <input type='checkbox' id="createContentGrp"  value="{{this}}" checked/>
+    <label for='createContentGrp'>
+
+    </label>{{else}}<input type='checkbox' id="createContentGrp"  value="{{this}}"/>
+<label for='createContentGrp'>
+
+</label>{{/if}}</td>
+                      <td>{{#if createPlaylist}} <input type='checkbox' id="createPlaylist" value="{{this}}" checked/>
+    <label for='createPlaylist'>
+
+    </label>{{else}}<input type='checkbox' id="createPlaylist"  value="{{this}}"/>
+<label for='createPlaylist'>
+
+</label>{{/if}}</td>
+                    </tr>
+                    <tr>
+                      <td>Edit</td>
+                      <td>{{#if editPlayer}} <input type='checkbox' id="editPlayer" value="{{this}}" checked/>
+    <label for='editPlayer'>
+
+    </label>{{else}}<input type='checkbox' id="editPlayer"  value="{{this}}"/>
+<label for='editPlayer'>
+
+</label>{{/if}}</td>
+                      <td>{{#if editVideoImg}} <input type='checkbox' id="editVideoImg" value="{{this}}" checked/>
+    <label for='editVideoImg'>
+
+    </label>{{else}}<input type='checkbox' id="editVideoImg"  value="{{this}}"/>
+<label for='editVideoImg'>
+
+</label>{{/if}}</td>
+                      <td>{{#if editContent}} <input type='checkbox' id="editContent" value="{{this}}" checked/>
+    <label for='editContent'>
+
+    </label>{{else}}<input type='checkbox' id="editContent"  value="{{this}}"/>
+<label for='editContent'>
+
+</label>{{/if}}</td>
+                      <td>{{#if editContentGrp}} <input type='checkbox' id="editContentGrp"  value="{{this}}" checked/>
+    <label for='editContentGrp'>
+
+    </label>{{else}}<input type='checkbox' id="editContentGrp"  value="{{this}}"/>
+<label for='editContentGrp'>
+
+</label>{{/if}}</td>
+                     <td>{{#if editPlaylist}} <input type='checkbox' id="editPlaylist"  value="{{this}}" checked/>
+   <label for='editPlaylist'>
+
+    </label>{{else}}<input type='checkbox' id="editPlaylist"  value="{{this}}"/>
+<label for='editPlaylist'>
+
+</label>{{/if}}</td>
+
+                    </tr>
+                    <tr>
+                      <td>Delete</td>
+                      <td>{{#if deletePlayer}} <input type='checkbox' id="deletePlayer" value="{{this}}" checked/>
+    <label for='deletePlayer'>
+
+    </label>{{else}}<input type='checkbox' id="deletePlayer"  value="{{this}}"/>
+<label for='deletePlayer'>
+
+</label>{{/if}}</td>
+                      <td>{{#if deleteVideoImg}} <input type='checkbox' id="deleteVideoImg"  value="{{this}}" checked/>
+    <label for='deleteVideoImg'>
+
+    </label>{{else}}<input type='checkbox' id="deleteVideoImg" value="{{this}}"/>
+<label for='deleteVideoImg'>
+
+</label>{{/if}}</td>
+                      <td>{{#if deleteContent}} <input type='checkbox' id="deleteContent"  value="{{this}}" checked/>
+    <label for='deleteContent'>
+
+    </label>{{else}}<input type='checkbox' id="deleteContent"  value="{{this}}"/>
+<label for='deleteContent'>
+
+</label>{{/if}}</td>
+                      <td>{{#if deleteContentGrp}} <input type='checkbox' id="deleteContentGrp" value="{{this}}" checked/>
+    <label for='deleteContentGrp'>
+
+    </label>{{else}}<input type='checkbox' id="deleteContentGrp"  value="{{this}}"/>
+<label for='deleteContentGrp'>
+
+</label>{{/if}}</td>
+                      <td>{{#if deletePlaylist}} <input type='checkbox' id="deletePlaylist"  value="{{this}}" checked/>
+    <label for='deletePlaylist'>
+
+    </label>{{else}}<input type='checkbox' id="deletePlaylist"  value="{{this}}"/>
+<label for='deletePlaylist'>
+
+</label>{{/if}}</td>
+
+                    </tr>
+                  </tbody>
+                </table>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Admin Menu</th>
+                      <th>Network Menu</th>
+                      <th>User Menu</th>
+                      <th>Role Menu</th>
+                      <th>Content Menu</th>
+                      <th>Statistics menu</th>
+                      <th>Home Menu</th>
+                      <th>Media</th>
+                      <th>Content</th>
+                      <th>Content-group</th>
+                      <th>Players</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{{#if adminMenu}}<input type='checkbox' id="adminMenu"  checked/>
+    <label for='adminMenu'>
+    </label>{{else}}<input type='checkbox' id="adminMenu" />
+<label for='adminMenu'>
+</label>{{/if}}</td>
+                      <td>{{#if netzMenu}}<input type='checkbox' id="netzMenu"  checked/>
+    <label for='netzMenu'>
+
+    </label>{{else}}<input type='checkbox' id="netzMenu" />
+<label for='netzMenu'>
+</label>{{/if}}</td>
+                      <td>{{#if userMenu}}<input type='checkbox' id="userMenu"  checked/>
+    <label for='userMenu'>
+
+    </label>{{else}}<input type='checkbox' id="userMenu" />
+<label for='userMenu'>
+</label>{{/if}}</td>
+                      <td>{{#if roleMenu}}<input type='checkbox' id="roleMenu"  checked/>
+    <label for='roleMenu'>
+
+    </label>{{else}}<input type='checkbox' id="roleMenu" />
+<label for='roleMenu'>
+
+</label>{{/if}}</td>
+                      <td>{{#if contentMenu}}<input type='checkbox' id="contentMenu"  checked/>
+    <label for='contentMenu'>
+
+    </label>{{else}}<input type='checkbox' id="contentMenu" />
+<label for='contentMenu'>
+
+</label>{{/if}}</td>
+                      <td>{{#if statisticMenu}}<input type='checkbox' id="statisticMenu"  checked/>
+    <label for='statisticMenu'>
+
+    </label>{{else}}<input type='checkbox' id="statisticMenu" />
+<label for='statisticMenu'>
+
+</label>{{/if}}</td>
+                      <td>{{#if homeEditMenu}}<input type='checkbox' id="homeEditMenu" checked/>
+    <label for='homeEditMenu'>
+
+    </label>{{else}}<input type='checkbox' id="homeEditMenu" />
+<label for='homeEditMenu'>
+
+</label>{{/if}}</td>
+                      <td>{{#if seeMedia}}<input type='checkbox' id="seeMedia"  checked/>
+    <label for='seeMedia'>
+
+    </label>{{else}}<input type='checkbox' id="seeMedia" />
+<label for='seeMedia'>
+
+</label>{{/if}}</td>
+                      <td>{{#if seeContent}}<input type='checkbox' id="seeContent"  checked/>
+    <label for='seeContent'>
+
+    </label>{{else}}<input type='checkbox' id="seeContent"/>
+<label for='seeContent'>
 
 
+</label>{{/if}}</td>
+                      <td>{{#if seeAllContentGroups}}<input type='checkbox' id="seeAllContentGroups"  checked/>
+    <label for='seeAllContentGroups'>
+
+    </label>{{else}}<input type='checkbox' id="seeAllContentGroups"/>
+    <label for='seeAllContentGroups'>
 
 
+    </label>{{/if}}</td>
 
-                  <tr class="col-sm-12">
-                <td class="col-sm-4">{{#if createPlayer}}
-                      Create Player :<input type="checkbox" aria-label="..." id="createPlayer" value="{{this}}" checked>
-                    {{else}}
-                      Create Player :<input type="checkbox" aria-label="..." id="createPlayer" value="{{this}}" >
-                    {{/if}}
-                </td>
-                <td class="col-sm-4">{{#if editPlayer}}
-                      Edit Player :<input type="checkbox" aria-label="..." id="editPlayer" value="{{this}}" checked >
-                    {{else}}
-                      Edit Player :<input type="checkbox" aria-label="..." id="editPlayer" value="{{this}}" >
-                    {{/if}}
-                </td>
-                <td class="col-sm-4">{{#if deletePlayer}}
-                      Delete Player :<input type="checkbox" aria-label="..." id="deletePlayer" value="{{this}}" checked>
-                    {{else}}
-                      Delete Player :<input type="checkbox" aria-label="..." id="deletePlayer" value="{{this}}" >
-                    {{/if}}
-                </td>
-              </tr>
-              <tr class="col-sm-12">
-                <td class="col-sm-4">{{#if createVideoImg}}
-                      Create Video/Img :<input type="checkbox" aria-label="..." id="createVideoImg" value="{{this}}" checked>
-                    {{else}}
-                      Create Video/Img :<input type="checkbox" aria-label="..." id="createVideoImg" value="{{this}}" >
-                    {{/if}}
-                </td>
-                <td class="col-sm-4">{{#if editVideoImg}}
-                      Edit Video/Img :<input type="checkbox" aria-label="..." id="editVideoImg" value="{{this}}" checked>
-                    {{else}}
-                      Edit Video/Img :<input type="checkbox" aria-label="..." id="editVideoImg" value="{{this}}" >
-                    {{/if}}
-                </td>
-                <td class="col-sm-4">{{#if deleteVideoImg}}
-                      Delete Video/Img :<input type="checkbox" aria-label="..." id="deleteVideoImg" value="{{this}}" checked>
-                    {{else}}
-                      Delete Video/Img :<input type="checkbox" aria-label="..." id="deleteVideoImg" value="{{this}}" >
-                    {{/if}}
-                </td>
-              </tr>
-              <tr class="col-sm-12">
-                <td class="col-sm-4">{{#if createContent}}
-                        Create Content :<input type="checkbox" aria-label="..." id="createContent" value="{{this}}" checked>
-                    {{else}}
-                          Create Content :<input type="checkbox" aria-label="..." id="createContent" value="{{this}}" >
-                    {{/if}}
-                </td>
-                <td class="col-sm-4">{{#if editContent}}
-                      Edit Content :<input type="checkbox" aria-label="..." id="editContent" value="{{this}}" checked>
-                    {{else}}
-                      Edit Content :<input type="checkbox" aria-label="..." id="editContent" value="{{this}}" >
-                    {{/if}}
-                </td>
-                <td class="col-sm-4">{{#if deleteContent}}
-                      Delete Content :<input type="checkbox" aria-label="..." id="deleteContent" value="{{this}}" checked>
-                    {{else}}
-                      Delete Content :<input type="checkbox" aria-label="..." id="deleteContent" value="{{this}}" >
-                    {{/if}}
-                </td>
-              </tr>
-              <tr class="col-sm-12">
-                <td class="col-sm-4">{{#if createContentGrp}}
-                        Create Content Group :<input type="checkbox" aria-label="..." id="createContentGrp" value="{{this}}" checked>
-                    {{else}}
-                          Create Content Group :<input type="checkbox" aria-label="..." id="createContentGrp" value="{{this}}" >
-                    {{/if}}
-                </td>
+                      <td>{{#if seeAllPlayers}}<input type='checkbox' id="seeAllPlayers"  checked/>
 
-                <td class="col-sm-4">{{#if deleteContentGrp}}
-                      Delete Content Group :<input type="checkbox" aria-label="..." id="deleteContentGrp" value="{{this}}" checked>
-                    {{else}}
-                      Delete Content Group :<input type="checkbox" aria-label="..." id="deleteContentGrp" value="{{this}}" >
-                    {{/if}}
-                </td>
-                <td class="col-sm-4">{{#if grantContentGrpAccess}}
-                      Content Group Edit Privileges :<input type="checkbox" aria-label="..." id="grantContentGrpAccess" value="{{this}}" checked>
-                    {{else}}
-                      Content Group Edit Privileges :<input type="checkbox" aria-label="..." id="grantContentGrpAccess" value="{{this}}" >
-                    {{/if}}
-                </td>
-              </tr>
-              <tr class="col-sm-12">
-                <td class="col-sm-4">{{#if createPlaylist}}
-                        Create Playlist :<input type="checkbox" aria-label="..." id="createPlaylist" value="{{this}}" checked>
-                    {{else}}
-                          Create Playlist :<input type="checkbox" aria-label="..." id="createPlaylist" value="{{this}}" >
-                    {{/if}}
-                </td>
-                <td class="col-sm-4">{{#if editPlaylist}}
-                      Edit Playlist :<input type="checkbox" aria-label="..." id="editPlaylist" value="{{this}}" checked>
-                    {{else}}
-                      Edit Playlist :<input type="checkbox" aria-label="..." id="editPlaylist" value="{{this}}" >
-                  {{/if}}
-                </td>
-                <td class="col-sm-4">{{#if deletePlaylist}}
-                      Delete Playlist :<input type="checkbox" aria-label="..." id="deletePlaylist" value="{{this}}" checked>
-                    {{else}}
-                      Delete Playlist :<input type="checkbox" aria-label="..." id="deletePlaylist" value="{{this}}" >
-                    {{/if}}
-                </td>
-              </tr>
-              <tr class="col-sm-12">
-                <td class="col-sm-4">{{#if adminMenu}}
-                      Admin menu Visible :<input type="checkbox" aria-label="..." id="adminMenu" value="{{this}}" checked>
-                    {{else}}
-                      Admin menu Visible :<input type="checkbox" aria-label="..." id="adminMenu" value="{{this}}" >
-                    {{/if}}
-                </td>
-                <td class="col-sm-4">{{#if netzMenu}}
-                      Network menu Visible :<input type="checkbox" aria-label="..." id="netzMenu" value="{{this}}" checked>
-                    {{else}}
-                      Network menu Visible :<input type="checkbox" aria-label="..." id="netzMenu" value="{{this}}" >
-                    {{/if}}
-                </td>
-                <td class="col-sm-4">{{#if userMenu}}
-                      User menu Visible :<input type="checkbox" aria-label="..." id="userMenu" value="{{this}}" checked>
-                    {{else}}
-                      User menu Visible :<input type="checkbox" aria-label="..." id="userMenu" value="{{this}}" >
-                    {{/if}}
-                </td>
-              </tr>
-              <tr class="col-sm-12">
-                <td class="col-sm-3">{{#if roleMenu}}
-                      Role menu Visible :<input type="checkbox" aria-label="..." id="roleMenu" value="{{this}}" checked>
-                    {{else}}
-                      Role menu Visible :<input type="checkbox" aria-label="..." id="roleMenu" value="{{this}}" >
-                    {{/if}}
-                </td>
-                <td class="col-sm-3">{{#if contentMenu}}
-                      Content menu Visible :<input type="checkbox" aria-label="..." id="contentMenu" value="{{this}}" checked>
-                    {{else}}
-                      Content menu Visible :<input type="checkbox" aria-label="..." id="contentMenu" value="{{this}}" >
-                    {{/if}}
-                </td>
-              <td class="col-sm-3">{{#if statisticMenu}}
-                    Statistics menu Visible :<input type="checkbox" aria-label="..." id="statisticMenu" value="{{this}}" checked>
-                  {{else}}
-                    Statistics menu Visible :<input type="checkbox" aria-label="..." id="statisticMenu" value="{{this}}" >
-                  {{/if}}
-              </td>
-              <td class="col-sm-3">{{#if homeEditMenu}}
-                    Home Edit menu Visible :<input type="checkbox" aria-label="..." id="homeEditMenu" value="{{this}}" checked>
-                  {{else}}
-                    Home Edit menu Visible :<input type="checkbox" aria-label="..." id="homeEditMenu" value="{{this}}" >
-                  {{/if}}
-              </td>
-            </tr>
-            <tr class="col-sm-12">
-              <td class="col-sm-3">{{#if seeMedia}}
-                  Media Visible :All<input type="radio" name="optradio3" id="seeMedia" value="{{this}}" checked>
-                  Own<input type="radio" name="optradio3" id="seeMedia" value="{{this}}">
-                  {{else}}
-                  Media Visible :All<input type="radio" name="optradio3" id="seeMedia" value="{{this}}" >
-                  Own<input type="radio" name="optradio3" id="seeMedia" value="{{this}}" checked>
-                  {{/if}}
-              </td>
-              <td class="col-sm-3">{{#if seeContent}}
-                  Content Visible :All<input type="radio" name="optradio4" id="seeContent" value="{{this}}" checked>
-                  Own<input type="radio" name="optradio4" id="seeContent" value="{{this}}">
-                  {{else}}
-                  Content Visible :All<input type="radio" name="optradio4" id="seeContent" value="{{this}}" >
-                  Own<input type="radio" name="optradio4" id="seeContent" value="{{this}}" checked>
-                  {{/if}}
-              </td>
+    <label for='seeAllPlayers'>
 
-              <td class="col-sm-3">{{#if seeAllPlayers}}
-                  Players Visible :All<input type="radio" name="optradio6" id="seeContentGroup" value="{{this}}" checked>
-                  Own<input type="radio" name="optradio6" id="seeAllPlayers" value="{{this}}">
-                  {{else}}
-                  Players Visible :All<input type="radio" name="optradio6" id="seeContentGroup" value="{{this}}" >
-                  Own<input type="radio" name="optradio6" id="seeAllPlayers" value="{{this}}" checked>
-                  {{/if}}
-              </td>
-            </tr>
-            </tbody>
-          </table>
+    </label>{{else}}<input type='checkbox' id="seeAllPlayers" />
+<label for='seeAllPlayers'>
+</label>{{/if}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </fieldset>
 
-          {{/with}}
-        </div>
-        <div class="panel-footer">
-            <button type="submit" class="btn btn-default">Save</button>
-        </div>
-
-      </div>
       </form>
-    <!-- </div> -->
-  </div><br>
+{{/with}}
+<br><br><button type="button" class="btn-u btn-u-default sButton" style="float:right;" id="saveEditRole">Save</button>
+  <button type="button" class="btn-u btn-u-default cButton" style="float:right;" id="closeEditRole">Close</button>
+<br><br><br><br>
 </template>

@@ -10,6 +10,11 @@ Meteor.subscribe('playlists');
 Template.playlistsList.onCreated(function () {
   this.filterText = new ReactiveVar();
   this.playlistToDelete = new ReactiveVar();
+  this.autorun(() => {
+    this.subscribe('medien');
+    this.subscribe('contents');
+    this.subscribe('contentGroups');
+  });
 });
 
 Template.playlistsList.helpers({
@@ -36,7 +41,7 @@ Template.playlistsList.events({
     Meteor.call('deletePlaylist', playlist._id);
     toastr["success"]("Playlist '" + playlist.name + "' has been deleted.");
   },
-  'click .glyphicon-trash': function deletePlaylist(event, templateInstance) {
+  'click #button-delete-playlist': function deletePlaylist(event, templateInstance) {
     event.preventDefault();
     templateInstance.playlistToDelete.set(this);
   },

@@ -6,7 +6,7 @@ import './searchCategory';
 import './mediaForm.html';
 
 
-Meteor.subscribe('medien');
+// Meteor.subscribe('medien');
 Meteor.subscribe('files.images.all');
 Meteor.subscribe('files.videos.all');
 
@@ -41,6 +41,10 @@ Template.mediaForm.helpers({
     const category = this.category;
     return category;
   },
+  getCategories: function getCategories () {
+    const categories = Medien.find({}, { fields: { category: 1 } }).fetch().map(function(it) { return it.category; });
+    return _.uniq(categories);
+  },
   uploadedFileName: function () {
     return Template.instance().uploadedFileName.get();
   }
@@ -59,6 +63,7 @@ Template.mediaForm.events({
         // createdAt: Date.now(),
         fileId: fileId });
     toastr["success"]("Media '" + name + "' has been saved.");
+    
   },
   'change #fileInput': function (e, templateInstance) {
     if (e.currentTarget.files && e.currentTarget.files[0]) {

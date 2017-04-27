@@ -14,4 +14,5 @@ import '../../ui/pages/signIn';
 import '../../ui/pages/admin_role';
 import '../../ui/pages/admin_networks';
 import '../../ui/pages/homeAdminPage';
+import '../../ui/pages/admin_docs';
 import './routes';

@@ -18,13 +18,22 @@
       <td>{{assortiment}}</td>
       <td>
         <div class="media-row-controls">
-          <i type="button" class="glyphicon glyphicon-play-circle" id="button-play-content"></i>
+        <i type="button" class="playIcon" style="float: right;" id="button-play-content">
+                    <img src="play.png" alt="Mountain View" style="width:20px;height:20px;">
+                  </i>
+         <!--  <i type="button" class="glyphicon glyphicon-play-circle" id="button-play-content"></i> -->
           {{#if enableButtonEdit}}
-            <i type="button" class="glyphicon glyphicon-pencil" id="button-edit-content"></i>
+           <!--  <i type="button" class="glyphicon glyphicon-pencil" id="button-edit-content"></i> -->
+           <i type="button" class="editIcon" id="button-edit-content" style="float: right;">
+                  <img src="edit.png" alt="Mountain View" style="width:20px;height:20px;">
+                </i>
           {{/if}}
           {{#if enableButtonDelete}}
-          <i type="button" class="glyphicon glyphicon-trash" id="button-delete-content"
-            data-toggle="modal" data-target="#deleteConfirmation"></i>
+         <!--  <i type="button" class="glyphicon glyphicon-trash" id="button-delete-content"
+            data-toggle="modal" data-target="#deleteConfirmation"></i> -->
+             <i type="button" class="deleteIcon" id="glyphicon-trash" style="float: right;" data-toggle="modal" data-target="#deleteConfirmation" >
+                    <img src="trash.png" alt="Mountain View" style="width:20px;height:20px;">
+                  </i>
           {{/if}}
           {{#if enableButtonRemove}}
             <i type="button" class="glyphicon glyphicon-remove" id="button-remove-content"></i>

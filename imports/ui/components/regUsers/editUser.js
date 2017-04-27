@@ -8,7 +8,6 @@ import '../../components/logoutbutton';
 import '../../components/regUsers/userReg';
 import '../../components/regUsers/userList';
 
-
 Meteor.subscribe('users');
 Meteor.subscribe('roles');
 var Playervalue = [];
@@ -16,6 +15,7 @@ var Playervalue = [];
 Template.editUser2.onCreated(function onCreated() {
   this.autorun(() => {
     this.subscribe('players', true);
+    Playervalue = [];
   });
   this.counter = new ReactiveVar();
   this.filterText = new ReactiveVar();
@@ -36,7 +36,10 @@ Template.editUser2.helpers({
     return Players.findOne({ _id: id }).name;
   },
   playerIds: (id) =>{
-    return Players.findOne({ _id: id }).playerId;
+    const player = Players.findOne({ _id: id });
+    if (player) {
+      return player.playerId;
+    }
   },
   playerInformation: () =>{
     return Players.find().fetch();
@@ -47,19 +50,15 @@ Template.editUser2.helpers({
   onePlayer: () =>{
     return Template.instance().counter.get(Playervalue);
   },
-
-
 });
 
 Template.editUser2.events({
-  'submit .edit': function editUser(event) {
+  'click #userEdit': function editUser(event) {
     event.preventDefault();
-
-
-    const email = event.target.email.value;
-    const password = event.target.password.value;
-    const firstname = event.target.firstname.value;
-    const assignedPlayers = [];
+    var assignedPlayers = [];
+    const email = $('#email').val();
+    const password = $('#password').val();
+    const firstname = $('#firstname').val();
     const role = $('#checked:checked').val();
 
     $('.assignedPlayersList').children('#playerList').each(function f() {

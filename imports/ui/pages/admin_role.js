@@ -23,7 +23,7 @@ Template.adminRoles.events({
     templateInstance.isCreateNew.set(true);
   },
 
-  'submit .register-form': function closeForm(event, templateInstance) {
+  'click #saveNewRole': function closeForm(event, templateInstance) {
     event.preventDefault();
     templateInstance.isCreateNew.set(false);
   },

@@ -28,8 +28,6 @@ Template.usersList.onCreated(function onCreated() {
 Template.usersList.helpers({
   filteredUsers: () => {
     return Meteor.users.find().fetch();
-    // const filterText = Template.instance().filterText.get();
-    // return Meteor.users.find({ 'profile.name': { $regex: new RegExp(filterText), $options: 'i' } }).fetch();
   },
 
   roleName: (id) =>{
@@ -65,7 +63,7 @@ Template.usersList.events({
     event.preventDefault();
     Session.set('selectedUser', this._id);
   },
-  'submit .edit': function closeEditForm(event, templateInstance) {
+  'click #userEdit': function closeEditForm(event, templateInstance) {
     templateInstance.isUserEdit.set(false);
   },
 

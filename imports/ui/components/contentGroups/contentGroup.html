@@ -9,16 +9,23 @@
     <td>
       <div class="row-controls">
         {{#if enableButtonEdit}}
-          <i type="button" class="glyphicon glyphicon-pencil" id="button-edit-contentGroup"></i>
+          <!-- <i type="button" class="glyphicon glyphicon-pencil" id="button-edit-contentGroup"></i> -->
+          <i type="button" class="editIcon" id="button-edit-contentGroup" style="float: right;">
+                  <img src="edit.png" alt="Mountain View" style="width:20px;height:20px;">
+                </i>
         {{/if}}
         {{#if enableButtonDelete}}
-          <i type="button" class="glyphicon glyphicon-trash"
-            data-toggle="modal" data-target="#deleteConfirmation"></i>
+         <!--  <i type="button" class="glyphicon glyphicon-trash"
+            data-toggle="modal" data-target="#deleteConfirmation"></i> -->
+             <i type="button" class="deleteIcon" style="float: right;" data-toggle="modal" data-target="#deleteConfirmation" id="button-delete-grp">
+                    <img src="trash.png" alt="Mountain View" style="width:20px;height:20px;">
+                  </i>
         {{/if}}
         {{#if enableButtonRemove}}
           <i type="button" class="glyphicon glyphicon-remove" id="button-remove-contentGroup"></i>
         {{/if}}
       </div>
     </td>
+    <td></td>
   </tr>
 </template>

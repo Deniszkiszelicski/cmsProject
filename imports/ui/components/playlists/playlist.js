@@ -23,7 +23,10 @@ Template.playlist.helpers({
     const contentGroupIds = this.contentGroupIds;
     const l = contentGroupIds.length;
     for (i = 0; i < l; i++) {
-      contentGroupNames.push(ContentGroups.findOne({ _id: contentGroupIds[i] }).name);
+      const cg = ContentGroups.findOne({ _id: contentGroupIds[i] });
+      if (cg) {
+        contentGroupNames.push(cg.name);
+      }
     }
     return contentGroupNames;
   },

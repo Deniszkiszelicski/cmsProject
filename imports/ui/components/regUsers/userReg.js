@@ -9,15 +9,12 @@ import '../../../api/registerUser/methods';
 import '../../../api/registerUser/registerUser';
 
 Meteor.subscribe('networks');
-Meteor.subscribe('players');
-
-
 var Playervalue = [];
-
 
 Template.registerUser2.onCreated(function onCreated() {
   this.autorun(() => {
     this.subscribe('players', true);
+    Playervalue = [];
   });
   this.counter = new ReactiveVar();
   this.filterText = new ReactiveVar();
@@ -35,27 +32,18 @@ Template.registerUser2.helpers({
     return Roles.find().fetch();
   },
   onePlayer: () =>{
-
     return Template.instance().counter.get(Playervalue);
   },
-
-
 });
 
 Template.registerUser2.events({
-  'submit .register': function (event) {
-
+  'click #userReg': function saveUser(event) {
     event.preventDefault();
-
-
-    const assignedPlayers = [];
-    const email = event.target.email.value;
-    const password = event.target.password.value;
-    const firstname = event.target.firstname.value;
-
+    var assignedPlayers = [];
+    const email = $('#email').val();
+    const password = $('#password').val();
+    const firstname = $('#firstname').val();
     const role = $('.assignedRole').children('#checked:checked').val();
-
-
     $('.assignedPlayersList').children('#playerList').each(function func() {
       assignedPlayers.push($(this).val());
     });

@@ -1,13 +1,19 @@
 <template name="header">
 
+
   <div class="header-fixed">
+
   	<div class="wrapper">
+
+
   		<!--=== Header v3 ===-->
   		<div class="header-v3 header-sticky">
+
   			<!-- Navbar -->
   			<div class="navbar navbar-default mega-menu" role="navigation">
   				<div class="container">
   					<!-- Brand and toggle get grouped for better mobile display -->
+
 
   					<div class="navbar-header">
 
@@ -21,6 +27,26 @@
   						</a>{{/with}}
 
   					</div>
+            <!-- topbar -->
+            <div class="header">
+
+
+            <div class="topbar">
+          <ul class="loginbar pull-right">
+            <li class="hoverSelector">
+            <img src="user.png" alt="Mountain View" style="width:10px;height:10px;">
+              <a class="topbarA">{{currentUser}}</a>
+
+            </li>
+            <li class="topbar-devider"></li>
+            <li><a class="topbarA">{{currentRole}}</a></li>
+            <li class="topbar-devider"></li>
+            <li><a href="" id="logout">Log Out</a></li>
+          </ul>
+        </div>
+      </div>
+        <!-- topbar -->
+
 
   					<!-- Collect the nav links, forms, and other content for toggling -->
   					<div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
@@ -56,6 +82,7 @@
   										<li role="admin_role"><a href="admin_role">Roles</a></li>
   										<li><a href="page5">Users</a></li>
   										<li><a href="homeAdmin">Home</a></li>
+  										<li><a href="admin_docs">Documentation/Notes</a></li>
   										<!-- <li class="dropdown-submenu" role="admin"><a href="javascript:void(0);">Home</a>
                             <ul class="dropdown-menu">
                               <li><a href="homeAdmin">News</a>
@@ -71,14 +98,14 @@
                   {{#if showNetworkSelection}}
                     {{> networkSelection}}
                   {{/if}}
-                  {{> logoutButton}}
+
   							</ul>
-                <div id="currentUser">
+                <!-- <div id="currentUser">
                   Logged in as <strong>{{currentUser}}</strong> user&nbsp;
                 </div>
                 <div id="currentRole">
                   with <strong>{{currentRole}}</strong> role&nbsp;
-                </div>
+                </div> -->
                 <div id="currentNetwork">
                   in <strong>{{currentNetwork}}</strong> network.
                 </div>
@@ -90,7 +117,7 @@
   				</div>
 
   			</div>
-      
+
 
   		</div>
   	</div>

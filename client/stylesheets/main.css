@@ -1,3 +1,127 @@
+.topbarA{
+  text-decoration: none !important;
+}
+.header {
+    border-bottom:none;
+}
+.header-v3 .dropdown > a::after {
+    content: "";
+}
+.header-v3 .dropdown > a::after, .header-v3 .dropdown-submenu > a::after {
+    content: "";
+}
+
+  input[type=checkbox] {
+display:none;
+}
+
+input[type=checkbox] + label
+{
+background: url("uncheck.png") no-repeat;
+background-size: 50%;
+height: 35px;
+width: 35px;
+display:inline-block;
+/*padding: 0 0 0 0px;*/
+}
+input[type=checkbox]:checked + label
+{
+background: url("check.png") no-repeat;
+background-size: 50%;
+height: 35px;
+width: 35px;
+display:inline-block;
+/*padding: 0 0 0 0px;*/
+}
+
+.editIcon , .deleteIcon , .infoIcon, .playIcon{
+  cursor: pointer;
+   cursor: hand;
+}
+
+.sky-form .input input:focus{
+  border-color: #72c02c;
+}
+.ui-datepicker {
+      background: rgba(255,255,255,1);
+}
+.ui-widget-content {
+    border: 1px solid #72c02c;
+  }
+ .ui-icon-circle-triangle-e{
+  margin-left: 30px;
+}
+.ui-datepicker .ui-datepicker-next {
+  left: 0;
+margin-left: 212px;
+top: 0;
+margin-top: 0px;
+}
+
+
+.sky-form .input:hover input, .sky-form .select:hover select, .sky-form .textarea:hover textarea, .sky-form .radio:hover i, .sky-form .checkbox:hover i, .sky-form .toggle:hover i, .sky-form .ui-slider-handle:hover {
+    border-color: #72c02c;
+  }
+
+.sky-form .radio input:checked + i, .sky-form .checkbox input:checked + i, .sky-form .toggle input:checked + i {
+    border-color: #72c02c;
+}
+.sky-form .toggle i:before {
+    background-color: #404040;
+}
+
+input[type='checkbox'].tags-checkbox:checked + label > i:first-of-type,
+input[type='checkbox'].tags-checkbox + label > i:last-of-type{
+    display: none;
+}
+input[type='checkbox'].tags-checkbox:checked + label > i:last-of-type{
+    display: inline-block;
+}
+@media (min-width: 768px) {
+  .modalRoles {
+    width: 700px;
+    margin: 30px auto;
+  }
+}
+  @media (min-width: 992px) {
+  .modalRoles {
+    width: 1000px;
+  }
+}
+.sky-form a {
+    color: #404040;
+}
+.btnGrp{
+  border-radius: 0px;
+  height: 39px;
+  padding: 6px 10px;
+  outline: none;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 0;
+    background: #fff;
+    color: #404040;
+    font: 15px/23px 'Open Sans', Helvetica, Arial, sans-serif;
+
+}
+.pagination>li>a, .pagination>li>span{
+  color:#717984;
+}
+.pagination-sm>li:last-child>a{
+  border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.pagination-sm>li:first-child>a{
+  border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.pagination>.active>a, .pagination>.active>a:focus,
+ .pagination>.active>a:hover, .pagination>.active>span,
+  .pagination>.active>span:focus, .pagination>.active>span:hover{
+  background-color:#72c02c;
+  border-color: #72c02c;
+
+}
 .sButton{
   margin-left:5px;
   background-color:#72c02c;
@@ -17,8 +141,8 @@
     overflow: hidden;
     padding: 2px 30% 6px;
     border-bottom: solid 2px #eee;
-    margin-left: -31%;
-    margin-right: -31%;
+    margin-left: -36%;
+    margin-right: -36%;
     margin-top: -20px;
 }
 .secondHead1{
@@ -27,6 +151,10 @@
   top:inherit;
 
     overflow:hidden;
+}
+ .pull-left{
+  padding-left: 50px;
+  /*text on the breadcrumb*/
 }
 .contentHeader .glyphicon-remove {
     margin-top: 0px;
@@ -94,11 +222,17 @@ ul.nav.nav-tabs a{
   border-color:#717984;
 }
 
-.glyphicon-ok-circle{
-  color:green;
+.glyphicon-ok{
+
+  cursor: pointer;
+   cursor: hand;
+
 }
-.glyphicon-ban-circle{
-  color:red;
+.glyphicon-remove{
+
+  cursor: pointer;
+   cursor: hand;
+
 }
 
 .link-disabled {
@@ -234,12 +368,12 @@ div.p1, div.p2,div.p3{
   line-height: 26px;
 }
 
-.player-form, #media-form, .panel-heading{
+ #media-form, .panel-heading{
   position: relative;
   font-size: 24px;
 }
 
-#button-close-player-form{
+/*#button-close-player-form{
   margin-top: 20px;
   margin-right: 15px;
   color: red;
@@ -248,7 +382,7 @@ div.p1, div.p2,div.p3{
   top: 1px;
   right: 5px;
   font-size: 1em;
-}
+}*/
 
 /*#button-close-contentList,*/
  #button-close-media-collection{
@@ -280,16 +414,13 @@ div.p1, div.p2,div.p3{
   position: relative;
 }
 
-.content-form .glyphicon-remove{
-  margin-top: 20px;
-  margin-right: 15px;
+/*.content-form .glyphicon-remove{
   color: red;
   cursor: pointer;
-  position: absolute;
   top: 1px;
   right: 5px;
   font-size: 1em;
-}
+}*/
 
 #button-close-media-form{
   margin-top: 20px;
@@ -307,9 +438,6 @@ div.p1, div.p2,div.p3{
   color: #0082C8;
   cursor: pointer;
   float: left;
-  /*position: absolute;*/
-  /*top: 800px;*/
-  /*right: 5px;*/
   font-size: 3em;
 }
 
@@ -373,5 +501,11 @@ div.p1, div.p2,div.p3{
 
 #currentUser, #currentRole, #currentNetwork{
   float: left;
-  /*margin-top: 55px;*/
+}
+
+
+#button-add-user{
+  border-radius: 0;
+  background-color: #72c02c;
+  color: white;
 }

@@ -43,7 +43,7 @@ Template.rolesList.events({
   Session.set('selectedRole', this._id);
 
 },
-'submit .editRole-form': function closeEditForm(event, templateInstance){
+'click #saveEditRole': function closeEditForm(event, templateInstance){
   templateInstance.isRoleEdit.set(false);
 },
 'click #closeEditRole': function closeEditRole(event, templateInstance){

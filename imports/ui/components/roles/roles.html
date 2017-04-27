@@ -1,168 +1,195 @@
-<template name="adminRole"><br>
-  <div class="tab-v1 content-form">
-      <!-- <div class="col-md-10 col-md-offset-1"> -->
+<template name="adminRole">
+
+  <ul class="nav nav-tabs">
+
+        <button type="button" class="btn-u btn-u-default sButton" style="float:right;" id="saveNewRole">Save</button>
+        <button type="button" class="btn-u btn-u-default cButton" style="float:right;" id="closeCreateRole">Close</button>
+      </ul><br>
+
+  <div class="panel-body sky-form" style="padding:0px;">
+
           <form class="sky-form register-form">
-              <div class=" panel-default">
-                  <div class="panel-heading">
-                      <span>Create role</span>
-                      <i type="button" class="glyphicon glyphicon-remove" style="color:red;" id="closeCreateRole"></i>
-                  </div>
-                  <div class="panel-body">
 
-                      <div class="form-group col-lg-12">
-                          <label>Net Name: </label><i style="background-color: gray;color:white;">{{currentNetworkName}}</i><br>
+            <fieldset>
+              <div class="row" style="border:none">
+                <div class="form-group col-lg-4">
+                <label class="label">Net Name</label>
+                <label class="input"><input type="text"  class="form-control" value="{{currentNetworkName}}" DISABLED></label></div>
+                <div class="form-group col-lg-4">
+                <label class="label">Net Id</label>
+                <label class="input"><input type="text"  class="form-control" value="{{currentNetworkId}}" DISABLED></label></div>
+                <div class="form-group col-lg-4">
+                <label class="label">Role Name</label>
+                <label class="input"><input type="text"  class="form-control" id="roleName" value="" placeholder="admin,user etc."></label></div>
+              </div>
+            </fieldset>
+            <fieldset>
+              <div class="row" style="border:none">
+                <label class="label">permissions</label>
 
-                          <label>Net Id:</label><i style="background-color: gray;color:white;">{{currentNetworkId}}</i>
-                      </div>
-                      <div class="form-group col-lg-12">
-                          <label>Role Name: </label>
-                          <input type="text" name="" class="form-control" id="roleName" value="" placeholder="admin,user etc."  REQUIRED>
-                      </div>
-                        <label> Roles:</label><hr>
-                      <div class="form-group col-lg-3">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Player</th>
+                      <th>Video/Img</th>
+                      <th>Content</th>
+                      <th>Content Grp</th>
+                      <th>Playlist</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Create</td>
+                      <td> <input type='checkbox' id="createPlayer"/>
+    <label for='createPlayer' id="checkboxLabel">
+    </label></td>
+                      <td><input type='checkbox' id="createVideoImg"/>
+    <label for='createVideoImg'>
+    </label></td>
+                      <td><input type='checkbox' id="createContent" />
+    <label for='createContent'>
+
+    </label></td>
+                      <td><input type='checkbox' id="createContentGrp" />
+    <label for='createContentGrp'>
+
+    </label></td>
+                      <td><input type='checkbox' id="createPlaylist" />
+    <label for='createPlaylist'>
+
+    </label></td>
+                    </tr>
+                    <tr>
+                      <td>Edit</td>
+                      <td><input type='checkbox' id="editPlayer" />
+    <label for='editPlayer'>
+
+    </label></td>
+                      <td><input type='checkbox' id="editVideoImg" />
+    <label for='editVideoImg'>
+
+    </label></td>
+                      <td><input type='checkbox' id="editContent" />
+    <label for='editContent'>
+
+    </label></td>
+                      <td><input type='checkbox' id="editContentGrp" />
+    <label for='editContentGrp'>
+
+    </label></td>
+                      <td><input type='checkbox' id="editPlaylist" />
+    <label for='editPlaylist'>
+
+    </label></td>
+
+                    </tr>
+                    <tr>
+                      <td>Delete</td>
+                      <td><input type='checkbox' id="deletePlayer" />
+    <label for='deletePlayer'>
+
+    </label></td>
+                      <td><input type='checkbox' id="deleteVideoImg" />
+    <label for='deleteVideoImg'>
+
+    </label></td>
+                      <td><input type='checkbox' id="deleteContent" />
+    <label for='deleteContent'>
+
+    </label></td>
+                      <td><input type='checkbox' id="deleteContentGrp" />
+    <label for='deleteContentGrp'>
+
+    </label></td>
+                      <td><input type='checkbox' id="deletePlaylist" />
+    <label for='deletePlaylist'>
+
+    </label></td>
+
+                    </tr>
+                  </tbody>
+                </table>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+
+                      <th>Admin Menu</th>
+                      <th>Network Menu</th>
+                      <th>User Menu</th>
+                      <th>Role Menu</th>
+                      <th>Conten Menu</th>
+                      <th>Statistics menu</th>
+                      <th>Home Menu</th>
+                      <th>Media</th>
+                      <th>Content</th>
+                      <th>Content-group</th>
+                      <th>Players</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+
+                      <td><input type='checkbox' id="adminMenu" />
+    <label for='adminMenu'>
+
+    </label></td>
+                      <td><input type='checkbox' id="netzMenu" />
+    <label for='netzMenu'>
+
+    </label></td>
+                      <td><input type='checkbox' id="userMenu" />
+    <label for='userMenu'>
+
+    </label></td>
+                      <td><input type='checkbox' id="roleMenu"/>
+    <label for='roleMenu'>
+
+    </label></td>
+                      <td><input type='checkbox' id="contentMenu" />
+    <label for='contentMenu'>
+
+    </label></td>
+                      <td><input type='checkbox' id="statisticMenu" />
+    <label for='statisticMenu'>
+
+    </label></td>
+                      <td><input type='checkbox' id="homeEditMenu" />
+    <label for='homeEditMenu'>
+
+    </label></td>
+                      <td><input type='checkbox' id="seeMedia" />
+    <label for='seeMedia'>
+
+    </label></td>
+                      <td><input type='checkbox' id="seeContent" />
+    <label for='seeContent'>
+
+    </label></td>
+                      <td><input type='checkbox' id="seeAllContentGroups" />
+    <label for='seeAllContentGroups'>
+
+    </label></td>
+                      <td><input type='checkbox' id="seeAllPlayers" />
+    <label for='seeAllPlayers'>
+
+    </label></td>
+
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+            </fieldset>
 
 
-                            <form>
-                              <label class="list-group-item">
-                                <input type="checkbox" aria-label="..." id="createPlayer" value="createPlayer" >Create Player
-                              </label>
-                              <label class="list-group-item">
-                                <input type="checkbox" aria-label="..." id="editPlayer" value="editPlayer" >Edit Player
-                              </label>
-                              <label class="list-group-item">
-                                <input type="checkbox" aria-label="..." id="deletePlayer" value="deletePlayer" >Delete Player
-                              </label>
-                              </form>
-                            </div>
-                      <div class="form-group col-lg-3">
-
-
-                            <form>
-                              <label class="list-group-item">
-                                <input type="checkbox" aria-label="..." id="createVideoImg" value="createVideoImg" >Create Video/Image
-                              </label>
-                              <label class="list-group-item">
-                                <input type="checkbox" aria-label="..." id="editVideoImg" value="editVideoImg" >Edit Video/Image
-                              </label>
-                              <label class="list-group-item">
-                                <input type="checkbox" aria-label="..." id="deleteVideoImg" value="deleteVideoImg" >Delete Video/Image
-                              </label>
-                              </form>
-                            </div>
-
-                    <div class="form-group col-lg-3">
-
-
-                          <form>
-                            <label class="list-group-item">
-                              <input type="checkbox" aria-label="..." id="createContent" value="createContent" >Create Content
-                            </label>
-                            <label class="list-group-item">
-                              <input type="checkbox" aria-label="..." id="editContent" value="editContent" >Edit Content
-                            </label>
-                            <label class="list-group-item">
-                              <input type="checkbox" aria-label="..." id="deleteContent" value="deleteContent" >Delete Content
-                            </label>
-                            </form>
-                          </div>
-
-                  <div class="form-group col-lg-3">
-
-
-                        <form>
-                          <label class="list-group-item">
-                            <input type="checkbox" aria-label="..." id="createContentGrp" value="createContentGrp" >Create Content-Group
-                          </label>
-                          <label class="list-group-item">
-                            <input type="checkbox" aria-label="..." id="deleteContentGrp" value="deleteContentGrp" >Delete Content-Group
-                          </label>
-                          <label class="list-group-item" style="color:red;">
-                            <input type="checkbox" aria-label="..." id="grantContentGrpAccess" value="editContentGrp" >Content Group Edit Privileges
-                          </label>
-                          </form>
-                        </div>
-
-                <div class="form-group col-lg-3">
-
-
-                      <form>
-                        <label class="list-group-item">
-                          <input type="checkbox" aria-label="..." id="createPlaylist" value="createPlaylist" >Create Playlist
-                        </label>
-                        <label class="list-group-item">
-                          <input type="checkbox" aria-label="..." id="editPlaylist" value="editPlaylist" >Edit Playlist
-                        </label>
-                        <label class="list-group-item">
-                          <input type="checkbox" aria-label="..." id="deletePlaylist" value="deletePlaylist" >Delete Playlist
-                        </label>
-
-                        </form>
-                      </div>
-                      <div class="form-group col-lg-3">
-
-                        <label>User can see:</label>
-                            <form>
-                              <label class="list-group-item">
-                              <input type="radio" name="optradio3" id="seeMedia" value="admin">All
-                              <input type="radio" name="optradio3" id="seeMedia" value="admin">Only Own Media
-                            </label>
-                            </form>
-                            <form>
-                              <label class="list-group-item">
-                              <input type="radio" name="optradio4" id="seeContent" value="admin">All
-                              <input type="radio" name="optradio4" id="seeContent" value="admin">Only Own Content
-                              </label>
-                            </form>
-
-                            <form>
-                              <label class="list-group-item">
-                              <input type="radio" name="optradio6" id="seeAllPlayers" value="admin">All
-                              <input type="radio" name="optradio6" id="seeAllPlayers" value="admin">Only Own Players
-                              </label>
-                            </form>
-                      </div>
-
-              <div class="form-group col-lg-3">
-
-                  <label>Menus display:</label>
-
-                    <form>
-                      <label class="list-group-item">
-                        <input type="checkbox" aria-label="..." id="adminMenu" value="adminMenu" >Admin Menu
-                      </label>
-                      <label class="list-group-item">
-                        <input type="checkbox" aria-label="..." id="netzMenu" value="netzMenu" >Network Menu
-                      </label>
-                      <label class="list-group-item">
-                        <input type="checkbox" aria-label="..." id="userMenu" value="userMenu" >User menu
-                      </label>
-                      <label class="list-group-item">
-                        <input type="checkbox" aria-label="..." id="roleMenu" value="roleMenu" >Role Menu
-                      </label>
-                      <label class="list-group-item">
-                        <input type="checkbox" aria-label="..." id="contentMenu" value="contentMenu" >Content Menu
-                      </label>
-                      <label class="list-group-item">
-                        <input type="checkbox" aria-label="..." id="statisticMenu" value="statisticMenu" >Statistic Menu
-                      </label>
-                      <label class="list-group-item">
-                        <input type="checkbox" aria-label="..." id="homeEditMenu" value="statisticMenu" >Home Page Edit Menu
-                      </label>
-                          </form>
-                    </div>
 
 
 
-                         </div>
-
-
-
-                    <div class="panel-footer">
-                        <button type="submit" class="btn btn-default">Save</button>
-                    </div>
-                </div>
             </form>
-        <!-- </div> -->
-    </div>
+
+    </div> <br><button type="button" class="btn-u btn-u-default sButton" style="float:right;" id="saveNewRole">Save</button>
+      <button type="button" class="btn-u btn-u-default cButton" style="float:right;" id="closeCreateRole">Close</button>
+<br><br><br><br>
 
 </template>

@@ -1,0 +1,14 @@
+<template name="userRow">
+  <tr>
+    <td>{{ profile.name}}
+    </td>
+    <td>
+      {{ getRoleName profile.role}}
+    </td>
+    <td>{{ emails.[0].address}}
+    </td>
+    <td>
+      <i type="button" class="glyphicon glyphicon-remove" id="button-remove-user"></i>
+    </td>
+  </tr>
+</template>
